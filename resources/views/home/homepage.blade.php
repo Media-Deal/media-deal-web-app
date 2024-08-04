@@ -128,17 +128,17 @@
 
                 <h1 class="display-5 animated fadeIn mb-4">Upgrade Your <span class="text-primary">Advertising Game
                     </span></h1>
-                <h4 class="animated fadeIn mb-4 pb-2">With Midea Deal, the ultimate platform for innovative and safe
+                <h4 class="animated fadeIn mb-4 pb-2">With Media Deal, the ultimate platform for innovative and safe
                     media buying and selling.</h4>
                 <a href="" class="btn btn-primary py-3 px-5 me-3 animated fadeIn">Start Now</a>
             </div>
             <div class="col-md-6 animated fadeIn">
                 <div class="owl-carousel header-carousel">
                     <div class="owl-carousel-item">
-                        <img class="img-fluid" src="img/carousel-1.jpg" alt="">
+                        <img class="img-fluid" src="img/carousel-1.jpg" alt="media photo1" style="height: 42rem;">
                     </div>
                     <div class="owl-carousel-item">
-                        <img class="img-fluid" src="img/carousel-2.jpg" alt="">
+                        <img class="img-fluid" src="img/carousel-2.jpg" alt="media photo 2" style="height: 42rem;">
                     </div>
                 </div>
             </div>
