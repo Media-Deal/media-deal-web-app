@@ -34,6 +34,7 @@
 </head>
 
 <body>
+    <script src="https://kit.fontawesome.com/2b537d8d05.js" crossorigin="anonymous"></script>
     <div class="container-xxl bg-white p-0">
 
 

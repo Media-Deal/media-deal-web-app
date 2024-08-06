@@ -25,9 +25,63 @@
     </div>
     <!-- Header End -->
 
+    <!-- Category Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="cat-item d-block bg-primary text-center rounded p-3">
+                        <div class="rounded p-4 bg-light">
+                            <div class="icon mb-3">
+                                <img class="img-fluid" src="img/icon-apartment.png" alt="Icon">
+                            </div>
+                            <h6>$8 Billion+</h6>
+                            <span>Under Advisement</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <a class="cat-item d-block bg-light text-center rounded p-3" href="">
+                        <div class="rounded p-4">
+                            <div class="icon mb-3">
+                                <img class="img-fluid" src="img/icon-villa.png" alt="Icon">
+                            </div>
+                            <h6>$4 Billion+</h6>
+                            <span>Invested in Private Markets</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <a class="cat-item d-block bg-light text-center rounded p-3" href="">
+                        <div class="rounded p-4">
+                            <div class="icon mb-3">
+                                <img class="img-fluid" src="img/icon-house.png" alt="Icon">
+                            </div>
+                            <h6>$2 Billion+</h6>
+                            <span>Invested With Impact Intentionality</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
+                    <a class="cat-item d-block bg-light text-center rounded p-3" href="">
+                        <div class="rounded p-4">
+                            <div class="icon mb-3">
+                                <img class="img-fluid" src="img/icon-luxury.png" alt="Icon">
+                            </div>
+                            <h6>1000+</h6>
+                            <span>Families Served</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Category End -->
+
+
 
     <!--deal directly starts here-->
-    <div class="tab-content pt-3">
+    {{-- <div class="tab-content pt-3">
         <h1 class="mb-3 text-center pt-4 pb-3 text-primary">Deal Directly With Top Media Brands</h1>
         <div id="tab-1" class="tab-pane fade show p-0 active">
             <div class="row g-4">
@@ -85,7 +139,7 @@
             <a href="" class="btn btn-primary py-3 px-5 me-3 animated fadeIn">Start Now</a>
         </div>
     </div>
-    <!--deal directly ends here-->
+    <!--deal directly ends here--> --}}
 
 
     <!-- Earn Commision Start -->
@@ -115,7 +169,7 @@
 
 
     <!--make sales starts here-->
-    <div class="tab-content pt-3">
+    {{-- <div class="tab-content pt-3">
         <h1 class="mb-3 text-center pt-4 pb-3">Make Sales and Manage Transactions in One Platform</h1>
         <div id="tab-1" class="tab-pane fade show p-0 active">
             <div class="row g-4">
@@ -173,7 +227,7 @@
         <div class="d-flex justify-content-center">
             <a href="" class="btn btn-primary py-3 px-5 me-3 animated fadeIn">Start Now</a>
         </div>
-    </div>
+    </div> --}}
     <!--deal make sales ends here-->
 
 
@@ -565,7 +619,7 @@
 
 
     <!--Award starts here-->
-    <div class="tab-content pt-3">
+    {{-- <div class="tab-content pt-3">
         <h1 class="mb-3 text-center pt-4 pb-3">Our Award Platform</h1>
         <div id="tab-1" class="tab-pane fade show p-0 active">
             <div class="row g-4">
@@ -726,7 +780,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!--Award ends here-->
 
 
