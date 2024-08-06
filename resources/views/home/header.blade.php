@@ -9,7 +9,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="{{asset('img/favicon.png')}}" rel="icon">
+    <link href="img/favicon.png" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,14 +22,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="{{asset('landing/lib/animate/animate.min.css')}}" rel="stylesheet">
-    <link href="{{asset('landing/lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="{{asset('landing/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="{{asset('landing/css/style.css')}}" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 
 </head>
 
@@ -58,23 +58,28 @@
 
 
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" active data-bs-toggle="dropdown">Buy</a>
+                            <a href="#" class="nav-link dropdown-toggle" active data-bs-toggle="dropdown">Media</a>
                             <div class="dropdown-menu rounded-0 m-0">
                                 <div class="row">
 
-                                    <h6 class="dropdown-item">Homes for sale</h6>
 
-                                    <a href="#" class="dropdown-item">Homes for sale</a>
+
+                                    <a href="#" class="dropdown-item">Radio</a>
+                                    <a href="#" class="dropdown-item">TV</a>
+                                    <a href="#" class="dropdown-item">Online</a>
 
                                 </div>
                             </div>
                         </div>
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Sell</a>
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Resources</a>
                             <div class="dropdown-menu rounded-0 m-0">
                                 <div class="row">
-                                    <h6 class="dropdown-item">Home selling tools</h6>
-                                    <a href="" class="dropdown-item">Find the right selling option for you</a>
+                                    <h6 class="dropdown-item">Dashboard</h6>
+                                    <a href="" class="dropdown-item">Dashboard</a>
+                                    <a href="" class="dropdown-item">Feedback</a>
+                                    <a href="" class="dropdown-item">Testimonial</a>
+                                    <a href="" class="dropdown-item">Deal Support</a>
 
 
 
@@ -83,15 +88,15 @@
                             </div>
                         </div>
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Rent</a>
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Company</a>
                             <div class="dropdown-menu rounded-0 m-0">
                                 <div class="row">
 
-                                    <h6 class="dropdown-item">Apartments for rent</h6>
+                                    <a href="{{url('about')}}"><h6 class="dropdown-item">About Us</h6></a> 
+                                    <a href="#"><h6 class="dropdown-item">Faq</h6></a> 
+                                    <a href="#"><h6 class="dropdown-item">Policies</h6></a> 
+                                    
 
-
-                                    <a href="" class="dropdown-item">Apartments for rent</a>
-                                    <a href="" class="dropdown-item">Houses for rent</a>
 
                                     <hr>
                                 </div>
@@ -99,7 +104,11 @@
                         </div>
 
                         <div class="nav-item dropdown">
-                            <a href="" class="nav-item nav-link">Home</a>
+                            <a href="" class="nav-item nav-link">Contact Us</a>
+                        </div>
+
+                        <div class="nav-item dropdown">
+                            <a href="" class="nav-item nav-link">Login</a>
                         </div>
 
 
@@ -111,4 +120,3 @@
         </div>
         </nav>
     </div>
-    <!-- Navbar End -->
