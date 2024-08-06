@@ -149,7 +149,7 @@
 
     <!--deal directly starts here-->
     <div class="tab-content pt-3">
-        <h1 class="mb-3 text-center pt-4 pb-3">Deal Directly With Top Media Brands</h1>
+        <h1 class="mb-3 text-center pt-4 pb-3 text-primary">Deal Directly With Top Media Brands</h1>
         <div id="tab-1" class="tab-pane fade show p-0 active">
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6 wow fadeInUp bg-white" data-wow-delay="0.1s">
