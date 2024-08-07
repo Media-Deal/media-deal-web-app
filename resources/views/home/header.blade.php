@@ -30,12 +30,15 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+    
+    <script src="https://kit.fontawesome.com/2b537d8d05.js" crossorigin="anonymous"></script>
 
 </head>
 
+
 <body>
-    <script src="https://kit.fontawesome.com/2b537d8d05.js" crossorigin="anonymous"></script>
-    <div class="container-xxl bg-white p-0">
+    {{-- <script src="https://kit.fontawesome.com/2b537d8d05.js" crossorigin="anonymous"></script>
+    <div class="container-xxl bg-white p-0"> --}}
 
 
 

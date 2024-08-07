@@ -59,6 +59,8 @@
 <script src="landing/lib/easing/easing.min.js"></script>
 <script src="landing/lib/waypoints/waypoints.min.js"></script>
 <script src="landing/lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="https://kit.fontawesome.com/2b537d8d05.js" crossorigin="anonymous"></script>
+
 
 <!-- Template Javascript -->
 <script src="landing/js/main.js"></script>
