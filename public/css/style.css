@@ -244,6 +244,9 @@
     transform: skew(20deg);
     z-index: 1;
 }
+.commission-background{
+    background-color: #0E2E50;
+}
 
 
 /*** Category ***/

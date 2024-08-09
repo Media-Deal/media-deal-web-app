@@ -28,13 +28,12 @@
     <!-- Category Start -->
     <div class="container-xxl py-5">
         <div class="container">
-            <h1 class="text-center text-primary">Deal directly with the top media brands and influencers</h1>
+            <h2 class="text-center text-primary">Deal directly with the top media brands and <br> influencers</h2>
             <div class="row g-4">
                 <div class="col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="cat-item d-block bg-primary text-center rounded p-3">
                         <div class="rounded p-4 bg-light">
                             <div class="icon mb-3 p-4">
-                                {{-- <img class="img-fluid" src="img/radio.png"  alt="Icon"> --}}
                                 <i class="fa-solid fa-radio img-fluid-custom text-primary"></i>
                             </div><br>
                             <h6>No Middle-Man Here!</h6>
@@ -82,70 +81,8 @@
 
 
 
-    <!--deal directly starts here-->
-    {{-- <div class="tab-content pt-3">
-        <h1 class="mb-3 text-center pt-4 pb-3 text-primary">Deal Directly With Top Media Brands</h1>
-        <div id="tab-1" class="tab-pane fade show p-0 active">
-            <div class="row g-4">
-                <div class="col-lg-4 col-md-6 wow fadeInUp bg-white" data-wow-delay="0.1s">
-                    <div class="property-item rounded overflow-hidden">
-                        <div class="p-4 pb-0">
-                            <div class="d-flex justify-content-center align-items-center py-3"
-                                style="background: darkgray; border-radius: 100%; width: 110px; height:110px; margin:auto;">
-                                <img src="img/image/award_13.png" alt="" class="img-fluid"
-                                    style="width: 40px; height: 70px; display: flex; justify-content: center; align-items: center;">
-                            </div>
-                            <h4 class="text-center text-primary" style="color: black;">No Middle-Man Here!</h4>
-                            <div class="py-3" style="font-size: 17px;">
-                                With just a few clicks, and you're diving into adverts rates, getting discounts, and
-                                plastering your ads all over your favourite media. It's like shopping online but way
-                                cooler!
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp bg-white" data-wow-delay="0.3s">
-                    <div class="property-item rounded overflow-hidden">
-                        <div class="p-4 pb-0">
-                            <div class="d-flex justify-content-center align-items-center py-3"
-                                style="background: darkgray; border-radius: 100%; width: 110px; height:110px; margin:auto;">
-                                <img src="img/image/award_10.png" alt="" class="img-fluid"
-                                    style="width: 40px; height: 70px; display: flex; justify-content: center; align-items: center;">
-                            </div>
-                            <h4 class="text-center text-primary" style="color: black;">Cash Back Guarantee</h4>
-                            <div class="py-3" style="font-size: 17px;">
-                                Keep tabs on your ad placements, and if any slot fails, get refunds before apologies.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp bg-white" data-wow-delay="0.5s">
-                    <div class="property-item rounded overflow-hidden">
-                        <div class="p-4 pb-0">
-                            <div class="d-flex justify-content-center align-items-center py-3"
-                                style="background: darkgray; border-radius: 100%; width: 110px; height:110px; margin:auto;">
-                                <img src="img/image/award_5.png" alt="" class="img-fluid"
-                                    style="width: 40px; height: 70px; display: flex; justify-content: center; align-items: center;">
-                            </div>
-                            <h4 class="text-center text-primary" style="color: black;">Customer Support</h4>
-                            <div class="py-3" style="font-size: 17px;">
-                                Watch out for budget-hungry sharks! Don't swim solo---dive in with our support to help
-                                you avoid ending up with a fishy net full of holes.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="d-flex justify-content-center">
-            <a href="" class="btn btn-primary py-3 px-5 me-3 animated fadeIn">Start Now</a>
-        </div>
-    </div>
-    <!--deal directly ends here--> --}}
-
-
     <!-- Earn Commision Start -->
-    <div class="container-xxl py-5">
+    <div class="container-xxl py-5 commission-background">
         <div class="container">
             <div class="row g-5 align-items-center">
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
@@ -239,17 +176,11 @@
                 <div class="col-lg-6">
                     <div class="text-start mx-auto mb-5 wow slideInLeft" data-wow-delay="0.1s">
                         <h1 class="mb-3 text-primary">Discover how we can help</h1>
-                        <p class="text-light">Join a Vanaman Real Estate Investment property and enjoy the many benefits that come
-                            with
-                            leasing
-                            from an experienced, well-respected, and well-capitalized property owner. We’re not
-                            just
-                            your
-                            landlord – we are partners in your success.</p>
+                        <p class="text-light">Get ready for streamlined communication, efficient negotiations and advertising outcomes so optimal they will make your competitors green with envy - all with media deal</p>
                     </div>
                 </div>
                 <div class="col-lg-6 text-start text-lg-end wow slideInRight" data-wow-delay="0.1s">
-                    <ul class="nav nav-pills d-inline-flex justify-content-end mb-5">
+                    {{-- <ul class="nav nav-pills d-inline-flex justify-content-end mb-5">
                         <li class="nav-item me-2">
                             <a class="btn btn-outline-primary active" data-bs-toggle="pill" href="#tab-1">Buying</a>
                         </li>
@@ -259,7 +190,14 @@
                         <li class="nav-item me-0">
                             <a class="btn btn-outline-primary" data-bs-toggle="pill" href="#tab-3">Selling</a>
                         </li>
-                    </ul>
+                    </ul> --}}
+                    <div class="mb-5 mx-5 px-5">
+                        <img src="img/image/platform.png" alt="" width="150" , height="150">
+
+
+                    </div>
+
+                    
 
                 </div>
             </div>
@@ -310,104 +248,7 @@
                                     <br>
                                 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                
+         
                             </div>
                         </div>
                     </div>
@@ -552,32 +393,6 @@
     <!-- Property List End -->
 
 
-    <!-- Property List Start -->
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="row g-0 gx-5 align-items-end">
-                <div class="col-lg-6">
-                    <div class="text-start mx-auto mb-5 wow slideInLeft" data-wow-delay="0.1s">
-                        <h1 class="mb-3 text-primary">Buy/Rent a property in the popular countries</h1>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="tab-content">
-                <div id="tab-1" class="tab-pane fade show p-0 active">
-                    <div class="row g-4">
-
-
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-    <!-- Property List End -->
-
-
             <!--platform advantages starts here-->
 
             <div class="container-xxl py-5">
@@ -686,11 +501,7 @@
             </div>
 
 
-
-
-
-
-            <!-- Testimonial Start -->
+            {{-- <!-- Testimonial Start -->
             <div class="container-xxl py-5">
                 <div class="container">
                     <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
@@ -1320,14 +1131,14 @@
                                     <i class="fa fa-star" style="color:lightseagreen;"></i>
                                     <i class="fa fa-star" style="color:lightseagreen;"></i>
                                     <i class="fa fa-star" style="color:lightseagreen;"></i>
-                                    <i class="fa fa-star" style="color:lightseagreen;"></i>
+                                    <i class="fa fa-star" style="color:rgb(147, 184, 182);"></i>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Testimonial End -->
+            <!-- Testimonial End --> --}}
 
 
 
@@ -1342,18 +1153,18 @@
                                 ROAD,REVENNA,OH
                                 44266</p>
                             <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+1 (513) 299-5453</p>
-                            <p class="mb-2"><i class="fa fa-envelope me-3"></i>Info@vanamanllc.com</p>
+                            <p class="mb-2"><i class="fa fa-envelope me-3"></i>Info@mediadeal.com</p>
                             <div class="d-flex pt-2">
-                                <a class="btn btn-outline-light btn-social" href="https://instagram.com/vanamanllc"><i
+                                <a class="btn btn-outline-light btn-social" href="#"><i
                                         class="fab fa-instagram"></i></a>
                                 <a class="btn btn-outline-light btn-social"
-                                    href="https://x.com/vanamanllc?s=21&t=heVsXSO9oNEyypm4lmx3kw"><i
+                                    href="#"><i
                                         class="fab fa-twitter"></i></a>
                                 <a class="btn btn-outline-light btn-social"
-                                    href="https://maps.app.goo.gl/vzsG6bxFiSxbjXDK9?g_st=ic"><i
+                                    href="#"><i
                                         class="fab fa-google"></i></a>
                                 <a class="btn btn-outline-light btn-social"
-                                    href="https://www.linkedin.com/company/vanaman-real-estate-investments-llc/"><i
+                                    href="#"><i
                                         class="fab fa-linkedin-in"></i></a>
                             </div>
                         </div>
@@ -1368,9 +1179,8 @@
             <div class="container">
                 <div class="copyright">
                     <div class="row">
-                        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                            &copy; <a class="border-bottom" href="{{url('/')}">Vanaman Real Estate
-                                Investment</a>, All
+                        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0 text-primary">
+                            &copy; <a class="border-bottom text-primary" href="{{url('/')}">Media Deal</a>, All
                             Right
                             Reserved.
 
@@ -1390,6 +1200,7 @@
     </div>
 
     <!-- JavaScript Libraries -->
+    <script src="https://kit.fontawesome.com/2b537d8d05.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="lib/wow/wow.min.js"></script>
