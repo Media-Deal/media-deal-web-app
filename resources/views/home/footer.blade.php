@@ -34,7 +34,7 @@
     <div class="copyright">
         <div class="row">
             <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                &copy; <a class="border-bottom" href="{{url('/')}">Vanaman Real Estate Investment</a>, All Right
+                &copy; <a class="border-bottom" href="{{url('/')}">Media Deal</a>, All Right
                 Reserved.
 
 
@@ -59,6 +59,8 @@
 <script src="landing/lib/easing/easing.min.js"></script>
 <script src="landing/lib/waypoints/waypoints.min.js"></script>
 <script src="landing/lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="https://kit.fontawesome.com/2b537d8d05.js" crossorigin="anonymous"></script>
+
 
 <!-- Template Javascript -->
 <script src="landing/js/main.js"></script>

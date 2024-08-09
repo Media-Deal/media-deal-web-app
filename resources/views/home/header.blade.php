@@ -31,10 +31,13 @@
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
 
+
 </head>
 
+
 <body>
-    <div class="container-xxl bg-white p-0">
+    {{-- <script src="https://kit.fontawesome.com/2b537d8d05.js" crossorigin="anonymous"></script>
+    <div class="container-xxl bg-white p-0"> --}}
 
 
 
@@ -76,14 +79,17 @@
                             <div class="dropdown-menu rounded-0 m-0">
                                 <div class="row">
                                     <h6 class="dropdown-item">Dashboard</h6>
-                                    <a href="" class="dropdown-item">Dashbaord</a>
-                                    <a href="" class="dropdown-item">Feedback</a>
-                                    <a href="" class="dropdown-item">Testimonial</a>
-                                    <a href="" class="dropdown-item">Deal Support</a>
+                                    <<<<<<< HEAD <a href="" class="dropdown-item">Dashbaord</a>
+                                        =======
+                                        <a href="" class="dropdown-item">Dashboard</a>
+                                        >>>>>>> ba6f7f8db4c82c25e92c00358a13aea4eec6d80b
+                                        <a href="" class="dropdown-item">Feedback</a>
+                                        <a href="" class="dropdown-item">Testimonial</a>
+                                        <a href="" class="dropdown-item">Deal Support</a>
 
 
 
-                                    <hr>
+                                        <hr>
                                 </div>
                             </div>
                         </div>
@@ -92,13 +98,27 @@
                             <div class="dropdown-menu rounded-0 m-0">
                                 <div class="row">
 
-                                    <h6 class="dropdown-item">About Us</h6>
-                                    <h6 class="dropdown-item">Faq</h6>
-                                    <h6 class="dropdown-item">Policies</h6>
+                                    <<<<<<< HEAD <h6 class="dropdown-item">About Us</h6>
+                                        <h6 class="dropdown-item">Faq</h6>
+                                        <h6 class="dropdown-item">Policies</h6>
 
 
 
-                                    <hr>
+                                        =======
+                                        <a href="{{url('about')}}">
+                                            <h6 class="dropdown-item">About Us</h6>
+                                        </a>
+                                        <a href="#">
+                                            <h6 class="dropdown-item">Faq</h6>
+                                        </a>
+                                        <a href="#">
+                                            <h6 class="dropdown-item">Policies</h6>
+                                        </a>
+
+
+
+                                        >>>>>>> ba6f7f8db4c82c25e92c00358a13aea4eec6d80b
+                                        <hr>
                                 </div>
                             </div>
                         </div>
@@ -120,4 +140,3 @@
         </div>
         </nav>
     </div>
-    <!-- Navbar End -->
