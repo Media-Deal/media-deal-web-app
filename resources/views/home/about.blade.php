@@ -2,7 +2,7 @@
 
 
         <!-- Header Start -->
-        <div class="container-fluid header bg-white p-0">
+        <div class="container-fluid header bg-dark p-0">
             <div class="row g-0 align-items-center flex-column-reverse flex-md-row">
                 <div class="col-md-6 p-5 mt-lg-5">
                     <h1 class="display-5 animated fadeIn mb-4 text-primary me-3" >About Us</h1> 
@@ -22,7 +22,7 @@
         <!-- Header End -->
       
    <!-- About Start -->
-   <div class="container-xxl py-5">
+   <div class="container-xxl py-5 bg-light">
             <div class="container">
                 <div class="row g-5 align-items-center">
                     <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
@@ -51,7 +51,7 @@
 
             
    <!-- About Start -->
-   <div class="container-xxl py-5">
+   <div class="container-xxl py-5 bg-light">
             <div class="container">
                 <div class="row g-5 align-items-center">
                     <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
@@ -104,7 +104,7 @@
         <!-- About End -->
            <!-- About Start -->
     <!-- About Start -->
-    <div class="container-xxl py-5">
+    <div class="container-xxl py-5 bg-light">
             <div class="container">
                 <div class="row g-5 align-items-center">
                     <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
@@ -112,7 +112,7 @@
                             <img class="img-fluid w-100" src="img/core.jpg">
                         </div>
                     </div>
-                    <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                    <div class="col-lg-6  wow fadeIn" data-wow-delay="0.5s">
                         <h1 class="mb-4 text-primary me-3">Our Core Values</h1>
                         <p class="mb-4">Transparency: We believe in clear and open communication between advertisers and media organizations. Our platform ensures that all parties have access to the information they need to make informed decisions.</p>
                         <p class="mb-4">Efficiency: By automating and streamlining the ad placement process, we save our users time and effort, allowing them to focus on what they do best.</p>
