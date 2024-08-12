@@ -443,3 +443,6 @@
 .img-fluid-custom{
     font-size: 2rem;
 }
+.border-custom{
+    border-style: none;
+}
