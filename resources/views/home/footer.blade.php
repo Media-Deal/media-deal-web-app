@@ -1,5 +1,5 @@
 <!-- Footer Start -->
-<div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+<div class="container-fluid bg-dark text-light-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
     <div class="container py-5">
         <div class="row g-5">
             <div class="col-lg-3 col-md-6">
@@ -30,27 +30,17 @@
         </div>
     </div>
 </div>
-<div class="container">
+<div class="container-fluid bg-dark text-light">
     <div class="copyright">
         <div class="row">
-            <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                &copy; <a class="border-bottom" href="{{url('/')}">Vanaman Real Estate Investment</a>, All Right
-                Reserved.
-
-
-
+            <div class="col-md-6 text-center text-md-start mb-md-0">
+                &copy; <a href="{{url('/')}}" class="text-decoration-none">Media Deal</a> All Right
+                Reserved
             </div>
         </div>
     </div>
 </div>
-<br>
-</div>
 <!-- Footer End -->
-
-
-<!-- Back to Top -->
-<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
-</div>
 
 <!-- JavaScript Libraries -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -59,6 +49,10 @@
 <script src="landing/lib/easing/easing.min.js"></script>
 <script src="landing/lib/waypoints/waypoints.min.js"></script>
 <script src="landing/lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="https://kit.fontawesome.com/2b537d8d05.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+
 
 <!-- Template Javascript -->
 <script src="landing/js/main.js"></script>
