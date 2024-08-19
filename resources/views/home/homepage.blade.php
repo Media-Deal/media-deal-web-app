@@ -9,7 +9,7 @@
                     </span></h1>
                 <h4 class="animated fadeIn mb-4 pb-2">with Media Deal, the ultimate platform for innovative and safe
                     media buying and selling.</h4>
-                <a href="" class="btn btn-primary py-3 px-5 me-3 animated fadeIn">Start Now</a>
+                <a href="{{route('register')}}" class="btn btn-primary py-3 px-5 me-3 animated fadeIn">Start Now</a>
             </div>
             <div class="col-md-6 animated fadeIn">
                 <div class="owl-carousel header-carousel">
@@ -80,7 +80,7 @@
                         <p class="mb-4 text-dark fs-5"><span class="text-primary fw-bolder fs-3"><i>Earn commision</i></span> as a marketer every time you successfully seal media deals. who knew closing deals could
                             be so rewarding?</p>
                             <div class="d-flex justify-content-center">
-                                <a href="" class="btn btn-primary py-2 px-4 me-3 my-3 animated fadeIn">Start Now</a>
+                                <a href="{{route('register')}}" class="btn btn-primary py-2 px-4 me-3 my-3 animated fadeIn">Start Now</a>
                             </div>
                     </div>
                 </div>
@@ -138,7 +138,7 @@
                     <div class="text-start mx-auto mb-5 px-lg-5 wow slideInLeft" data-wow-delay="0.1s">
                             <p class="text-light fs-5 text-dark px-lg-5">Get ready for streamlined communication, efficient negotiations and advertising outcomes so optimal they will make your competitors green with envy - all with media deal</p>
                         <div class="text-xs-center text-sm-center text-md-end text-lg-end px-lg-5">
-                            <a href="" class="btn btn-primary px-3 animated fadeIn">Start Now</a>
+                            <a href="{{route('register')}}" class="btn btn-primary px-3 animated fadeIn">Start Now</a>
                         </div>
                     </div>
                 </div>
