@@ -83,11 +83,19 @@
                             <div class="dropdown-menu rounded-0 m-0">
                                 <div class="row">
                                     <h6 class="dropdown-item">Dashboard</h6>
+<<<<<<< HEAD
                                     <a href="" class="dropdown-item">Dashbaord</a>
                                     <a href="" class="dropdown-item">Dashboard</a>
                                     <a href="" class="dropdown-item">Feedback</a>
                                     <a href="" class="dropdown-item">Testimonial</a>
                                     <a href="" class="dropdown-item">Deal Support</a>
+=======
+                                       <a href="" class="dropdown-item">Dashbaord</a>
+                                        <a href="" class="dropdown-item">Dashboard</a>
+                                        <a href="" class="dropdown-item">Feedback</a>
+                                        <a href="" class="dropdown-item">Testimonial</a>
+                                        <a href="" class="dropdown-item">Deal Support</a>
+>>>>>>> 62848673a9fd9dc86ca5a943c61d0f73b18afaba
 
 
 
@@ -100,6 +108,7 @@
                             <div class="dropdown-menu rounded-0 m-0">
                                 <div class="row">
 
+<<<<<<< HEAD
                                     <a href="{{url('about')}}">
                                         <h6 class="dropdown-item">About Us</h6>
                                     </a>
@@ -107,13 +116,34 @@
                                         <h6 class="dropdown-item">FAQ</h6>
                                     </a>
                                     <a href="#">
+=======
+                                    
+                                     <a href="{{url('about')}}">
+                                        <h6 class="dropdown-item">About Us</h6>
+                                    </a>
+                                        <h6 class="dropdown-item">Faq</h6>
+>>>>>>> 62848673a9fd9dc86ca5a943c61d0f73b18afaba
                                         <h6 class="dropdown-item">Policies</h6>
                                     </a>
 
 
 
+<<<<<<< HEAD
 
                                     <hr>
+=======
+                                        <a href="{{url('about')}}">
+                                            <h6 class="dropdown-item">About Us</h6>
+                                        </a>
+                                        <a href="#">
+                                            <h6 class="dropdown-item">Faq</h6>
+                                        </a>
+                                        <a href="#">
+                                            <h6 class="dropdown-item">Policies</h6>
+                                        </a>
+
+                                        <hr>
+>>>>>>> 62848673a9fd9dc86ca5a943c61d0f73b18afaba
                                 </div>
                             </div>
                         </div>
@@ -123,7 +153,7 @@
                         </div>
 
                         <div class="nav-item dropdown">
-                            <a href="" class="nav-item nav-link">Login</a>
+                            <a href="{{route('login')}}" class="nav-item nav-link">Login</a>
                         </div>
 
 

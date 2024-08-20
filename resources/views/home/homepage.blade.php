@@ -5,6 +5,7 @@
     <div class="row g-0 align-items-center flex-column-reverse flex-md-row">
         <div class="col-md-6 p-5 mt-lg-5 px-5">
 
+<<<<<<< HEAD
             <h1 class="display-5 animated fadeIn mb-4 fw-bold">Upgrade Your <span class="text-primary">Advertising Game
                 </span></h1>
             <h4 class="animated fadeIn mb-4 pb-2">with Media Deal, the ultimate platform for innovative and safe
@@ -18,6 +19,22 @@
                 </div>
                 <div class="owl-carousel-item">
                     <img class="img-fluid" src="img/carousel-2.jpg" alt="media photo 2" style="height: 42rem;">
+=======
+                <h1 class="display-5 animated fadeIn mb-4 fw-bold">Upgrade Your <span class="text-primary">Advertising Game
+                    </span></h1>
+                <h4 class="animated fadeIn mb-4 pb-2">with Media Deal, the ultimate platform for innovative and safe
+                    media buying and selling.</h4>
+                <a href="{{route('register')}}" class="btn btn-primary py-3 px-5 me-3 animated fadeIn">Start Now</a>
+            </div>
+            <div class="col-md-6 animated fadeIn">
+                <div class="owl-carousel header-carousel">
+                    <div class="owl-carousel-item">
+                        <img class="img-fluid" src="img/carousel-1.jpg" alt="media photo1" style="height: 42rem;">
+                    </div>
+                    <div class="owl-carousel-item">
+                        <img class="img-fluid" src="img/carousel-2.jpg" alt="media photo 2" style="height: 42rem;">
+                    </div>
+>>>>>>> 62848673a9fd9dc86ca5a943c61d0f73b18afaba
                 </div>
             </div>
         </div>
@@ -59,10 +76,39 @@
                 <div class="card border-0 shadow bg-dark px-3">
                     <div class="card-body">
                         <img src="img/md3.png" class="img-fluid w-50 h-50">
+<<<<<<< HEAD
                         <h3 class="fs-4 text-primary py-2">Customer Support</h3>
                         <p class="fs-6 mb-0 fw-500 text-light">Watch out for budget-hungry sharks! Don't swim
                             solo---dive in with our support to help you avoid ending up with a fishy net full of holes.
                         </p>
+=======
+                            <h3 class="fs-4 text-primary py-2">Customer Support</h3>
+                            <p class="fs-6 mb-0 fw-500 text-light">Watch out for budget-hungry sharks! Don't swim solo---dive in with our support to help you avoid ending up with a fishy net full of holes.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Earn Commision Start -->
+    <div class="container-xxl py-5 commission-background bg-light h-100">
+        <div class="container">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="about-img position-relative overflow-hidden p-5 pe-0">
+                        <img class="img-fluid w-100" src="img/offer.jpg">
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s"> 
+                    <div class="px-5">
+                        <p class="mb-4 text-dark fs-5"><span class="text-primary fw-bolder fs-3"><i>Earn commision</i></span> as a marketer every time you successfully seal media deals. who knew closing deals could
+                            be so rewarding?</p>
+                            <div class="d-flex justify-content-center">
+                                <a href="{{route('register')}}" class="btn btn-primary py-2 px-4 me-3 my-3 animated fadeIn">Start Now</a>
+                            </div>
+>>>>>>> 62848673a9fd9dc86ca5a943c61d0f73b18afaba
                     </div>
                 </div>
             </div>
@@ -129,10 +175,34 @@
                 <div class="card border-0 shadow bg-dark  px-3">
                     <div class="card-body">
                         <img src="img/md13.png" class="img-fluid w-50 h-50">
+<<<<<<< HEAD
                         <h3 class="fs-4 text-primary py-2">Easily accessible & visible</h3>
                         <p class="fs-6 mb-0 fw-500 text-light">Watch out for budget-hungry sharks! Don't swim
                             solo---dive in with our support to help you avoid ending up with a fishy net full of holes.
                         </p>
+=======
+                            <h3 class="fs-4 text-primary py-2">Easily accessible & visible</h3>
+                            <p class="fs-6 mb-0 fw-500 text-light">Watch out for budget-hungry sharks! Don't swim solo---dive in with our support to help you avoid ending up with a fishy net full of holes.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Property List Start -->
+    <div class="container-xxl bg-light">
+        <div class="container py-5 px-lg-5">
+            <div class="row g-0 gx-5 px-lg-5 d-flex justify-content-center align-items-center h-100">
+                <div class="col-lg-12 px-lg-5">
+                    <div class="text-start mx-auto mb-5 px-lg-5 wow slideInLeft" data-wow-delay="0.1s">
+                            <p class="text-light fs-5 text-dark px-lg-5">Get ready for streamlined communication, efficient negotiations and advertising outcomes so optimal they will make your competitors green with envy - all with media deal</p>
+                        <div class="text-xs-center text-sm-center text-md-end text-lg-end px-lg-5">
+                            <a href="{{route('register')}}" class="btn btn-primary px-3 animated fadeIn">Start Now</a>
+                        </div>
+>>>>>>> 62848673a9fd9dc86ca5a943c61d0f73b18afaba
                     </div>
                 </div>
             </div>
