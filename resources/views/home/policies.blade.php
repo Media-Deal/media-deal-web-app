@@ -6,7 +6,7 @@
                     <h1 class="display-5 animated fadeIn mb-4 text-primary">Our Policies</h1> 
                         <nav aria-label="breadcrumb animated fadeIn">
                         <ol class="breadcrumb text-uppercase">
-                            <li class="breadcrumb-item"><a href="{{ route('homepage') }}">Home Page</a></li>
+                            <li class="breadcrumb-item"><a href="{{ url('/') }}">Home Page</a></li>
                             <li class="breadcrumb-item text-body active" aria-current="page">TERMS AND CONDITIONS</li>
                         </ol>
                     </nav>
