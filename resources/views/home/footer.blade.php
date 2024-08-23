@@ -25,7 +25,7 @@
                 <a class="btn btn-link text-white-50" href="{{url('/about')}}">About Us</a>
                 <a class="btn btn-link text-white-50" href="{{url('/contact')}}">Contact Us</a>
                 <a class="btn btn-link text-white-50" href="{{url('/services')}}">Our Services</a>
-                <a class="btn btn-link text-white-50" href="{{url('/terms')}}">Terms & Conditions</a>
+                <a class="btn btn-link text-white-50" href="{{url('/policies')}}">Terms & Conditions</a>
             </div>
         </div>
     </div>
