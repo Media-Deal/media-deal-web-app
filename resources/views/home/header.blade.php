@@ -122,9 +122,17 @@
                                         <h6 class="dropdown-item">About Us</h6>
                                     </a>
                                         <h6 class="dropdown-item">Faq</h6>
+<<<<<<< HEAD
 >>>>>>> 62848673a9fd9dc86ca5a943c61d0f73b18afaba
                                         <h6 class="dropdown-item">Policies</h6>
                                     </a>
+=======
+
+                                    <a href="{{ url('policies') }}">
+                                        <h6 class="dropdown-item">Policies</h6>
+                                    </a>
+                                        
+>>>>>>> 0552d56c0e3dc110eac827f0f89dabf3ac8c1c46
 
 
 
