@@ -104,7 +104,9 @@
                                      <a href="{{url('about')}}">
                                         <h6 class="dropdown-item">About Us</h6>
                                     </a>
+                                    <a href="{{ url('faq') }}">
                                         <h6 class="dropdown-item">Faq</h6>
+                                    </a>
 
                                     <a href="{{ url('policies') }}">
                                         <h6 class="dropdown-item">Policies</h6>
