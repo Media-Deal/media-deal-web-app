@@ -28,8 +28,8 @@
                         </div>
                     </div>
                     <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
-                        <h1 class="mb-4">Terms and Conditions</h1>
-                        <p class="mb-4">Welcome to <span class="text-primary fw-bolder">Media Deal Digital</span> (hereinafter referred to as <span class="text-primary fw-bolder">Media Deal</span>). By accessing or using our Media Deal platform, you agree to comply with and be bound by the following Terms and Conditions. Please read them carefully.</p>
+                        <h1 class="mb-4 text-primary">Terms and Conditions</h1>
+                        <p class="mb-4">Welcome to <span class="fw-bolder">Media Deal Digital</span> (hereinafter referred to as <span class="fw-bolder">Media Deal</span>). By accessing or using our Media Deal platform, you agree to comply with and be bound by the following Terms and Conditions. Please read them carefully.</p>
                                    <h3 class="mb-4">Acceptance terms</h3>
                                    <p>By creating an account and using Media Deal, you agree to these Terms and Conditions, our Privacy Policy, and any other policies or guidelines provided by Media Deal.</p>   
                     </div>
