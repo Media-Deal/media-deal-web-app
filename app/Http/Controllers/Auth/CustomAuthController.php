@@ -11,6 +11,26 @@ use Illuminate\Support\Facades\Mail;
 
 class CustomAuthController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function index()
+    {
+        return view('home');
+    }
+
 
     public function verify($id)
     {
@@ -92,7 +112,7 @@ class CustomAuthController extends Controller
         $full_name =  $user->fname . ' ' .  $user->lname;
         $email = $user->email;
 
-        $message = "
+        $vmessage = "
        <p style='line-height: 24px;margin-bottom:15px;'>
              Hello $full_name,
        </p>
@@ -116,7 +136,7 @@ class CustomAuthController extends Controller
     </p>
     ";
 
-        Mail::to($email)->send(new VerificationEmail($message));
+        Mail::to($email)->send(new VerificationEmail($vmessage));
 
         // Flash success message to the session
         return redirect()->back()->with('success', 'A new verification code has been sent to your email.');
