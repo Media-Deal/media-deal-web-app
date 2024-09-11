@@ -3,6 +3,7 @@
 
 
 <!-- Mirrored from coderthemes.com/hyper_2/modern/pages-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 24 May 2024 09:48:34 GMT -->
+
 <head>
     <meta charset="utf-8" />
     <title>Log In | Mediadeal - User Login Page</title>
@@ -52,7 +53,8 @@
 
                             <div class="text-center w-75 m-auto">
                                 <h4 class="text-dark-50 text-center pb-0 fw-bold">Sign In</h4>
-                                <p class="text-muted mb-4">Enter your email address and password to access dashboard.</p>
+                                <p class="text-muted mb-4">Enter your email address and password to access dashboard.
+                                </p>
                             </div>
 
                             <form method="POST" action="{{ route('login') }}">
@@ -60,28 +62,33 @@
 
                                 <div class="mb-3">
                                     <label for="emailaddress" class="form-label">Email address</label>
-                                    <input class="form-control" type="email" id="emailaddress" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Enter your email">
+                                    <input class="form-control" type="email" id="emailaddress"
+                                        class="form-control @error('email') is-invalid @enderror" name="email"
+                                        value="{{ old('email') }}" placeholder="Enter your email">
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                @enderror
-                                
+                                    @enderror
+
                                 </div>
 
                                 <div class="mb-3">
                                     @if (Route::has('password.request'))
-                                    <a href="{{ route('password.request') }}" class="text-muted float-end"><small>Forgot your password?</small></a>
+                                    <a href="{{ route('password.request') }}" class="text-muted float-end"><small>Forgot
+                                            your password?</small></a>
                                     @endif
                                     <label for="password" class="form-label">Password</label>
                                     <div class="input-group input-group-merge">
-                                        <input type="password" id="password"  class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Enter your password">
+                                        <input type="password" id="password"
+                                            class="form-control @error('password') is-invalid @enderror" name="password"
+                                            placeholder="Enter your password">
                                         @error('password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
-                                    @enderror
-                                        
+                                        @enderror
+
                                         <div class="input-group-text" data-password="false">
                                             <span class="password-eye"></span>
                                         </div>
@@ -106,7 +113,8 @@
 
                     <div class="row mt-3">
                         <div class="col-12 text-center">
-                            <p class="text-muted">Don't have an account? <a href="{{route('register')}}" class="text-muted ms-1"><b>Sign Up</b></a></p>
+                            <p class="text-muted">Don't have an account? <a href="{{route('register')}}"
+                                    class="text-muted ms-1"><b>Sign Up</b></a></p>
                         </div> <!-- end col -->
                     </div>
                     <!-- end row -->
@@ -121,7 +129,9 @@
 
     <footer class="footer footer-alt">
         2018 -
-        <script>document.write(new Date().getFullYear())</script> © Mediadeal - eddiebluedigital.com
+        <script>
+            document.write(new Date().getFullYear())
+        </script> © Mediadeal - eddiebluedigital.com
     </footer>
     <!-- Vendor js -->
     <script src="assets/js/vendor.min.js"></script>
@@ -133,4 +143,5 @@
 
 
 <!-- Mirrored from coderthemes.com/hyper_2/modern/pages-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 24 May 2024 09:48:34 GMT -->
+
 </html>
