@@ -8,14 +8,14 @@
                 <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+1 (513) 299-5453</p>
                 <p class="mb-2"><i class="fa fa-envelope me-3"></i>Info@vanamanllc.com</p>
                 <div class="d-flex pt-2">
-                    <a class="btn btn-outline-light btn-social" href="https://instagram.com/vanamanllc"><i
+                    <a class="btn btn-outline-light btn-social" href="https://www.instagram.com/mediadealhq/" target="_blank"><i
                             class="fab fa-instagram"></i></a>
                     <a class="btn btn-outline-light btn-social"
-                        href="https://x.com/vanamanllc?s=21&t=heVsXSO9oNEyypm4lmx3kw"><i class="fab fa-twitter"></i></a>
+                        href="https://x.com/mediadealng" target="_blank"><i class="fab fa-twitter"></i></a>
                     <a class="btn btn-outline-light btn-social"
-                        href="https://maps.app.goo.gl/vzsG6bxFiSxbjXDK9?g_st=ic"><i class="fab fa-google"></i></a>
+                        href="https://web.facebook.com/profile.php?id=61563303027766" target="_blank"><i class="fab fa-facebook"></i></a>
                     <a class="btn btn-outline-light btn-social"
-                        href="https://www.linkedin.com/company/vanaman-real-estate-investments-llc/"><i
+                        href="https://www.linkedin.com/company/media-deal/" target="_blank"><i
                             class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
@@ -24,8 +24,24 @@
                 <a class="btn btn-link text-white-50" href="{{url('/')}}">Home</a>
                 <a class="btn btn-link text-white-50" href="{{url('/about')}}">About Us</a>
                 <a class="btn btn-link text-white-50" href="{{url('/contact')}}">Contact Us</a>
-                <a class="btn btn-link text-white-50" href="{{url('/services')}}">Our Services</a>
+                <a class="btn btn-link text-white-50" href="{{url('/faq')}}">FAQ</a>
                 <a class="btn btn-link text-white-50" href="{{url('/policies')}}">Terms & Conditions</a>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <h5 class="text-white mb-4">Support</h5>
+                <p class="text-white-50">+234 803 445 0360</p>
+                <p class="text-white-50">Chat with our team</p>
+                <p class="text-white-50">support@mediadeal.ng</p>
+                <p class="text-white-50">mediadealnigeria@gmail.com</p>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <h5 class="text-white mb-4">Terms of service</h5>
+                <a class="btn btn-link text-white-50" href="{{url('/policies')}}">Terms and conditions</a>
+                <a class="btn btn-link text-white-50" href="{{url('/policies')}}">Privacy policy</a>
+                <a class="btn btn-link text-white-50" href="{{url('/contact')}}">Propriety Rights</a>
+                <a class="btn btn-link text-white-50" href="{{url('/services')}}">Refund Policy</a>
             </div>
         </div>
     </div>
@@ -60,6 +76,10 @@
 <script src="lib/waypoints/waypoints.min.js"></script>
 <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
+{{-- animate on scroll --}}
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+
 
 
 
@@ -67,6 +87,7 @@
 <!-- Template Javascript -->
 <script src="landing/js/main.js"></script>
 <script src="js/main.js"></script>
+<script src="js/animate.js"></script>
 </body>
 
 </html>
