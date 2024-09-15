@@ -107,13 +107,14 @@
                             <div class="dropdown-menu rounded-0 m-0">
                                 <div class="row">
 
-                                    
-                                     <a href="{{url('about')}}" class="text-decoration-none">
+
+
+                                    <a href="{{url('about')}}" class="text-decoration-none">
                                         <h6 class="dropdown-item">About Us</h6>
                                     </a>
                                     <a href="{{ url('faq') }}" class="text-decoration-none">
                                         <h6 class="dropdown-item">Faq</h6>
-                                    </a>
+
 
                                     <a href="{{ url('policies') }}" class="text-decoration-none">
                                         <h6 class="dropdown-item">Policies</h6>

@@ -3,6 +3,7 @@
 
 
 <!-- Mirrored from coderthemes.com/hyper_2/modern/pages-register.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 24 May 2024 09:48:34 GMT -->
+
 <head>
     <meta charset="utf-8" />
     <title>Register | Mediadeal - User Registration Page</title>
@@ -53,7 +54,8 @@
 
                             <div class="text-center w-75 m-auto">
                                 <h4 class="text-dark-50 text-center mt-0 fw-bold">Free Sign Up</h4>
-                                <p class="text-muted mb-4">Don't have an account? Create your account, it takes less than a minute </p>
+                                <p class="text-muted mb-4">Don't have an account? Create your account, it takes less
+                                    than a minute </p>
                             </div>
 
                             <form method="POST" action="{{ route('register') }}">
@@ -61,29 +63,33 @@
 
                                 <div class="mb-3">
                                     <label for="fullname" class="form-label">Full Name</label>
-                                    <input type="text" id="fullname" name="name" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="Enter your name" required>
-                                
+                                    <input type="text" id="fullname" name="name"
+                                        class="form-control @error('name') is-invalid @enderror" name="name"
+                                        value="{{ old('name') }}" placeholder="Enter your name" required>
+
                                     @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                @enderror
+                                    @enderror
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="emailaddress" class="form-label">Email address</label>
-                                    <input  type="email" id="emailaddress" name="email"   class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required placeholder="Enter your email">
+                                    <input type="email" id="emailaddress" name="email"
+                                        class="form-control @error('email') is-invalid @enderror" name="email"
+                                        value="{{ old('email') }}" required placeholder="Enter your email">
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                @enderror
-                                
+                                    @enderror
+
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="roleselection" class="form-label">Role Selection</label>
-                                    <select class="form-control" id="roleselection" name="role" required >
+                                    <select class="form-control" id="roleselection" name="role" required>
                                         <option value="">Select your role</option>
                                         <option value="advertiser">Advertiser</option>
                                         <option value="media-organization">Media Organization</option>
@@ -94,39 +100,44 @@
                                 <div class="mb-3">
                                     <label for="password" class="form-label">Password</label>
                                     <div class="input-group input-group-merge">
-                                        <input type="password" id="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Enter your password">
-                                        
+                                        <input type="password" id="password"
+                                            class="form-control @error('password') is-invalid @enderror" name="password"
+                                            placeholder="Enter your password">
+
                                         @error('password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
-                                    @enderror
+                                        @enderror
                                         <div class="input-group-text" data-password="false">
                                             <span class="password-eye"></span>
                                         </div>
                                     </div>
                                 </div>
 
-                                    <div class="mb-3">
-                                        <label for="password" class="form-label"> Confirm Password</label>
-                                        <div class="input-group input-group-merge">
-                                            <input type="password" id="password" class="form-control @error('password') is-invalid @enderror" name="password_confirmation" placeholder="Enter your password">
-                                            
-                                            @error('password')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                <div class="mb-3">
+                                    <label for="password" class="form-label"> Confirm Password</label>
+                                    <div class="input-group input-group-merge">
+                                        <input type="password" id="password"
+                                            class="form-control @error('password') is-invalid @enderror"
+                                            name="password_confirmation" placeholder="Enter your password">
+
+                                        @error('password')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
                                         @enderror
-                                            <div class="input-group-text" data-password="false">
-                                                <span class="password-eye"></span>
-                                            </div>
+                                        <div class="input-group-text" data-password="false">
+                                            <span class="password-eye"></span>
                                         </div>
+                                    </div>
                                 </div>
 
                                 <div class="mb-3">
                                     <div class="form-check">
                                         <input type="checkbox" class="form-check-input" id="checkbox-signup">
-                                        <label class="form-check-label" for="checkbox-signup">I accept <a href="#" class="text-muted">Terms and Conditions</a></label>
+                                        <label class="form-check-label" for="checkbox-signup">I accept <a href="#"
+                                                class="text-muted">Terms and Conditions</a></label>
                                     </div>
                                 </div>
 
@@ -141,7 +152,8 @@
 
                     <div class="row mt-3">
                         <div class="col-12 text-center">
-                            <p class="text-muted">Already have account? <a href="{{route('login')}}" class="text-muted ms-1"><b>Log In</b></a></p>
+                            <p class="text-muted">Already have account? <a href="{{route('login')}}"
+                                    class="text-muted ms-1"><b>Log In</b></a></p>
                         </div> <!-- end col-->
                     </div>
                     <!-- end row -->
@@ -156,7 +168,9 @@
 
     <footer class="footer footer-alt">
         2024 -
-        <script>document.write(new Date().getFullYear())</script> © Mediadeal - eddiebluedigital.com
+        <script>
+            document.write(new Date().getFullYear())
+        </script> © Mediadeal - eddiebluedigital.com
     </footer>
 
     <!-- Vendor js -->
@@ -169,4 +183,5 @@
 
 
 <!-- Mirrored from coderthemes.com/hyper_2/modern/pages-register.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 24 May 2024 09:48:34 GMT -->
+
 </html>

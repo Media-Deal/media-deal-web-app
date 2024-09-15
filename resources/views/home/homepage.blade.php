@@ -1,75 +1,79 @@
 @include('home.header')
-    <!-- Navbar End -->
-    <!-- Header Start -->
-    <div class="container-fluid header bg-light p-0">
-        <div class="row g-0 align-items-center flex-column-reverse flex-md-row">
-            <div class="col-md-6 p-5 mt-lg-5 px-5">
+<!-- Navbar End -->
+<!-- Header Start -->
+<div class="container-fluid header bg-light p-0">
+  <div class="row g-0 align-items-center flex-column-reverse flex-md-row">
+    <div class="col-md-6 p-5 mt-lg-5 px-5">
 
-                <h1 class="display-5 animated fadeIn mb-4 fw-bold">Upgrade Your <span class="text-primary">Advertising Game
-                    </span></h1>
-                <h4 class="animated fadeIn mb-4 pb-2">with Media Deal, the ultimate platform for innovative and safe
-                    media buying and selling.</h4>
-                <a href="{{route('register')}}" class="btn btn-primary py-3 px-5 me-3 animated fadeIn">Start Now</a>
-            </div>
-            <div class="col-md-6 animated fadeIn">
-                <div class="owl-carousel header-carousel">
-                    <div class="owl-carousel-item">
-                        <img class="img-fluid" src="img/carousel-1.jpg" alt="media photo1" style="height: 42rem;">
-                    </div>
-                    <div class="owl-carousel-item">
-                        <img class="img-fluid" src="img/carousel-2.jpg" alt="media photo 2" style="height: 42rem;">
-                    </div>
-                </div>
-            </div>
-        </div>
+      <h1 class="display-5 animated fadeIn mb-3 fw-bold mt-4">Upgrade Your <span class="text-primary">Advertising Game
+        </span></h1>
+      <h4 class="animated fadeIn mb-4 pb-2">with Media Deal, the ultimate platform for innovative and safe
+        media buying and selling.</h4>
+      <a href="{{route('register')}}" class="btn btn-primary py-3 px-5 me-3 animated fadeIn">Start Now</a>
     </div>
-    <!-- Header End -->
-
-
-    <section class="service position-relative overflow-hidden bg-dark py-2">
-        <div class="container position-relative py-2">
-            <div class="row">
-                <div class="col-12"  data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
-                    <h3 class="text-light text-center fs-3 py-5">Deal directly with the top media brands and influencers</h3>
-                </div>
-            </div>
-            <div class="row d-flex flex-wrap justify-content-center step-row">
-                <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 text-center mb-3"  data-aos="flip-left"
-                data-aos-easing="ease-out-cubic"
-                data-aos-duration="2000">
-                    <div class="card border-0 shadow bg-light">
-                        <div class="card-body bg-dark px-3">
-                            <img src="img/md1.png" class="img-fluid w-50 h-50">
-                            <h4 class="fs-4 text-primary py-2">No Middle-Man Here!</h4>
-                            <p class="fs-6 mb-0 fw-500 fs-6 text-light">With just a few clicks, and you're diving into adverts rates, getting discounts, and plastering your ads all over your favourite media.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 text-center mb-3"  data-aos="flip-left"
-                data-aos-easing="ease-out-cubic"
-                data-aos-duration="2000">
-                    <div class="card border-0 shadow bg-dark px-3">
-                        <div class="card-body">
-                        <img src="img/md2.png" class="img-fluid w-50 h-50">
-                            <h3 class="fs-4 text-primary py-2">Cashback Guarantee</h3>
-                            <p class="fs-6 mb-0 fw-500 text-light">Keep tabs on your ad placements, and if any slot fails, get refunds before apologies.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 text-center mb-3"  data-aos="flip-left"
-                data-aos-easing="ease-out-cubic"
-                data-aos-duration="2000">
-                    <div class="card border-0 shadow bg-dark px-3">
-                        <div class="card-body">
-                        <img src="img/md3.png" class="img-fluid w-50 h-50">
-                            <h3 class="fs-4 text-primary py-2">Customer Support</h3>
-                            <p class="fs-6 mb-0 fw-500 text-light">Watch out for budget-hungry sharks! Don't swim solo---dive in with our support to help you avoid ending up with a fishy net full of holes.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="col-md-6 animated fadeIn">
+      <div class="owl-carousel header-carousel">
+        <div class="owl-carousel-item">
+          <img class="img-fluid h-sm-25" src="img/carousel-1.jpg" alt="media photo1" style="width: 100%; height: 28rem">
         </div>
-    </section>
+        <div class="owl-carousel-item">
+          <img class="img-fluid h-sm-25" src="img/carousel-2.jpg" alt="media photo 2" style="width: 100%; height: 28rem">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Header End -->
+
+
+<section class="service position-relative overflow-hidden bg-dark py-2">
+  <div class="container position-relative py-2">
+    <div class="row">
+      <div class="col-12"  data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
+        <h3 class="text-light text-center fs-3 py-5">Deal directly with the top media brands and influencers
+        </h3>
+      </div>
+    </div>
+    <div class="row d-flex flex-wrap justify-content-center step-row">
+      <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 text-center mb-3"  data-aos="flip-left"
+                data-aos-easing="ease-out-cubic"
+                data-aos-duration="2000">
+        <div class="card border-0 shadow bg-light">
+          <div class="card-body bg-dark px-3">
+            <img src="img/md1.png" class="img-fluid w-50 h-50">
+            <h4 class="fs-4 text-primary py-2">No Middle-Man Here!</h4>
+            <p class="fs-6 mb-0 fw-500 fs-6 text-light">With just a few clicks, and you're diving into adverts rates,
+              getting discounts, and plastering your ads all over your favourite media.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 text-center mb-3"  data-aos="flip-left"
+                data-aos-easing="ease-out-cubic"
+                data-aos-duration="2000">
+        <div class="card border-0 shadow bg-dark px-3">
+          <div class="card-body">
+            <img src="img/md2.png" class="img-fluid w-50 h-50">
+            <h3 class="fs-4 text-primary py-2">Cashback Guarantee</h3>
+            <p class="fs-6 mb-0 fw-500 text-light">Keep tabs on your ad placements, and if any slot fails, get refunds
+              before apologies.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 text-center mb-3"  data-aos="flip-left"
+                data-aos-easing="ease-out-cubic"
+                data-aos-duration="2000">
+        <div class="card border-0 shadow bg-dark px-3">
+          <div class="card-body">
+            <img src="img/md3.png" class="img-fluid w-50 h-50">
+            <h3 class="fs-4 text-primary py-2">Customer Support</h3>
+            <p class="fs-6 mb-0 fw-500 text-light">Watch out for budget-hungry sharks! Don't swim solo---dive in with
+              our support to help you avoid ending up with a fishy net full of holes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 
     <!-- Earn Commision Start -->
@@ -78,7 +82,7 @@
             <div class="row g-5 align-items-center">
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
                     <div class="about-img position-relative overflow-hidden p-5 pe-0">
-                        <img class="img-fluid w-100" src="img/offer.jpg">
+                        <img class="img-fluid w-100" src="img/marketer.jpg">
                     </div>
                 </div>
                 <div class="col-lg-6 wow fadeIn" data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine"> 
@@ -292,33 +296,35 @@
                             </div>
                           </div>
 
-                          <div class="accordion-item">
-                            <h2 class="accordion-header">
-                              <button class="accordion-button collapsed bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwelve" aria-expanded="false" aria-controls="collapseTwelve">
-                                What should I do if I encounter issues on the platform?
-                              </button>
-                            </h2>
-                            <div id="collapseTwelve" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                              <div class="accordion-body bg-light">
-                                If you encounter any issues, you can contact user support through the platform. The support team will assist you with any problems you may have.
-                              </div>
-                            </div>
-                          </div>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-12 d-flex justify-content-end">
-                    <div class="btn">
-                     <a href="{{ url('faq') }}" class="text-decoration-none "><i>See more....</i></a>
-                    </div>
-
-                  </div>
-                </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed bg-light" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseTwelve" aria-expanded="false" aria-controls="collapseTwelve">
+                What should I do if I encounter issues on the platform?
+              </button>
+            </h2>
+            <div id="collapseTwelve" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+              <div class="accordion-body bg-light">
+                If you encounter any issues, you can contact user support through the platform. The support team will
+                assist you with any problems you may have.
               </div>
-            
-        </section>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <div class="btn">
+            <a href="{{ url('faq') }}" class="text-decoration-none "><i>See more....</i></a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+</section>
 
 
-            <!-- Footer Start -->
-            @include('home.footer')
+<!-- Footer Start -->
+@include('home.footer')
