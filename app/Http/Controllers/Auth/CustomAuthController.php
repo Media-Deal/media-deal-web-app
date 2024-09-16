@@ -28,7 +28,25 @@ class CustomAuthController extends Controller
      */
     public function index()
     {
-        return view('home');
+        // Check the user's role and redirect accordingly
+        $user = Auth::user();
+
+        if ($user) {
+            switch ($user->role) {
+                case 'advertiser':
+                    return view('advertiser.homepage');
+                case 'media_org':
+                    return redirect()->route('media_org.dashboard');
+                case 'marketer':
+                    return redirect()->route('marketer.dashboard');
+                default:
+                    return redirect('/home'); // Redirect to a default route or home if role is not recognized
+            }
+        }
+
+        // If no user is authenticated, redirect to login
+        ///
+        return redirect()->route('login');
     }
 
 
