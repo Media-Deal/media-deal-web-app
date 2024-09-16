@@ -35,6 +35,10 @@ Route::get('/station-details', function () {
     return view('advertiser.station-details');
 });
 
+Route::get('/media', function () {
+    return view('media.homepage');
+});
+
 Route::get('/policies', function () {
     return view('home.policies');
 });

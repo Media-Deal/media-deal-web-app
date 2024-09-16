@@ -107,50 +107,22 @@
                 <div class="modal-body">
                     <form>
                         <div class="mb-3">
-                            <label for="duration" class="form-label">Title</label>
-                            <input type="text" class="form-control" id="duration" name="title" placeholder="E.g Advert for my Business">
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="contentType" class="form-label">Category</label>
-                            <select class="form-select" id="contentType" name="category">
-                                <option value="Political">Political</option>
-                                <option value="Commercial">Commercial</option>
-                                <option value="Public Service">Public Service</option>
-                                <option value="Infomercial">Infomercial</option>
-                                <option value="Religious">Religious</option>
-                              
-                            </select>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="contentType" class="form-label">Type</label>
-                            <select class="form-select" id="contentType" name="category">
-                                <option value="Campaign">Campaign</option>
-                                <option value="Event Sponsorship">Event Sponsorship</option>
-                                <option value="Hype">Hype</option>
-                                <option value="Interview">Interview</option>
-                                <option value="Jingle">Jingle</option>
-                                <option value="Promotion">Promotion</option>
-                                <option value="Sponsored Program">Sponsored Program</option>
-                                <option value="Sponsored Message">Sponsored Message</option>
-                              
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="contentType" class="form-label">Content</label>
+                            <label for="contentType" class="form-label">Content Type</label>
                             <select class="form-select" id="contentType" name="contentType">
-                                <option value="Yes">Yes</option>
-                                <option value="No">No</option>
-                                <option value="Non Required">Non Required</option>
+                                <option value="audio">Audio</option>
+                                <option value="video">Video</option>
+                                <option value="image">Image</option>
+                                <option value="docs">Docs</option>
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label for="uploadFile" class="form-label">If Yes Upload File</label>
+                            <label for="uploadFile" class="form-label">Upload File</label>
                             <input type="file" class="form-control" id="uploadFile" name="uploadFile">
-                            <label for="uploadFile" class="form-label">If No Click <a href="">support</a> for assistance</label>
                         </div>
-                        
+                        <div class="mb-3">
+                            <label for="duration" class="form-label">Duration</label>
+                            <input type="text" class="form-control" id="duration" name="duration" placeholder="3 days">
+                        </div>
                         <div class="mb-3">
                             <label for="TargetAudience" class="form-label">Target Audience</label>
                             <select class="form-select" id="TargetAudience" name="TargetAudience">
@@ -160,32 +132,6 @@
                                 <option value="Older (35-54)">Older (35-54)</option>
                                 <option value="Senior (55+)">Senior (55+)</option>
                             </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="TargetLocation" class="form-label">Target Location</label>
-                            <select class="form-select" id="TargetAudience" name="TargetLocation">
-                                <option value="state">State (Select from a list of states)</option>
-                                <option value="National">National</option>
-                                <option value="International">International</option>
-                                
-                            </select>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="Duration" class="form-label">Duration</label>
-                            <select class="form-select" id="duration" name="duration">
-                                <option value="Daily">Daily</option>
-                                <option value="Weekly">Weekly</option>
-                                <option value="Monthly">Monthly</option>
-                                <option value="Quarterly">Quarterly</option>
-                                <option value="Yearly">Yearly</option>
-                                
-                            </select>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="specify" class="form-label">Specify Start and End Dates</label>
-                            <input type="text" class="form-control" id="specify" name="specify" placeholder=" E.g 10th march - 14th March">
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
