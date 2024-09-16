@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" data-layout-mode="detached" data-topbar-color="dark" data-menu-color="light" data-sidenav-user="true">
 
-
-<!-- Mirrored from coderthemes.com/hyper_2/modern/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 24 May 2024 09:34:18 GMT -->
 <head>
     <meta charset="utf-8" />
     <title>Dashboard | Hyper - Responsive Bootstrap 5 Admin Dashboard</title>
@@ -11,29 +9,29 @@
     <meta content="Coderthemes" name="author" />
 
     <!-- App favicon -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <link rel="shortcut icon" href="{{asset('assets/images/favicon.ico')}}">
 
     <!-- Daterangepicker css -->
-    <link href="assets/vendor/daterangepicker/daterangepicker.css" rel="stylesheet" type="text/css">
+    <link href="{{asset('assets/vendor/daterangepicker/daterangepicker.css')}}" rel="stylesheet" type="text/css">
 
     <!-- Vector Map css -->
-    <link href="assets/vendor/jsvectormap/css/jsvectormap.min.css" rel="stylesheet" type="text/css">
+    <link href="{{asset('assets/vendor/jsvectormap/css/jsvectormap.min.css')}}" rel="stylesheet" type="text/css">
 
     <!-- Theme Config Js -->
-    <script src="assets/js/hyper-config.js"></script>
+    <script src="{{asset('assets/js/hyper-config.js')}}"></script>
 
     <!-- App css -->
-    <link href="assets/css/app-modern.min.css" rel="stylesheet" type="text/css" id="app-style" />
+    <link href="{{asset('assets/css/app-modern.min.css')}}" rel="stylesheet" type="text/css" id="app-style" />
 
     <!-- Icons css -->
-    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{asset('assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
     <!-- Begin page -->
     <div class="wrapper">
 
-        
+
         <!-- ========== Topbar Start ========== -->
         <div class="navbar-custom">
             <div class="topbar container-fluid">
@@ -80,7 +78,8 @@
                     <div class="app-search dropdown d-none d-lg-block">
                         <form>
                             <div class="input-group">
-                                <input type="search" class="form-control dropdown-toggle" placeholder="Search..." id="top-search">
+                                <input type="search" class="form-control dropdown-toggle" placeholder="Search..."
+                                    id="top-search">
                                 <span class="mdi mdi-magnify search-icon"></span>
                                 <button class="input-group-text btn btn-primary" type="submit">Search</button>
                             </div>
@@ -120,7 +119,8 @@
                                 <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item notify-item">
                                     <div class="d-flex">
-                                        <img class="d-flex me-2 rounded-circle" src="assets/images/users/avatar-2.jpg" alt="Generic placeholder image" height="32">
+                                        <img class="d-flex me-2 rounded-circle" src="assets/images/users/avatar-2.jpg"
+                                            alt="Generic placeholder image" height="32">
                                         <div class="w-100">
                                             <h5 class="m-0 font-14">Erwin Brown</h5>
                                             <span class="font-12 mb-0">UI Designer</span>
@@ -131,7 +131,8 @@
                                 <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item notify-item">
                                     <div class="d-flex">
-                                        <img class="d-flex me-2 rounded-circle" src="assets/images/users/avatar-5.jpg" alt="Generic placeholder image" height="32">
+                                        <img class="d-flex me-2 rounded-circle" src="assets/images/users/avatar-5.jpg"
+                                            alt="Generic placeholder image" height="32">
                                         <div class="w-100">
                                             <h5 class="m-0 font-14">Jacob Deo</h5>
                                             <span class="font-12 mb-0">Developer</span>
@@ -145,48 +146,57 @@
 
                 <ul class="topbar-menu d-flex align-items-center gap-3">
                     <li class="dropdown d-lg-none">
-                        <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="false" aria-expanded="false">
                             <i class="ri-search-line font-22"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-animated dropdown-lg p-0">
                             <form class="p-3">
-                                <input type="search" class="form-control" placeholder="Search ..." aria-label="Recipient's username">
+                                <input type="search" class="form-control" placeholder="Search ..."
+                                    aria-label="Recipient's username">
                             </form>
                         </div>
                     </li>
 
                     <li class="dropdown">
-                        <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="false" aria-expanded="false">
                             <img src="assets/images/flags/us.jpg" alt="user-image" class="me-0 me-sm-1" height="12">
-                            <span class="align-middle d-none d-lg-inline-block">English</span> <i class="mdi mdi-chevron-down d-none d-sm-inline-block align-middle"></i>
+                            <span class="align-middle d-none d-lg-inline-block">English</span> <i
+                                class="mdi mdi-chevron-down d-none d-sm-inline-block align-middle"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated">
 
                             <!-- item-->
                             <a href="javascript:void(0);" class="dropdown-item">
-                                <img src="assets/images/flags/germany.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">German</span>
+                                <img src="assets/images/flags/germany.jpg" alt="user-image" class="me-1" height="12">
+                                <span class="align-middle">German</span>
                             </a>
 
                             <!-- item-->
                             <a href="javascript:void(0);" class="dropdown-item">
-                                <img src="assets/images/flags/italy.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">Italian</span>
+                                <img src="assets/images/flags/italy.jpg" alt="user-image" class="me-1" height="12">
+                                <span class="align-middle">Italian</span>
                             </a>
 
                             <!-- item-->
                             <a href="javascript:void(0);" class="dropdown-item">
-                                <img src="assets/images/flags/spain.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">Spanish</span>
+                                <img src="assets/images/flags/spain.jpg" alt="user-image" class="me-1" height="12">
+                                <span class="align-middle">Spanish</span>
                             </a>
 
                             <!-- item-->
                             <a href="javascript:void(0);" class="dropdown-item">
-                                <img src="assets/images/flags/russia.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">Russian</span>
+                                <img src="assets/images/flags/russia.jpg" alt="user-image" class="me-1" height="12">
+                                <span class="align-middle">Russian</span>
                             </a>
 
                         </div>
                     </li>
 
                     <li class="dropdown notification-list">
-                        <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="false" aria-expanded="false">
                             <i class="ri-notification-3-line font-22"></i>
                             <span class="noti-icon-badge"></span>
                         </a>
@@ -209,9 +219,11 @@
                                 <h5 class="text-muted font-13 fw-normal mt-2">Today</h5>
                                 <!-- item-->
 
-                                <a href="javascript:void(0);" class="dropdown-item p-0 notify-item card unread-noti shadow-none mb-2">
+                                <a href="javascript:void(0);"
+                                    class="dropdown-item p-0 notify-item card unread-noti shadow-none mb-2">
                                     <div class="card-body">
-                                        <span class="float-end noti-close-btn text-muted"><i class="mdi mdi-close"></i></span>
+                                        <span class="float-end noti-close-btn text-muted"><i
+                                                class="mdi mdi-close"></i></span>
                                         <div class="d-flex align-items-center">
                                             <div class="flex-shrink-0">
                                                 <div class="notify-icon bg-primary">
@@ -219,17 +231,21 @@
                                                 </div>
                                             </div>
                                             <div class="flex-grow-1 text-truncate ms-2">
-                                                <h5 class="noti-item-title fw-semibold font-14">Datacorp <small class="fw-normal text-muted ms-1">1 min ago</small></h5>
-                                                <small class="noti-item-subtitle text-muted">Caleb Flakelar commented on Admin</small>
+                                                <h5 class="noti-item-title fw-semibold font-14">Datacorp <small
+                                                        class="fw-normal text-muted ms-1">1 min ago</small></h5>
+                                                <small class="noti-item-subtitle text-muted">Caleb Flakelar commented on
+                                                    Admin</small>
                                             </div>
                                         </div>
                                     </div>
                                 </a>
 
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item p-0 notify-item card read-noti shadow-none mb-2">
+                                <a href="javascript:void(0);"
+                                    class="dropdown-item p-0 notify-item card read-noti shadow-none mb-2">
                                     <div class="card-body">
-                                        <span class="float-end noti-close-btn text-muted"><i class="mdi mdi-close"></i></span>
+                                        <span class="float-end noti-close-btn text-muted"><i
+                                                class="mdi mdi-close"></i></span>
                                         <div class="d-flex align-items-center">
                                             <div class="flex-shrink-0">
                                                 <div class="notify-icon bg-info">
@@ -237,7 +253,8 @@
                                                 </div>
                                             </div>
                                             <div class="flex-grow-1 text-truncate ms-2">
-                                                <h5 class="noti-item-title fw-semibold font-14">Admin <small class="fw-normal text-muted ms-1">1 hours ago</small></h5>
+                                                <h5 class="noti-item-title fw-semibold font-14">Admin <small
+                                                        class="fw-normal text-muted ms-1">1 hours ago</small></h5>
                                                 <small class="noti-item-subtitle text-muted">New user registered</small>
                                             </div>
                                         </div>
@@ -247,18 +264,23 @@
                                 <h5 class="text-muted font-13 fw-normal mt-0">Yesterday</h5>
 
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item p-0 notify-item card read-noti shadow-none mb-2">
+                                <a href="javascript:void(0);"
+                                    class="dropdown-item p-0 notify-item card read-noti shadow-none mb-2">
                                     <div class="card-body">
-                                        <span class="float-end noti-close-btn text-muted"><i class="mdi mdi-close"></i></span>
+                                        <span class="float-end noti-close-btn text-muted"><i
+                                                class="mdi mdi-close"></i></span>
                                         <div class="d-flex align-items-center">
                                             <div class="flex-shrink-0">
                                                 <div class="notify-icon">
-                                                    <img src="assets/images/users/avatar-2.jpg" class="img-fluid rounded-circle" alt="" />
+                                                    <img src="assets/images/users/avatar-2.jpg"
+                                                        class="img-fluid rounded-circle" alt="" />
                                                 </div>
                                             </div>
                                             <div class="flex-grow-1 text-truncate ms-2">
-                                                <h5 class="noti-item-title fw-semibold font-14">Cristina Pride <small class="fw-normal text-muted ms-1">1 day ago</small></h5>
-                                                <small class="noti-item-subtitle text-muted">Hi, How are you? What about our next meeting</small>
+                                                <h5 class="noti-item-title fw-semibold font-14">Cristina Pride <small
+                                                        class="fw-normal text-muted ms-1">1 day ago</small></h5>
+                                                <small class="noti-item-subtitle text-muted">Hi, How are you? What about
+                                                    our next meeting</small>
                                             </div>
                                         </div>
                                     </div>
@@ -267,9 +289,11 @@
                                 <h5 class="text-muted font-13 fw-normal mt-0">30 Dec 2021</h5>
 
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item p-0 notify-item card read-noti shadow-none mb-2">
+                                <a href="javascript:void(0);"
+                                    class="dropdown-item p-0 notify-item card read-noti shadow-none mb-2">
                                     <div class="card-body">
-                                        <span class="float-end noti-close-btn text-muted"><i class="mdi mdi-close"></i></span>
+                                        <span class="float-end noti-close-btn text-muted"><i
+                                                class="mdi mdi-close"></i></span>
                                         <div class="d-flex align-items-center">
                                             <div class="flex-shrink-0">
                                                 <div class="notify-icon bg-primary">
@@ -278,25 +302,30 @@
                                             </div>
                                             <div class="flex-grow-1 text-truncate ms-2">
                                                 <h5 class="noti-item-title fw-semibold font-14">Datacorp</h5>
-                                                <small class="noti-item-subtitle text-muted">Caleb Flakelar commented on Admin</small>
+                                                <small class="noti-item-subtitle text-muted">Caleb Flakelar commented on
+                                                    Admin</small>
                                             </div>
                                         </div>
                                     </div>
                                 </a>
 
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item p-0 notify-item card read-noti shadow-none mb-2">
+                                <a href="javascript:void(0);"
+                                    class="dropdown-item p-0 notify-item card read-noti shadow-none mb-2">
                                     <div class="card-body">
-                                        <span class="float-end noti-close-btn text-muted"><i class="mdi mdi-close"></i></span>
+                                        <span class="float-end noti-close-btn text-muted"><i
+                                                class="mdi mdi-close"></i></span>
                                         <div class="d-flex align-items-center">
                                             <div class="flex-shrink-0">
                                                 <div class="notify-icon">
-                                                    <img src="assets/images/users/avatar-4.jpg" class="img-fluid rounded-circle" alt="" />
+                                                    <img src="assets/images/users/avatar-4.jpg"
+                                                        class="img-fluid rounded-circle" alt="" />
                                                 </div>
                                             </div>
                                             <div class="flex-grow-1 text-truncate ms-2">
                                                 <h5 class="noti-item-title fw-semibold font-14">Karen Robinson</h5>
-                                                <small class="noti-item-subtitle text-muted">Wow ! this admin looks good and awesome design</small>
+                                                <small class="noti-item-subtitle text-muted">Wow ! this admin looks good
+                                                    and awesome design</small>
                                             </div>
                                         </div>
                                     </div>
@@ -308,7 +337,8 @@
                             </div>
 
                             <!-- All-->
-                            <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item border-top border-light py-2">
+                            <a href="javascript:void(0);"
+                                class="dropdown-item text-center text-primary notify-item border-top border-light py-2">
                                 View All
                             </a>
 
@@ -316,7 +346,8 @@
                     </li>
 
                     <li class="dropdown d-none d-sm-inline-block">
-                        <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="false" aria-expanded="false">
                             <i class="ri-apps-2-line font-22"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated dropdown-lg p-0">
@@ -375,7 +406,8 @@
                     </li>
 
                     <li class="d-none d-sm-inline-block">
-                        <div class="nav-link" id="light-dark-mode" data-bs-toggle="tooltip" data-bs-placement="left" title="Theme Mode">
+                        <div class="nav-link" id="light-dark-mode" data-bs-toggle="tooltip" data-bs-placement="left"
+                            title="Theme Mode">
                             <i class="ri-moon-line font-22"></i>
                         </div>
                     </li>
@@ -388,12 +420,14 @@
                     </li>
 
                     <li class="dropdown">
-                        <a class="nav-link dropdown-toggle arrow-none nav-user px-2" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle arrow-none nav-user px-2" data-bs-toggle="dropdown" href="#"
+                            role="button" aria-haspopup="false" aria-expanded="false">
                             <span class="account-user-avatar">
-                                <img src="assets/images/users/avatar-1.jpg" alt="user-image" width="32" class="rounded-circle">
+                                <img src="assets/images/users/avatar-1.jpg" alt="user-image" width="32"
+                                    class="rounded-circle">
                             </span>
                             <span class="d-lg-flex flex-column gap-1 d-none">
-                                <h5 class="my-0">Dominic Keller</h5>
+                                <h5 class="my-0">{{Auth::user()->name}}</h5>
                                 <h6 class="my-0 fw-normal">Founder</h6>
                             </span>
                         </a>
@@ -477,8 +511,9 @@
                 <!-- Leftbar User -->
                 <div class="leftbar-user">
                     <a href="pages-profile.html">
-                        <img src="assets/images/users/avatar-1.jpg" alt="user-image" height="42" class="rounded-circle shadow-sm">
-                        <span class="leftbar-user-name mt-2">Dominic Keller</span>
+                        <img src="assets/images/users/avatar-1.jpg" alt="user-image" height="42"
+                            class="rounded-circle shadow-sm">
+                        <span class="leftbar-user-name mt-2">{{Auth::user()->name}}</span>
                     </a>
                 </div>
 
@@ -488,60 +523,60 @@
                     <li class="side-nav-title">Navigation</li>
 
                     <li class="side-nav-item">
-                        <a href="{{url('advertiser')}}" class="side-nav-link">
+                        <a href="{{route('advertiser.dashboard')}}" class="side-nav-link">
                             <i class="uil-home-alt"></i>
                             <span> Dashboard</span>
                         </a>
                     </li>
-                    
+
                     <li class="side-nav-item">
-                        <a href="{{url('manage-ads')}}" class="side-nav-link">
+                        <a href="{{route('manage.ads')}}" class="side-nav-link">
                             <i class="uil-user"></i>
                             <span> Manage Ads</span>
                         </a>
                     </li>
                     <li class="side-nav-item">
                         <a href="{{url('manage-compliance')}}" class="side-nav-link">
-                             <i class="uil-user"></i>
+                            <i class="uil-user"></i>
                             <span> Manage Complaince</span>
                         </a>
                     </li>
-                    
-                  
+
+
                     <li class="side-nav-item">
                         <a href="{{url('manage-refund')}}" class="side-nav-link">
                             <i class="uil-user"></i>
                             <span> Manage Refund</span>
                         </a>
-                    </li>    
-                    
+                    </li>
+
                     <li class="side-nav-item">
                         <a href="{{url('profile')}}" class="side-nav-link">
                             <i class="uil-user"></i>
                             <span> Manage Profile </span>
                         </a>
                     </li>
-                    
+
                     <li class="side-nav-item">
                         <a href="{{url('notification')}}" class="side-nav-link">
                             <i class="uil-bell"></i>
                             <span> Notification </span>
                         </a>
                     </li>
-                    
+
                     <li class="side-nav-item">
                         <a href="{{url('manage-compliance')}}" class="side-nav-link">
                             <i class="uil-signout"></i>
                             <span> Logout </span>
                         </a>
                     </li>
-                    
-
-                   
 
 
 
-                   
+
+
+
+
 
                 </ul>
                 <!--- End Sidemenu -->
@@ -552,5 +587,5 @@
         <!-- ========== Left Sidebar End ========== -->
 
         <style>
-            
+
         </style>

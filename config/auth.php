@@ -36,9 +36,25 @@ return [
     */
 
     'guards' => [
+
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
+        ],
+
+        'advertiser' => [
+            'driver' => 'session',
+            'provider' => 'advertisers',
+        ],
+
+        'media_org' => [
+            'driver' => 'session',
+            'provider' => 'media_organizations',
+        ],
+
+        'marketer' => [
+            'driver' => 'session',
+            'provider' => 'marketers',
         ],
     ],
 
@@ -69,6 +85,21 @@ return [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
+
+        'advertisers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Advertiser::class,
+        ],
+
+        'media_organizations' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\MediaOrganization::class,
+        ],
+
+        'marketers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Marketer::class,
+        ],
     ],
 
     /*

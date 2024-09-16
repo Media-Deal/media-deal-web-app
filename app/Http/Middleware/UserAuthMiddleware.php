@@ -16,7 +16,7 @@ class UserAuthMiddleware
      * @param  \Closure  $next
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next, ...$guards): Response
     {
         // Check if the user is authenticated
         if (!Auth::check()) {
@@ -26,6 +26,22 @@ class UserAuthMiddleware
         // Check if the user is verified
         if (Auth::user()->is_verified == 0) {
             return redirect()->route('verify', ['id' => Auth::user()->id]);
+        }
+        // Check for each guard and redirect accordingly
+        foreach ($guards as $guard) {
+            if (Auth::guard($guard)->check()) {
+                $role = Auth::guard($guard)->user()->role;
+                switch ($role) {
+                    case 'advertiser':
+                        return redirect('/advertiser/dashboard');
+                    case 'media_org':
+                        return redirect('/media-org/dashboard');
+                    case 'marketer':
+                        return redirect('/marketer/dashboard');
+                    default:
+                        return redirect('/home');
+                }
+            }
         }
 
         return $next($request);

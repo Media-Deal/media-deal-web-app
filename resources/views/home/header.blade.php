@@ -33,6 +33,9 @@
     {{-- bootstrap 5 --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        {{-- Animate on scroll --}}
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
 
 
 
@@ -68,13 +71,15 @@
                             <a href="#" class="nav-link dropdown-toggle" active data-bs-toggle="dropdown">Media</a>
                             <div class="dropdown-menu rounded-0 m-0">
                                 <div class="row">
-
-
-
-                                    <a href="#" class="dropdown-item">Radio</a>
-                                    <a href="#" class="dropdown-item">TV</a>
-                                    <a href="#" class="dropdown-item">Online</a>
-
+                                    <a href="#" class="text-decoration-none">
+                                        <h6 class="dropdown-item">Radio</h6>
+                                    </a>
+                                    <a href="#" class="text-decoration-none">
+                                        <h6 class="dropdown-item">TV</h6>
+                                    </a>
+                                    <a href="#" class="text-decoration-none">
+                                        <h6 class="dropdown-item">Online</h6>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -82,18 +87,18 @@
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Resources</a>
                             <div class="dropdown-menu rounded-0 m-0">
                                 <div class="row">
-                                    <h6 class="dropdown-item">Dashboard</h6>
-
-                                    <a href="" class="dropdown-item">Dashbaord</a>
-                                    <a href="" class="dropdown-item">Dashboard</a>
-                                    <a href="" class="dropdown-item">Feedback</a>
-                                    <a href="" class="dropdown-item">Testimonial</a>
-                                    <a href="" class="dropdown-item">Deal Support</a>
-
-
-
-
-                                    <hr>
+                                       <a href="{{ url('login') }}" class="text-decoration-none">
+                                        <h6 class="dropdown-item">Dashboard</h6>
+                                       </a>
+                                       <a href="#" class="text-decoration-none">
+                                        <h6 class="dropdown-item">Feedback</h6>
+                                       </a>
+                                       <a href="#" class="text-decoration-none">
+                                        <h6 class="dropdown-item">Testimonial</h6>
+                                       </a>
+                                       <a href="#" class="text-decoration-none">
+                                        <h6 class="dropdown-item">Deal Support</h6>
+                                       </a>
                                 </div>
                             </div>
                         </div>
@@ -104,17 +109,16 @@
 
 
 
-                                    <a href="{{url('about')}}">
+                                    <a href="{{url('about')}}" class="text-decoration-none">
                                         <h6 class="dropdown-item">About Us</h6>
                                     </a>
-                                    <a href="{{ url('faq') }}">
+                                    <a href="{{ url('faq') }}" class="text-decoration-none">
                                         <h6 class="dropdown-item">Faq</h6>
 
 
-                                        <a href="{{ url('policies') }}">
-                                            <h6 class="dropdown-item">Policies</h6>
-                                        </a>
-
+                                    <a href="{{ url('policies') }}" class="text-decoration-none">
+                                        <h6 class="dropdown-item">Policies</h6>
+                                    </a>
                                 </div>
                             </div>
                         </div>
