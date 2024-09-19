@@ -31,7 +31,7 @@
         <div class="accordion" id="accordionExample">
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              <button class="accordion-button collapsed fs-5 px-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                 What is Media Deal?
               </button>
             </h2>
@@ -44,7 +44,7 @@
 
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              <button class="accordion-button collapsed fs-5 px-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                 What does Media Deal offer?
               </button>
             </h2>
@@ -57,7 +57,7 @@
 
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+              <button class="accordion-button collapsed fs-5 px-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                 How do I register on Media Deal?
               </button>
             </h2>
@@ -70,7 +70,7 @@
 
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+              <button class="accordion-button collapsed fs-5 px-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
                 How can advertisers use the platform?
               </button>
             </h2>
@@ -83,7 +83,7 @@
 
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+              <button class="accordion-button collapsed fs-5 px-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
                 How do media organizations use the platform?
               </button>
             </h2>
@@ -96,7 +96,7 @@
 
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+              <button class="accordion-button collapsed fs-5 px-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
                 How does payment processing work?
               </button>
             </h2>
@@ -109,7 +109,7 @@
 
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+              <button class="accordion-button collapsed fs-5 px-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
                 How does Media Deal's payment process work?
               </button>
             </h2>
@@ -157,7 +157,7 @@
 
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+              <button class="accordion-button collapsed fs-5 px-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
                 How do media companies get paid?
               </button>
             </h2>
@@ -170,7 +170,7 @@
 
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+              <button class="accordion-button collapsed fs-5 px-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
                 What happens if my ad doesn’t air as planned?
               </button>
             </h2>
@@ -183,7 +183,7 @@
 
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven">
+              <button class="accordion-button collapsed fs-5 px-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven">
                 How can I ensure my ad aired?
               </button>
             </h2>
@@ -200,7 +200,7 @@
         <div class="accordion" id="accordionExample">
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwelve" aria-expanded="false" aria-controls="collapseTwelve">
+              <button class="accordion-button collapsed fs-5 px-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwelve" aria-expanded="false" aria-controls="collapseTwelve">
                 What should I do if I encounter issues on the platform?
               </button>
             </h2>
@@ -213,7 +213,7 @@
 
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThiirteen" aria-expanded="false" aria-controls="collapseThiirteen">
+              <button class="accordion-button collapsed fs-5 px-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThiirteen" aria-expanded="false" aria-controls="collapseThiirteen">
                 How will Media Deal evolve in the future?
               </button>
             </h2>
@@ -226,7 +226,7 @@
 
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFourteen" aria-expanded="false" aria-controls="collapsFourteen">
+              <button class="accordion-button collapsed fs-5 px-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFourteen" aria-expanded="false" aria-controls="collapsFourteen">
                 Who can register as a media company?
               </button>
             </h2>
@@ -239,7 +239,7 @@
 
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFifteen" aria-expanded="false" aria-controls="collapseFifteen">
+              <button class="accordion-button collapsed fs-5 px-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFifteen" aria-expanded="false" aria-controls="collapseFifteen">
                 Who can register as a marketer?
               </button>
             </h2>
@@ -252,7 +252,7 @@
 
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapSixteen" aria-expanded="false" aria-controls="collapSixteen">
+              <button class="accordion-button collapsed fs-5 px-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapSixteen" aria-expanded="false" aria-controls="collapSixteen">
                 Who can register as an advertiser?
               </button>
             </h2>
@@ -265,7 +265,7 @@
 
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeventeen" aria-expanded="false" aria-controls="collapseSeventeen">
+              <button class="accordion-button collapsed fs-5 px-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeventeen" aria-expanded="false" aria-controls="collapseSeventeen">
                 Who can earn commission on Media Deal?
               </button>
             </h2>
@@ -278,7 +278,7 @@
 
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEighteen" aria-expanded="false" aria-controls="collapseEighteen">
+              <button class="accordion-button collapsed fs-5 px-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEighteen" aria-expanded="false" aria-controls="collapseEighteen">
                 How much commission can I earn as a marketer?
               </button>
             </h2>
@@ -291,7 +291,7 @@
 
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNineteen" aria-expanded="false" aria-controls="collapseNineteen">
+              <button class="accordion-button collapsed fs-5 px-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNineteen" aria-expanded="false" aria-controls="collapseNineteen">
                 Are there hidden charges on Media Deal?
               </button>
             </h2>
@@ -304,7 +304,7 @@
 
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwenty" aria-expanded="false" aria-controls="collapseTwenty">
+              <button class="accordion-button collapsed fs-5 px-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwenty" aria-expanded="false" aria-controls="collapseTwenty">
                 Do I get a 100% refund?
               </button>
             </h2>
@@ -317,7 +317,7 @@
 
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwentyOne" aria-expanded="false" aria-controls="collapseTwentyOne">
+              <button class="accordion-button collapsed fs-5 px-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwentyOne" aria-expanded="false" aria-controls="collapseTwentyOne">
                 How much discount can I negotiate with Media Deal?
               </button>
             </h2>
@@ -330,7 +330,7 @@
 
         <div class="accordion-item">
           <h2 class="accordion-header">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwentyTwo" aria-expanded="false" aria-controls="collapseTwentyTwo">
+            <button class="accordion-button collapsed fs-5 px-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwentyTwo" aria-expanded="false" aria-controls="collapseTwentyTwo">
               	How safe is my data?
             </button>
           </h2>
