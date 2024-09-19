@@ -44,6 +44,15 @@ Route::get('/faq', function () {
     return view('home.faq');
 });
 
+Route::get('/media', function () {
+    return view('media.homepage');
+});
+
+Route::get('/manage-account', function () {
+    return view('media.manage-account');
+});
+
+
 // Authentication Routes
 Auth::routes();
 

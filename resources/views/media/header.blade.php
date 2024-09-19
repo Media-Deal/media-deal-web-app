@@ -495,7 +495,7 @@
                     </li>
                     
                     <li class="side-nav-item">
-                        <a href="{{url('manage-ads')}}" class="side-nav-link">
+                        <a href="{{url('manage-account')}}" class="side-nav-link">
                             <i class="uil-user"></i>
                             <span> Manage Account</span>
                         </a>
@@ -526,6 +526,13 @@
                         <a href="{{url('notification')}}" class="side-nav-link">
                             <i class="uil-bell"></i>
                             <span> Manage Refund </span>
+                        </a>
+                    </li>
+
+                    <li class="side-nav-item">
+                        <a href="{{url('notification')}}" class="side-nav-link">
+                            <i class="uil-user"></i>
+                            <span>Support</span>
                         </a>
                     </li>
                     
