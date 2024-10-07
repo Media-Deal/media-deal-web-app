@@ -71,6 +71,8 @@ Route::middleware('user_auth')->group(function () {
         Route::get('dashboard', [App\Http\Controllers\AdvertiserController::class, 'index'])->name('advertiser.dashboard');
         Route::get('profile', [App\Http\Controllers\AdvertiserController::class, 'profile'])->name('advertiser.profile');
         Route::get('manage-ads', [App\Http\Controllers\AdvertiserController::class, 'manageAds'])->name('manage.ads');
+        Route::get('media/{id}', [App\Http\Controllers\AdvertiserController::class, 'showMedia'])->name('advertiser.media.show');
+
 
         Route::get('manage-compliance', function () {
             return view('advertiser.manage-compliance');

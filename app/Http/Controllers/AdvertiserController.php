@@ -3,12 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\MediaOrganization;
 
 class AdvertiserController extends Controller
 {
     public function index()
     {
-        return view('advertiser.homepage');
+        // Fetch media organizations for the authenticated user
+        $mediaOrganizations = MediaOrganization::get();
+
+        return view('advertiser.homepage', compact('mediaOrganizations'));
+    }
+
+    public function showMedia($id)
+    {
+        $media = MediaOrganization::where('id', $id)->firstOrFail();
+
+        return view('advertiser.show_media', compact('media'));
     }
 
     public function profile()

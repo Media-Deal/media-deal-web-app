@@ -1,130 +1,101 @@
 @include('advertiser.header')
-    
-        
 
-        <!-- ============================================================== -->
-        <!-- Start Page Content here -->
-        <!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- Start Page Content here -->
+<!-- ============================================================== -->
 
-        <div class="content-page">
-            <div class="content">
+<div class="content-page">
+    <div class="content">
 
-                <!-- Start Content-->
-                <div class="container-fluid">
+        <!-- Start Content-->
+        <div class="container-fluid">
 
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="page-title-box">
-                                <div class="page-title-right">
-                                    <form class="d-flex">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control form-control-light" id="dash-daterange">
-                                            <span class="input-group-text bg-primary border-primary text-white">
-                                                <i class="mdi mdi-calendar-range font-13"></i>
-                                            </span>
-                                        </div>
-                                        <a href="javascript: void(0);" class="btn btn-primary ms-2">
-                                            <i class="mdi mdi-autorenew"></i>
-                                        </a>
-                                        <a href="javascript: void(0);" class="btn btn-primary ms-1">
-                                            <i class="mdi mdi-filter-variant"></i>
-                                        </a>
-                                    </form>
-                                </div>
-                                <h4 class="page-title">Advertisers Dashboard</h4>
+            <!-- Media Organizations -->
+            <div class="row">
+                @forelse($mediaOrganizations as $media)
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card widget-flat h-100">
+                        <div class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+                            <!-- Media Logo -->
+                            <div class="mb-3">
+                                @if(strtolower($media->media_type) === 'tv' && $media->tv_logo)
+                                <img src="{{ asset('storage/' . $media->tv_logo) }}" alt="{{ $media->tv_name }} Logo"
+                                    class="img-fluid" style="max-width: 100px;">
+                                @elseif(strtolower($media->media_type) === 'radio' && $media->radio_logo)
+                                <img src="{{ asset('storage/' . $media->radio_logo) }}"
+                                    alt="{{ $media->radio_name }} Logo" class="img-fluid" style="max-width: 100px;">
+                                @elseif(strtolower($media->media_type) === 'internet' && $media->internet_logo)
+                                <img src="{{ asset('storage/' . $media->internet_logo) }}"
+                                    alt="{{ $media->internet_name }} Logo" class="img-fluid" style="max-width: 100px;">
+                                @else
+                                <img src="{{ asset('img/images.png') }}" alt="Default Logo" class="img-fluid"
+                                    style="max-width: 100px;">
+                                @endif
                             </div>
+
+                            <!-- Media Name -->
+                            <h5 class="fw-normal mt-0">
+                                @if(strtolower($media->media_type) === 'tv')
+                                {{ $media->tv_name }}
+                                @elseif(strtolower($media->media_type) === 'radio')
+                                {{ $media->radio_name }}
+                                @elseif(strtolower($media->media_type) === 'internet')
+                                {{ $media->internet_name }}
+                                @endif
+                            </h5>
+
+                            <!-- Location -->
+                            <p class="text-muted">
+                                @if(strtolower($media->media_type) === 'tv')
+                                {{ $media->tv_main_studio_location ?? 'N/A' }}
+                                @elseif(strtolower($media->media_type) === 'radio')
+                                {{ $media->radio_station_location ?? 'N/A' }}
+                                @elseif(strtolower($media->media_type) === 'internet')
+                                {{ $media->internet_channel_location ?? 'N/A' }}
+                                @endif
+                            </p>
+
+                            <!-- Additional Info or Actions -->
+                            <a href="{{ route('advertiser.media.show', $media->id) }}"
+                                class="btn btn-sm btn-primary mt-auto">View Details</a>
                         </div>
                     </div>
-
-                    <div class="row">
-                        <!-- First Radio Station -->
-                        
-                        <div class="col-4 mb-3">
-                            <div class="card widget-flat h-100">
-                                
-                                <div class="card-body text-center d-flex flex-column justify-content-center align-items-center">
-                                    <!-- Radio Station Logo -->
-                                    <a href="{{url('station-details')}}" class="d-block text-decoration-none h-100">
-                                    <div class="mb-3">
-                                        <img src="img/radio fm.png" alt="Radio Station Logo" class="img-fluid" style="max-width: 100px;">
-                                    </div>
-                                    <!-- Radio Station Name -->
-                                    <h5 class="fw-normal mt-0" title="Radio Station Name">Radio FM</h5>
-                                    <!-- Location -->
-                                    <p class="text-muted">Location 1</p>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                        
-                    
-                        <!-- Second Radio Station -->
-                        <div class="col-4 mb-3">
-                            <div class="card widget-flat h-100">
-                                <div class="card-body text-center d-flex flex-column justify-content-center align-items-center">
-                                    <!-- Radio Station Logo -->
-                                    <div class="mb-3">
-                                        <img src="img/creek fm.png" alt="Radio Station Logo" class="img-fluid" style="max-width: 100px;">
-                                    </div>
-                                    <!-- Radio Station Name -->
-                                    <h5 class="fw-normal mt-0" title="Radio Station Name">Creek FM</h5>
-                                    <!-- Location -->
-                                    <p class="text-muted">Location 2</p>
-                                </div>
-                            </div>
-                        </div>
-                    
-                        <!-- Third Radio Station -->
-                        <div class="col-4 mb-3">
-                            <div class="card widget-flat h-100">
-                                <div class="card-body text-center d-flex flex-column justify-content-center align-items-center">
-                                    <!-- Radio Station Logo -->
-                                    <div class="mb-3">
-                                        <img src="img/royal fm.png" alt="Radio Station Logo" class="img-fluid" style="max-width: 100px;">
-                                    </div>
-                                    <!-- Radio Station Name -->
-                                    <h5 class="fw-normal mt-0" title="Radio Station Name">Royal FM</h5>
-                                    <!-- Location -->
-                                    <p class="text-muted">Location 3</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <style>
-                        .card {
-                            min-height: 250px; /* Ensuring all cards have a minimum height */
-                        }
-                    
-                        .card-body img {
-                            max-width: 80px; /* Consistent image size */
-                            margin-bottom: 15px;
-                        }
-                    
-                        .card-body h5, .card-body p {
-                            margin-bottom: 10px; /* Consistent spacing */
-                        }
-                    </style>
-                    
-
-                    
-
-                       
-
-
-                                      
-                                        
-                               
-                        
-                    </div>
-                    <!-- end row -->
-
                 </div>
-                <!-- container -->
-
+                @empty
+                <div class="col-12">
+                    <div class="alert alert-info text-center" role="alert">
+                        No media organizations found. Please add a new one.
+                    </div>
+                </div>
+                @endforelse
             </div>
-            <!-- content -->
 
-          
+            <style>
+                .card {
+                    min-height: 250px;
+                    /* Ensuring all cards have a minimum height */
+                }
 
- @include('advertiser.footer')
+                .card-body img {
+                    max-width: 80px;
+                    /* Consistent image size */
+                    margin-bottom: 15px;
+                }
+
+                .card-body h5,
+                .card-body p {
+                    margin-bottom: 10px;
+                    /* Consistent spacing */
+                }
+            </style>
+
+        </div>
+        <!-- end row -->
+
+    </div>
+    <!-- container -->
+
+</div>
+<!-- content -->
+
+@include('advertiser.footer')
