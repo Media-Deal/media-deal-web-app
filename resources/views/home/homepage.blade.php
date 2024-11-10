@@ -30,7 +30,7 @@
   <div class="container position-relative py-2">
     <div class="row">
       <div class="col-12"  data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
-        <h3 class="text-light text-center fs-3 py-5">Deal directly with the top media brands and influencers
+        <h3 class="text-light text-center fs-3 py-5">Deal Directly with the Top Media Brands and Influencers
         </h3>
       </div>
     </div>
@@ -147,14 +147,14 @@
 
 
     <!-- Property List Start -->
-    <div class="container-xxl bg-light mb-0">
-        <div class="container py-5 px-lg-5">
+    <div class="container-xxl bg-background mb-0">
+        <div class="container py-1 pt-5 px-lg-5">
             <div class="row g-0 gx-5 px-lg-5 d-flex justify-content-center align-items-center h-100">
                 <div class="col-lg-12 px-lg-5">
                     <div class="text-start mx-auto mb-5 px-lg-5 wow slideInLeft" data-wow-delay="0.5s">
-                            <p class="text-light fs-5 text-dark px-lg-5">Get ready for streamlined communication, efficient negotiations and advertising outcomes so optimal they will make your competitors green with envy - all with media deal</p>
-                        <div class="text-xs-center text-sm-center text-md-end text-lg-end px-lg-5">
-                            <a href="{{route('register')}}" class="btn btn-primary px-3 animated fadeIn">Start Now</a>
+                            <p class="text-light fs-5 px-lg-5 text-primary">Get ready for streamlined communication, efficient negotiations and advertising outcomes so optimal they will make your competitors green with envy - all with media deal</p>
+                        <div class="text-xs-center text-sm-center text-md-center text-lg-center px-lg-5">
+                            <a href="{{route('register')}}" class="btn btn-dark px-4 py-2 animated fadeIn p">Start Now</a>
                         </div>
                     </div>
                 </div>
@@ -174,18 +174,6 @@
                 <div class="row">
                   <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12">
                     <div class="accordion" id="accordionExample">
-                      <div class="accordion-item">
-                        <p class="accordion-header">
-                          <button class="accordion-button collapsed bg-light fs-5 px-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            What is Media Deal?
-                          </button>
-                        </p>
-                        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                          <div class="accordion-body bg-light py-3 px-3">
-                            Media Deal is a platform for buying and selling radio, TV, and online advertisements. It aims to streamline the advertising process by providing a centralized place for advertisers and media organizations to connect.
-                          </div>
-                        </div>
-                      </div>
             
                       <div class="accordion-item">
                         <h2 class="accordion-header">
@@ -238,24 +226,24 @@
                           </div>
                         </div>
                       </div>
+
+                      <div class="accordion-item">
+                        <h2 class="accordion-header">
+                          <button class="accordion-button collapsed bg-light fs-5 px-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                            How does payment processing work?
+                          </button>
+                        </h2>
+                        <div id="collapseSeven" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                          <div class="accordion-body bg-light">
+                            The platform integrates with a secure payment gateway to handle all transactions. Advertisers can view and manage their invoices and receipts through their dashboard.
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
             
                   <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12">
                     <div class="accordion" id="accordionExample">
-                      
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                              <button class="accordion-button collapsed bg-light fs-5 px-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-                                How does payment processing work?
-                              </button>
-                            </h2>
-                            <div id="collapseSeven" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                              <div class="accordion-body bg-light">
-                                The platform integrates with a secure payment gateway to handle all transactions. Advertisers can view and manage their invoices and receipts through their dashboard.
-                              </div>
-                            </div>
-                          </div>
                 
                           <div class="accordion-item">
                             <h2 class="accordion-header">
@@ -310,6 +298,20 @@
               </div>
             </div>
           </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed fs-5 px-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThiirteen" aria-expanded="false" aria-controls="collapseThiirteen">
+                How will Media Deal evolve in the future?
+              </button>
+            </h2>
+            <div id="collapseThiirteen" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+              <div class="accordion-body bg-light">
+                In the future, Media Deal plans to expand to other media types, such as social media, streaming platforms, podcasts, and vodcasts. The platform will also open its marketplace to creatives like scriptwriters, animators, and voice-over artists.
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 

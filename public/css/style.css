@@ -503,3 +503,6 @@
     border: none
 
 }
+.bg-background{
+    background: linear-gradient(135deg, #0d6efd, #2b2d92, #000); 
+}
