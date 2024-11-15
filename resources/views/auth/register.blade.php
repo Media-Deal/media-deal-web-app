@@ -92,7 +92,7 @@
                                     <select class="form-control" id="roleselection" name="role" required>
                                         <option value="">Select your role</option>
                                         <option value="advertiser">Advertiser</option>
-                                        <option value="media-organization">Media Organization</option>
+                                        <option value="media_org">Media Organization</option>
                                         <option value="marketer">Marketer</option>
                                     </select>
                                 </div>

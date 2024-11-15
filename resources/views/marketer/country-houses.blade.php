@@ -1,3 +1,6 @@
+
+
+
 @include('home.header')
     
                  <!-- Property List Start -->
@@ -6,8 +9,8 @@
                 <div class="row g-0 gx-5 align-items-end">
                     <div class="col-lg-6">
                         <div class="text-start mx-auto mb-5 wow slideInLeft" data-wow-delay="0.1s">
-                            <h1 class="mb-3">Property Listing</h1>
-                            <a  class="border-bottom d-block" style="color: black;"  href="#">View All 3599 New Listings</a>
+                            <h1 class="mb-3">{{ $country->country }}</</h1>
+                            
                         </div>
                     </div>
                 </div>
@@ -15,13 +18,14 @@
                 <div class="tab-content">
                     <div id="tab-1" class="tab-pane fade show p-0 active">
                         <div class="row g-4">
-                        @foreach($trendingHouses as $house)
+                        @foreach($countryHouses as $house)
+                       
                             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                                 <div class="property-item rounded overflow-hidden">
                                     <div class="position-relative overflow-hidden">
                                         <a href="{{ url('/house-details/'.$house->country->slug).'/'.$house->slug.'/'.$house->id}}"><img class="img-fluid" src="{{asset($house->houseImages[0]->image)}}" alt=""></a>
                                         <div class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">{{$house->status}}</div>
-                                  
+
                                     </div>
                                     <div class="p-4 pb-0">
                                         <h5 class="text-primary mb-3">${{number_format($house->selling_price, 2, '.', ',')}}</h5>

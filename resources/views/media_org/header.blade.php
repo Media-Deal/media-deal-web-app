@@ -523,22 +523,22 @@
                     <li class="side-nav-title">Navigation</li>
 
                     <li class="side-nav-item">
-                        <a href="{{route('advertiser.dashboard')}}" class="side-nav-link">
+                        <a href="{{url('advertiser')}}" class="side-nav-link">
                             <i class="uil-home-alt"></i>
                             <span> Dashboard</span>
                         </a>
                     </li>
 
                     <li class="side-nav-item">
-                        <a href="{{route('advertiser.manage.ads')}}" class="side-nav-link">
+                        <a href="{{url('manage-account')}}" class="side-nav-link">
                             <i class="uil-user"></i>
-                            <span> Manage Ads</span>
+                            <span> Manage Account</span>
                         </a>
                     </li>
                     <li class="side-nav-item">
-                        <a href="{{route('manage.compliance.page')}}" class="side-nav-link">
+                        <a href="{{url('manage-compliance')}}" class="side-nav-link">
                             <i class="uil-user"></i>
-                            <span> Manage Complaince</span>
+                            <span> Manage Ad</span>
                         </a>
                     </li>
 
@@ -546,28 +546,35 @@
                     <li class="side-nav-item">
                         <a href="{{url('manage-refund')}}" class="side-nav-link">
                             <i class="uil-user"></i>
-                            <span> Manage Refund</span>
+                            <span> Manage Compliance</span>
                         </a>
                     </li>
 
                     <li class="side-nav-item">
                         <a href="{{url('profile')}}" class="side-nav-link">
                             <i class="uil-user"></i>
-                            <span> Manage Profile </span>
+                            <span> Manage Payment </span>
                         </a>
                     </li>
 
                     <li class="side-nav-item">
                         <a href="{{url('notification')}}" class="side-nav-link">
                             <i class="uil-bell"></i>
-                            <span> Notification </span>
+                            <span> Manage Refund </span>
+                        </a>
+                    </li>
+
+                    <li class="side-nav-item">
+                        <a href="{{url('notification')}}" class="side-nav-link">
+                            <i class="uil-user"></i>
+                            <span>Support</span>
                         </a>
                     </li>
 
                     <li class="side-nav-item">
                         <a href="{{route('user.logout')}}" class="side-nav-link">
                             <i class="uil-signout"></i>
-                            <span> Logout </span>
+                            <span> Logoutttt </span>
                         </a>
                     </li>
 

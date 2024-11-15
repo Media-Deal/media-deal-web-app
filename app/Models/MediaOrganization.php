@@ -100,4 +100,15 @@ class MediaOrganization extends Model
     {
         return json_decode($value);
     }
+
+    // Define the relationship to AdPlacement
+    public function adPlacements()
+    {
+        return $this->hasMany(AdPlacement::class);
+    }
+
+    public function compliances()
+    {
+        return $this->hasMany(Compliance::class, 'media_id');
+    }
 }

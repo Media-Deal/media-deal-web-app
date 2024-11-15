@@ -39,7 +39,7 @@ trait RegistersDifferentUsers
             case 'media_org':
                 MediaOrganization::create([
                     'user_id' => $user->id,
-                    'organization_name' => $data['organization_name'] ?? null,
+                    'fullname' => $data['organization_name'] ?? null,
                 ]);
                 break;
             case 'marketer':
@@ -51,7 +51,7 @@ trait RegistersDifferentUsers
         }
 
         // Send verification email
-        $this->sendVerificationEmail($user);
+        // $this->sendVerificationEmail($user);
 
         return $user;
     }

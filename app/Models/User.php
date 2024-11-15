@@ -45,4 +45,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function compliances()
+    {
+        return $this->hasMany(Compliance::class, 'user_id');
+    }
 }

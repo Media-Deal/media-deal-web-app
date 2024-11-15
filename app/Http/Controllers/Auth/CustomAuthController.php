@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Mail\VerificationEmail;
+use App\Models\MediaOrganization;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -28,26 +29,31 @@ class CustomAuthController extends Controller
      */
     public function index()
     {
-        // Check the user's role and redirect accordingly
+        // Check if the user is authenticated
         $user = Auth::user();
 
         if ($user) {
+            // Set default data to pass to views
+            $data['mediaOrganizations'] = MediaOrganization::all();
+
+            // Redirect based on user role
             switch ($user->role) {
                 case 'advertiser':
-                    return view('advertiser.homepage');
+                    return view('advertiser.homepage', $data);
                 case 'media_org':
-                    return redirect()->route('media_org.dashboard');
+                    return view('media_org.homepage', $data);
                 case 'marketer':
-                    return redirect()->route('marketer.dashboard');
+                    return view('marketer.homepage', $data);
                 default:
-                    return redirect('/home'); // Redirect to a default route or home if role is not recognized
+                    // Optional: handle undefined roles
+                    abort(403, 'Unauthorized action.');
             }
         }
 
-        // If no user is authenticated, redirect to login
-        ///
+        // Redirect to login if no user is authenticated
         return redirect()->route('login');
     }
+
 
 
     public function verify($id)
@@ -158,5 +164,15 @@ class CustomAuthController extends Controller
 
         // Flash success message to the session
         return redirect()->back()->with('success', 'A new verification code has been sent to your email.');
+    }
+
+
+    public function UserLogout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('login')->with('status', 'You have been logged out successfully.');
     }
 }

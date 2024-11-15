@@ -51,7 +51,7 @@ trait RegistersDifferentUsers
         }
 
         // Send verification email
-        $this->sendVerificationEmail($user);
+        // $this->sendVerificationEmail($user);
 
         return $user;
     }
