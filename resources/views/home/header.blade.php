@@ -57,7 +57,7 @@
                             style="width: 30px; height: 30px;">
                     </div>
                     <img class="img-fluid" src="{{asset('img/favicon.png')}}" alt="Icon"
-                        style="width: 200px; height: 100px;">
+                        style="width: 120px; height: 80px;">
                 </a>
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
@@ -113,7 +113,7 @@
                                         <h6 class="dropdown-item">About Us</h6>
                                     </a>
                                     <a href="{{ url('faq') }}" class="text-decoration-none">
-                                        <h6 class="dropdown-item">Faq</h6>
+                                        <h6 class="dropdown-item">FAQ</h6>
 
 
                                     <a href="{{ url('policies') }}" class="text-decoration-none">

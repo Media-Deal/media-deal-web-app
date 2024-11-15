@@ -29,18 +29,6 @@
     <div class="row">
       <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12">
         <div class="accordion" id="accordionExample">
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button class="accordion-button collapsed fs-5 px-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                What is Media Deal?
-              </button>
-            </h2>
-            <div id="collapseTwo" class="accordion-collapse show" data-bs-parent="#accordionExample">
-              <div class="accordion-body bg-light py-3 px-3">
-                Media Deal is a platform for buying and selling radio, TV, and online advertisements. It aims to streamline the advertising process by providing a centralized place for advertisers and media organizations to connect.
-              </div>
-            </div>
-          </div>
 
           <div class="accordion-item">
             <h2 class="accordion-header">
@@ -48,7 +36,7 @@
                 What does Media Deal offer?
               </button>
             </h2>
-            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div id="collapseThree" class="accordion-collapse show" data-bs-parent="#accordionExample">
               <div class="accordion-body bg-light">
                 Media Deal offers a streamlined platform for buying and selling radio and TV advertisements, facilitating seamless connections between advertisers, media organizations, and marketers.
               </div>
@@ -193,11 +181,7 @@
               </div>
             </div>
           </div>
-        </div>
-      </div>
 
-      <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12">
-        <div class="accordion" id="accordionExample">
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed fs-5 px-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwelve" aria-expanded="false" aria-controls="collapseTwelve">
@@ -210,7 +194,11 @@
               </div>
             </div>
           </div>
+        </div>
+      </div>
 
+      <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12">
+        <div class="accordion" id="accordionExample">
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed fs-5 px-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThiirteen" aria-expanded="false" aria-controls="collapseThiirteen">
