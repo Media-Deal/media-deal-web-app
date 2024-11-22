@@ -11,6 +11,17 @@ class Advertiser extends Model
 
     protected $fillable = [
         'user_id',
+        'phone_number',
+        'address',
+        'date_of_birth',
+        'company_name',
+        'description',
+        'store_address'
 
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

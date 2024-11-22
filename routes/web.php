@@ -117,6 +117,11 @@ Route::middleware('user_auth')->group(function () {
 
         // Delete Ad
         Route::delete('/delete-ads/{ad}', [App\Http\Controllers\AdvertiserController::class, 'deleteAd'])->name('advertiser.ads.delete');
+
+
+
+        Route::post('/update-avatar/{id}', [App\Http\Controllers\AdvertiserController::class, 'updateAvatar'])->name('advertiser.updateAvatar');
+        Route::put('/update-profile', [App\Http\Controllers\AdvertiserController::class, 'updateAdvertiser'])->name('advertiser.profile.update');
     });
 
     // Media Organization Routes

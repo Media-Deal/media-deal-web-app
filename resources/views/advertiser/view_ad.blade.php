@@ -59,7 +59,15 @@
                                     <strong>Media:</strong>
                                 </div>
                                 <div class="col-md-8">
-                                    {{ $ad->media->name ?? 'N/A' }}
+                                    @if(strtolower($ad->media->media_type ?? '') === 'tv')
+                                    {{ $ad->media->tv_name ?? 'N/A' }}
+                                    @elseif(strtolower($ad->media->media_type ?? '') === 'radio')
+                                    {{ $ad->media->radio_name ?? 'N/A' }}
+                                    @elseif(strtolower($ad->media->media_type ?? '') === 'internet')
+                                    {{ $ad->media->internet_name ?? 'N/A' }}
+                                    @else
+                                    N/A
+                                    @endif
                                 </div>
                             </div>
                             <div class="row mb-3">
