@@ -38,23 +38,11 @@
             </h2>
             <div id="collapseThree" class="accordion-collapse show" data-bs-parent="#accordionExample">
               <div class="accordion-body bg-light">
-                Media Deal offers a streamlined platform for buying and selling radio and TV advertisements, facilitating seamless connections between advertisers, media organizations, and marketers.
+                Media Deal offers a streamlined platform for buying and selling radio, TV, and online advertisements, facilitating seamless connections between advertisers, media organizations, and marketers.
               </div>
             </div>
           </div>
 
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button class="accordion-button collapsed fs-5 px-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                How do I register on Media Deal?
-              </button>
-            </h2>
-            <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-              <div class="accordion-body bg-light">
-                You can register using your email or social media accounts. After registration, you will need to verify your email address to log in.
-              </div>
-            </div>
-          </div>
 
           <div class="accordion-item">
             <h2 class="accordion-header">
@@ -64,7 +52,7 @@
             </h2>
             <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
               <div class="accordion-body bg-light">
-                	Advertisers can browse available media organizations, select ad slots, submit ad details, and process payments through the platform. They can also monitor compliance and request refunds if necessary.
+                	Advertisers can browse available media organizations, select Ad slots, submit Ad details, and process payments through the platform. They can also monitor compliance and request refunds if necessary.
               </div>
             </div>
           </div>
@@ -77,7 +65,7 @@
             </h2>
             <div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
               <div class="accordion-body bg-light">
-                Media organizations can list their available ad slots, view incoming ad requests, manage ad placements, upload proof of ad airing, and process refund requests.
+                Media organizations can list their available Ad slots, view incoming Ad requests, manage Ad placements, upload proof of Ad airing, and receive payment.
               </div>
             </div>
           </div>
@@ -105,19 +93,19 @@
               <div class="accordion-body bg-light">
                 <h5>Payment Collection</h5>
                 <h6 class=""><i class="fa fa-check text-primary"></i>Advertiser Makes Payment:</h6>
-                <p>When an advertiser books an ad slot through Media Deal, they make the full payment for the ad campaign upfront.
+                <p>When an advertiser books an Ad slot through Media Deal, they make the full payment for the Ad campaign upfront.
                 </p>
-                  <p>	Media Deal receives this payment and holds it in escrow, ensuring the advertiser's funds are secure and that the media organization will be paid after the ad campaign is successfully completed.
+                  <p>	Media Deal receives this payment and holds it in escrow, ensuring the advertiser's funds are secure and that the media organization will be paid after the Ad campaign is successfully completed.
                   </p>
 
                   <h5>Campaign Execution:</h5>
                   <h6><i class="fa fa-check text-primary"></i>Media Organization Runs the Ad:</h6>
-                  <p>The media organization airs the ad according to the agreed-upon schedule.</p>
+                  <p>The media organization airs the Ad according to the agreed-upon schedule.</p>
                   <p>During this time, the payment remains in escrow with Media Deal.</p>
 
                   <h5>Compliance and Proof Submission</h5>
                   <h6><i class="fa fa-check text-primary"></i>Media Organization Provides Proof:</h6>
-                  <p>After the campaign ends, the media organization must upload proof that the ad was aired as per the agreement (e.g., broadcast logs, screenshots, video clips).</p>
+                  <p>After the campaign ends, the media organization must upload proof that the Ad was aired as per the agreement (e.g., broadcast logs, screenshots, video clips).</p>
 
                   <h6><i class="fa fa-check text-primary"></i>Advertiser Review:</h6>
                   <p>The advertiser has a set period of 3 days to review the proof provided by the media organization.</p>
@@ -159,12 +147,12 @@
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed fs-5 px-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
-                What happens if my ad doesn’t air as planned?
+                What happens if my Ad doesn’t air as planned?
               </button>
             </h2>
             <div id="collapseTen" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
               <div class="accordion-body bg-light">
-                If your ad doesn’t air, you can request a refund through the platform. Media organizations will review the request and process the refund accordingly.
+                If your Ad doesn’t air, you can request a refund through the platform. Media organizations will review the request and process the refund accordingly.
               </div>
             </div>
           </div>
@@ -172,12 +160,12 @@
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed fs-5 px-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven">
-                How can I ensure my ad aired?
+                How can I ensure my Ad is aired?
               </button>
             </h2>
             <div id="collapseEleven" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
               <div class="accordion-body bg-light">
-                Media organizations are required to upload proof of ad airing. You can request proof of compliance through your dashboard.
+                Media organizations are required to upload proof of Ad airing. You can request proof of compliance through your dashboard.
               </div>
             </div>
           </div>
@@ -272,7 +260,7 @@
             </h2>
             <div id="collapseEighteen" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
               <div class="accordion-body bg-light">
-                	Marketers can earn a commission of 10-15%, depending on the ad volume and approval from the Media Organization.
+                	Marketers can earn a commission of 10-15%, depending on the Ad volume and approval from the Media Organization.
               </div>
             </div>
           </div>
@@ -324,7 +312,8 @@
           </h2>
           <div id="collapseTwentyTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
             <div class="accordion-body bg-light">
-              	How safe is my data?
+              Your data is protected with industry-standard security measures. Media Deal uses encryption and secure servers to ensure your personal and financial information is safe.
+
           </div>
         </div>
       </div>
