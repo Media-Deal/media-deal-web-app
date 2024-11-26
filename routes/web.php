@@ -36,8 +36,20 @@ Route::get('/station-details', function () {
     return view('advertiser.station-details');
 });
 
-Route::get('/policies', function () {
-    return view('home.policies');
+Route::get('/terms-of-service', function () {
+    return view('home.terms');
+});
+
+Route::get('/refund-policies', function () {
+    return view('home.refund');
+});
+
+Route::get('/proprietary-rights', function () {
+    return view('home.rights');
+});
+
+Route::get('/privacy-policy', function () {
+    return view('home.privacy');
 });
 
 Route::get('/faq', function () {

@@ -116,7 +116,7 @@
                                         <h6 class="dropdown-item">FAQ</h6>
 
 
-                                    <a href="{{ url('policies') }}" class="text-decoration-none">
+                                    <a href="{{ url('terms-of-service') }}" class="text-decoration-none">
                                         <h6 class="dropdown-item">Policies</h6>
                                     </a>
                                 </div>
