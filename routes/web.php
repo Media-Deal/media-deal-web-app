@@ -120,14 +120,19 @@ Route::middleware('user_auth')->group(function () {
     });
 
     // Media Organization Routes
-    Route::prefix('media-org')->middleware('auth:media_org')->group(function () {
+    Route::prefix('media-org')->group(function () {
         Route::get('dashboard', [App\Http\Controllers\MediaOrganizationController::class, 'index'])->name('media_org.dashboard');
         Route::get('profile', [App\Http\Controllers\MediaOrganizationController::class, 'profile'])->name('media_org.profile');
+        Route::get('manage-account', [App\Http\Controllers\MediaOrganizationController::class, 'manageAccount'])->name('media_org.manage-account');
+        Route::post('store', [App\Http\Controllers\MediaOrganizationController::class, 'store'])->name('store');
+        // Route::post('media-organizations/create', [App\Http\Controllers\MediaOrganizationController::class, 'createDetails'])->name('createdetails');
+        Route::post('/media_organizations/{id}/update', [App\Http\Controllers\MediaOrganizationController::class, 'updateDetails'])->name('media_organizations.update');
+
         // Add more routes for Media Organization
     });
 
     // Marketer Routes
-    Route::prefix('marketer')->middleware('auth:marketer')->group(function () {
+    Route::prefix('marketer')->group(function () {
         Route::get('dashboard', [App\Http\Controllers\MarketerController::class, 'index'])->name('marketer.dashboard');
         Route::get('profile', [App\Http\Controllers\MarketerController::class, 'profile'])->name('marketer.profile');
         // Add more routes for Marketer

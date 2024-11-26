@@ -4,12 +4,27 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\MediaOrganization;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class MediaOrganizationController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return view('media_org.dashboard');
+
+        $searchQuery = $request->input('search_query');
+        $mediaOrganizations = MediaOrganization::query();
+
+        if ($searchQuery) {
+            $mediaOrganizations->where('tv_name', 'like', "%{$searchQuery}%")
+                ->orWhere('radio_name', 'like', "%{$searchQuery}%")
+                ->orWhere('internet_name', 'like', "%{$searchQuery}%");
+        }
+
+        $mediaOrganizations = $mediaOrganizations->get();
+
+        return view('media_org.homepage', compact ('mediaOrganizations'));
+    
     }
 
     public function profile()
@@ -17,15 +32,74 @@ class MediaOrganizationController extends Controller
         return view('media_org.profile');
     }
 
-    public function store(Request $request)
+    public function manageAccount()
+    {
+        // Fetch a single record (example for ID 1)
+        $mediaOrganization = MediaOrganization::find(1);
+    
+        // Or fetch all records
+        // $mediaOrganizations = MediaOrganization::all();
+    
+        return view('media_org.manage-account', compact('mediaOrganization'));
+    }
+    
+
+
+    public function updateDetails(Request $request, $id)
     {
         $request->validate([
-            'fullname' => 'required|string|max:255',
-            'phone' => 'required|string|max:15',
-            'email' => 'required|email|unique:media_organizations,email',
-            'nindetails' => 'required|string|max:255',
-            'staffid' => 'required|file|mimes:jpeg,png,pdf',
-            'position' => 'required|string|max:50',
+            'fullname' => 'string|max:255',
+            'phone' => 'string|max:15',
+            'email' => "email|unique:media_organizations,email,$id",
+            'nindetails' => 'nullable|string|max:255',
+            'staffid' => 'nullable|file|mimes:jpeg,png,pdf|max:2048',
+            'position' => 'string|max:50',
+        ]);
+    
+        try {
+            $mediaOrganization = MediaOrganization::findOrFail($id);
+    
+            $staffIdPath = $mediaOrganization->staff_id;
+            if ($request->hasFile('staffid')) {
+                $file_staffid = $request->file('staffid');
+                $filename_staffid = time() . '_staffid.' . $file_staffid->getClientOriginalExtension();
+                $staffIdPath = $file_staffid->storeAs('staff_ids', $filename_staffid, 'public');
+    
+                if ($mediaOrganization->staff_id && Storage::disk('public')->exists($mediaOrganization->staff_id)) {
+                    Storage::disk('public')->delete($mediaOrganization->staff_id);
+                }
+            }
+    
+            $mediaOrganization->update([
+                'fullname' => $request->fullname,
+                'phone' => $request->phone,
+                'email' => $request->email,
+                'nin_details' => $request->nindetails,
+                'staff_id' => $staffIdPath,
+                'position' => $request->position,
+            ]);
+    
+            return redirect()->route('media_org.manage-account')->with('success', 'Details updated successfully.');
+        } catch (ModelNotFoundException $e) {
+            return redirect()->back()->with('error', 'Media Organization not found.');
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            return redirect()->back()->withErrors($e->validator)->withInput();
+        } catch (\Illuminate\Database\QueryException $e) {
+            return redirect()->back()->with('error', 'Database error: ' . $e->getMessage());
+        } catch (\Exception $e) {
+            \Log::error('Update Details Error: ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Failed to update details. Please try again.');
+        }
+    }
+    
+
+    
+
+
+             
+    
+     public function store(Request $request, $id){
+        $request->validate([
             'media_type' => 'required',
             'tv_logo' => 'nullable|image|max:2048',
             'radio_logo' => 'nullable|file|mimes:jpg,jpeg,png',
@@ -139,18 +213,13 @@ class MediaOrganizationController extends Controller
             $internet_advert_rate = 'uploads/advert_rates/' . $filename_internet_advert_rate;
         }
 
-        MediaOrganization::create([
-            'fullname' => $request->fullname,
-            'phone' => $request->phone,
-            'email' => $request->email,
-            'nin_details' => $request->nindetails,
-            'staff_id' => $staffIdPath,
-            'position' => $request->position,
+        MediaOrganization::update([
             'media_type' => $request->input('media_type'),
             'tv_name' => $request->input('tv_name'),
             'tv_logo' => $tv_logo,
             'tv_main_studio_location' => $request->input('tv_main_studio_location'),
             'tv_channel_location' => $request->input('tv_channel_location'),
+            'tv_channel_location_other' => $request->input('tv_channel_location_other'),
             'tv_content_focus' => $request->input('tv_content_focus'),
             'tv_content_focus_other' => $request->input('tv_content_focus_other'),
             'target_audience' => $request->input('target_audience'),
