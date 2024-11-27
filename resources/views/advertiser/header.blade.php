@@ -536,7 +536,7 @@
                         </a>
                     </li>
                     <li class="side-nav-item">
-                        <a href="{{route('manage.compliance.page')}}" class="side-nav-link">
+                        <a href="{{route('advertiser.manage.compliance')}}" class="side-nav-link">
                             <i class="uil-user"></i>
                             <span> Manage Complaince</span>
                         </a>
