@@ -14,10 +14,10 @@
     <div class="col-md-6 animated fadeIn">
       <div class="owl-carousel header-carousel">
         <div class="owl-carousel-item">
-          <img class="img-fluid" src="img/carousel-1.jpg" alt="media photo1" style="width: 100%; height: 28rem">
+          <img class="img-fluid" src="img/carousel-1.jpg" alt="media photo1" style="width: 100%; height: 36rem">
         </div>
         <div class="owl-carousel-item">
-          <img class="img-fluid" src="img/carousel-2.jpg" alt="media photo 2" style="width: 100%; height: 28rem">
+          <img class="img-fluid" src="img/chosen.jpg" alt="media photo 2" style="width: 100%; height: 36rem">
         </div>
       </div>
     </div>
@@ -30,7 +30,7 @@
   <div class="container position-relative py-2">
     <div class="row">
       <div class="col-12"  data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
-        <h3 class="text-light text-center fs-3 py-5">Deal Directly with the Top Media Brands and Influencers
+        <h3 class="text-light text-center fs-3 py-5">Deal Directly with Top Media Brands and Influencers
         </h3>
       </div>
     </div>
@@ -54,7 +54,7 @@
           <div class="card-body">
             <img src="img/md2.png" class="img-fluid w-50 h-50">
             <h3 class="fs-4 text-primary py-2">Cashback Guarantee</h3>
-            <p class="fs-6 mb-0 fw-500 text-light">Keep tabs on your ad placements, and if any slot fails, get refunds
+            <p class="fs-6 mb-0 fw-500 text-light">Keep tabs on your Ad placements, and if any slot fails, get refunds
               before apologies.</p>
           </div>
         </div>
@@ -87,7 +87,7 @@
                 </div>
                 <div class="col-lg-6 wow fadeIn" data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine"> 
                     <div class="px-5">
-                        <p class="mb-4 text-dark fs-5"><span class="text-primary fw-bolder fs-3"><i>Earn commision</i></span> as a marketer every time you successfully seal media deals. who knew closing deals could
+                        <p class="mb-4 text-dark fs-5"><span class="text-primary fw-bolder fs-3"><i>Earn commision</i></span> as a marketer every time you successfully seal media deals. Who knew closing deals could
                             be so rewarding?</p>
                             <div class="d-flex justify-content-center">
                                 <a href="{{route('register')}}" class="btn btn-primary py-2 px-4 me-3 my-3 animated fadeIn">Start Now</a>
@@ -152,7 +152,7 @@
             <div class="row g-0 gx-5 px-lg-5 d-flex justify-content-center align-items-center h-100">
                 <div class="col-lg-12 px-lg-5">
                     <div class="text-start mx-auto mb-5 px-lg-5 wow slideInLeft" data-wow-delay="0.5s">
-                            <p class="text-light fs-5 px-lg-5 text-primary">Get ready for streamlined communication, efficient negotiations and advertising outcomes so optimal they will make your competitors green with envy - all with media deal</p>
+                            <p class="text-light fs-5 px-lg-5 text-primary">Get ready for streamlined communication, efficient negotiations, and advertising outcomes so optimal they will make your competitors green with envy - all with media deal</p>
                         <div class="text-xs-center text-sm-center text-md-center text-lg-center px-lg-5">
                             <a href="{{route('register')}}" class="btn btn-dark px-4 py-2 animated fadeIn p">Start Now</a>
                         </div>
@@ -183,23 +183,11 @@
                         </h2>
                         <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                           <div class="accordion-body bg-light">
-                            Media Deal offers a streamlined platform for buying and selling radio and TV advertisements, facilitating seamless connections between advertisers, media organizations, and marketers.
+                            Media Deal offers a streamlined platform for buying and selling radio, TV, and online advertisements, facilitating seamless connections between advertisers, media organizations, and marketers.
                           </div>
                         </div>
                       </div>
-            
-                      <div class="accordion-item">
-                        <h2 class="accordion-header">
-                          <button class="accordion-button collapsed bg-light fs-5 px-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                            How do I register on Media Deal?
-                          </button>
-                        </h2>
-                        <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                          <div class="accordion-body bg-light">
-                            You can register using your email or social media accounts. After registration, you will need to verify your email address to log in.
-                          </div>
-                        </div>
-                      </div>
+          
             
                       <div class="accordion-item">
                         <h2 class="accordion-header">
@@ -209,7 +197,7 @@
                         </h2>
                         <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                           <div class="accordion-body bg-light">
-                                Advertisers can browse available media organizations, select ad slots, submit ad details, and process payments through the platform. They can also monitor compliance and request refunds if necessary.
+                                Advertisers can browse available media organizations, select Ad slots, submit Ad details, and process payments through the platform. They can also monitor compliance and request refunds if necessary.
                           </div>
                         </div>
                       </div>
@@ -222,7 +210,7 @@
                         </h2>
                         <div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                           <div class="accordion-body bg-light">
-                            Media organizations can list their available ad slots, view incoming ad requests, manage ad placements, upload proof of ad airing, and process refund requests.
+                            Media organizations can list their available Ad slots, view incoming Ad requests, manage Ad placements, upload proof of Ad airing, and receive payment.
                           </div>
                         </div>
                       </div>
@@ -261,12 +249,12 @@
                           <div class="accordion-item">
                             <h2 class="accordion-header">
                               <button class="accordion-button collapsed bg-light fs-5 px-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
-                                What happens if my ad doesn’t air as planned?
+                                What happens if my Ad doesn’t air as planned?
                               </button>
                             </h2>
                             <div id="collapseTen" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                               <div class="accordion-body bg-light">
-                                If your ad doesn’t air, you can request a refund through the platform. Media organizations will review the request and process the refund accordingly.
+                                If your Ad doesn’t air, you can request a refund through the platform. Media organizations will review the request and process the refund accordingly.
                               </div>
                             </div>
                           </div>
@@ -274,12 +262,12 @@
                           <div class="accordion-item">
                             <h2 class="accordion-header">
                               <button class="accordion-button collapsed bg-light fs-5 px-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven">
-                                How can I ensure my ad aired?
+                                How can I ensure my Ad is aired?
                               </button>
                             </h2>
                             <div id="collapseEleven" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                               <div class="accordion-body bg-light">
-                                Media organizations are required to upload proof of ad airing. You can request proof of compliance through your dashboard.
+                                Media organizations are required to upload proof of Ad airing. You can request proof of compliance through your dashboard.
                               </div>
                             </div>
                           </div>
@@ -295,19 +283,6 @@
               <div class="accordion-body bg-light">
                 If you encounter any issues, you can contact user support through the platform. The support team will
                 assist you with any problems you may have.
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button class="accordion-button collapsed fs-5 px-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThiirteen" aria-expanded="false" aria-controls="collapseThiirteen">
-                How will Media Deal evolve in the future?
-              </button>
-            </h2>
-            <div id="collapseThiirteen" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-              <div class="accordion-body bg-light">
-                In the future, Media Deal plans to expand to other media types, such as social media, streaming platforms, podcasts, and vodcasts. The platform will also open its marketplace to creatives like scriptwriters, animators, and voice-over artists.
               </div>
             </div>
           </div>
