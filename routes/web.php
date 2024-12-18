@@ -37,9 +37,6 @@ Route::get('/manage-compliance', function () {
     return view('advertiser.manage-compliance');
 });
 
-Route::get('/profile', function () {
-    return view('advertiser.profile');
-});
 
 Route::get('/manage-refund', function () {
     return view('advertiser.manage-refund');
@@ -76,6 +73,7 @@ Route::middleware('auth')->group(function () {
     Route::prefix('advertiser')->middleware(['user_auth:advertiser'])->group(function () {
         Route::get('dashboard', [AdvertiserController::class, 'index'])->name('advertiser.dashboard');
         Route::get('profile', [AdvertiserController::class, 'profile'])->name('advertiser.profile');
+        Route::put('profile', [AdvertiserController::class, 'updateProfile'])->name('advertiser.profile.update');
         Route::get('manage-ads', [AdvertiserController::class, 'manageAds'])->name('advertiser.manage.ads');
         Route::get('media/{id}', [AdvertiserController::class, 'showMedia'])->name('advertiser.media.show');
 

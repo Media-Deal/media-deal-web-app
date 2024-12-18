@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class MediaOrganization extends Model
 {
     use HasFactory;
-
+ 
     protected $fillable = [
         'user_id',
         'fullname',
