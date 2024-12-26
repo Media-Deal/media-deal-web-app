@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\MediaOrganization;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -34,82 +35,323 @@ class MediaOrganizationController extends Controller
 
     public function manageAccount()
     {
-        // Fetch a single record (example for ID 1)
-        $mediaOrganization = MediaOrganization::find(1);
+        // Fetch the MediaOrganization record for the authenticated user
+        $mediaOrganization = MediaOrganization::where('user_id', Auth::user()->id)->first();
     
-        // Or fetch all records
-        // $mediaOrganizations = MediaOrganization::all();
-    
+        // Pass the data to the view
         return view('media_org.manage-account', compact('mediaOrganization'));
     }
     
+    
 
+    
 
-    public function updateDetails(Request $request, $id)
-    {
-        $request->validate([
-            'fullname' => 'string|max:255',
-            'phone' => 'string|max:15',
-            'email' => "email|unique:media_organizations,email,$id",
-            'nindetails' => 'nullable|string|max:255',
-            'staffid' => 'nullable|file|mimes:jpeg,png,pdf|max:2048',
-            'position' => 'string|max:50',
-        ]);
-    
-        try {
-            $mediaOrganization = MediaOrganization::findOrFail($id);
-    
-            $staffIdPath = $mediaOrganization->staff_id;
-            if ($request->hasFile('staffid')) {
-                $file_staffid = $request->file('staffid');
-                $filename_staffid = time() . '_staffid.' . $file_staffid->getClientOriginalExtension();
-                $staffIdPath = $file_staffid->storeAs('staff_ids', $filename_staffid, 'public');
-    
-                if ($mediaOrganization->staff_id && Storage::disk('public')->exists($mediaOrganization->staff_id)) {
-                    Storage::disk('public')->delete($mediaOrganization->staff_id);
-                }
-            }
-    
-            $mediaOrganization->update([
-                'fullname' => $request->fullname,
-                'phone' => $request->phone,
-                'email' => $request->email,
-                'nin_details' => $request->nindetails,
-                'staff_id' => $staffIdPath,
-                'position' => $request->position,
-            ]);
-    
-            return redirect()->route('media_org.manage-account')->with('success', 'Details updated successfully.');
-        } catch (ModelNotFoundException $e) {
-            return redirect()->back()->with('error', 'Media Organization not found.');
-        } catch (\Illuminate\Validation\ValidationException $e) {
-            return redirect()->back()->withErrors($e->validator)->withInput();
-        } catch (\Illuminate\Database\QueryException $e) {
-            return redirect()->back()->with('error', 'Database error: ' . $e->getMessage());
-        } catch (\Exception $e) {
-            \Log::error('Update Details Error: ' . $e->getMessage());
-            return redirect()->back()->with('error', 'Failed to update details. Please try again.');
-        }
+public function updateDetails(Request $request)
+{
+    try {
+        // Create or update MediaOrganization details
+        $details = MediaOrganization::updateOrCreate(
+            ['user_id' => Auth::user()->id], // Condition to match existing record (by user_id)
+            [
+                'fullname' => $request->input('fullname'),
+                'phone'    => $request->input('phone'),
+                'email'    => $request->input('email'),
+                'position' => $request->input('position'),
+            ]
+        );
+
+        // Redirect with success message
+        return redirect()
+            ->route('media_org.manage-account')
+            ->with('success', 'Details saved successfully.');
+
+    } catch (\Exception $e) {
+        \Log::error('Error saving details: ' . $e->getMessage());
+        return redirect()->back()->with('error', 'An error occurred while saving your details. Please try again.');
     }
-    
+}
 
-    
+
+
+
+public function updatetvDetails(Request $request)
+{
+    try {
+        // Validate the request, including file uploads
+        $request->validate([
+            'tv_logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validate tv_logo file
+            'advert_rate' => 'nullable|file|mimes:pdf,docx,txt|max:5120', // Validate advert_rate file
+        ]);
+
+        // Handle file uploads
+        $tv_logo_path = null;
+        $advert_rate_path = null;
+
+        // Upload tv_logo if a file is provided
+        if ($request->hasFile('tv_logo')) {
+            $tv_logo = $request->file('tv_logo');
+            $tv_logo_path = $tv_logo->store('media/logos', 'public');
+        }
+
+        // Upload advert_rate if a file is provided
+        if ($request->hasFile('advert_rate')) {
+            $advert_rate = $request->file('advert_rate');
+            $advert_rate_path = $advert_rate->store('media/advert_rates', 'public');
+        }
+
+        // Create or update MediaOrganization details
+        $details = MediaOrganization::updateOrCreate(
+            ['user_id' => Auth::user()->id], // Condition to match existing record (by user_id)
+            [
+                'media_type' => $request->input('media_type'),
+                'tv_type'    => $request->input('tv_type'),
+                'tv_name'    => $request->input('tv_name'),
+                'tv_logo'    => $tv_logo_path, // Store the path of the uploaded logo
+                'tv_main_studio_location' => $request->input('tv_main_studio_location'),
+                'tv_content_focus' => $request->input('tv_content_focus'),
+                'tv_content_focus_other' => $request->input('tv_content_focus_other'),
+                'tv_target_audience' => $request->input('tv_target_audience'),
+                'tv_youtube' => $request->input('tv_youtube'),
+                'tv_streaming_url' => $request->input('tv_streaming_url'),
+                'advert_rate' => $advert_rate_path, // Store the path of the uploaded advert rate file
+                'tv_facebook' => $request->input('tv_facebook'),
+                'tv_twitter' => $request->input('tv_twitter'),
+                'tv_instagram' => $request->input('tv_instagram'),
+                'tv_other' => $request->input('tv_other'),
+            ]
+        );
+
+        // Redirect with success message
+        return redirect()
+            ->route('media_org.manage-account')
+            ->with('success', 'TV details saved successfully.');
+
+    } catch (\Exception $e) {
+        \Log::error('Error saving details: ' . $e->getMessage());
+        return redirect()->back()->with('error', 'An error occurred while saving your details. Please try again.');
+    }
+}
+
+
+
+
+
+
+public function updateradioDetails(Request $request)
+{
+    try {
+        $request->validate([
+            'radio_logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:8000',
+            'radio_advert_rate' => 'nullable|file|mimes:pdf,docx,txt|max:10240',
+            // 'radio_content_focus' => 'nullable|array',
+            'radio_content_focus.*' => 'string',
+        ]);
+
+        // Fetch existing details or initialize an empty model
+        $details = MediaOrganization::firstOrNew(['user_id' => Auth::user()->id]);
+
+        // Handle file uploads
+        if ($request->hasFile('radio_logo')) {
+            $radio_logo = $request->file('radio_logo');
+            $details->radio_logo = $radio_logo->store('media/logos', 'public');
+        }
+
+        if ($request->hasFile('radio_advert_rate')) {
+            $radio_advert_rate = $request->file('radio_advert_rate');
+            $details->radio_advert_rate = $radio_advert_rate->store('media/radio_advert_rates', 'public');
+        }
+
+        // Update other fields
+        $details->fill([
+            'media_type' => $request->input('media_type'),
+            'radio_type' => $request->input('radio_type'),
+            'radio_name' => $request->input('radio_name'),
+            'radio_frequency' => $request->input('radio_frequency'),
+            'radio_station_location' => $request->input('radio_station_location'),
+            'radio_content_focus' => $request->input('radio_content_focus'),
+            'radio_content_focus_other' => $request->input('radio_content_focus_other'),
+            'radio_target_audience' => $request->input('radio_target_audience'),
+            'radio_streaming_url' => $request->input('radio_streaming_url'),
+            'radio_facebook' => $request->input('radio_facebook'),
+            'radio_twitter' => $request->input('radio_twitter'),
+            'radio_instagram' => $request->input('radio_instagram'),
+            'radio_other' => $request->input('radio_other'),
+        ]);
+
+        $details->save();
+
+        return redirect()->route('media_org.manage-account')
+            ->with('success', 'Radio details saved successfully.');
+
+    } catch (\Exception $e) {
+        \Log::error('Error saving radio details: ' . $e->getMessage());
+        \Log::error($e->getTraceAsString());
+        return redirect()->back()->with('error', 'An error occurred while saving your details. Please try again.');
+    }
+}
+
+
+
+
+
+
+// public function updateinternetDetails(Request $request)
+// {
+//     try {
+//         $request->validate([
+//             'internet_logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:8000',
+//             'internet_advert_rate' => 'nullable|file|mimes:pdf,docx,txt|max:10240',
+//         ]);
+
+//         // Fetch existing details or initialize an empty model
+//         $details = MediaOrganization::firstOrNew(['user_id' => Auth::user()->id]);
+
+//         // Handle file uploads
+//         if ($request->hasFile('internet_logo')) {
+//             $internet_logo = $request->file('internet_logo');
+//             $details->internet_logo = $internet_logo->store('media/logos', 'public');
+//         }
+
+//         if ($request->hasFile('internet_advert_rate')) {
+//             $internet_advert_rate = $request->file('internet_advert_rate');
+//             $details->internet_advert_rate = $internet_advert_rate->store('media/internet_advert_rates', 'public');
+//         }
+
+//         // Update other fields
+//         $details->fill([
+//             'media_type' => $request->input('media_type'),
+//             'internet_type' => $request->input('internet_type'),
+//             'internet_name' => $request->input('internet_name'),
+//             'all_internet_youtube' => $request->input('all_internet_youtube'),
+//             'internet_twitter' => $request->input('internet_twitter'),
+//             'internet_facebook' => $request->input('internet_facebook'),
+//             'internet_twitch' => $request->input('internet_twitch'),
+//             'internet_channel_location' => $request->input('internet_channel_location'),
+//             'internet_channel_location_other' => $request->input('internet_channel_location_other'),
+//             'internet_content_focus' => $request->input('internet_content_focus'),
+//             'internet_content_focus_other' => $request->input('internet_content_focus_other'),
+//             'internet_target_audience' => $request->input('internet_target_audience'),
+//             'internet_broadcast_duration' => $request->input('internet_broadcast_duration'),
+//             'internet_often_post' => $request->input('internet_often_post'),
+//             'internet_broadcast_duration' => $request->input('internet_broadcast_duration'),
+//             'internet_youtube' => $request->input('internet_youtube'),
+//             'internet_streaming_url' => $request->input('internet_streaming_url'),
+//             'internet_instagram' => $request->input('internet_instagram'),
+//             'internet_tiktok' => $request->input('internet_tiktok'),
+//             'internet_other' => $request->input('internet_other'),
+//         ]);
+
+//         $details->save();
+
+//         return redirect()->route('media_org.manage-account')
+//             ->with('success', 'Internet details saved successfully.');
+
+//     } catch (\Exception $e) {
+//         \Log::error('Error saving internet details: ' . $e->getMessage());
+//         \Log::error($e->getTraceAsString());
+//         return redirect()->back()->with('error', 'An error occurred while saving your details. Please try again.');
+//     }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+public function updateInternetDetails(Request $request)
+{
+    try {
+        $request->validate([
+            'internet_logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:8000',
+            'internet_advert_rate' => 'nullable|file|mimes:pdf,docx,txt|max:10240',
+        ]);
+
+        DB::beginTransaction();
+
+        $details = MediaOrganization::firstOrNew(['user_id' => Auth::user()->id]);
+
+        if ($request->hasFile('internet_logo')) {
+            $details->internet_logo = $request->file('internet_logo')->store('media/logos', 'public');
+        }
+
+        if ($request->hasFile('internet_advert_rate')) {
+            $details->internet_advert_rate = $request->file('internet_advert_rate')->store('media/internet_advert_rates', 'public');
+        }
+
+        $details->fill($request->only([
+            'media_type',
+            'internet_type',
+            'internet_name',
+            'all_internet_youtube',
+            'internet_twitter',
+            'internet_facebook',
+            'internet_twitch',
+            'internet_channel_location',
+            'internet_channel_location_other',
+            'internet_content_focus',
+            'internet_content_focus_other',
+            'internet_target_audience',
+            'internet_broadcast_duration',
+            'internet_often_post',
+            'internet_youtube',
+            'internet_streaming_url',
+            'internet_instagram',
+            'internet_tiktok',
+            'internet_other',
+        ]));
+
+        $details->save();
+
+        DB::commit();
+
+        return redirect()->route('media_org.manage-account')
+            ->with('success', 'Internet details saved successfully.');
+    } catch (\Exception $e) {
+        DB::rollBack();
+
+        \Log::error('Error saving internet details: ' . $e->getMessage());
+        \Log::error($e->getTraceAsString());
+
+        return redirect()->back()->with('error', 'An error occurred while saving your details. Please try again.');
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
              
     
-     public function store(Request $request, $id){
+     public function updateMediatypeDetails(Request $request, $id = null){
         $request->validate([
             'media_type' => 'required',
-            'tv_logo' => 'nullable|image|max:2048',
-            'radio_logo' => 'nullable|file|mimes:jpg,jpeg,png',
-            'internet_logo' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'tv_type' => 'nullable|string',
             'tv_name' => 'nullable|string|max:255',
+            'tv_logo' => 'nullable|image|max:2048',
             'tv_main_studio_location' => 'nullable|string',
             'tv_channel_location' => 'nullable|array',
+            'tv_channel_location_other' => 'nullable|string',
             'tv_content_focus' => 'nullable|string',
             'tv_content_focus_other' => 'nullable|string|max:255',
-            'target_audience' => 'nullable|string',
+            'tv_target_audience' => 'nullable|string',
             'tv_peak_viewing_times' => 'array',
             'tv_youtube' => 'nullable|url',
             'tv_website' => 'nullable|url',
@@ -124,6 +366,8 @@ class MediaOrganizationController extends Controller
             'tv_email' => 'nullable|email',
             'tv_phone' => 'nullable|string',
             'tv_contact_person' => 'nullable|string|max:255',
+            'radio_logo' => 'nullable|file|mimes:jpg,jpeg,png',
+            'internet_logo' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'radio_type' => 'required|string',
             'radio_name' => 'required|string|max:255',
             'radio_frequency' => 'required|string',
@@ -153,15 +397,6 @@ class MediaOrganizationController extends Controller
             'internet_contact_person' => 'required|string|max:255',
         ]);
 
-        // Upload staff ID
-        $staffIdPath = null;
-        if ($request->hasFile('staffid')) {
-            $file_staffid = $request->file('staffid');
-            $ext_staffid = $file_staffid->getClientOriginalExtension();
-            $filename_staffid = time() . '_staffid.' . $ext_staffid;
-            $file_staffid->move('uploads/staff_ids/', $filename_staffid);
-            $staffIdPath = 'uploads/staff_ids/' . $filename_staffid;
-        }
 
         // Upload TV logo
         $tv_logo = null;
@@ -213,8 +448,9 @@ class MediaOrganizationController extends Controller
             $internet_advert_rate = 'uploads/advert_rates/' . $filename_internet_advert_rate;
         }
 
-        MediaOrganization::update([
+            MediaOrganization::updateOrCreate([
             'media_type' => $request->input('media_type'),
+            'tv_type' => $request->input('tv_type'),
             'tv_name' => $request->input('tv_name'),
             'tv_logo' => $tv_logo,
             'tv_main_studio_location' => $request->input('tv_main_studio_location'),
@@ -222,7 +458,7 @@ class MediaOrganizationController extends Controller
             'tv_channel_location_other' => $request->input('tv_channel_location_other'),
             'tv_content_focus' => $request->input('tv_content_focus'),
             'tv_content_focus_other' => $request->input('tv_content_focus_other'),
-            'target_audience' => $request->input('target_audience'),
+            'tv_target_audience' => $request->input('tv_target_audience'),
             'tv_peak_viewing_times' => $request->input('tv_peak_viewing_times'),
             'tv_youtube' => $request->input('tv_youtube'),
             'tv_website' => $request->input('tv_website'),

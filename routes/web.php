@@ -137,9 +137,11 @@ Route::middleware('user_auth')->group(function () {
         Route::get('profile', [App\Http\Controllers\MediaOrganizationController::class, 'profile'])->name('media_org.profile');
         Route::get('manage-account', [App\Http\Controllers\MediaOrganizationController::class, 'manageAccount'])->name('media_org.manage-account');
         Route::post('store', [App\Http\Controllers\MediaOrganizationController::class, 'store'])->name('store');
-        // Route::post('media-organizations/create', [App\Http\Controllers\MediaOrganizationController::class, 'createDetails'])->name('createdetails');
         Route::post('/media_organizations/{id}/update', [App\Http\Controllers\MediaOrganizationController::class, 'updateDetails'])->name('media_organizations.update');
-
+        Route::post('/update-details',[App\Http\Controllers\MediaOrganizationController::class, 'updateDetails'])->name('media_organizations.update');
+        Route::post('/update-tvdetails',[App\Http\Controllers\MediaOrganizationController::class, 'updatetvDetails'])->name('media_organizationstv.update');
+        Route::post('/update-radiodetails',[App\Http\Controllers\MediaOrganizationController::class, 'updateradioDetails'])->name('media_organizationsradio.update');
+        Route::post('/update-internetdetails',[App\Http\Controllers\MediaOrganizationController::class, 'updateinternetDetails'])->name('media_organizationsinternet.update');
         // Add more routes for Media Organization
     });
 

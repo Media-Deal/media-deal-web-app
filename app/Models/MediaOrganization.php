@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\User;
+use App\Models\MediaOrganization;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class MediaOrganization extends Model
 {
@@ -25,8 +27,10 @@ class MediaOrganization extends Model
         'tv_logo',
         'tv_main_studio_location',
         'tv_channel_location',
+        'tv_channel_location_other',
         'tv_content_focus',
         'tv_content_focus_other',
+        'tv_target_audience',
         'tv_peak_viewing_times',
         'tv_youtube',
         'tv_website',
@@ -49,7 +53,13 @@ class MediaOrganization extends Model
         'radio_frequency',
         'radio_station_location',
         'radio_content_focus',
+        'radio_content_focus_other',
+        'radio_target_audience',
+        'radio_peak_viewing_times',
         'radio_youtube',
+        'radio_website',
+        'radio_streaming_url',
+        'radio_advert_rate',
         'radio_facebook',
         'radio_instagram',
         'radio_twitter',
@@ -64,8 +74,11 @@ class MediaOrganization extends Model
         'internet_type',
         'internet_name',
         'internet_logo',
+        'all_internet_youtube',
         'internet_channel_location',
+        'internet_channel_location_other',
         'internet_content_focus',
+        'internet_content_focus_other',
         'internet_target_audience',
         'internet_broadcast_duration',
         'internet_often_post',
@@ -74,14 +87,12 @@ class MediaOrganization extends Model
         'internet_streaming_url',
         'internet_advert_rate',
         'internet_facebook',
+        'internet_twitch',
         'internet_twitter',
         'internet_instagram',
         'internet_linkedin',
         'internet_tiktok',
         'internet_other',
-        'internet_email',
-        'internet_phone',
-        'internet_contact_person',
     ];
 
     protected $casts = [
@@ -110,5 +121,10 @@ class MediaOrganization extends Model
     public function compliances()
     {
         return $this->hasMany(Compliance::class, 'media_id');
+    }
+
+    public function user()
+    {
+       return $this->belongsTo(User::class, 'user_id','id');
     }
 }
