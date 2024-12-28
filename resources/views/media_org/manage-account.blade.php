@@ -30,30 +30,45 @@
 
                     <div class="row">
                         <div class="col-xl-4 col-lg-5">
-                            <div class="card text-center">
-                                <div class="card-body">
-                                    <img src="assets/images/users/avatar-1.jpg" class="rounded-circle avatar-lg img-thumbnail" alt="profile-image">
+                            <div class="card text-center shadow-sm border-0" style="background: white; color: black; padding: 0.5rem; height: auto;">
+                                <div class="card-body p-4">
+                                    <div class="profile-image-wrapper mb-3">
+                                        <img src="assets/images/users/avatar-1.jpg" 
+                                             class="rounded-circle avatar-lg img-thumbnail border border-2 border-primary shadow-sm" 
+                                             alt="profile-image">
+                                    </div>
+                    
                                     @if($mediaOrganization)
-                                    <h4 class="mb-0 mt-2">{{ $mediaOrganization->fullname }}</h4>
-                                    <p class="text-muted font-14">{{ $mediaOrganization->position }}</p>
-
-                                    <div class="text-start mt-3">
-                                       
-                                        <p class="text-muted mb-2 font-13"><strong>Full Name :</strong> <span class="ms-2">
-                                            {{ $mediaOrganization->fullname }}</span></p>
-
-                                        <p class="text-muted mb-2 font-13"><strong>Phone Number :</strong><span class="ms-2">{{ $mediaOrganization->phone}}</span></p>
-
-                                        <p class="text-muted mb-2 font-13"><strong>Email :</strong> <span class="ms-2 ">{{ $mediaOrganization->email }}</span></p>
-
-                                        <p class="text-muted mb-1 font-13"><strong>Position :</strong> <span class="ms-2">{{ $mediaOrganization->position }}</span></p>
+                                    <h4 class="mb-1" style="font-weight: bold; color: #0d6efd;">{{ $mediaOrganization->fullname }}</h4>
+                                    <p class="font-italic font-14 text-muted">{{ $mediaOrganization->position }}</p>
+                                    
+                                    <div class="text-start mt-4 border-top pt-3" style="border-color: #e3e3e3;">
+                                        <p class="mb-2">
+                                            <strong style="color: #0d6efd;">Full Name:</strong> 
+                                            <span class="ms-2 text-dark">{{ $mediaOrganization->fullname }}</span>
+                                        </p>
+                                        <p class="mb-2">
+                                            <strong style="color: #0d6efd;">Phone Number:</strong> 
+                                            <span class="ms-2 text-dark">{{ $mediaOrganization->phone }}</span>
+                                        </p>
+                                        <p class="mb-2">
+                                            <strong style="color: #0d6efd;">Email:</strong> 
+                                            <span class="ms-2 text-dark">{{ $mediaOrganization->email }}</span>
+                                        </p>
+                                        <p class="mb-0">
+                                            <strong style="color: #0d6efd;">Position:</strong> 
+                                            <span class="ms-2 text-dark">{{ $mediaOrganization->position }}</span>
+                                        </p>
                                     </div>
                                     @else
-                                    <p>No media organization details available.</p>
-                                @endif
-                                    
-                                </div> <!-- end card-body -->
-                            </div> <!-- end card -->
+                                    <div class="mt-4">
+                                        <p style="color: #0d6efd;">No media organization details available.</p>
+                                    </div>
+                                    @endif
+                                </div>
+                            </div>
+                
+                    
 
                            
 
@@ -581,136 +596,68 @@
                 <input type="file" class="form-control" id="logo" name="internet_logo">
             </div>
         </div>
-        <input type="submit">
-    </form>
-    
-       <!-- Channel Location -->
-<div class="col-md-6">
-    <div class="mb-3">
-      <label for="tv_channel_location" class="form-label">Platform</label><br>
-  
-      <!-- Checkbox for each channel location -->
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="all_internet_youtube" value="youtube" id="youtube">
-        <label class="form-check-label" for="youtube">YouTube</label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="internet_channel_location" value="X(Twitter)" id="twitter">
-        <label class="form-check-label" for="twitter">X(Twitter)</label>
-      </div>
-  
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="internet_channel_location" value="facebook_live" id="facebook_live">
-        <label class="form-check-label" for="facebook_live">Facebook Live</label>
-      </div>
-  
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="internet_channel_location" value="twitch" id="twitch">
-        <label class="form-check-label" for="twitch">Twitch</label>
-      </div>
-  
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="internet_channel_location" value="instagram_live" id="instagram_live">
-        <label class="form-check-label" for="instagram_live">Instagram Live</label>
-      </div>
-  
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="internet_channel_location" value="tiktok" id="tiktok">
-        <label class="form-check-label" for="tiktok">TikTok</label>
-      </div>
-  
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="internet_channel_location" value="spotify" id="spotify">
-        <label class="form-check-label" for="spotify">Spotify</label>
-      </div>
-  
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="internet_channel_location" value="apple_podcasts" id="apple_podcasts">
-        <label class="form-check-label" for="apple_podcasts">Apple Podcasts</label>
-      </div>
-  
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="internet_channel_location" value="soundcloud" id="soundcloud">
-        <label class="form-check-label" for="soundcloud">SoundCloud</label>
-      </div>
-  
-      <!-- "Other" checkbox with a text input -->
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="other_internet" value="other_internet">
-        <label class="form-check-label" for="other">Other:</label>
-      </div>
-  
-      <!-- Hidden text input for the "Other" option -->
-      <div class="form-group" id="other_internet_input" style="display:none;">
-        <input type="text" class="form-control" name="internet_channel_location_other" placeholder="Specify other platform">
-      </div>
-    </div>
-  </div>
-  
 
-  
-    
-    
-    
-        <!-- Content Focus -->
-    <div class="col-md-6">
-    <div class="mb-3">
-    <label for="tv_content_focus" class="form-label">Content Focus</label>
-    <select class="form-control" id="tv_content_focus" name="internet_content_focus" onchange="toggleOtherContentFocus()">
-    <option value="news">News</option>
-    <option value="sports">Sports</option>
-    <option value="entertainment">Entertainment</option>
-    <option value="comedy">Comedy</option>
-    <option value="politics">Politics</option>
-    <option value="movies">Movies</option>
-    <option value="education">Education</option>
-    <option value="music">Music</option>
-    <option value="lifestyle">Lifestyle</option>
-    <option value="other">Other</option>
-    </select>
-    </div>
-    </div>
-    
-    <!-- Hidden text input for "Other" content focus -->
-    <div class="col-md-6" id="content_focus_other_input" style="display:none;">
-    <div class="mb-3">
-    <input type="text" class="form-control" id="content_focus_other" name="internet_content_focus_other" placeholder="Specify other content focus">
-    </div>
-    </div>
-    
-    <!-- Target Audience -->
-    <div class="col-md-6">
-    <div class="mb-3">
-    <label for="target_audience" class="form-label">Target Audience</label>
-    <select class="form-control" id="target_audience" name="internet_target_audience">
-    <option value="children">Children (0-12)</option>
-    <option value="teens">Teens (13-17)</option>
-    <option value="adults_18_34">Adults (18-34)</option>
-    <option value="adults_35_54">Adults (35-54)</option>
-    <option value="seniors">Seniors (55+)</option>
-    </select>
-    </div>
-    </div>
-    
-    
-    
-    
-    
-        <!-- Broadcast Duration -->
-    <div class="col-md-6">
-    <div class="mb-3">
-    <label for="broadcast_duration" class="form-label">Broadcast Duration</label>
-    <select class="form-control" id="broadcast_duration" name="internet_broadcast_duration">
-    <option value="Less_than_30_minutes">Less than 30 minutes</option>
-    <option value="30 minutes – 1 hour">30 minutes – 1 hour</option>
-    <option value="1 – 2 hours">1 – 2 hours</option>
-    <option value="Over 2 hours"> Over 2 hours</option>
-    </select>
-    </div>
-    </div>
+        <!-- TV Name -->
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="tv_name" class="form-label"> Platform</label>
+                <input type="text" class="form-control" id="name" name="internet_channel_location" placeholder="E.g Facebook live, youtube,">
+            </div>
+        </div>
 
-           <!-- How frequently do you post on social media? -->
-           <div class="col-md-6">
+
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="internet_type_select" class="form-label">Content Focus</label>
+                <select class="form-control" id="internet_type_select" name="internet_content_focus">
+                    <option value="news">News</option>
+                    <option value="sports">Sports</option>
+                    <option value="entertainment">Entertainment</option>
+                    <option value="comedy">Comedy</option>
+                    <option value="politics">Politics</option>
+                    <option value="movies">Movies</option>
+                    <option value="education">Education</option>
+                    <option value="music">Music</option>
+                    <option value="lifestyle">Lifestyle</option>
+                </select>
+            </div>
+        </div>
+
+       
+        
+        <!-- Target Audience -->
+        <div class="col-md-6">
+        <div class="mb-3">
+        <label for="target_audience" class="form-label">Target Audience</label>
+        <select class="form-control" id="target_audience" name="internet_target_audience">
+        <option value="children">Children (0-12)</option>
+        <option value="teens">Teens (13-17)</option>
+        <option value="adults_18_34">Adults (18-34)</option>
+        <option value="adults_35_54">Adults (35-54)</option>
+        <option value="seniors">Seniors (55+)</option>
+        </select>
+        </div>
+        </div>
+        
+        
+        
+        
+        
+            <!-- Broadcast Duration -->
+        <div class="col-md-6">
+        <div class="mb-3">
+        <label for="broadcast_duration" class="form-label">Broadcast Duration</label>
+        <select class="form-control" id="broadcast_duration" name="internet_broadcast_duration">
+        <option value="Less_than_30_minutes">Less than 30 minutes</option>
+        <option value="30 minutes – 1 hour">30 minutes – 1 hour</option>
+        <option value="1 – 2 hours">1 – 2 hours</option>
+        <option value="Over 2 hours"> Over 2 hours</option>
+        </select>
+        </div>
+        </div>
+
+        <!-- How frequently do you post on social media? -->
+        <div class="col-md-6">
             <div class="mb-3">
             <label for="often_post" class="form-label">How frequently do you post on social media?</label>
             <select class="form-control" id="often_post" name="internet_often_post">
@@ -766,16 +713,15 @@
     
     </div>
     
-   
     <div class="text-left mt-6">
         <button type="submit" class="btn btn-primary btn-lg shadow-sm">
             <i class="bi bi-save"></i>Submit
         </button>
     </div>
+    </form>
+                        </div>
+                    </div>
     
-    <!-- Additional fields for Internet Section... -->
-</div>
-</form>
                                         </div>
                                         <!-- end settings content-->
 
