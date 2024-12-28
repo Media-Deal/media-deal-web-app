@@ -124,7 +124,7 @@
                         </div>
 
                         <div class="nav-item dropdown">
-                            <a href="" class="nav-item nav-link">Contact Us</a>
+                            <a href="{{ url('contact') }}" class="nav-item nav-link">Contact Us</a>
                         </div>
 
                         <div class="nav-item dropdown">

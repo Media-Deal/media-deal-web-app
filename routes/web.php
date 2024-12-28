@@ -16,8 +16,24 @@ Route::get('/about', function () {
     return view('home.about');
 });
 
-Route::get('/policies', function () {
-    return view('home.policies');
+Route::get('/terms-of-service', function () {
+    return view('home.terms');
+});
+
+Route::get('/refund-policy', function () {
+    return view('home.refund');
+});
+
+Route::get('/rights', function () {
+    return view('home.rights');
+});
+
+Route::get('/privacy-policy', function () {
+    return view('home.privacy');
+});
+
+Route::get('/contact', function () {
+    return view('home.contact');
 });
 
 Route::get('/faq', function () {

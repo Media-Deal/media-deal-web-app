@@ -1,19 +1,14 @@
 @include('home.header')    
         <!-- Header Start -->
-        <div class="container-fluid header bg-white p-0">
+        <div class="container-fluid header bg-dark p-0">
             <div class="row g-0 align-items-center flex-column-reverse flex-md-row">
                 <div class="col-md-6 p-5 mt-lg-5">
-                    <h1 class="display-5 animated fadeIn mb-4">Contact Us</h1> 
+                    <h1 class="display-5 animated fadeIn mb-4 text-primary me-3" >Contact Us</h1> 
                         <nav aria-label="breadcrumb animated fadeIn">
-                        <ol class="breadcrumb text-uppercase">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                            <li class="breadcrumb-item text-body active" aria-current="page">Contact</li>
-                        </ol>
                     </nav>
                 </div>
                 <div class="col-md-6 animated fadeIn">
-                    <img class="img-fluid" src="img/header.jpg" alt="">
+                    <img class="img-fluid" src="img/equipment.jpg" alt="">
                 </div>
             </div>
         </div>
@@ -24,8 +19,7 @@
         <div class="container-xxl py-5">
             <div class="container">
                 <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                    <h1 class="mb-3">Contact Us</h1>
-                    <p>GET IN TOUCH WITH US</p>
+                    <h4>GET IN TOUCH WITH US</h4>
                 </div>
                 <div class="row g-4">
                     <div class="col-12">
@@ -36,7 +30,7 @@
                                         <div class="icon me-3" style="width: 45px; height: 45px;">
                                             <i class="fa fa-map-marker-alt text-primary"></i>
                                         </div>
-                                        <span>3550 SANDY LAKE ROAD,REVENNA,OH 44266</span>
+                                        <span>Plot 20, Road 10, 2nd Avenue, Off Ada George, Port Harcourt</span>
                                     </div>
                                 </div>
                             </div>
@@ -46,7 +40,7 @@
                                         <div class="icon me-3" style="width: 45px; height: 45px;">
                                             <i class="fa fa-envelope-open text-primary"></i>
                                         </div>
-                                        <span>Info@vanamanllc.com</span>
+                                        <span>support@mediadeal.ng</span>
                                     </div>
                                 </div>
                             </div>
@@ -56,19 +50,18 @@
                                         <div class="icon me-3" style="width: 45px; height: 45px;">
                                             <i class="fa fa-phone-alt text-primary"></i>
                                         </div>
-                                        <span>+1 (513) 299-5453</span>
+                                        <span>+234 803 445 0360</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3005.653268254929!2d-81.26446299999999!3d41.120263!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88313bf09589bcef%3A0xaf7ee812939b93b4!2sVANAMAN%20REAL%20ESTATE%20INVESTMENTS%2C%20LLC!5e0!3m2!1sen!2sng!4v1678571401628!5m2!1sen!2sng" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3975.5502274805067!2d6.961034773720502!3d4.847005840374484!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1069cfcd5144b0fb%3A0x67119fb630250cfc!2s20%20Rd%2010%202nd%20Ave%2C%20Rumu_Oparala%2C%20Port%20Harcourt%20500102%2C%20Rivers!5e0!3m2!1sen!2sng!4v1735237473680!5m2!1sen!2sng" width="550" height="370" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                      </div>
                     <div class="col-md-6">
                         <div class="wow fadeInUp" data-wow-delay="0.5s">
-                        <form method="post" action="{{url('/contactUs-email')}}">
-                                          @csrf
+                        <form>
                                 <div class="row g-3">
                                     <div class="col-md-6">
                                         <div class="form-floating">
