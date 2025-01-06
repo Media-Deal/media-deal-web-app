@@ -14,13 +14,13 @@ return new class extends Migration
         Schema::create('advertisers', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string('title')->nullable();
-            $table->string('category')->nullable();
-            $table->string('type')->nullable();
-            $table->string('content')->nullable();
-            $table->string('target_audience')->nullable();
-            $table->string('target_location')->nullable();
-            $table->string('duration')->nullable();
+
+            $table->string('phone_number', 15);
+            $table->string('address', 255);
+            $table->date('date_of_birth')->nullable();
+            $table->string('company_name', 255)->nullable();
+            $table->text('description')->nullable();
+            $table->string('store_address', 255)->nullable();
             $table->timestamps();
         });
     }

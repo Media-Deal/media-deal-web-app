@@ -67,7 +67,7 @@
                                         @foreach($mediaOrganizations as $media)
                                         <option value="{{ $media->id }}" {{ $ad->media_id == $media->id ? 'selected' :
                                             '' }}>
-                                            {{ $media->name }}
+                                            {{ $media->fullname }}
                                         </option>
                                         @endforeach
                                     </select>

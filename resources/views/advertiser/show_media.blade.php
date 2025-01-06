@@ -62,7 +62,8 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form action="{{ route('ad.placement.submit', $media->id) }}" method="POST" enctype="multipart/form-data">
+              <form action="{{ route('advertiser.media.ad.placement', $media->id) }}" method="POST"
+                enctype="multipart/form-data">
                 @csrf
                 <!-- Hidden Media ID -->
                 <input type="hidden" name="media_id" value="{{ $media->id }}">
@@ -299,7 +300,7 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form action="{{ route('payments.submit', $media->id) }}" method="POST">
+              <form action="{{ route('advertiser.payments.submit', $media->id) }}" method="POST">
                 @csrf
                 <div class="mb-3">
                   <label for="paymentMethod" class="form-label">Select Payment Method</label>
@@ -326,7 +327,7 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form action="{{ route('compliance.submit', $media->id) }}" method="POST">
+              <form action="{{ route('advertiser.compliance.submit', $media->id) }}" method="POST">
                 @csrf
                 <div class="mb-3">
                   <label for="complianceType" class="form-label">Select Compliance Type</label>
@@ -353,7 +354,7 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form action="{{ route('refunds.submit', $media->id) }}" method="POST">
+              <form action="{{ route('advertiser.refunds.submit', $media->id) }}" method="POST">
                 @csrf
                 <div class="mb-3">
                   <label for="refundReasonType" class="form-label">Select Reason for Refund</label>
@@ -389,7 +390,7 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form action="{{ route('feedback.submit', $media->id) }}" method="POST">
+              <form action="{{ route('advertiser.feedback.submit', $media->id) }}" method="POST">
                 @csrf
                 <div class="mb-3">
                   <label for="feedbackContent" class="form-label">Your Feedback</label>

@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\CustomAuthController;
+use App\Http\Controllers\AdvertiserController;
+use App\Http\Controllers\MediaOrganizationController;
+use App\Http\Controllers\MarketerController;
 
 // Public Routes
 Route::get('/', function () {
@@ -13,6 +16,15 @@ Route::get('/about', function () {
     return view('home.about');
 });
 
+Route::get('/policies', function () {
+    return view('home.policies');
+});
+
+Route::get('/faq', function () {
+    return view('home.faq');
+});
+
+// Advertiser Public Routes
 Route::get('/advertiser', function () {
     return view('advertiser.homepage');
 });
@@ -25,37 +37,16 @@ Route::get('/manage-compliance', function () {
     return view('advertiser.manage-compliance');
 });
 
-Route::get('/profile', function () {
-    return view('advertiser.profile');
-});
 
 Route::get('/manage-refund', function () {
     return view('advertiser.manage-refund');
 });
+
 Route::get('/station-details', function () {
     return view('advertiser.station-details');
 });
 
-Route::get('/terms-of-service', function () {
-    return view('home.terms');
-});
-
-Route::get('/refund-policies', function () {
-    return view('home.refund');
-});
-
-Route::get('/proprietary-rights', function () {
-    return view('home.rights');
-});
-
-Route::get('/privacy-policy', function () {
-    return view('home.privacy');
-});
-
-Route::get('/faq', function () {
-    return view('home.faq');
-});
-
+// Media Public Routes
 Route::get('/media', function () {
     return view('media.homepage');
 });
@@ -64,71 +55,61 @@ Route::get('/manage-account', function () {
     return view('media.manage-account');
 });
 
-
 // Authentication Routes
-Auth::routes();
+Auth::routes(['logout' => false]); // Disabling default logout route to avoid conflicts
 
 // Verification Routes
 Route::get('/verify/{id}', [CustomAuthController::class, 'verify'])->name('verify');
 Route::post('/verify-code', [CustomAuthController::class, 'verifyCode'])->name('verify.code');
 Route::get('/resend-verification-code', [CustomAuthController::class, 'resendVerificationCode'])->name('resend.verification.code');
 Route::get('/logout', [CustomAuthController::class, 'UserLogout'])->name('user.logout');
-//Route::get('/home', [CustomAuthController::class, 'index'])->name('home');
-// Role-Based Routes with Prefixes
-Route::middleware('user_auth')->group(function () {
-    // General Routes
+
+// Authenticated Routes
+Route::middleware('auth')->group(function () {
+    // General User Routes
     Route::get('/home', [CustomAuthController::class, 'index'])->name('home');
 
-
     // Advertiser Routes
-    Route::prefix('advertiser')->group(function () {
-        Route::get('dashboard', [App\Http\Controllers\AdvertiserController::class, 'index'])->name('advertiser.dashboard');
-        Route::get('profile', [App\Http\Controllers\AdvertiserController::class, 'profile'])->name('advertiser.profile');
-        Route::get('manage-ads', [App\Http\Controllers\AdvertiserController::class, 'manageAds'])->name('advertiser.manage.ads');
-        Route::get('media/{id}', [App\Http\Controllers\AdvertiserController::class, 'showMedia'])->name('advertiser.media.show');
-        // Handle ad placement form submission
-        Route::post('/ad-placement/{id}', [App\Http\Controllers\AdvertiserController::class, 'paceAds'])->name('ad.placement.submit');
-
-        Route::get('manage-compliance', [App\Http\Controllers\AdvertiserController::class, 'showCompliance'])->name('manage.compliance.page');
-        Route::get('manage-refund', function () {
-            return view('advertiser.manage-refund');
-        });
-        Route::get('station-details', function () {
-            return view('advertiser.station-details');
-        });
-
-        // Media Details Page
-        Route::get('/media/{media}', [App\Http\Controllers\AdvertiserController::class, 'show'])->name('media.show');
+    Route::prefix('advertiser')->middleware(['user_auth:advertiser'])->group(function () {
+        Route::get('dashboard', [AdvertiserController::class, 'index'])->name('advertiser.dashboard');
+        Route::get('profile', [AdvertiserController::class, 'profile'])->name('advertiser.profile');
+        Route::put('profile', [AdvertiserController::class, 'updateProfile'])->name('advertiser.profile.update');
+        Route::get('manage-ads', [AdvertiserController::class, 'manageAds'])->name('advertiser.manage.ads');
+        Route::get('media/{id}', [AdvertiserController::class, 'showMedia'])->name('advertiser.media.show');
 
         // Ad Placement Form Submission
-        Route::post('/media/{media}/ad-placement', [App\Http\Controllers\AdvertiserController::class, 'placeAds'])->name('ad.placement.submit');
+        Route::post('/media/{media}/ad-placement', [AdvertiserController::class, 'placeAds'])->name('advertiser.media.ad.placement');
+
+        Route::get('manage-compliance', [AdvertiserController::class, 'showCompliance'])->name('advertiser.manage.compliance');
+        Route::get('manage-refund', function () {
+            return view('advertiser.manage-refund');
+        })->name('advertiser.manage.refund');
+
+        Route::get('station-details', function () {
+            return view('advertiser.station-details');
+        })->name('advertiser.station.details');
 
         // Payment Form Submission
-        Route::post('/media/{media}/payments', [App\Http\Controllers\AdvertiserController::class, 'submit'])->name('payments.submit');
+        Route::post('/media/{media}/payments', [AdvertiserController::class, 'submitPayments'])->name('advertiser.payments.submit');
 
         // Compliance Request Form Submission
-        Route::post('/media/{media}/compliance', [App\Http\Controllers\AdvertiserController::class, 'submitCompliance'])->name('compliance.submit');
-
+        Route::post('/media/{media}/compliance', [AdvertiserController::class, 'submitCompliance'])->name('advertiser.compliance.submit');
 
         // Refund Request Form Submission
-        Route::post('/media/{media}/refunds', [App\Http\Controllers\AdvertiserController::class, 'submit'])->name('refunds.submit');
+        Route::post('/media/{media}/refunds', [AdvertiserController::class, 'submitRefunds'])->name('advertiser.refunds.submit');
 
         // Feedback Form Submission
-        Route::post('/media/{media}/feedback', [App\Http\Controllers\AdvertiserController::class, 'submit'])->name('feedback.submit');
-
-
-
-
+        Route::post('/media/{media}/feedback', [AdvertiserController::class, 'submitFeedback'])->name('advertiser.feedback.submit');
 
         // View Ad
-        Route::get('/ads/{ad}', [App\Http\Controllers\AdvertiserController::class, 'viewAd'])->name('advertiser.ads.view');
+        Route::get('/ads/{ad}', [AdvertiserController::class, 'viewAd'])->name('advertiser.ads.view');
 
         // Edit Ad
-        Route::get('/ads/{ad}/edit', [App\Http\Controllers\AdvertiserController::class, 'editAdForm'])->name('advertiser.ads.edit');
-        Route::put('/ads/{ad}', [App\Http\Controllers\AdvertiserController::class, 'updateAd'])->name('advertiser.ads.update');
+        Route::get('/ads/{ad}/edit', [AdvertiserController::class, 'editAdForm'])->name('advertiser.ads.edit');
+        Route::put('/ads/{ad}', [AdvertiserController::class, 'updateAd'])->name('advertiser.ads.update');
 
         // Delete Ad
-        Route::delete('/delete-ads/{ad}', [App\Http\Controllers\AdvertiserController::class, 'deleteAd'])->name('advertiser.ads.delete');
+        Route::delete('/delete-ads/{ad}', [AdvertiserController::class, 'deleteAd'])->name('advertiser.ads.delete');
     });
 
     // Media Organization Routes
@@ -146,9 +127,14 @@ Route::middleware('user_auth')->group(function () {
     });
 
     // Marketer Routes
-    Route::prefix('marketer')->group(function () {
-        Route::get('dashboard', [App\Http\Controllers\MarketerController::class, 'index'])->name('marketer.dashboard');
-        Route::get('profile', [App\Http\Controllers\MarketerController::class, 'profile'])->name('marketer.profile');
-        // Add more routes for Marketer
+    Route::prefix('marketer')->middleware(['user_auth:marketer'])->group(function () {
+        Route::get('dashboard', [MarketerController::class, 'index'])->name('marketer.dashboard');
+        Route::get('profile', [MarketerController::class, 'profile'])->name('marketer.profile');
+        // Additional Marketer Routes
     });
+});
+
+// Fallback Route
+Route::fallback(function () {
+    return view('errors.404');
 });

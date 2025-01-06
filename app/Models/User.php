@@ -20,6 +20,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'profile_picture',
         'role',
         'password',
     ];
@@ -52,8 +53,13 @@ class User extends Authenticatable
         return $this->hasMany(Compliance::class, 'user_id');
     }
 
+    public function advertiser()
+    {
+        return $this->hasMany(Advertiser::class, 'user_id');
+    }
+
     public function mediaOrganization()
     {
         return $this->belongsTo(MediaOrganization::class, 'user_id', 'id');
-    }
+}
 }

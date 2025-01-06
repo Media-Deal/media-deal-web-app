@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Advertiser;
 use App\Models\Compliance;
 use App\Models\AdPlacement;
 use Illuminate\Http\Request;
@@ -114,15 +115,20 @@ class AdvertiserController extends Controller
 
     public function manageAds()
     {
-        // Assuming ads are associated with the authenticated user
+        // Retrieve the authenticated user
         $user = Auth::user();
 
-        // Retrieve all ad placements for the user, you can paginate if there are many ads
-        $ads = AdPlacement::where('user_id', $user->id)->orderBy('created_at', 'desc')->get();
+        // Retrieve all ad placements for the user, including the associated media
+        $ads = AdPlacement::where('user_id', $user->id)
+            ->with('media') // Eager load the media relationship
+            ->orderBy('created_at', 'desc')
+            ->get();
 
-        // Calculate Total Ads and Current Ads
+        // Calculate Total Ads and Active Ads
         $totalAds = $ads->count();
-        $currentAds = $ads->where('status', 'Active')->count();
+        $currentAds = $ads->filter(function ($ad) {
+            return $ad->status === '1'; // Count only active ads
+        })->count();
 
         // Pass data to the view
         return view('advertiser.manage-ads', compact('ads', 'totalAds', 'currentAds'));
@@ -142,6 +148,7 @@ class AdvertiserController extends Controller
 
     public function editAdForm(AdPlacement $ad)
     {
+
 
 
         // Retrieve available media organizations for selection
@@ -232,8 +239,62 @@ class AdvertiserController extends Controller
 
     public function profile()
     {
-        return view('advertiser.profile');
+        $user = Auth::user();
+        // Retrieve the Advertiser record for the authenticated user
+        $advertiser = Advertiser::where('user_id', $user->id)->first();
+        return view('advertiser.profile', compact('advertiser'));
     }
+
+    public function updateProfile(Request $request)
+    {
+        $user = Auth::user();
+        // Retrieve the Advertiser record for the authenticated user
+        $advertiser = Advertiser::where('user_id', $user->id)->first();
+
+        // Validate incoming data
+        $request->validate([
+            'full_name' => 'required|string|max:255',
+            'phone_number' => 'required|string|max:20',
+            'address' => 'nullable|string|max:255',
+            'date_of_birth' => 'nullable|date',
+            'company_name' => 'nullable|string|max:255',
+            'store_address' => 'nullable|string|max:255',
+            'description' => 'nullable|string|max:1000',
+            'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg|max:2048', // Limit to 2MB
+        ]);
+
+        // Update user profile fields
+        $user->name = $request->input('full_name');
+
+        // Handle profile picture upload
+        if ($request->hasFile('profile_picture')) {
+            // Delete old profile picture if exists
+            if ($user->profile_picture && Storage::exists($user->profile_picture)) {
+                Storage::delete($user->profile_picture);
+            }
+
+            // Store the new profile picture
+            $file = $request->file('profile_picture');
+            $path = $file->store('uploads/profile_pictures', 'public'); // Store in 'public/uploads/profile_pictures'
+            $user->profile_picture = $path;
+        }
+
+        $user->save();
+
+        // Update advertiser fields
+        $advertiser->update([
+            'phone_number' => $request->input('phone_number'),
+            'address' => $request->input('address'),
+            'date_of_birth' => $request->input('date_of_birth'),
+            'company_name' => $request->input('company_name'),
+            'store_address' => $request->input('store_address'),
+            'description' => $request->input('description'),
+        ]);
+
+        // Redirect back with success message
+        return redirect()->route('advertiser.profile')->with('success', 'Profile updated successfully.');
+    }
+
 
 
 
