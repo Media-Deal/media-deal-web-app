@@ -45,7 +45,7 @@ class MediaOrganizationController extends Controller
     
 
     
-
+// details
 public function updateDetails(Request $request)
 {
     try {
@@ -72,7 +72,7 @@ public function updateDetails(Request $request)
 }
 
 
-
+//tv
 
 public function updatetvDetails(Request $request)
 {
@@ -136,7 +136,7 @@ public function updatetvDetails(Request $request)
 
 
 
-
+//radio
 public function updateradioDetails(Request $request)
 {
     try {
@@ -264,7 +264,7 @@ public function updateradioDetails(Request $request)
 
 
 
-
+//internet
 public function updateInternetDetails(Request $request)
 {
     try {
