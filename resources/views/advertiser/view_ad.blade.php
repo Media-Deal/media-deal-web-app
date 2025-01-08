@@ -56,9 +56,10 @@
                         <div class="card-body">
                             <div class="row mb-3">
                                 <div class="col-md-4">
-                                    <strong>Media:</strong>
+                                    <strong>Media Type:</strong>
                                 </div>
                                 <div class="col-md-8">
+<<<<<<< HEAD
                                     @if(strtolower($ad->media->media_type ?? '') === 'tv')
                                     {{ $ad->media->tv_name ?? 'N/A' }}
                                     @elseif(strtolower($ad->media->media_type ?? '') === 'radio')
@@ -68,6 +69,17 @@
                                     @else
                                     N/A
                                     @endif
+=======
+                                    {{ $ad->media->media_type ?? 'N/A' }}
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-md-4">
+                                    <strong>Media Name:</strong>
+                                </div>
+                                <div class="col-md-8">
+                                    {{ $ad->media->fullname ?? 'N/A' }}
+>>>>>>> c7ca8436e5e826b81c800e9a8d727d2a60edd91c
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -159,14 +171,14 @@
                                     <strong>Status:</strong>
                                 </div>
                                 <div class="col-md-8">
-                                    @if($ad->status === 'Active')
-                                    <span class="badge bg-success">{{ $ad->status }}</span>
-                                    @elseif($ad->status === 'Pending')
-                                    <span class="badge bg-warning text-dark">{{ $ad->status }}</span>
-                                    @elseif($ad->status === 'Expired')
-                                    <span class="badge bg-danger">{{ $ad->status }}</span>
-                                    @elseif($ad->status === 'Scheduled')
-                                    <span class="badge bg-info text-dark">{{ $ad->status }}</span>
+                                    @if($ad->status === '1')
+                                    <span class="badge bg-success">Active</span>
+                                    @elseif($ad->status === '0')
+                                    <span class="badge bg-warning text-dark">Pending</span>
+                                    @elseif($ad->status === '2')
+                                    <span class="badge bg-danger">Expired</span>
+                                    @elseif($ad->status === '3')
+                                    <span class="badge bg-info text-dark">Scheduled</span>
                                     @else
                                     <span class="badge bg-secondary">{{ $ad->status }}</span>
                                     @endif

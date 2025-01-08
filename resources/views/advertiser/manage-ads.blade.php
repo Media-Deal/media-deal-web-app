@@ -98,6 +98,7 @@
                     <tbody>
                         @forelse($ads as $ad)
                         <tr>
+<<<<<<< HEAD
                             <!-- Media Name -->
                             <td>
                                 @if(strtolower($ad->media->media_type ?? '') === 'tv')
@@ -124,13 +125,20 @@
                             <td>{{ $ad->duration ?? 'N/A' }}</td>
 
                             <!-- Status -->
+=======
+                            <td>{{ $ad->media->media_type ?? 'N/A' }}</td>
+                            <td>{{ $ad->category }}</td>
+                            <td>{{ $ad->type }}</td>
+                            <td>${{ number_format($ad->cost, 2) }}</td>
+                            <td>{{ $ad->duration }}</td>
+>>>>>>> c7ca8436e5e826b81c800e9a8d727d2a60edd91c
                             <td>
-                                @if($ad->status === 'Active')
-                                <span class="badge bg-success">{{ $ad->status }}</span>
-                                @elseif($ad->status === 'Pending')
-                                <span class="badge bg-warning text-dark">{{ $ad->status }}</span>
-                                @elseif($ad->status === 'Expired')
-                                <span class="badge bg-danger">{{ $ad->status }}</span>
+                                @if($ad->status === '1')
+                                <span class="badge bg-success">Active</span>
+                                @elseif($ad->status === '0')
+                                <span class="badge bg-warning text-dark">Pending'</span>
+                                @elseif($ad->status === '2')
+                                <span class="badge bg-danger">Expired</span>
                                 @else
                                 <span class="badge bg-secondary">{{ $ad->status }}</span>
                                 @endif

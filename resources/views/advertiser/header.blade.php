@@ -52,10 +52,10 @@
                         <!-- Logo Dark -->
                         <a href="{{route('advertiser.dashboard')}}" class="logo-dark">
                             <span class="logo-lg">
-                                <img src="assets/images/logo-dark.png" alt="dark logo">
+                                <img src="{{asset('img/favicon.png')}}" alt="dark logo">
                             </span>
                             <span class="logo-sm">
-                                <img src="assets/images/logo-dark-sm.png" alt="small logo">
+                                <img src="{{asset('img/favicon.png')}}" alt="small logo">
                             </span>
                         </a>
                     </div>
@@ -89,6 +89,41 @@
                         </div>
                     </li>
 
+                    <li class="dropdown">
+                        <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="false" aria-expanded="false">
+                            <img src="assets/images/flags/us.jpg" alt="user-image" class="me-0 me-sm-1" height="12">
+                            <span class="align-middle d-none d-lg-inline-block">English</span> <i
+                                class="mdi mdi-chevron-down d-none d-sm-inline-block align-middle"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated">
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item">
+                                <img src="assets/images/flags/germany.jpg" alt="user-image" class="me-1" height="12">
+                                <span class="align-middle">German</span>
+                            </a>
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item">
+                                <img src="assets/images/flags/italy.jpg" alt="user-image" class="me-1" height="12">
+                                <span class="align-middle">Italian</span>
+                            </a>
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item">
+                                <img src="assets/images/flags/spain.jpg" alt="user-image" class="me-1" height="12">
+                                <span class="align-middle">Spanish</span>
+                            </a>
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item">
+                                <img src="assets/images/flags/russia.jpg" alt="user-image" class="me-1" height="12">
+                                <span class="align-middle">Russian</span>
+                            </a>
+
+                        </div>
+                    </li>
 
                     <li class="dropdown notification-list">
                         <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button"
@@ -241,6 +276,65 @@
                         </div>
                     </li>
 
+                    <li class="dropdown d-none d-sm-inline-block">
+                        <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="false" aria-expanded="false">
+                            <i class="ri-apps-2-line font-22"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated dropdown-lg p-0">
+
+                            <div class="p-2">
+                                <div class="row g-0">
+                                    <div class="col">
+                                        <a class="dropdown-icon-item" href="#">
+                                            <img src="assets/images/brands/slack.png" alt="slack">
+                                            <span>Slack</span>
+                                        </a>
+                                    </div>
+                                    <div class="col">
+                                        <a class="dropdown-icon-item" href="#">
+                                            <img src="assets/images/brands/github.png" alt="Github">
+                                            <span>GitHub</span>
+                                        </a>
+                                    </div>
+                                    <div class="col">
+                                        <a class="dropdown-icon-item" href="#">
+                                            <img src="assets/images/brands/dribbble.png" alt="dribbble">
+                                            <span>Dribbble</span>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="row g-0">
+                                    <div class="col">
+                                        <a class="dropdown-icon-item" href="#">
+                                            <img src="assets/images/brands/bitbucket.png" alt="bitbucket">
+                                            <span>Bitbucket</span>
+                                        </a>
+                                    </div>
+                                    <div class="col">
+                                        <a class="dropdown-icon-item" href="#">
+                                            <img src="assets/images/brands/dropbox.png" alt="dropbox">
+                                            <span>Dropbox</span>
+                                        </a>
+                                    </div>
+                                    <div class="col">
+                                        <a class="dropdown-icon-item" href="#">
+                                            <img src="assets/images/brands/g-suite.png" alt="G Suite">
+                                            <span>G Suite</span>
+                                        </a>
+                                    </div>
+                                </div> <!-- end row-->
+                            </div>
+
+                        </div>
+                    </li>
+
+                    <li class="d-none d-sm-inline-block">
+                        <a class="nav-link" data-bs-toggle="offcanvas" href="#theme-settings-offcanvas">
+                            <i class="ri-settings-3-line font-22"></i>
+                        </a>
+                    </li>
 
                     <li class="d-none d-sm-inline-block">
                         <div class="nav-link" id="light-dark-mode" data-bs-toggle="tooltip" data-bs-placement="left"
@@ -260,9 +354,11 @@
                         <a class="nav-link dropdown-toggle arrow-none nav-user px-2" data-bs-toggle="dropdown" href="#"
                             role="button" aria-haspopup="false" aria-expanded="false">
                             <span class="account-user-avatar">
-                                <img src="{{ Auth::user()->avatar ? asset(Auth::user()->avatar) : 'https://ui-avatars.com/api/?name=' . urlencode(Auth::user()->name) . '&background=random' }}"
-                                    alt="user-image" width="32" class="rounded-circle">
+                                <img src="assets/images/users/avatar-1.jpg" alt="user-image" width="32"
+                                    class="rounded-circle">
                             </span>
+
+
                             <span class="d-lg-flex flex-column gap-1 d-none">
                                 <h5 class="my-0">{{Auth::user()->name}}</h5>
                                 <h6 class="my-0 fw-normal">Founder</h6>
@@ -319,17 +415,17 @@
                     <img src="{{asset('img/favicon.png')}}" alt="logo">
                 </span>
                 <span class="logo-sm">
-                    <img src="assets/images/logo-sm.png" alt="small logo">
+                    <img src="{{asset('img/favicon.png')}}" alt="small logo">
                 </span>
             </a>
 
             <!-- Brand Logo Dark -->
             <a href="{{route('advertiser.dashboard')}}" class="logo logo-dark">
                 <span class="logo-lg">
-                    <img src="assets/images/logo-dark.png" alt="dark logo">
+                    <img src="{{asset('img/favicon.png')}}" alt="dark logo">
                 </span>
                 <span class="logo-sm">
-                    <img src="assets/images/logo-dark-sm.png" alt="small logo">
+                    <img src="{{asset('img/favicon.png')}}" alt="small logo">
                 </span>
             </a>
 
@@ -348,74 +444,81 @@
                 <!-- Leftbar User -->
                 <div class="leftbar-user">
                     <a href="pages-profile.html">
-                        <img src="{{ Auth::user()->avatar ? asset(Auth::user()->avatar) : 'https://ui-avatars.com/api/?name=' . urlencode(Auth::user()->name) . '&background=random' }}"
-                            alt="user-image" height="42" class="rounded-circle shadow-sm">
+                        <img src="assets/images/users/avatar-1.jpg" alt="user-image" height="42"
+                            class="rounded-circle shadow-sm">
                         <span class="leftbar-user-name mt-2">{{Auth::user()->name}}</span>
                     </a>
                 </div>
 
                 <!--- Sidemenu -->
                 <ul class="side-nav">
-
                     <li class="side-nav-title">Navigation</li>
 
                     <li class="side-nav-item">
                         <a href="{{route('advertiser.dashboard')}}" class="side-nav-link">
-                            <i class="uil-home-alt"></i>
+                            <i class="uil-dashboard"></i>
                             <span> Dashboard</span>
                         </a>
                     </li>
 
                     <li class="side-nav-item">
                         <a href="{{route('advertiser.manage.ads')}}" class="side-nav-link">
-                            <i class="uil-user"></i>
+                            <i class="uil-presentation"></i>
+                            <!-- Ads/Announcements icon -->
                             <span> Manage Ads</span>
                         </a>
                     </li>
+
                     <li class="side-nav-item">
-                        <a href="{{route('manage.compliance.page')}}" class="side-nav-link">
-                            <i class="uil-user"></i>
-                            <span> Manage Complaince</span>
+                        <a href="{{route('advertiser.manage.compliance')}}" class="side-nav-link">
+                            <i class="uil-shield-check"></i> <!-- Compliance icon -->
+                            <span> Manage Compliance</span>
                         </a>
                     </li>
 
-
                     <li class="side-nav-item">
                         <a href="{{url('manage-refund')}}" class="side-nav-link">
-                            <i class="uil-user"></i>
+                            <i class="uil-money-withdraw"></i> <!-- Refunds icon -->
                             <span> Manage Refund</span>
                         </a>
                     </li>
 
                     <li class="side-nav-item">
-                        <a href="{{route('advertiser.profile')}}" class="side-nav-link">
+                        <a href="{{url('profile')}}" class="side-nav-link">
                             <i class="uil-user"></i>
                             <span> Manage Profile </span>
                         </a>
                     </li>
 
                     <li class="side-nav-item">
-                        <a href="{{url('notification')}}" class="side-nav-link">
-                            <i class="uil-bell"></i>
-                            <span> Notification </span>
+                        <a href="{{route('advertiser.messages.index')}}" class="side-nav-link">
+                            <i class="uil-bell"></i> <!-- Notification icon -->
+                            <span> Notification</span>
                         </a>
                     </li>
 
                     <li class="side-nav-item">
                         <a href="{{route('user.logout')}}" class="side-nav-link">
-                            <i class="uil-signout"></i>
-                            <span> Logout </span>
+                            <i class="uil-sign-out-alt"></i> <!-- Logout icon -->
+                            <span> Logout</span>
                         </a>
                     </li>
 
-
-
-
-
-
-
-
+                    <div class="leftbar-user">
+                        <div class="profile-picture-wrapper rounded-circle avatar-lg img-thumbnail d-flex align-items-center justify-content-center"
+                            style="width: 80px; height: 80px; background-color: #007bff; color: #fff; font-size: 24px; font-weight: bold;">
+                            <a href="{{route('advertiser.profile')}}">
+                                @if (Auth::user()->profile_picture)
+                                <img src="{{ asset(Auth::user()->profile_picture) }}" alt="user-image" height="42"
+                                    class="rounded-circle shadow-sm">
+                                @else
+                                {{ strtoupper(substr(Auth::user()->name, 0, 2)) }}
+                                @endif
+                            </a>
+                        </div>
+                    </div>
                 </ul>
+
                 <!--- End Sidemenu -->
 
                 <div class="clearfix"></div>

@@ -15,17 +15,19 @@ class UserAuthMiddleware
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next
+     * @param  string  ...$roles
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function handle(Request $request, Closure $next, ...$guards): Response
+    public function handle(Request $request, Closure $next, ...$roles): Response
     {
         // Check if the user is authenticated
         if (!Auth::check()) {
-            return redirect("login");
+            return redirect()->route('login'); // Redirect to login if not authenticated
         }
 
         $user = Auth::user();
 
+<<<<<<< HEAD
         if (!$user) {
             // Redirect to login if the user is not authenticated
             return redirect()->route('login');
@@ -72,5 +74,15 @@ class UserAuthMiddleware
         // }
 
         return $next($request);
+=======
+        // Check if the authenticated user's role matches the allowed roles
+        if (!empty($roles) && !in_array($user->role, $roles)) {
+            abort(403, 'Unauthorized access.'); // Deny access for invalid roles
+        }
+
+
+
+        return $next($request); // Proceed to the next middleware or request handler
+>>>>>>> c7ca8436e5e826b81c800e9a8d727d2a60edd91c
     }
 }

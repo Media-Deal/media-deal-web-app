@@ -18,6 +18,7 @@ class AdPlacement extends Model
         'user_id',
         'media_id',          // Added media_id to fillable
         'title',
+        'status',
         'category',
         'type',
         'content_type',

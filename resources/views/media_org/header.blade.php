@@ -530,7 +530,7 @@
                     </li>
 
                     <li class="side-nav-item">
-                        <a href="{{url('manage-account')}}" class="side-nav-link">
+                        <a href="{{route('media_org.manage-account')}}" class="side-nav-link">
                             <i class="uil-user"></i>
                             <span> Manage Account</span>
                         </a>

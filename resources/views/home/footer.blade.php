@@ -38,10 +38,10 @@
 
             <div class="col-lg-3 col-md-6">
                 <h5 class="text-white mb-4">Terms of service</h5>
-                <a class="btn btn-link text-white-50" href="{{url('/policies')}}">Terms and conditions</a>
-                <a class="btn btn-link text-white-50" href="{{url('/policies')}}">Privacy policy</a>
-                <a class="btn btn-link text-white-50" href="{{url('/contact')}}">Propriety Rights</a>
-                <a class="btn btn-link text-white-50" href="{{url('/services')}}">Refund Policy</a>
+                <a class="btn btn-link text-white-50" href="{{url('/terms-of-service')}}">Terms and conditions</a>
+                <a class="btn btn-link text-white-50" href="{{url('/privacy-policy')}}">Privacy policy</a>
+                <a class="btn btn-link text-white-50" href="{{url('/rights')}}">Propriety Rights</a>
+                <a class="btn btn-link text-white-50" href="{{url('/refund-policies')}}">Refund Policy</a>
             </div>
         </div>
     </div>
