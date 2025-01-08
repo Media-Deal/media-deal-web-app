@@ -59,6 +59,17 @@
                                     <strong>Media Type:</strong>
                                 </div>
                                 <div class="col-md-8">
+<<<<<<< HEAD
+                                    @if(strtolower($ad->media->media_type ?? '') === 'tv')
+                                    {{ $ad->media->tv_name ?? 'N/A' }}
+                                    @elseif(strtolower($ad->media->media_type ?? '') === 'radio')
+                                    {{ $ad->media->radio_name ?? 'N/A' }}
+                                    @elseif(strtolower($ad->media->media_type ?? '') === 'internet')
+                                    {{ $ad->media->internet_name ?? 'N/A' }}
+                                    @else
+                                    N/A
+                                    @endif
+=======
                                     {{ $ad->media->media_type ?? 'N/A' }}
                                 </div>
                             </div>
@@ -68,6 +79,7 @@
                                 </div>
                                 <div class="col-md-8">
                                     {{ $ad->media->fullname ?? 'N/A' }}
+>>>>>>> c7ca8436e5e826b81c800e9a8d727d2a60edd91c
                                 </div>
                             </div>
                             <div class="row mb-3">
