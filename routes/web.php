@@ -127,6 +127,10 @@ Route::middleware('auth')->group(function () {
 
         // Delete Ad
         Route::delete('/delete-ads/{ad}', [App\Http\Controllers\AdvertiserController::class, 'deleteAd'])->name('advertiser.ads.delete');
+
+        Route::get('/advertiser/messages', [MessageController::class, 'index'])->name('advertiser.messages.index');
+        Route::get('/advertiser/messages/{id}', [MessageController::class, 'show'])->name('advertiser.messages.show');
+        Route::post('/advertiser/messages/{id}/reply', [MessageController::class, 'reply'])->name('advertiser.messages.reply');
     });
 
     // Media Organization Routes
@@ -136,10 +140,10 @@ Route::middleware('auth')->group(function () {
         Route::get('manage-account', [App\Http\Controllers\MediaOrganizationController::class, 'manageAccount'])->name('media_org.manage-account');
         Route::post('store', [App\Http\Controllers\MediaOrganizationController::class, 'store'])->name('store');
         Route::post('/media_organizations/{id}/update', [App\Http\Controllers\MediaOrganizationController::class, 'updateDetails'])->name('media_organizations.update');
-        Route::post('/update-details',[App\Http\Controllers\MediaOrganizationController::class, 'updateDetails'])->name('media_organizations.update');
-        Route::post('/update-tvdetails',[App\Http\Controllers\MediaOrganizationController::class, 'updatetvDetails'])->name('media_organizationstv.update');
-        Route::post('/update-radiodetails',[App\Http\Controllers\MediaOrganizationController::class, 'updateradioDetails'])->name('media_organizationsradio.update');
-        Route::post('/update-internetdetails',[App\Http\Controllers\MediaOrganizationController::class, 'updateinternetDetails'])->name('media_organizationsinternet.update');
+        Route::post('/update-details', [App\Http\Controllers\MediaOrganizationController::class, 'updateDetails'])->name('media_organizations.update');
+        Route::post('/update-tvdetails', [App\Http\Controllers\MediaOrganizationController::class, 'updatetvDetails'])->name('media_organizationstv.update');
+        Route::post('/update-radiodetails', [App\Http\Controllers\MediaOrganizationController::class, 'updateradioDetails'])->name('media_organizationsradio.update');
+        Route::post('/update-internetdetails', [App\Http\Controllers\MediaOrganizationController::class, 'updateinternetDetails'])->name('media_organizationsinternet.update');
         // Add more routes for Media Organization
     });
 

@@ -118,15 +118,10 @@ class AdvertiserController extends Controller
         // Retrieve the authenticated user
         $user = Auth::user();
 
-<<<<<<< HEAD
-        // Retrieve all ad placements for the user, you can paginate if there are many ads
-        $ads = AdPlacement::where('user_id', $user->id)
-            ->with('media') // Eager load the media organization relationship
-=======
+
         // Retrieve all ad placements for the user, including the associated media
         $ads = AdPlacement::where('user_id', $user->id)
             ->with('media') // Eager load the media relationship
->>>>>>> c7ca8436e5e826b81c800e9a8d727d2a60edd91c
             ->orderBy('created_at', 'desc')
             ->get();
 
@@ -246,7 +241,7 @@ class AdvertiserController extends Controller
 
     public function profile()
     {
-<<<<<<< HEAD
+
         // Get the authenticated user
         $user = Auth::user();
 
@@ -258,12 +253,7 @@ class AdvertiserController extends Controller
             ->firstOrFail();
 
         return view('advertiser.profile', $data); // Pass the data to the Blade file
-=======
-        $user = Auth::user();
-        // Retrieve the Advertiser record for the authenticated user
-        $advertiser = Advertiser::where('user_id', $user->id)->first();
-        return view('advertiser.profile', compact('advertiser'));
->>>>>>> c7ca8436e5e826b81c800e9a8d727d2a60edd91c
+
     }
 
     public function updateProfile(Request $request)

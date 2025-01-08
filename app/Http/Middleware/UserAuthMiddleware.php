@@ -27,7 +27,7 @@ class UserAuthMiddleware
 
         $user = Auth::user();
 
-<<<<<<< HEAD
+
         if (!$user) {
             // Redirect to login if the user is not authenticated
             return redirect()->route('login');
@@ -74,15 +74,5 @@ class UserAuthMiddleware
         // }
 
         return $next($request);
-=======
-        // Check if the authenticated user's role matches the allowed roles
-        if (!empty($roles) && !in_array($user->role, $roles)) {
-            abort(403, 'Unauthorized access.'); // Deny access for invalid roles
-        }
-
-
-
-        return $next($request); // Proceed to the next middleware or request handler
->>>>>>> c7ca8436e5e826b81c800e9a8d727d2a60edd91c
     }
 }
