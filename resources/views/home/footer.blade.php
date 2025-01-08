@@ -1,12 +1,12 @@
 <!-- Footer Start -->
 <div class="container-fluid bg-dark text-light-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
     <div class="container py-5">
-        <div class="row g-5">
-            <div class="col-lg-3 col-md-6">
+        <div class="row g-5 d-flex justify-content-center mx-5">
+            <div class="col-lg-4 col-md-6">
                 <h5 class="text-white mb-4">Get In Touch</h5>
-                <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>3550 SANDY LAKE ROAD,REVENNA,OH 44266</p>
-                <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+1 (513) 299-5453</p>
-                <p class="mb-2"><i class="fa fa-envelope me-3"></i>Info@vanamanllc.com</p>
+                <p class="mb-2 text-white-50"><i class="fa fa-map-marker-alt me-3"></i>Port Harcourt, Nigeria</p>
+                <p class="mb-2 text-white-50"><i class="fa fa-phone-alt me-3"></i>+234 803 445 0360</p>
+                <p class="mb-2 text-white-50"><i class="fa fa-envelope me-3"></i>support@mediadeal.ng</p>
                 <div class="d-flex pt-2">
                     <a class="btn btn-outline-light btn-social" href="https://www.instagram.com/mediadealhq/" target="_blank"><i
                             class="fab fa-instagram"></i></a>
@@ -15,11 +15,11 @@
                     <a class="btn btn-outline-light btn-social"
                         href="https://web.facebook.com/profile.php?id=61563303027766" target="_blank"><i class="fab fa-facebook"></i></a>
                     <a class="btn btn-outline-light btn-social"
-                        href="https://www.linkedin.com/company/media-deal/" target="_blank"><i
+                        href="https://www.linkedin.com/company/media-deal/?viewAsMember=true" target="_blank"><i
                             class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-4 col-md-6">
                 <h5 class="text-white mb-4">Quick Links</h5>
                 <a class="btn btn-link text-white-50" href="{{url('/')}}">Home</a>
                 <a class="btn btn-link text-white-50" href="{{url('/about')}}">About Us</a>
@@ -28,30 +28,29 @@
                 <a class="btn btn-link text-white-50" href="{{url('/policies')}}">Terms & Conditions</a>
             </div>
 
-            <div class="col-lg-3 col-md-6">
+            {{-- <div class="col-lg-3 col-md-6">
                 <h5 class="text-white mb-4">Support</h5>
                 <p class="text-white-50">+234 803 445 0360</p>
                 <p class="text-white-50">Chat with our team</p>
                 <p class="text-white-50">support@mediadeal.ng</p>
                 <p class="text-white-50">mediadealnigeria@gmail.com</p>
-            </div>
+            </div> --}}
 
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-4 col-md-6">
                 <h5 class="text-white mb-4">Terms of service</h5>
                 <a class="btn btn-link text-white-50" href="{{url('/terms-of-service')}}">Terms and conditions</a>
                 <a class="btn btn-link text-white-50" href="{{url('/privacy-policy')}}">Privacy policy</a>
-                <a class="btn btn-link text-white-50" href="{{url('/rights')}}">Propriety Rights</a>
-                <a class="btn btn-link text-white-50" href="{{url('/refund-policies')}}">Refund Policy</a>
+                <a class="btn btn-link text-white-50" href="{{url('/rights')}}">Proprietary Rights</a>
+                <a class="btn btn-link text-white-50" href="{{url('/refund-policy')}}">Refund Policy</a>
             </div>
         </div>
     </div>
 </div>
-<div class="container-fluid bg-dark text-light">
+<div class="container-fluid bg-dark">
     <div class="copyright">
         <div class="row">
-            <div class="col-md-6 text-center text-md-start mb-md-0">
-                &copy; <a href="{{url('/')}}" class="text-decoration-none">Media Deal</a> All Right
-                Reserved
+            <div class="col-12 text-white-50 text-center fs-6 mb-3">
+                &copy; Media Deal & <a href="https://eddiebluesdigital.com/" class="text-decoration-none" target="_blank">Eddieblues Digital</a> 2024 - All rights reserved
             </div>
         </div>
     </div>

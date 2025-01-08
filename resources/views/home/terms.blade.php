@@ -106,7 +106,7 @@
           <p>Adjustment to Payments:</p>
           <ul>
             <li>The media organization and marketer will receive payments minus the refunded amount, if applicable.</li>
-           <p>Read more about our <a href="{{ url("/refund-policies") }}">refund policies</a></p> 
+           <p>Read more about our <a href="{{ url("/refund-policy") }}">refund policies</a></p> 
           </ul>
       </section>
 

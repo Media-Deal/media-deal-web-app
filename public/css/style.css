@@ -506,3 +506,12 @@
 .bg-background{
     background: linear-gradient(135deg, #0d6efd, #2b2d92, #000); 
 }
+
+@media (max-width: 768px) {
+    .owl-carousel-item img{
+        height: 23rem !important;
+
+    }
+  }
+  
+
