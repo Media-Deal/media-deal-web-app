@@ -2,10 +2,11 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\CustomAuthController;
-use App\Http\Controllers\AdvertiserController;
-use App\Http\Controllers\MediaOrganizationController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\MarketerController;
+use App\Http\Controllers\AdvertiserController;
+use App\Http\Controllers\Auth\CustomAuthController;
+use App\Http\Controllers\MediaOrganizationController;
 
 // Public Routes
 Route::get('/', function () {
@@ -110,6 +111,10 @@ Route::middleware('auth')->group(function () {
 
         // Delete Ad
         Route::delete('/delete-ads/{ad}', [AdvertiserController::class, 'deleteAd'])->name('advertiser.ads.delete');
+
+        Route::get('/advertiser/messages', [MessageController::class, 'index'])->name('advertiser.messages.index');
+        Route::get('/advertiser/messages/{id}', [MessageController::class, 'show'])->name('advertiser.messages.show');
+        Route::post('/advertiser/messages/{id}/reply', [MessageController::class, 'reply'])->name('advertiser.messages.reply');
     });
 
     // Media Organization Routes

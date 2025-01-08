@@ -495,7 +495,7 @@
                     </li>
 
                     <li class="side-nav-item">
-                        <a href="{{url('notification')}}" class="side-nav-link">
+                        <a href="{{route('advertiser.messages.index')}}" class="side-nav-link">
                             <i class="uil-bell"></i> <!-- Notification icon -->
                             <span> Notification</span>
                         </a>
