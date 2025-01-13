@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Message;
 use App\Models\Advertiser;
 use App\Models\Compliance;
 use App\Models\AdPlacement;
@@ -34,7 +35,11 @@ class AdvertiserController extends Controller
             return view('advertiser.partials.homepage', compact('mediaOrganizations'))->render();
         }
 
-        return view('advertiser.homepage', compact('mediaOrganizations'));
+        $notifications = Message::where('advertiser_id', Auth::id())
+            ->latest()
+            ->paginate(15);
+
+        return view('advertiser.homepage', compact('mediaOrganizations', 'notifications'));
     }
 
 

@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use App\Models\Message;
 use Illuminate\Http\Request;
 use App\Models\MediaOrganization;
 use Illuminate\Support\Facades\Auth;
@@ -32,6 +33,9 @@ class UserAuthMiddleware
             // Redirect to login if the user is not authenticated
             return redirect()->route('login');
         }
+
+
+
 
         // Prepare data to pass to views
         $data['mediaOrganizations'] = MediaOrganization::all();

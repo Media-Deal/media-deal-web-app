@@ -43,7 +43,7 @@
                         <div class="card-body">
                             <h4 class="header-title">Message Details</h4>
 
-                            <p><strong>From:</strong> {{ $message->sender_name }}</p>
+                            <p><strong>From:</strong> {{ $message->mediaOrganization->fullname ?? 'N/A' }}</p>
                             <p><strong>Message:</strong> {{ $message->message }}</p>
                             <p><strong>Received At:</strong> {{ $message->created_at->format('d M Y, h:i A') }}</p>
 

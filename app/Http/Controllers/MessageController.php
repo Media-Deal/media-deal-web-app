@@ -17,7 +17,7 @@ class MessageController extends Controller
         $advertiserId = auth()->id();
 
         //$messages = Message::where('advertiser_id', Auth::id())->latest()->get();
-        $messages = Message::where('advertiser_id', $advertiserId)->orderBy('created_at', 'desc')->get();
+        $messages = Message::with('mediaOrganization')->where('advertiser_id', $advertiserId)->orderBy('created_at', 'desc')->get();
 
 
         return view('advertiser.message', compact('messages'));
@@ -42,7 +42,7 @@ class MessageController extends Controller
     public function show($id)
     {
         // Find the message by ID or fail
-        $message = Message::where('advertiser_id', Auth::id())->findOrFail($id);
+        $message = Message::with('mediaOrganization')->where('advertiser_id', Auth::id())->findOrFail($id);
 
         return view('advertiser.reply', compact('message'));
     }
@@ -66,5 +66,17 @@ class MessageController extends Controller
         ]);
 
         return redirect()->route('advertiser.messages.index')->with('success', 'Reply sent successfully!');
+    }
+
+    public function showNotification($id)
+    {
+        $message = Message::findOrFail($id);
+        return view('advertiser.message', compact('message'));
+    }
+
+    public function clearNotification()
+    {
+        Message::truncate();
+        return redirect()->back()->with('success', 'All notifications cleared.');
     }
 }

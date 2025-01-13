@@ -35,12 +35,15 @@ class LoginController extends Controller
      */
     protected function authenticated(Request $request, $user)
     {
+
         // Check the user's role and redirect accordingly
+
+
         switch ($user->role) {
             case 'advertiser':
                 return redirect()->route('advertiser.dashboard');
             case 'media_org':
-                return redirect()->route('mediaOrg.dashboard');
+                return redirect()->route('media_org.dashboard');
             case 'marketer':
                 return redirect()->route('marketer.dashboard');
             default:
