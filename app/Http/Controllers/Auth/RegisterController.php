@@ -37,7 +37,7 @@ class RegisterController extends Controller
 
     protected function determineRedirectTo()
     {
-        // Redirect path based on role
+        // Redirect path based on role 
         $role = request()->input('role');
         switch ($role) {
             case 'advertiser':

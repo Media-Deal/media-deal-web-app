@@ -98,40 +98,11 @@
                     <tbody>
                         @forelse($ads as $ad)
                         <tr>
-<<<<<<< HEAD
-                            <!-- Media Name -->
-                            <td>
-                                @if(strtolower($ad->media->media_type ?? '') === 'tv')
-                                {{ $ad->media->tv_name ?? 'N/A' }}
-                                @elseif(strtolower($ad->media->media_type ?? '') === 'radio')
-                                {{ $ad->media->radio_name ?? 'N/A' }}
-                                @elseif(strtolower($ad->media->media_type ?? '') === 'internet')
-                                {{ $ad->media->internet_name ?? 'N/A' }}
-                                @else
-                                N/A
-                                @endif
-                            </td>
-
-                            <!-- Category -->
-                            <td>{{ $ad->category ?? 'N/A' }}</td>
-
-                            <!-- Ad Type -->
-                            <td>{{ $ad->type ?? 'N/A' }}</td>
-
-                            <!-- Cost -->
-                            <td>${{ number_format($ad->cost ?? 0, 2) }}</td>
-
-                            <!-- Duration -->
-                            <td>{{ $ad->duration ?? 'N/A' }}</td>
-
-                            <!-- Status -->
-=======
                             <td>{{ $ad->media->media_type ?? 'N/A' }}</td>
                             <td>{{ $ad->category }}</td>
                             <td>{{ $ad->type }}</td>
                             <td>${{ number_format($ad->cost, 2) }}</td>
                             <td>{{ $ad->duration }}</td>
->>>>>>> c7ca8436e5e826b81c800e9a8d727d2a60edd91c
                             <td>
                                 @if($ad->status === '1')
                                 <span class="badge bg-success">Active</span>

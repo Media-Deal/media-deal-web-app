@@ -128,9 +128,11 @@ Route::middleware('auth')->group(function () {
         // Delete Ad
         Route::delete('/delete-ads/{ad}', [App\Http\Controllers\AdvertiserController::class, 'deleteAd'])->name('advertiser.ads.delete');
 
-        Route::get('/advertiser/messages', [MessageController::class, 'index'])->name('advertiser.messages.index');
-        Route::get('/advertiser/messages/{id}', [MessageController::class, 'show'])->name('advertiser.messages.show');
-        Route::post('/advertiser/messages/{id}/reply', [MessageController::class, 'reply'])->name('advertiser.messages.reply');
+        Route::get('/messages', [MessageController::class, 'index'])->name('advertiser.messages.index');
+        Route::get('/messages/{id}', [MessageController::class, 'show'])->name('advertiser.messages.show');
+        Route::post('/messages/{id}/reply', [MessageController::class, 'reply'])->name('advertiser.messages.reply');
+        Route::get('/notifications/{id}', [MessageController::class, 'showNotification'])->name('notifications.show');
+        Route::get('/notifications/clear', [MessageController::class, 'clearNotification'])->name('notifications.clear');
     });
 
     // Media Organization Routes
