@@ -24,17 +24,7 @@ class MessageController extends Controller
     }
 
 
-    public function mediaMessage()
-    {
-        // Retrieve messages for the authenticated advertiser
-        $advertiserId = auth()->id();
 
-        //$messages = Message::where('advertiser_id', Auth::id())->latest()->get();
-        $messages = Message::where('advertiser_id', $advertiserId)->orderBy('created_at', 'desc')->get();
-
-
-        return view('advertiser.message', compact('messages'));
-    }
 
     /**
      * Show the form for replying to a message.
