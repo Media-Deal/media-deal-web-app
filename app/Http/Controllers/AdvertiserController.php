@@ -34,12 +34,41 @@ class AdvertiserController extends Controller
         if ($request->ajax()) {
             return view('advertiser.partials.homepage', compact('mediaOrganizations'))->render();
         }
-
         $notifications = Message::where('advertiser_id', Auth::id())
+            ->where('sender_type', '!=', 'advertiser')
             ->latest()
-            ->paginate(15);
+            ->paginate(6);
+
+
 
         return view('advertiser.homepage', compact('mediaOrganizations', 'notifications'));
+    }
+
+
+    public function allMedia(Request $request)
+    {
+        $searchQuery = $request->input('search_query');
+        $mediaOrganizations = MediaOrganization::query();
+
+        if ($searchQuery) {
+            $mediaOrganizations->where('tv_name', 'like', "%{$searchQuery}%")
+                ->orWhere('radio_name', 'like', "%{$searchQuery}%")
+                ->orWhere('internet_name', 'like', "%{$searchQuery}%");
+        }
+
+        $mediaOrganizations = $mediaOrganizations->get();
+
+        // If the request is AJAX, return only the filtered content
+        if ($request->ajax()) {
+            return view('advertiser.partials.homepage', compact('mediaOrganizations'))->render();
+        }
+
+        $notifications = Message::where('advertiser_id', Auth::id())
+            ->where('sender_type', 'media_organization')
+            ->latest()
+            ->paginate(6);
+
+        return view('advertiser.media', compact('mediaOrganizations', 'notifications'));
     }
 
 

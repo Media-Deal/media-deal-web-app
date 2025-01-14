@@ -151,7 +151,7 @@
 
             <div class="container mt-4 text-center">
                 <!-- Link Button -->
-                <a href="" class="btn btn-primary btn-lg px-4 py-2">
+                <a href="{{route('advertiser.click.place.ads')}}" class="btn btn-primary btn-lg px-4 py-2">
                     Click to Place Ads
                 </a>
             </div>

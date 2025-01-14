@@ -183,8 +183,12 @@
 
                             <div class="px-2" style="max-height: 300px;" data-simplebar>
                                 @php
-                                $notifications = \App\Models\Message::latest()->take(10)->get();
+                                $notifications = \App\Models\Message::where('sender_type', '!=', 'advertiser')
+                                ->latest()
+                                ->take(10)
+                                ->get();
                                 @endphp
+
 
                                 @forelse ($notifications as $notification)
                                 <a href="{{ route('advertiser.messages.show', $notification->id) }}"

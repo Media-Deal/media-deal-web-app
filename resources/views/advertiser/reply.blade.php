@@ -46,7 +46,7 @@
                             <p><strong>From:</strong> {{ $message->mediaOrganization->fullname ?? 'N/A' }}</p>
                             <p><strong>Message:</strong> {{ $message->message }}</p>
                             <p><strong>Received At:</strong> {{ $message->created_at->format('d M Y, h:i A') }}</p>
-
+ 
                             <form action="{{ route('advertiser.messages.reply', $message->id) }}" method="POST">
                                 @csrf
                                 <div class="mb-3">
