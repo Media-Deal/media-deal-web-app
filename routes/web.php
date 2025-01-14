@@ -93,6 +93,7 @@ Route::middleware('auth')->group(function () {
         Route::put('profile', [AdvertiserController::class, 'updateProfile'])->name('advertiser.profile.update');
         Route::get('manage-ads', [AdvertiserController::class, 'manageAds'])->name('advertiser.manage.ads');
         Route::get('media/{id}', [AdvertiserController::class, 'showMedia'])->name('advertiser.media.show');
+        Route::get('media-organization', [AdvertiserController::class, 'allMedia'])->name('advertiser.click.place.ads');
 
         // Ad Placement Form Submission
         Route::post('/media/{media}/ad-placement', [AdvertiserController::class, 'placeAds'])->name('advertiser.media.ad.placement');
@@ -133,6 +134,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/messages/{id}/reply', [MessageController::class, 'reply'])->name('advertiser.messages.reply');
         Route::get('/notifications/{id}', [MessageController::class, 'showNotification'])->name('notifications.show');
         Route::get('/notifications/clear', [MessageController::class, 'clearNotification'])->name('notifications.clear');
+        Route::post('/messages/send', [MessageController::class, 'sendMessage'])->name('messages.send');
     });
 
     // Media Organization Routes

@@ -56,7 +56,15 @@
                                         @forelse ($messages as $message)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $message->mediaOrganization->fullname ?? 'N/A' }}</td>
+                                            <td>
+                                                @if ($message->sender_type === 'advertiser')
+                                                {{ Auth::user()->name }}
+                                                @else
+                                                {{ $message->mediaOrganization->fullname ?? 'N/A' }}
+                                                @endif
+                                            </td>
+
+
                                             <td>{{ Str::limit($message->message, 50) }}</td>
                                             <td>
                                                 @if ($message->replied_at)
