@@ -270,6 +270,10 @@
         <h5>Contact Media</h5>
         <p class="mb-1"><i class="fas fa-envelope"></i> {{ $media->email }}</p>
         <p class="mb-1"><i class="fas fa-phone"></i> {{ $media->phone }}</p>
+        <button type="button" class="btn btn-success btn-custom" data-bs-toggle="modal"
+          data-bs-target="#sendMessageModal">
+          Send Message
+        </button>
         <button type="button" class="btn btn-primary btn-custom" data-bs-toggle="modal"
           data-bs-target="#makePaymentModal">
           Make Payment
@@ -316,6 +320,32 @@
           </div>
         </div>
       </div>
+
+      <!-- Send Message Modal -->
+      <div class="modal fade" id="sendMessageModal" tabindex="-1" aria-labelledby="sendMessageModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="sendMessageModalLabel">Send Message</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form action="{{ route('messages.send') }}" method="POST">
+                @csrf
+                <input type="hidden" name="sender_type" value="advertiser">
+                <input type="hidden" name="recipient_id" value="{{$media->id}}">
+                <div class="mb-3">
+                  <label for="messageContent" class="form-label">Message</label>
+                  <textarea class="form-control" id="messageContent" name="message" rows="3" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Send Message</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
 
       <!-- Request Compliance Modal -->
       <div class="modal fade" id="requestComplianceModal" tabindex="-1" aria-labelledby="requestComplianceModalLabel"

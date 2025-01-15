@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Dashboard | Hyper - Responsive Bootstrap 5 Admin Dashboard</title>
+    <title>Dashboard | Advertiser Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
     <meta content="Coderthemes" name="author" />
@@ -170,10 +170,11 @@
                             <div class="p-2 border-top-0 border-start-0 border-end-0 border-dashed border">
                                 <div class="row align-items-center">
                                     <div class="col">
-                                        <h6 class="m-0 font-16 fw-semibold"> Notification</h6>
+                                        <h6 class="m-0 font-16 fw-semibold"> Notifications</h6>
                                     </div>
                                     <div class="col-auto">
-                                        <a href="javascript: void(0);" class="text-dark text-decoration-underline">
+                                        <a href="{{ route('notifications.clear') }}"
+                                            class="text-dark text-decoration-underline">
                                             <small>Clear All</small>
                                         </a>
                                     </div>
@@ -181,133 +182,54 @@
                             </div>
 
                             <div class="px-2" style="max-height: 300px;" data-simplebar>
+                                @php
+                                $notifications = \App\Models\Message::where('sender_type', '!=', 'advertiser')
+                                ->latest()
+                                ->take(10)
+                                ->get();
+                                @endphp
 
-                                <h5 class="text-muted font-13 fw-normal mt-2">Today</h5>
-                                <!-- item-->
 
-                                <a href="javascript:void(0);"
-                                    class="dropdown-item p-0 notify-item card unread-noti shadow-none mb-2">
+                                @forelse ($notifications as $notification)
+                                <a href="{{ route('advertiser.messages.show', $notification->id) }}"
+                                    class="dropdown-item p-0 notify-item card {{ $notification->reply ? 'read-noti' : 'unread-noti' }} shadow-none mb-2">
                                     <div class="card-body">
-                                        <span class="float-end noti-close-btn text-muted"><i
-                                                class="mdi mdi-close"></i></span>
+                                        <span class="float-end noti-close-btn text-muted">
+                                            <i class="mdi mdi-close"></i>
+                                        </span>
                                         <div class="d-flex align-items-center">
                                             <div class="flex-shrink-0">
-                                                <div class="notify-icon bg-primary">
+                                                <div
+                                                    class="notify-icon bg-{{ $notification->isAdvertiserSender() ? 'primary' : 'info' }}">
                                                     <i class="mdi mdi-comment-account-outline"></i>
                                                 </div>
                                             </div>
                                             <div class="flex-grow-1 text-truncate ms-2">
-                                                <h5 class="noti-item-title fw-semibold font-14">Datacorp <small
-                                                        class="fw-normal text-muted ms-1">1 min ago</small></h5>
-                                                <small class="noti-item-subtitle text-muted">Caleb Flakelar commented on
-                                                    Admin</small>
+                                                <h5 class="noti-item-title fw-semibold font-14">
+                                                    {{ $notification->isAdvertiserSender() ?
+                                                    $notification->advertiser->name :
+                                                    $notification->mediaOrganization->name }}
+                                                    <small class="fw-normal text-muted ms-1">
+                                                        {{ $notification->created_at->diffForHumans() }}
+                                                    </small>
+                                                </h5>
+                                                <small class="noti-item-subtitle text-muted">
+                                                    {{ $notification->message }}
+                                                </small>
                                             </div>
                                         </div>
                                     </div>
                                 </a>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);"
-                                    class="dropdown-item p-0 notify-item card read-noti shadow-none mb-2">
-                                    <div class="card-body">
-                                        <span class="float-end noti-close-btn text-muted"><i
-                                                class="mdi mdi-close"></i></span>
-                                        <div class="d-flex align-items-center">
-                                            <div class="flex-shrink-0">
-                                                <div class="notify-icon bg-info">
-                                                    <i class="mdi mdi-account-plus"></i>
-                                                </div>
-                                            </div>
-                                            <div class="flex-grow-1 text-truncate ms-2">
-                                                <h5 class="noti-item-title fw-semibold font-14">Admin <small
-                                                        class="fw-normal text-muted ms-1">1 hours ago</small></h5>
-                                                <small class="noti-item-subtitle text-muted">New user registered</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-
-                                <h5 class="text-muted font-13 fw-normal mt-0">Yesterday</h5>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);"
-                                    class="dropdown-item p-0 notify-item card read-noti shadow-none mb-2">
-                                    <div class="card-body">
-                                        <span class="float-end noti-close-btn text-muted"><i
-                                                class="mdi mdi-close"></i></span>
-                                        <div class="d-flex align-items-center">
-                                            <div class="flex-shrink-0">
-                                                <div class="notify-icon">
-                                                    <img src="assets/images/users/avatar-2.jpg"
-                                                        class="img-fluid rounded-circle" alt="" />
-                                                </div>
-                                            </div>
-                                            <div class="flex-grow-1 text-truncate ms-2">
-                                                <h5 class="noti-item-title fw-semibold font-14">Cristina Pride <small
-                                                        class="fw-normal text-muted ms-1">1 day ago</small></h5>
-                                                <small class="noti-item-subtitle text-muted">Hi, How are you? What about
-                                                    our next meeting</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-
-                                <h5 class="text-muted font-13 fw-normal mt-0">30 Dec 2021</h5>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);"
-                                    class="dropdown-item p-0 notify-item card read-noti shadow-none mb-2">
-                                    <div class="card-body">
-                                        <span class="float-end noti-close-btn text-muted"><i
-                                                class="mdi mdi-close"></i></span>
-                                        <div class="d-flex align-items-center">
-                                            <div class="flex-shrink-0">
-                                                <div class="notify-icon bg-primary">
-                                                    <i class="mdi mdi-comment-account-outline"></i>
-                                                </div>
-                                            </div>
-                                            <div class="flex-grow-1 text-truncate ms-2">
-                                                <h5 class="noti-item-title fw-semibold font-14">Datacorp</h5>
-                                                <small class="noti-item-subtitle text-muted">Caleb Flakelar commented on
-                                                    Admin</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);"
-                                    class="dropdown-item p-0 notify-item card read-noti shadow-none mb-2">
-                                    <div class="card-body">
-                                        <span class="float-end noti-close-btn text-muted"><i
-                                                class="mdi mdi-close"></i></span>
-                                        <div class="d-flex align-items-center">
-                                            <div class="flex-shrink-0">
-                                                <div class="notify-icon">
-                                                    <img src="assets/images/users/avatar-4.jpg"
-                                                        class="img-fluid rounded-circle" alt="" />
-                                                </div>
-                                            </div>
-                                            <div class="flex-grow-1 text-truncate ms-2">
-                                                <h5 class="noti-item-title fw-semibold font-14">Karen Robinson</h5>
-                                                <small class="noti-item-subtitle text-muted">Wow ! this admin looks good
-                                                    and awesome design</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-
-                                <div class="text-center">
-                                    <i class="mdi mdi-dots-circle mdi-spin text-muted h3 mt-0"></i>
-                                </div>
+                                @empty
+                                <p class="text-muted text-center mt-3">No notifications available.</p>
+                                @endforelse
                             </div>
 
                             <!-- All-->
-                            <a href="javascript:void(0);"
+                            <a href="{{ route('advertiser.messages.index') }}"
                                 class="dropdown-item text-center text-primary notify-item border-top border-light py-2">
                                 View All
                             </a>
-
                         </div>
                     </li>
 
@@ -495,7 +417,7 @@
                     </li>
 
                     <li class="side-nav-item">
-                        <a href="{{url('notification')}}" class="side-nav-link">
+                        <a href="{{route('advertiser.messages.index')}}" class="side-nav-link">
                             <i class="uil-bell"></i> <!-- Notification icon -->
                             <span> Notification</span>
                         </a>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Message;
 use App\Models\Advertiser;
 use App\Models\Compliance;
 use App\Models\AdPlacement;
@@ -33,8 +34,41 @@ class AdvertiserController extends Controller
         if ($request->ajax()) {
             return view('advertiser.partials.homepage', compact('mediaOrganizations'))->render();
         }
+        $notifications = Message::where('advertiser_id', Auth::id())
+            ->where('sender_type', '!=', 'advertiser')
+            ->latest()
+            ->paginate(6);
 
-        return view('advertiser.homepage', compact('mediaOrganizations'));
+
+
+        return view('advertiser.homepage', compact('mediaOrganizations', 'notifications'));
+    }
+
+
+    public function allMedia(Request $request)
+    {
+        $searchQuery = $request->input('search_query');
+        $mediaOrganizations = MediaOrganization::query();
+
+        if ($searchQuery) {
+            $mediaOrganizations->where('tv_name', 'like', "%{$searchQuery}%")
+                ->orWhere('radio_name', 'like', "%{$searchQuery}%")
+                ->orWhere('internet_name', 'like', "%{$searchQuery}%");
+        }
+
+        $mediaOrganizations = $mediaOrganizations->get();
+
+        // If the request is AJAX, return only the filtered content
+        if ($request->ajax()) {
+            return view('advertiser.partials.homepage', compact('mediaOrganizations'))->render();
+        }
+
+        $notifications = Message::where('advertiser_id', Auth::id())
+            ->where('sender_type', 'media_organization')
+            ->latest()
+            ->paginate(6);
+
+        return view('advertiser.media', compact('mediaOrganizations', 'notifications'));
     }
 
 
@@ -117,6 +151,7 @@ class AdvertiserController extends Controller
     {
         // Retrieve the authenticated user
         $user = Auth::user();
+
 
         // Retrieve all ad placements for the user, including the associated media
         $ads = AdPlacement::where('user_id', $user->id)
@@ -237,12 +272,22 @@ class AdvertiserController extends Controller
         }
     }
 
+
     public function profile()
     {
+
+        // Get the authenticated user
         $user = Auth::user();
-        // Retrieve the Advertiser record for the authenticated user
-        $advertiser = Advertiser::where('user_id', $user->id)->first();
-        return view('advertiser.profile', compact('advertiser'));
+
+        // Join the users and advertisers tables and retrieve the data
+        $data['user'] = $user;
+        $data['advertiser'] = Advertiser::join('users', 'advertisers.user_id', '=', 'users.id')
+            ->where('advertisers.user_id', $user->id)
+            ->select('users.*', 'advertisers.*') // Select both user and advertiser fields
+            ->firstOrFail();
+
+        return view('advertiser.profile', $data); // Pass the data to the Blade file
+
     }
 
     public function updateProfile(Request $request)
@@ -320,6 +365,73 @@ class AdvertiserController extends Controller
     }
 
 
+    public function updateAvatar(Request $request, $id)
+    {
+        $request->validate([
+            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
 
-    // Add other methods for advertiser functionality
+        $user = User::findOrFail($id); // Fetch the user by ID
+
+        if ($request->hasFile('avatar')) {
+            $file = $request->file('avatar');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('uploads/avatars'), $filename);
+
+            // Delete the old avatar if it exists
+            if ($user->avatar && file_exists(public_path($user->avatar))) {
+                unlink(public_path($user->avatar));
+            }
+
+            // Save the new avatar path in the database
+            $user->avatar = 'uploads/avatars/' . $filename;
+            $user->save();
+
+            return response()->json(['success' => true, 'message' => 'Avatar updated successfully!', 'avatar' => $user->avatar]);
+        }
+
+        return response()->json(['success' => false, 'message' => 'Failed to upload avatar.']);
+    }
+
+    public function updateAdvertiser(Request $request)
+    {
+        $request->validate([
+            'full_name' => 'required|string|max:255',
+            'phone_number' => 'required|string|max:15',
+            'email' => 'required|email|unique:users,email,' . Auth::id(),
+            'address' => 'required|string|max:255',
+            'date_of_birth' => 'nullable|date',
+            'company_name' => 'nullable|string|max:255',
+            'description' => 'nullable|string',
+            'store_address' => 'nullable|string|max:255',
+        ]);
+
+        $user = Auth::user();
+
+        // Update the user information
+        $userUpdated = $user->update([
+            'name' => $request->input('full_name'),
+            'email' => $request->input('email'),
+        ]);
+
+        // Update or create advertiser details
+        $advertiserUpdated = Advertiser::updateOrCreate(
+            ['user_id' => $user->id],
+            [
+                'address' => $request->input('address'),
+                'phone_number' => $request->input('phone_number'),
+                'date_of_birth' => $request->input('date_of_birth'),
+                'company_name' => $request->input('company_name'),
+                'description' => $request->input('description'),
+                'store_address' => $request->input('store_address'),
+            ]
+        );
+
+        // Check if both updates succeeded
+        if ($userUpdated && $advertiserUpdated) {
+            return redirect()->back()->with('success', 'Profile updated successfully!');
+        }
+
+        return redirect()->back()->with('error', 'Failed to update profile. Please try again.');
+    }
 }

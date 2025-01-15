@@ -2,10 +2,11 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\CustomAuthController;
-use App\Http\Controllers\AdvertiserController;
-use App\Http\Controllers\MediaOrganizationController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\MarketerController;
+use App\Http\Controllers\AdvertiserController;
+use App\Http\Controllers\Auth\CustomAuthController;
+use App\Http\Controllers\MediaOrganizationController;
 
 // Public Routes
 Route::get('/', function () {
@@ -92,6 +93,7 @@ Route::middleware('auth')->group(function () {
         Route::put('profile', [AdvertiserController::class, 'updateProfile'])->name('advertiser.profile.update');
         Route::get('manage-ads', [AdvertiserController::class, 'manageAds'])->name('advertiser.manage.ads');
         Route::get('media/{id}', [AdvertiserController::class, 'showMedia'])->name('advertiser.media.show');
+        Route::get('media-organization', [AdvertiserController::class, 'allMedia'])->name('advertiser.click.place.ads');
 
         // Ad Placement Form Submission
         Route::post('/media/{media}/ad-placement', [AdvertiserController::class, 'placeAds'])->name('advertiser.media.ad.placement');
@@ -125,14 +127,28 @@ Route::middleware('auth')->group(function () {
         Route::put('/ads/{ad}', [AdvertiserController::class, 'updateAd'])->name('advertiser.ads.update');
 
         // Delete Ad
-        Route::delete('/delete-ads/{ad}', [AdvertiserController::class, 'deleteAd'])->name('advertiser.ads.delete');
+        Route::delete('/delete-ads/{ad}', [App\Http\Controllers\AdvertiserController::class, 'deleteAd'])->name('advertiser.ads.delete');
+
+        Route::get('/messages', [MessageController::class, 'index'])->name('advertiser.messages.index');
+        Route::get('/messages/{id}', [MessageController::class, 'show'])->name('advertiser.messages.show');
+        Route::post('/messages/{id}/reply', [MessageController::class, 'reply'])->name('advertiser.messages.reply');
+        Route::get('/notifications/{id}', [MessageController::class, 'showNotification'])->name('notifications.show');
+        Route::get('/notifications/clear', [MessageController::class, 'clearNotification'])->name('notifications.clear');
+        Route::post('/messages/send', [MessageController::class, 'sendMessage'])->name('messages.send');
     });
 
     // Media Organization Routes
-    Route::prefix('media-org')->middleware(['user_auth:media_org'])->group(function () {
-        Route::get('dashboard', [MediaOrganizationController::class, 'index'])->name('media_org.dashboard');
-        Route::get('profile', [MediaOrganizationController::class, 'profile'])->name('media_org.profile');
-        // Additional Media Organization Routes
+    Route::prefix('media-org')->group(function () {
+        Route::get('dashboard', [App\Http\Controllers\MediaOrganizationController::class, 'index'])->name('media_org.dashboard');
+        Route::get('profile', [App\Http\Controllers\MediaOrganizationController::class, 'profile'])->name('media_org.profile');
+        Route::get('manage-account', [App\Http\Controllers\MediaOrganizationController::class, 'manageAccount'])->name('media_org.manage-account');
+        Route::post('store', [App\Http\Controllers\MediaOrganizationController::class, 'store'])->name('store');
+        Route::post('/media_organizations/{id}/update', [App\Http\Controllers\MediaOrganizationController::class, 'updateDetails'])->name('media_organizations.update');
+        Route::post('/update-details', [App\Http\Controllers\MediaOrganizationController::class, 'updateDetails'])->name('media_organizations.update');
+        Route::post('/update-tvdetails', [App\Http\Controllers\MediaOrganizationController::class, 'updatetvDetails'])->name('media_organizationstv.update');
+        Route::post('/update-radiodetails', [App\Http\Controllers\MediaOrganizationController::class, 'updateradioDetails'])->name('media_organizationsradio.update');
+        Route::post('/update-internetdetails', [App\Http\Controllers\MediaOrganizationController::class, 'updateinternetDetails'])->name('media_organizationsinternet.update');
+        // Add more routes for Media Organization
     });
 
     // Marketer Routes

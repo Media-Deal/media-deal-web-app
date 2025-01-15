@@ -114,8 +114,9 @@
                                 <span class="badge bg-secondary">{{ $ad->status }}</span>
                                 @endif
                             </td>
+
+                            <!-- Actions -->
                             <td>
-                                {{-- Optional: Add action buttons like View, Edit, Delete --}}
                                 <a href="{{ route('advertiser.ads.view', $ad->id) }}"
                                     class="btn btn-sm btn-info">View</a>
                                 <a href="{{ route('advertiser.ads.edit', $ad->id) }}"
@@ -135,6 +136,7 @@
                         </tr>
                         @endforelse
                     </tbody>
+
                 </table>
 
                 {{-- Optional: Pagination Links --}}
@@ -149,7 +151,7 @@
 
             <div class="container mt-4 text-center">
                 <!-- Link Button -->
-                <a href="" class="btn btn-primary btn-lg px-4 py-2">
+                <a href="{{route('advertiser.click.place.ads')}}" class="btn btn-primary btn-lg px-4 py-2">
                     Click to Place Ads
                 </a>
             </div>

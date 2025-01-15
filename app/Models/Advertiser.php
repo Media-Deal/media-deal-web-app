@@ -19,11 +19,15 @@ class Advertiser extends Model
         'company_name',
         'description',
         'store_address'
+
     ];
+
+
 
     /**
      * The user that owns the advertiser.
      */
+
     public function user()
     {
         return $this->belongsTo(User::class);

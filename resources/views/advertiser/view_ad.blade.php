@@ -59,6 +59,7 @@
                                     <strong>Media Type:</strong>
                                 </div>
                                 <div class="col-md-8">
+
                                     {{ $ad->media->media_type ?? 'N/A' }}
                                 </div>
                             </div>
@@ -68,6 +69,7 @@
                                 </div>
                                 <div class="col-md-8">
                                     {{ $ad->media->fullname ?? 'N/A' }}
+
                                 </div>
                             </div>
                             <div class="row mb-3">
