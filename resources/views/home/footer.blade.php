@@ -50,7 +50,7 @@
     <div class="copyright">
         <div class="row">
             <div class="col-12 text-white-50 text-center fs-6 mb-3">
-                &copy; Media Deal & <a href="https://eddiebluesdigital.com/" class="text-decoration-none" target="_blank">Eddieblues Digital</a> 2024 - All rights reserved
+                &copy; Media Deal & <a href="https://eddiebluesdigital.com/" class="text-decoration-none" target="_blank">Eddieblues Digital</a> 2025 - All rights reserved
             </div>
         </div>
     </div>

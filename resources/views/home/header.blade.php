@@ -91,12 +91,6 @@
                                         <h6 class="dropdown-item">Dashboard</h6>
                                        </a>
                                        <a href="#" class="text-decoration-none">
-                                        <h6 class="dropdown-item">Feedback</h6>
-                                       </a>
-                                       <a href="#" class="text-decoration-none">
-                                        <h6 class="dropdown-item">Testimonial</h6>
-                                       </a>
-                                       <a href="#" class="text-decoration-none">
                                         <h6 class="dropdown-item">Deal Support</h6>
                                        </a>
                                 </div>
