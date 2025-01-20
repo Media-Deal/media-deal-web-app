@@ -41,6 +41,10 @@ Route::get('/faq', function () {
     return view('home.faq');
 });
 
+Route::get('/deal-support', function () {
+    return view('home.deals');
+});
+
 // Advertiser Public Routes
 Route::get('/advertiser', function () {
     return view('advertiser.homepage');

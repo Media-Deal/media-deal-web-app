@@ -90,7 +90,7 @@
                                        <a href="{{ url('login') }}" class="text-decoration-none">
                                         <h6 class="dropdown-item">Dashboard</h6>
                                        </a>
-                                       <a href="#" class="text-decoration-none">
+                                       <a href="{{ url("deal-support") }}" class="text-decoration-none">
                                         <h6 class="dropdown-item">Deal Support</h6>
                                        </a>
                                 </div>

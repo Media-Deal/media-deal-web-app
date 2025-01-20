@@ -3,13 +3,15 @@
 <!-- Header Start -->
 <div class="container-fluid header bg-light p-0">
   <div class="row g-0 align-items-center flex-column-reverse flex-md-row">
-    <div class="col-md-6 p-5 mt-lg-5 px-5">
+    <div class="col-md-6 p-5 mt-lg-5 px-3 text-center">
 
-      <h1 class="display-5 animated fadeIn mb-3 fw-bold mt-4">Upgrade Your <span class="text-primary">Advertising Game
+      <h1 class="display-5 animated fadeIn mb-3 fw-bold mt-4"> <span class="fs-1">...Where Media Gets Paid,<br></span><span class="text-primary fs-1">and Advertisers Get Results...
         </span></h1>
-      <h4 class="animated fadeIn mb-4 pb-2">with Media Deal, the ultimate platform for innovative and safe
-        media buying and selling.</h4>
-      <a href="{{route('register')}}" class="btn btn-primary py-3 px-5 me-3 animated fadeIn">Start Now</a>
+      {{-- <h4 class="animated fadeIn mb-4 pb-2"></h4> --}}
+      <div class="d-flex justify-content-center">
+        <a href="{{route('register')}}" class="btn btn-dark py-3 px-3 me-3 mt-4 animated fadeIn text-primary fw-bold">Start for FREE</a>
+      </div>
+      
     </div>
     <div class="col-md-6 animated fadeIn">
       <div class="owl-carousel header-carousel">
@@ -84,9 +86,9 @@
                 </div>
                 <div class="col-lg-6 wow fadeIn" data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine"> 
                     <div class="px-5">
-                        <p class="mb-4 text-dark fs-5"><span class="text-primary fw-bolder fs-3"><i></i></span><i>"What users are saying about Media Deal”</i> </p>
+                        <p class="mb-4 text-dark fs-5"><span class="text-primary fw-bolder fs-3"><i></i></span><i>"As a fashion designer in Lagos, Media Deal made it easy for me to connect with the right radio station. Everything went smoothly, and my business started getting plenty of calls and messages. Media Deal na real lifesaver!”</i> </p>
                             <div class="d-flex justify-content-center">
-                                <a href="{{route('register')}}" class="btn btn-primary py-2 px-3 me-3 my-3 animated fadeIn">Try Us!</a>
+                                <a href="{{route('register')}}" class="btn btn-dark py-2 px-5 me-3 my-3 text-primary animated fadeIn fw-bold">Try Us!</a>
                             </div>
                     </div>
                 </div>
@@ -109,7 +111,7 @@
                     <div class="card border-0 shadow bg-light">
                         <div class="card-body bg-dark px-3">
                             <img src="img/md11.png" class="img-fluid w-50 h-50">
-                            <h4 class="fs-4 text-primary py-2">Conclude deals faster</h4>
+                            <h4 class="fs-4 text-primary py-2">Conclude Deals Faster</h4>
                             <p class="fs-6 mb-0 fw-500 fs-6 text-light">We've simplified your media selling process—sign up, create your profile for free, and receive email notifications from advertisers interested in buying your Ad.</p>
                         </div>
                     </div>
@@ -121,7 +123,7 @@
                         <div class="card-body">
                         <img src="img/md122.png" class="img-fluid w-50 h-50">
                             <h3 class="fs-4 text-primary py-2">Guaranteed Payment</h3>
-                            <p class="fs-6 mb-0 fw-500 text-light">You'll be promptly notified of advertiser payments before airing the Ad, and the payment will be transferred to your account once you provide proof that the Ad has aired.</p>
+                            <p class="fs-6 mb-0 fw-500 text-light">You'll be promptly notified of advertiser payments before airing the Ad, and the payment will be transferred to your account after airing Ad.</p>
                         </div>
                     </div>
                 </div>
@@ -132,7 +134,7 @@
                         <div class="card-body">
                         <img src="img/md13.png" class="img-fluid w-50 h-50">
                             <h3 class="fs-4 text-primary py-2">Enjoy Free Marketing</h3>
-                            <p class="fs-6 mb-0 fw-500 text-light">We will promote your media offerings, including Ad sales, discounts, giveaways, and more to help you attract advertisers actively looking to place Ads</p>
+                            <p class="fs-6 mb-0 fw-500 text-light">We will promote your media offerings, including Ad sales, discounts, giveaways, and more to help you attract advertisers.</p>
                         </div>
                     </div>
                 </div>
@@ -150,7 +152,7 @@
                     <div class="text-start mx-auto mb-5 px-lg-5 wow slideInLeft" data-wow-delay="0.5s">
                             <p class="text-light fs-5 px-lg-5 text-primary">Get ready for streamlined communication, efficient negotiations, and advertising outcomes so optimal they'll make your competitors green with envy—all with Media Deal!</p>
                         <div class="text-xs-center text-sm-center text-md-center text-lg-center px-lg-5">
-                            <a href="{{route('register')}}" class="btn btn-dark px-4 py-2 animated fadeIn p">Connect with us</a>
+                            <a href="{{route('register')}}" class="btn btn-dark px-4 py-2 animated fadeIn p fw-bold">Connect with us</a>
                         </div>
                     </div>
                 </div>
@@ -179,7 +181,7 @@
                         </h2>
                         <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                           <div class="accordion-body bg-light">
-                            Media Deal offers a streamlined platform for buying and selling radio, TV, and online advertisements, facilitating seamless connections between advertisers, media organizations, and marketers.
+                            Media Deal is a secure marketplace built to protect both media organizations and advertisers. Advertisers get what they pay for, and media organizations are guaranteed timely payments through our trusted platform.
                           </div>
                         </div>
                       </div>

@@ -38,7 +38,7 @@
             </h2>
             <div id="collapseThree" class="accordion-collapse show" data-bs-parent="#accordionExample">
               <div class="accordion-body bg-light">
-                Media Deal offers a streamlined platform for buying and selling radio, TV, and online advertisements, facilitating seamless connections between advertisers, media organizations, and marketers.
+                Media Deal is a secure marketplace built to protect both media organizations and advertisers. Advertisers get what they pay for, and media organizations are guaranteed timely payments through our trusted platform.
               </div>
             </div>
           </div>
