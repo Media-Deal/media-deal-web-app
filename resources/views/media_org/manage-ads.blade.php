@@ -33,7 +33,7 @@
                                   
                                     
                                         <div class="mb-3">
-                                            <p class="text-muted">300</p>
+                                            <p class="text-muted">{{ $totalAds }}</p>
                                         </div>
                                     
                                     <h5 class="fw-normal mt-0" title="Radio Station Name">Total Request</h5>
@@ -50,7 +50,7 @@
                                 <div class="card-body text-center d-flex flex-column justify-content-center align-items-center">
                                     <!-- Radio Station Logo -->
                                     <div class="mb-3">
-                                        <p class="text-muted">300</p>
+                                        <p class="text-muted">{{ $currentAds }}</p>
                                     </div>
                                     <!-- Radio Station Name -->
                                     <h5 class="fw-normal mt-0" title="Radio Station Name">Total Completed</h5>
@@ -66,7 +66,7 @@
                                 <div class="card-body text-center d-flex flex-column justify-content-center align-items-center">
                                   
                                     <div class="mb-3">
-                                        <p class="text-muted">300</p>
+                                        <p class="text-muted">0</p>
                                     </div>
                                   
                                     <h5 class="fw-normal mt-0" title="Radio Station Name">Total Refunded</h5>
@@ -97,19 +97,19 @@
                                 
                         <h4 class="page-title">Ads Table</h4>
                     </div>
-                    
+                    @forelse($adPlacements as $adPlacement)
                     <div class="container mt-4">
                         <div class="col-md-6">
-                            <h5><strong>Name:</strong> John Doe</h5>
+                            <h5><strong>Name:</strong> {{ $adPlacement->user->name }}</h5>
                         </div>
                         <div class="col-md-6">
-                            <h5><strong>Location:</strong> Enugu</h5>
+                            <h5><strong>Location:</strong> {{ $adPlacement->user->address }}</h5>
                         </div>
                         <div class="col-md-6">
-                            <h5><strong>Email:</strong> <a href="mailto:johndoe@gmail.com">johndoe@gmail.com</a></h5>
+                            <h5><strong>Email:</strong> <a href="mailto:{{ $adPlacement->user->email }}">{{ $adPlacement->user->email }}</a></h5>
                         </div>
                         <div class="col-md-6">
-                            <h5><strong>Phone Number:</strong> <a href="tel:0933943939393">0933943939393</a></h5>
+                            <h5><strong>Phone Number:</strong> <a href="tel:{{ $adPlacement->user->phone }}">{{ $adPlacement->user->phone }}</a></h5>
                         </div>
                     </div>
                 
@@ -129,7 +129,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse($adPlacements as $adPlacement)
+                               
                                     <tr>
                                         <td>{{ $adPlacement->title }}</td>
                                         <td>{{ $adPlacement->category }}</td>
@@ -147,7 +147,11 @@
                                                 <option value="aborted" {{ $adPlacement->status == 'aborted' ? 'selected' : '' }}>Aborted</option>
                                             </select>
                                         </td>
-                                        <td>{{ ucfirst($adPlacement->status) }}</td>
+                                        <td>@if($adPlacement->status == 0)
+                                            Processing
+                                        @else
+                                            {{ ucfirst($adPlacement->status) }}
+                                        @endif</td>
                                     </tr>
                                 @empty
                                     <tr>

@@ -45,6 +45,11 @@ class AdPlacement extends Model
         return $this->belongsTo(MediaOrganization::class); // Corrected relationship
     }
 
+    public function advertiser()
+    {
+        return $this->belongsTo(Advertiser::class); // Corrected relationship
+    }
+
     
     
     /**

@@ -64,19 +64,55 @@ class MediaOrganizationController extends Controller
     }
 
 
-    // Manage ads
+//     // Manage ads
+// public function manageAds()
+// {
+//     // Fetch the authenticated user's ad placements with the related media organization
+   
+
+//      // Retrieve the authenticated user
+//      $user = Auth::user();
+
+
+//      // Retrieve all ad placements for the user, including the associated media
+//      $adPlacements = AdPlacement::where('media_id', $user->id)
+//          ->with('advertiser') // Eager load the media relationship
+//          ->orderBy('created_at', 'desc')
+//          ->get();
+
+//      // Calculate Total Ads and Active Ads
+//      $totalAds = $adPlacements->count();
+//      $currentAds = $adPlacements->filter(function ($adPlacements) {
+//          return $adPlacements->status === '1'; // Count only active ads
+//      })->count();
+
+//      // Pass data to the view
+//      return view('media_org.manage-ads', compact('adPlacements', 'totalAds', 'currentAds'));
+
+
+// }
+
 public function manageAds()
 {
-    // Fetch the authenticated user's ad placements with the related media organization
-    $adPlacements = Adplacement::where('user_id', Auth::user()->id)
-        ->with(['mediaOrganization' => function($query) {
-            $query->whereColumn('media_id', 'mediaOrganizations.id'); // Assuming media_id in Adplacement matches id in MediaOrganization
-        }])
+    // Retrieve the authenticated user
+    $user = Auth::user();
+
+    // Retrieve all ad placements for the user, including advertiser and user details
+    $adPlacements = AdPlacement::where('media_id', $user->id)
+        ->with(['advertiser', 'user']) // Eager load both advertiser and user relationships
+        ->orderBy('created_at', 'desc')
         ->get();
 
-    // Pass the data to the view
-    return view('media_org.manage-ads', compact('adPlacements'));
+    // Calculate Total Ads and Active Ads
+    $totalAds = $adPlacements->count();
+    $currentAds = $adPlacements->filter(function ($adPlacement) {
+        return $adPlacement->status === '1'; // Count only active ads
+    })->count();
+
+    // Pass data to the view
+    return view('media_org.manage-ads', compact('adPlacements', 'totalAds', 'currentAds'));
 }
+
 
     
 
