@@ -45,6 +45,8 @@ class AdPlacement extends Model
         return $this->belongsTo(MediaOrganization::class); // Corrected relationship
     }
 
+    
+    
     /**
      * Optionally, you can define attribute casting if needed.
      *

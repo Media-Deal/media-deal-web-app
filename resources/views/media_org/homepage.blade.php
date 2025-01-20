@@ -1,4 +1,6 @@
 @include('media_org.header')
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
 @php
 use Carbon\Carbon;
 
@@ -38,173 +40,209 @@ if ($currentHour >= 12 && $currentHour < 16) { $greeting='Good afternoon' ; } el
 
                     <div class="col-12">
                         <div class="page-title-box">
-                            <div class="page-title-right">
-                                <form class="d-flex">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control form-control-light" id="dash-daterange">
-                                        <span class="input-group-text bg-primary border-primary text-white">
-                                            <i class="mdi mdi-calendar-range font-13"></i>
-                                        </span>
-                                    </div>
-                                    <a href="javascript: void(0);" class="btn btn-primary ms-2">
-                                        <i class="mdi mdi-autorenew"></i>
-                                    </a>
-                                    <a href="javascript: void(0);" class="btn btn-primary ms-1">
-                                        <i class="mdi mdi-filter-variant"></i>
-                                    </a>
-                                </form>
-                            </div>
+                            <div class="page-title-right"></div>
                             <h4 class="page-title">Media Organization Dashboard</h4>
                         </div>
                     </div>
+                    
                     <!-- Media Organizations -->
                     <div class="row">
-                        @forelse($mediaOrganizations as $media)
-                        <div class="col-lg-4 col-md-6 mb-4">
-                            <div class="card widget-flat h-100">
-                                <div
-                                    class="card-body text-center d-flex flex-column justify-content-center align-items-center">
-                                    <!-- Media Logo -->
-                                    <div class="mb-3">
-                                        @if(strtolower($media->media_type) === 'tv' && $media->tv_logo)
-                                        <img src="{{ asset('storage/' . $media->tv_logo) }}"
-                                            alt="{{ $media->tv_name }} Logo" class="img-fluid"
-                                            style="max-width: 100px;">
-                                        @elseif(strtolower($media->media_type) === 'radio' && $media->radio_logo)
-                                        <img src="{{ asset('storage/' . $media->radio_logo) }}"
-                                            alt="{{ $media->radio_name }} Logo" class="img-fluid"
-                                            style="max-width: 100px;">
-                                        @elseif(strtolower($media->media_type) === 'internet' &&
-                                        $media->internet_logo)
-                                        <img src="{{ asset('storage/' . $media->internet_logo) }}"
-                                            alt="{{ $media->internet_name }} Logo" class="img-fluid"
-                                            style="max-width: 100px;">
-                                        @else
-                                        <img src="{{ asset('img/royal fm.png') }}" alt="Default Logo" class="img-fluid"
-                                            style="max-width: 100px;">
-                                        @endif
+                        <div class="col-xl-4 col-lg-5">
+                            <div class="card text-center shadow-sm border-0" style="background: white; color: black; padding: 0.5rem; height: auto;">
+                                <div class="card-body p-4">
+                                    <div class="profile-image-wrapper mb-3">
+                                        <img src="assets/images/users/avatar-1.jpg" 
+                                             class="rounded-circle avatar-lg img-thumbnail border border-2 border-primary shadow-sm" 
+                                             alt="profile-image">
                                     </div>
-
-                                    <!-- Media Name -->
-                                    <h5 class="fw-normal mt-0">
-                                        @if(strtolower($media->media_type) === 'tv')
-                                        {{ $media->tv_name }}
-                                        @elseif(strtolower($media->media_type) === 'radio')
-                                        {{ $media->radio_name }}
-                                        @elseif(strtolower($media->media_type) === 'internet')
-                                        {{ $media->internet_name }}
-                                        @endif
+                    
+                                    @if($mediaOrganization)
+                                    <h4 class="mb-1" style="font-weight: bold; color: #0d6efd;">{{ $mediaOrganization->fullname }}</h4>
+                                    <p class="font-italic font-14 text-muted">{{ $mediaOrganization->position }}</p>
+                    
+                                    <div class="text-start mt-4 border-top pt-3" style="border-color: #e3e3e3;">
+                                        <p class="mb-2">
+                                            <strong style="color: #0d6efd;">Full Name:</strong> 
+                                            <span class="ms-2 text-dark">{{ $mediaOrganization->fullname }}</span>
+                                        </p>
+                                        <p class="mb-2">
+                                            <strong style="color: #0d6efd;">Phone Number:</strong> 
+                                            <span class="ms-2 text-dark">{{ $mediaOrganization->phone }}</span>
+                                        </p>
+                                        <p class="mb-2">
+                                            <strong style="color: #0d6efd;">Email:</strong> 
+                                            <span class="ms-2 text-dark">{{ $mediaOrganization->email }}</span>
+                                        </p>
+                                        <p class="mb-0">
+                                            <strong style="color: #0d6efd;">Position:</strong> 
+                                            <span class="ms-2 text-dark">{{ $mediaOrganization->position }}</span>
+                                        </p>
+                                    </div>
+                                    @else
+                                    <div class="mt-4">
+                                        <p style="color: #0d6efd;">No media organization details available.</p>
+                                    </div>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="col-xl-8 col-lg-7">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="mb-3 text-uppercase bg-light p-2">
+                                        <i class="mdi mdi-office-building me-1"></i> Media Details
                                     </h5>
+                                    @if(isset($mediaOrganization->media_type))
+                                        @if($mediaOrganization->media_type == 'tv')
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <p><strong style="color: #0d6efd;">TV Logo:</strong> 
+                                                        <img src="{{ $mediaOrganization->tv_logo ?? '#' }}" alt="TV Logo" class="ms-2" style="height: 50px;">
+                                                    </p>
 
-                                    <!-- Location -->
-                                    <p class="text-muted">
-                                        @if(strtolower($media->media_type) === 'tv')
-                                        {{ $media->tv_main_studio_location ?? 'N/A' }}
-                                        @elseif(strtolower($media->media_type) === 'radio')
-                                        {{ $media->radio_station_location ?? 'N/A' }}
-                                        @elseif(strtolower($media->media_type) === 'internet')
-                                        {{ $media->internet_channel_location ?? 'N/A' }}
+                                                    <p><strong style="color: #0d6efd;">TV Name:</strong> 
+                                                        <span class="ms-2 text-dark">{{ $mediaOrganization->tv_name ?? 'N/A' }}</span>
+                                                    </p>
+
+                                                    <p><strong style="color: #0d6efd;">TV Type:</strong> 
+                                                        <span class="ms-2 text-dark">{{ $mediaOrganization->tv_type ?? 'N/A' }}</span>
+                                                    </p>
+
+                                                    <p><strong style="color: #0d6efd;">Content Focus:</strong> 
+                                                        <span class="ms-2 text-dark">{{ $mediaOrganization->tv_content_focus ?? 'N/A' }}</span>
+                                                    </p>
+
+                                                    <p><strong style="color: #0d6efd;">Main Studio Location:</strong> 
+                                                        <span class="ms-2 text-dark">{{ $mediaOrganization->tv_main_studio_location ?? 'N/A' }}</span>
+                                                    </p>
+
+
+                                                    
+                                                </div>
+                                            </div>
+                                        @elseif($mediaOrganization->media_type == 'radio')
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <p><strong style="color: #0d6efd;">Radio Logo:</strong> 
+                                                        <img src="{{ $mediaOrganization->radio_logo ?? '#' }}" alt="Radio Logo" class="ms-2" style="height: 50px;">
+                                                    </p>
+                                                    <p><strong style="color: #0d6efd;">Radio Station Name:</strong> 
+                                                        <span class="ms-2 text-dark">{{ $mediaOrganization->radio_name ?? 'N/A' }}</span>
+                                                    </p>
+
+                                                    <p><strong style="color: #0d6efd;">Radio Frequency:</strong> 
+                                                        <span class="ms-2 text-dark">{{ $mediaOrganization->radio_frequency ?? 'N/A' }}</span>
+                                                    </p>
+
+                                                    <p><strong style="color: #0d6efd;">Radio Type:</strong> 
+                                                        <span class="ms-2 text-dark">{{ $mediaOrganization->radio_type ?? 'N/A' }}</span>
+                                                    </p>
+
+                                                    <p><strong style="color: #0d6efd;">Radio Station Location:</strong> 
+                                                        <span class="ms-2 text-dark">{{ $mediaOrganization->radio_station_location ?? 'N/A' }}</span>
+                                                    </p>
+
+                                                    <p><strong style="color: #0d6efd;">Content Focus:</strong> 
+                                                        <span class="ms-2 text-dark">{{ $mediaOrganization->radio_content_focus ?? 'N/A' }}</span>
+                                                    </p>
+
+                                                    {{-- <p><strong style="color: #0d6efd;">Advert Rate:</strong> 
+                                                        <span class="ms-2 text-dark">{{ $mediaOrganization->radio_advert_rate ?? 'N/A' }}</span>
+                                                    </p> --}}
+
+                                                    <p><strong style="color: #0d6efd;">social media:</strong></p>
+                                                    <p>
+                                                      
+                                                            <a href="{{ $mediaOrganization->radio_youtube ?? 'N/A' }}" target="_blank">
+                                                                <i class="fab fa-youtube text-danger ms-2" style="font-size: 24px;"></i>
+                                                            </a>
+                                                     
+                                                       
+                                                            <a href="{{ $mediaOrganization->radio_facebook ?? 'N/A' }}" target="_blank">
+                                                                <i class="fab fa-facebook text-primary ms-2" style="font-size: 24px;"></i>
+                                                            </a>
+                                                        
+                                                       
+                                                            <a href="{{ $mediaOrganization->radio_instagram ?? 'N/A' }}" target="_blank">
+                                                                <i class="fab fa-instagram text-danger ms-2" style="font-size: 24px;"></i>
+                                                            </a>
+                                                       
+                                                       
+                                                            <a href="{{ $mediaOrganization->radio_twitter ?? 'N/A' }}" target="_blank">
+                                                                <i class="fab fa-twitter text-info ms-2" style="font-size: 24px;"></i>
+                                                            </a>
+                                                      
+                                                    </p>
+                                                    
+                                                </div>
+                                            </div>
+                                        @elseif($mediaOrganization->media_type == 'internet')
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <p><strong style="color: #0d6efd;">Internet Logo:</strong> 
+                                                        <img src="{{ $mediaOrganization->internet_logo ?? '#' }}" alt="Internet Logo" class="ms-2" style="height: 50px;">
+                                                    </p>
+
+                                                    <p><strong style="color: #0d6efd;">Brand Name:</strong> 
+                                                        <span class="ms-2 text-dark">{{ $mediaOrganization->internet_name ?? 'N/A' }}</span>
+                                                    </p>
+
+                                                    <p><strong style="color: #0d6efd;">Location:</strong> 
+                                                        <span class="ms-2 text-dark">{{ $mediaOrganization->internet_channel_location ?? 'N/A' }}</span>
+                                                    </p>
+
+                                                    <p><strong style="color: #0d6efd;">social media:</strong></p>
+                                                    <p>
+                                                      
+                                                            <a href="{{ $mediaOrganization->internet_youtube ?? 'N/A' }}" target="_blank">
+                                                                <i class="fab fa-youtube text-danger ms-2" style="font-size: 24px;"></i>
+                                                            </a>
+                                                     
+                                                       
+                                                            <a href="{{ $mediaOrganization->internet_facebook ?? 'N/A' }}" target="_blank">
+                                                                <i class="fab fa-facebook text-primary ms-2" style="font-size: 24px;"></i>
+                                                            </a>
+                                                        
+                                                       
+                                                            <a href="{{ $mediaOrganization->internet_instagram ?? 'N/A' }}" target="_blank">
+                                                                <i class="fab fa-instagram text-danger ms-2" style="font-size: 24px;"></i>
+                                                            </a>
+                                                       
+                                                       
+                                                            <a href="{{ $mediaOrganization->internet_twitter ?? 'N/A' }}" target="_blank">
+                                                                <i class="fab fa-twitter text-info ms-2" style="font-size: 24px;"></i>
+                                                            </a>
+                                                      
+                                                    </p>
+                                                    
+                                                   
+                                                </div>
+                                            </div>
                                         @endif
-                                    </p>
-
-                                    <!-- Additional Info or Actions -->
-                                    <a href="{{ route('advertiser.media.show', $media->id) }}"
-                                        class="btn btn-sm btn-primary mt-auto">View Details</a>
+                                    @else
+                                        <p class="text-center text-muted">No media details yet.</p>
+                                    @endif
                                 </div>
                             </div>
                         </div>
-                        @empty
-                        <div class="col-12">
-                            <div class="alert alert-info text-center" role="alert">
-                                No media organizations found. Please add a new one.
-                            </div>
-                        </div>
-                        @endforelse
-
-                        <div class="col-12">
-                            <div class="page-title-box">
-                                <div class="page-title-right">
-                                    <form class="d-flex">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control form-control-light"
-                                                id="dash-daterange">
-                                            <span class="input-group-text bg-primary border-primary text-white">
-                                                <i class="mdi mdi-calendar-range font-13"></i>
-                                            </span>
-                                        </div>
-                                        <a href="javascript: void(0);" class="btn btn-primary ms-2">
-                                            <i class="mdi mdi-autorenew"></i>
-                                        </a>
-                                        <a href="javascript: void(0);" class="btn btn-primary ms-1">
-                                            <i class="mdi mdi-filter-variant"></i>
-                                        </a>
-                                    </form>
-                                </div>
-                                <h4 class="page-title">Media Organization Dashboard</h4>
-                            </div>
-                        </div>
+                        
                     </div>
-
-                    <div class="row">
-                        <!-- First Radio Station -->
-
-                        <div class="col-4 mb-3">
-                            <div class="card widget-flat h-100">
-
-                                <div
-                                    class="card-body text-center d-flex flex-column justify-content-center align-items-center">
-                                    <!-- Radio Station Logo -->
-                                    <a href="{{url('station-details')}}" class="d-block text-decoration-none h-100">
-                                        <div class="mb-3">
-                                            <img src="img/radio fm.png" alt="Radio Station Logo" class="img-fluid"
-                                                style="max-width: 100px;">
-                                        </div>
-                                        <!-- Radio Station Name -->
-                                        <h5 class="fw-normal mt-0" title="Radio Station Name">Radio FM</h5>
-                                        <!-- Location -->
-                                        <p class="text-muted">Location 1</p>
-                                </div>
-                            </div>
-                            </a>
-                        </div>
-
-
-                        <!-- Second Radio Station -->
-                        <div class="col-4 mb-3">
-                            <div class="card widget-flat h-100">
-                                <div
-                                    class="card-body text-center d-flex flex-column justify-content-center align-items-center">
-                                    <!-- Radio Station Logo -->
-                                    <div class="mb-3">
-                                        <img src="img/creek fm.png" alt="Radio Station Logo" class="img-fluid"
-                                            style="max-width: 100px;">
-                                    </div>
-                                    <!-- Radio Station Name -->
-                                    <h5 class="fw-normal mt-0" title="Radio Station Name">Creek FM</h5>
-                                    <!-- Location -->
-                                    <p class="text-muted">Location 2</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Third Radio Station -->
-                        <div class="col-4 mb-3">
-                            <div class="card widget-flat h-100">
-                                <div
-                                    class="card-body text-center d-flex flex-column justify-content-center align-items-center">
-                                    <!-- Radio Station Logo -->
-                                    <div class="mb-3">
-                                        <img src="img/royal fm.png" alt="Radio Station Logo" class="img-fluid"
-                                            style="max-width: 100px;">
-                                    </div>
-                                    <!-- Radio Station Name -->
-                                    <h5 class="fw-normal mt-0" title="Radio Station Name">Royal FM</h5>
-                                    <!-- Location -->
-                                    <p class="text-muted">Location 3</p>
-                                </div>
-                            </div>
-
-                        </div>
+                    
+                    <style>
+                        .card {
+                            min-height: 100px;
+                        }
+                        .card-body img {
+                            max-width: 80px;
+                            margin-bottom: 15px;
+                        }
+                        .card-body h5,
+                        .card-body p {
+                            margin-bottom: 10px;
+                        }
+                    </style>
+                    
 
                         <style>
                             .card {

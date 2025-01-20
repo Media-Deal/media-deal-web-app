@@ -1,8 +1,8 @@
-{{-- resources/views/advertiser/manage_ads.blade.php --}}
-
 @include('media_org.header')
+    
+        
 
-
+      
         <!-- ============================================================== -->
         <!-- Start Page Content here -->
         <!-- ============================================================== -->
@@ -17,7 +17,7 @@
                         <div class="col-12">
                             <div class="page-title-box">
                                 
-                                <h4 class="page-title">Manage Ads</h4>
+                                <h4 class="page-title">Manage Payment</h4>
                             </div>
                         </div>
                     </div>
@@ -36,7 +36,7 @@
                                             <p class="text-muted">300</p>
                                         </div>
                                     
-                                    <h5 class="fw-normal mt-0" title="Radio Station Name">Total Request</h5>
+                                    <h5 class="fw-normal mt-0" title="Radio Station Name">Total Transaction</h5>
                                     
                                     
                                 </div>
@@ -53,7 +53,7 @@
                                         <p class="text-muted">300</p>
                                     </div>
                                     <!-- Radio Station Name -->
-                                    <h5 class="fw-normal mt-0" title="Radio Station Name">Total Completed</h5>
+                                    <h5 class="fw-normal mt-0" title="Radio Station Name">Total Received</h5>
                                     <!-- Location -->
                                    
                                 </div>
@@ -69,7 +69,7 @@
                                         <p class="text-muted">300</p>
                                     </div>
                                   
-                                    <h5 class="fw-normal mt-0" title="Radio Station Name">Total Refunded</h5>
+                                    <h5 class="fw-normal mt-0" title="Radio Station Name">Total Pending</h5>
                                   
                                     
                                 </div>
@@ -93,73 +93,94 @@
                     </style>
                     
 
-                    <div class="page-title-box">
-                                
-                        <h4 class="page-title">Ads Table</h4>
-                    </div>
-                    
-                    <div class="container mt-4">
-                        <div class="col-md-6">
-                            <h5><strong>Name:</strong> John Doe</h5>
-                        </div>
-                        <div class="col-md-6">
-                            <h5><strong>Location:</strong> Enugu</h5>
-                        </div>
-                        <div class="col-md-6">
-                            <h5><strong>Email:</strong> <a href="mailto:johndoe@gmail.com">johndoe@gmail.com</a></h5>
-                        </div>
-                        <div class="col-md-6">
-                            <h5><strong>Phone Number:</strong> <a href="tel:0933943939393">0933943939393</a></h5>
-                        </div>
-                    </div>
-                
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped">
                             <thead class="thead-dark">
                                 <tr>
-                                    <th scope="col">Title</th>
-                                    <th scope="col">Category</th>
+                                    <th scope="col">Name</th>
                                     <th scope="col">Ad Type</th>
-                                    <th scope="col">Content</th>
-                                    <th scope="col">Target Audience</th>
-                                    <th scope="col">Target Location</th>
-                                    <th scope="col">Duration</th>
-                                    <th scope="col">Choose Actions</th>
-                                    <th scope="col">Status</th>
+                                    <th scope="col">Amount Paid</th>
+                                    <th scope="col"> Payment Request</th>
+                                    <th scope="col">Contact</th> 
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse($adPlacements as $adPlacement)
-                                    <tr>
-                                        <td>{{ $adPlacement->title }}</td>
-                                        <td>{{ $adPlacement->category }}</td>
-                                        <td>{{ $adPlacement->ad_type }}</td>
-                                        <td>{{ $adPlacement->content }}</td>
-                                        <td>{{ $adPlacement->target_audience }}</td>
-                                        <td>{{ $adPlacement->target_location }}</td>
-                                        <td>{{ $adPlacement->duration }}</td>
-                                        <td>
-                                            <select class="form-select action-select" aria-label="Action Select">
-                                                <option selected>Select action</option>
-                                                <option value="processing" {{ $adPlacement->status == 'processing' ? 'selected' : '' }}>Processing</option>
-                                                <option value="ongoing" {{ $adPlacement->status == 'ongoing' ? 'selected' : '' }}>Ongoing</option>
-                                                <option value="completed" {{ $adPlacement->status == 'completed' ? 'selected' : '' }}>Completed</option>
-                                                <option value="aborted" {{ $adPlacement->status == 'aborted' ? 'selected' : '' }}>Aborted</option>
-                                            </select>
-                                        </td>
-                                        <td>{{ ucfirst($adPlacement->status) }}</td>
-                                    </tr>
-                                @empty
-                                    <tr>
-                                        <td colspan="9" class="text-center">No ads placed yet</td>
-                                    </tr>
-                                @endforelse
+                                <tr>
+                                    <td>john doe</td>
+                                    <td>Entertainment</td>
+                                    <td>Off Air Dub</td>
+                                   
+                                    <td>
+                                        <button type="button" class="btn btn-primary btn-custom" data-bs-toggle="modal" data-bs-target="#requestPaymentModal">
+                                            Payment Request
+                                        </button>
+                                    </td>
+
+                                    <td>johndoe@gmail.com
+                                        594984848484</td>
+                                    
+                                </tr>
                             </tbody>
                         </table>
                     </div>
+                        
+                        
+
                     
-                    
-                   
+                    <!-- Request Refund Modal -->
+     <div class="modal fade" id="requestPaymentModal" tabindex="-1" aria-labelledby="requestPaymentModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="requestRefundModalLabel">Payment Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        
+
+                        <div class="mb-3">
+                            <label for="uploadcompliance" class="form-label">Upload Compliance</label>
+                            <input type="file" class="form-control" id="uploadcompliance" name="uploadcompliance" >
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="anyRefund" class="form-label">Any Refund?</label>
+                            <select class="form-select" id="anyRefund" name="any_refund" onchange="toggleRefundAmount()">
+                                <option value="No">No</option>
+                                <option value="Yes">Yes</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Refund Amount Field (Hidden by default) -->
+                        <div class="mb-3" id="refundAmountField" style="display: none;">
+                            <label for="refundAmount" class="form-label">Refund Amount</label>
+                            <input type="number" class="form-control" id="refundAmount" name="refund_amount" placeholder="Enter refund amount">
+                        </div>
+                        
+                       
+                        
+
+                        <div class="mb-3">
+                            <label for="bankname" class="form-label">Bank Name</label>
+                            <input type="text" class="form-control" id="bankname" name="title" placeholder="Enter Bank Name">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="accountname" class="form-label">Account Name</label>
+                            <input type="text" class="form-control" id="accountname" name="title" placeholder="Enter Account Name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="accountnumber" class="form-label">Account Number</label>
+                            <input type="number" class="form-control" id="accountnumber" name="title" placeholder="Enter Account Number">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Send</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
                        
 
 
@@ -175,7 +196,17 @@
 
             </div>
             <!-- content -->
-
+            <script>
+                function toggleRefundAmount() {
+                    var refundSelect = document.getElementById("anyRefund");
+                    var refundAmountField = document.getElementById("refundAmountField");
+                    if (refundSelect.value === "Yes") {
+                        refundAmountField.style.display = "block";
+                    } else {
+                        refundAmountField.style.display = "none";
+                    }
+                }
+            </script>
           
             <style>
                 .table-responsive {
@@ -206,3 +237,5 @@ max-width: 100%;   /* Ensures the card fills the column */
 }
 
              </style>
+
+@include('media_org.footer')
