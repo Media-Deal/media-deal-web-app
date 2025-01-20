@@ -3,13 +3,15 @@
 <!-- Header Start -->
 <div class="container-fluid header bg-light p-0">
   <div class="row g-0 align-items-center flex-column-reverse flex-md-row">
-    <div class="col-md-6 p-5 mt-lg-5 px-5">
+    <div class="col-md-6 p-5 mt-lg-5 px-3 text-center">
 
-      <h1 class="display-5 animated fadeIn mb-3 fw-bold mt-4">Upgrade Your <span class="text-primary">Advertising Game
+      <h1 class="display-5 animated fadeIn mb-3 fw-bold mt-4"> <span class="fs-1">...Where Media Gets Paid,<br></span><span class="text-primary fs-1">and Advertisers Get Results...
         </span></h1>
-      <h4 class="animated fadeIn mb-4 pb-2">with Media Deal, the ultimate platform for innovative and safe
-        media buying and selling.</h4>
-      <a href="{{route('register')}}" class="btn btn-primary py-3 px-5 me-3 animated fadeIn">Start Now</a>
+      {{-- <h4 class="animated fadeIn mb-4 pb-2"></h4> --}}
+      <div class="d-flex justify-content-center">
+        <a href="{{route('register')}}" class="btn btn-dark py-3 px-3 me-3 mt-4 animated fadeIn text-primary fw-bold">Start for FREE</a>
+      </div>
+      
     </div>
     <div class="col-md-6 animated fadeIn">
       <div class="owl-carousel header-carousel">
@@ -42,8 +44,7 @@
           <div class="card-body bg-dark px-3">
             <img src="img/md1.png" class="img-fluid w-50 h-50">
             <h4 class="fs-4 text-primary py-2">No Middle-Man Here!</h4>
-            <p class="fs-6 mb-0 fw-500 fs-6 text-light">With just a few clicks, and you're diving into adverts rates,
-              getting discounts, and plastering your ads all over your favourite media.</p>
+            <p class="fs-6 mb-0 fw-500 fs-6 text-light">Choose your preferred media (radio, TV, or online), view Ad rates, chat directly with your chosen media to negotiate discounts, and place your Ad</p>
           </div>
         </div>
       </div>
@@ -54,8 +55,7 @@
           <div class="card-body">
             <img src="img/md2.png" class="img-fluid w-50 h-50">
             <h3 class="fs-4 text-primary py-2">Cashback Guarantee</h3>
-            <p class="fs-6 mb-0 fw-500 text-light">Keep tabs on your Ad placements, and if any slot fails, get refunds
-              before apologies.</p>
+            <p class="fs-6 mb-0 fw-500 text-light">We’ll securely hold your payment until your Ads are aired. If any slot fails, you’ll receive a refund.</p>
           </div>
         </div>
       </div>
@@ -66,8 +66,7 @@
           <div class="card-body">
             <img src="img/md3.png" class="img-fluid w-50 h-50">
             <h3 class="fs-4 text-primary py-2">Customer Support</h3>
-            <p class="fs-6 mb-0 fw-500 text-light">Watch out for budget-hungry sharks! Don't swim solo---dive in with
-              our support to help you avoid ending up with a fishy net full of holes.</p>
+            <p class="fs-6 mb-0 fw-500 text-light">Unsure which media to choose? Use our Resources to request Deal Support and get the assistance you need to maximize your investment.</p>
           </div>
         </div>
       </div>
@@ -87,10 +86,9 @@
                 </div>
                 <div class="col-lg-6 wow fadeIn" data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine"> 
                     <div class="px-5">
-                        <p class="mb-4 text-dark fs-5"><span class="text-primary fw-bolder fs-3"><i>Earn commision</i></span> as a marketer every time you successfully seal media deals. Who knew closing deals could
-                            be so rewarding?</p>
+                        <p class="mb-4 text-dark fs-5"><span class="text-primary fw-bolder fs-3"><i></i></span><i>"As a fashion designer in Lagos, Media Deal made it easy for me to connect with the right radio station. Everything went smoothly, and my business started getting plenty of calls and messages. Media Deal na real lifesaver!”</i> </p>
                             <div class="d-flex justify-content-center">
-                                <a href="{{route('register')}}" class="btn btn-primary py-2 px-4 me-3 my-3 animated fadeIn">Start Now</a>
+                                <a href="{{route('register')}}" class="btn btn-dark py-2 px-5 me-3 my-3 text-primary animated fadeIn fw-bold">Try Us!</a>
                             </div>
                     </div>
                 </div>
@@ -103,7 +101,7 @@
         <div class="container position-relative py-2">
             <div class="row">
                 <div class="col-12" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
-                    <h3 class="text-light text-center fs-3 py-5">Make Sales and Manage Transactions in One Platform</h3>
+                    <h3 class="text-light text-center fs-3 py-5">Make Sales.  Manage Transactions. Get Paid Faster!</h3>
                 </div>
             </div>
             <div class="row d-flex flex-wrap justify-content-center step-row">
@@ -113,8 +111,8 @@
                     <div class="card border-0 shadow bg-light">
                         <div class="card-body bg-dark px-3">
                             <img src="img/md11.png" class="img-fluid w-50 h-50">
-                            <h4 class="fs-4 text-primary py-2">Conclude deals faster</h4>
-                            <p class="fs-6 mb-0 fw-500 fs-6 text-light">We've automated your media selling processes - just show up, and watch the magic happen as you sell out faster than a concert with free pizza!</p>
+                            <h4 class="fs-4 text-primary py-2">Conclude Deals Faster</h4>
+                            <p class="fs-6 mb-0 fw-500 fs-6 text-light">We've simplified your media selling process—sign up, create your profile for free, and receive email notifications from advertisers interested in buying your Ad.</p>
                         </div>
                     </div>
                 </div>
@@ -124,8 +122,8 @@
                     <div class="card border-0 shadow bg-dark  px-3">
                         <div class="card-body">
                         <img src="img/md122.png" class="img-fluid w-50 h-50">
-                            <h3 class="fs-4 text-primary py-2">Improve customer satisfaction</h3>
-                            <p class="fs-6 mb-0 fw-500 text-light">No one knows how to please a customer better than the customer themselves. So, tap into their wisdom and turn their feedback into your secret sauce!</p>
+                            <h3 class="fs-4 text-primary py-2">Guaranteed Payment</h3>
+                            <p class="fs-6 mb-0 fw-500 text-light">You'll be promptly notified of advertiser payments before airing the Ad, and the payment will be transferred to your account after airing Ad.</p>
                         </div>
                     </div>
                 </div>
@@ -135,8 +133,8 @@
                     <div class="card border-0 shadow bg-dark  px-3">
                         <div class="card-body">
                         <img src="img/md13.png" class="img-fluid w-50 h-50">
-                            <h3 class="fs-4 text-primary py-2">Easily accessible & visible</h3>
-                            <p class="fs-6 mb-0 fw-500 text-light">Don't let a third party wheel gatekeep your business. Your customers are searching for you - open the door and let the party begin</p>
+                            <h3 class="fs-4 text-primary py-2">Enjoy Free Marketing</h3>
+                            <p class="fs-6 mb-0 fw-500 text-light">We will promote your media offerings, including Ad sales, discounts, giveaways, and more to help you attract advertisers.</p>
                         </div>
                     </div>
                 </div>
@@ -152,9 +150,9 @@
             <div class="row g-0 gx-5 px-lg-5 d-flex justify-content-center align-items-center h-100">
                 <div class="col-lg-12 px-lg-5">
                     <div class="text-start mx-auto mb-5 px-lg-5 wow slideInLeft" data-wow-delay="0.5s">
-                            <p class="text-light fs-5 px-lg-5 text-primary">Get ready for streamlined communication, efficient negotiations, and advertising outcomes so optimal they will make your competitors green with envy - all with media deal</p>
+                            <p class="text-light fs-5 px-lg-5 text-primary">Get ready for streamlined communication, efficient negotiations, and advertising outcomes so optimal they'll make your competitors green with envy—all with Media Deal!</p>
                         <div class="text-xs-center text-sm-center text-md-center text-lg-center px-lg-5">
-                            <a href="{{route('register')}}" class="btn btn-dark px-4 py-2 animated fadeIn p">Start Now</a>
+                            <a href="{{route('register')}}" class="btn btn-dark px-4 py-2 animated fadeIn p fw-bold">Connect with us</a>
                         </div>
                     </div>
                 </div>
@@ -183,7 +181,7 @@
                         </h2>
                         <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                           <div class="accordion-body bg-light">
-                            Media Deal offers a streamlined platform for buying and selling radio, TV, and online advertisements, facilitating seamless connections between advertisers, media organizations, and marketers.
+                            Media Deal is a secure marketplace built to protect both media organizations and advertisers. Advertisers get what they pay for, and media organizations are guaranteed timely payments through our trusted platform.
                           </div>
                         </div>
                       </div>

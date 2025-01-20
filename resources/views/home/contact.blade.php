@@ -88,7 +88,7 @@
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <button class="btn btn-primary w-100 py-3" type="submit">Send Message</button>
+                                        <button class="btn deal-btn btn-primary w-100 py-3 bg-dark text-primary fw-bold" type="submit">Send Message</button>
                                     </div>
                                 </div>
                             </form>
