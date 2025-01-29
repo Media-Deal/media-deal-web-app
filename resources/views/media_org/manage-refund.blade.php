@@ -1,8 +1,6 @@
-@include('advertiser.header')
-    
+@include('media_org.header')
         
-
-        <!-- ============================================================== -->
+  <!-- ============================================================== -->
         <!-- Start Page Content here -->
         <!-- ============================================================== -->
 
@@ -76,38 +74,97 @@
                     
                     <div class="container mt-4">
                         <h5 class="mb-3">Refund Table</h5>
-                        <table class="table table-bordered table-striped">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th scope="col">Media</th>
-                                    <th scope="col">Category</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Refunded</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- Row 1 -->
-                                <tr>
-                                    <td>Radio</td>
-                                    <td>Entertainment</td>
-                                    <td>Pending/Approved/Denied</td>
-                                    <td>Yes/No</td>
-                                </tr>
-                                
-                                
-                            </tbody>
-                        </table>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Ad Type</th>
+                                        <th scope="col">Reason for Refund</th>
+                                        <th scope="col">Amount of Refund</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Refunded</th>
+                                        <th scope="col">Contact</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>John Doe</td>
+                                        <td>Entertainment</td>
+                                        <td>I no do again i no de do the advert again</td>
+                                        <td><input type="number" class="form-control" placeholder="Enter Amount"></td>
+                                        <td>
+                                            <select class="form-select">
+                                                <option selected>Select action</option>
+                                                <option value="Approved">Approved</option>
+                                                <option value="Denied">Denied</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <select class="form-select">
+                                                <option selected>Select action</option>
+                                                <option value="Yes">Yes</option>
+                                                <option value="No">No</option>
+                                            </select>
+                                        </td>
+                                        <td>johndoe@gmail.com<br>839393939393</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
+                    
+                    <style>
+                        .container {
+                            margin-top: 20px;
+                        }
+                    
+                        .table-responsive {
+                            overflow-x: auto;
+                            -webkit-overflow-scrolling: touch;
+                        }
+                    
+                        table {
+                            width: 100%;
+                            table-layout: auto;
+                        }
+                    
+                        input[type="number"], select {
+                            width: 100%;
+                            padding: 8px;
+                            font-size: 1rem;
+                        }
+                    
+                        th, td {
+                            text-align: center;
+                            padding: 12px;
+                            vertical-align: middle;
+                        }
+                    
+                        /* Make everything more readable on small devices */
+                        @media (max-width: 576px) {
+                            th, td {
+                                font-size: 0.9rem;
+                                padding: 8px;
+                            }
+                    
+                            input[type="number"], select {
+                                font-size: 0.9rem;
+                            }
+                    
+                            .table thead th {
+                                white-space: nowrap;
+                            }
+                    
+                            .table-responsive {
+                                margin-bottom: 1rem;
+                            }
+                        }
+                    </style>
                     
 
                     
-                    <div class="container mt-4 text-center">
-                        <!-- Link Button -->
-                        <a href="{{url('advertiser')}}" class="btn btn-primary btn-lg px-4 py-2">
-                            Request Refund
-                        </a>
-                    </div>
-                
+                    
                        
 
 
@@ -149,4 +206,4 @@ max-width: 100%;   /* Ensures the card fills the column */
                 }
             </style>
              
- @include('advertiser.footer')
+             @include('media_org.footer')

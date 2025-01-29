@@ -1,191 +1,226 @@
 {{-- resources/views/advertiser/manage_ads.blade.php --}}
 
-@include('advertiser.header')
+@include('media_org.header')
 
-<!-- ============================================================== -->
-<!-- Start Page Content here -->
-<!-- ============================================================== -->
 
-<div class="content-page">
-    <div class="content">
+        <!-- ============================================================== -->
+        <!-- Start Page Content here -->
+        <!-- ============================================================== -->
 
-        <!-- Start Content-->
-        <div class="container-fluid">
+        <div class="content-page">
+            <div class="content">
 
-            {{-- Success and Error Messages --}}
-            @if(session('success'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                {{ session('success') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-            @endif
+                <!-- Start Content-->
+                <div class="container-fluid">
 
-            @if(session('error'))
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                {{ session('error') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-            @endif
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box">
+                                
+                                <h4 class="page-title">Manage Ads</h4>
+                            </div>
+                        </div>
+                    </div>
 
-            {{-- Validation Errors --}}
-            @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul class="mb-0">
-                    @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-            @endif
+                   
+                    <div class="row">
+                        <!-- First Radio Station -->
+                        
+                        <div class="col-4 mb-3">
+                            <div class="card widget-flat h-100">
+                                
+                                <div class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+                                  
+                                    
+                                        <div class="mb-3">
+                                            <p class="text-muted">{{ $totalAds }}</p>
+                                        </div>
+                                    
+                                    <h5 class="fw-normal mt-0" title="Radio Station Name">Total Request</h5>
+                                    
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        
+                    
+                        <!-- Second Radio Station -->
+                        <div class="col-4 mb-3">
+                            <div class="card widget-flat h-100">
+                                <div class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+                                    <!-- Radio Station Logo -->
+                                    <div class="mb-3">
+                                        <p class="text-muted">{{ $currentAds }}</p>
+                                    </div>
+                                    <!-- Radio Station Name -->
+                                    <h5 class="fw-normal mt-0" title="Radio Station Name">Total Completed</h5>
+                                    <!-- Location -->
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <!-- Third Radio Station -->
+                        <div class="col-4 mb-3">
+                            <div class="card widget-flat h-100">
+                                <div class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+                                  
+                                    <div class="mb-3">
+                                        <p class="text-muted">0</p>
+                                    </div>
+                                  
+                                    <h5 class="fw-normal mt-0" title="Radio Station Name">Total Refunded</h5>
+                                  
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                 
+                    
 
-            <div class="row">
-                <div class="col-12">
                     <div class="page-title-box">
-
-                        <h4 class="page-title">Manage Ads</h4>
+                        <h4 class="page-title">Ads Table</h4>
                     </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <!-- Total Ads Box -->
-                <div class="col-6 col-sm-6 col-md-6 col-lg-6 mb-3">
-                    <div class="card widget-flat small-card h-100">
-                        <div class="card-body text-center d-flex flex-column justify-content-center align-items-center">
-                            <!-- Number on Top -->
-                            <div class="mb-2">
-                                <h2 class="fw-bold mb-0">{{ $totalAds }}</h2>
+                    
+                    @forelse($adPlacements as $adPlacement)
+                        <div class="container mt-4 p-3 border rounded">
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <h5><strong>Name:</strong> {{ $adPlacement->user->name }}</h5>
+                                </div>
+                                <div class="col-md-6">
+                                    <h5><strong>Location:</strong> {{ $adPlacement->user->address }}</h5>
+                                </div>
                             </div>
-                            <!-- Label -->
-                            <h5 class="fw-normal mt-0" title="Total Ads">Total Ads</h5>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Current Ads Box -->
-                <div class="col-6 col-sm-6 col-md-6 col-lg-6 mb-3">
-                    <div class="card widget-flat small-card h-100">
-                        <div class="card-body text-center d-flex flex-column justify-content-center align-items-center">
-                            <!-- Number on Top -->
-                            <div class="mb-2">
-                                <h2 class="fw-bold mb-0">{{ $currentAds }}</h2>
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <h5><strong>Email:</strong> <a href="mailto:{{ $adPlacement->user->email }}">{{ $adPlacement->user->email }}</a></h5>
+                                </div>
+                                <div class="col-md-6">
+                                    <h5><strong>Phone Number:</strong> <a href="tel:{{ $adPlacement->user->phone }}">{{ $adPlacement->user->phone }}</a></h5>
+                                </div>
                             </div>
-                            <!-- Label -->
-                            <h5 class="fw-normal mt-0" title="Current Ads">Current Ads</h5>
                         </div>
+                    
+                        <div class="table-responsive mt-4">
+                            <table class="table table-bordered table-striped">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col">Title</th>
+                                        <th scope="col">Category</th>
+                                        <th scope="col">Ad Type</th>
+                                        <th scope="col">Content</th>
+                                        <th scope="col">Target Audience</th>
+                                        <th scope="col">Target Location</th>
+                                        <th scope="col">Duration</th>
+                                        <th scope="col">Choose Actions</th>
+                                        <th scope="col">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{ $adPlacement->title }}</td>
+                                        <td>{{ $adPlacement->category }}</td>
+                                        <td>{{ ucfirst($adPlacement->ad_type) }}</td>
+                                        <td>{{ $adPlacement->content }}</td>
+                                        <td>{{ $adPlacement->target_audience }}</td>
+                                        <td>{{ $adPlacement->target_location }}</td>
+                                        <td>{{ $adPlacement->duration }}</td>
+                                        <td>
+                                            <form method="POST" action="{{ route('updateAdStatus', $adPlacement->id) }}">
+                                                @csrf
+                                                @method('PUT') <!-- For updating data -->
+                                                <select name="status" class="form-select action-select" aria-label="Action Select">
+                                                    <option value="" disabled selected>Select action</option>
+                                                    <option value="0" {{ $adPlacement->status == 'processing' ? 'selected' : '' }}>Processing</option>
+                                                    <option value="1" {{ $adPlacement->status == 'ongoing' ? 'selected' : '' }}>Ongoing</option>
+                                                    <option value="2" {{ $adPlacement->status == 'completed' ? 'selected' : '' }}>Completed</option>
+                                                    <option value="3" {{ $adPlacement->status == 'aborted' ? 'selected' : '' }}>Aborted</option>
+                                                </select>
+                                                <button type="submit" class="btn btn-primary mt-2">Update Status</button>
+                                            </form>
+                                            
+                                        </td>
+                                        <td>
+                                            @if($adPlacement->status == 0)
+                                                Processing
+                                            @else
+                                                {{ ucfirst($adPlacement->status) }}
+                                            @endif
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    @empty
+                        <div class="text-center mt-5">
+                            <h5>No ads placed yet</h5>
+                        </div>
+                    @endforelse
+                    
+                    
+                   
+                       
+
+
+                                      
+                                        
+                               
+                        
                     </div>
+                    <!-- end row -->
+
                 </div>
+                <!-- container -->
+
             </div>
+            <!-- content -->
 
-            <div class="page-title-box">
-                <h4 class="page-title">Active Ads</h4>
-            </div>
+            <style>
 
-            <div class="container mt-4">
-                <h5 class="mb-3">Ads Table</h5>
-                <table class="table table-bordered table-striped">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th scope="col">Media</th>
-                            <th scope="col">Category</th>
-                            <th scope="col">Ad Type</th>
-                            <th scope="col">Cost</th>
-                            <th scope="col">Duration</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Actions</th> {{-- Optional: For actions like Edit/Delete --}}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @forelse($ads as $ad)
-                        <tr>
-                            <td>{{ $ad->media->name ?? 'N/A' }}</td>
-                            <td>{{ $ad->category }}</td>
-                            <td>{{ $ad->type }}</td>
-                            <td>${{ number_format($ad->cost, 2) }}</td>
-                            <td>{{ $ad->duration }}</td>
-                            <td>
-                                @if($ad->status === 'Active')
-                                <span class="badge bg-success">{{ $ad->status }}</span>
-                                @elseif($ad->status === 'Pending')
-                                <span class="badge bg-warning text-dark">{{ $ad->status }}</span>
-                                @elseif($ad->status === 'Expired')
-                                <span class="badge bg-danger">{{ $ad->status }}</span>
-                                @else
-                                <span class="badge bg-secondary">{{ $ad->status }}</span>
-                                @endif
-                            </td>
-                            <td>
-                                {{-- Optional: Add action buttons like View, Edit, Delete --}}
-                                <a href="{{ route('advertiser.ads.view', $ad->id) }}"
-                                    class="btn btn-sm btn-info">View</a>
-                                <a href="{{ route('advertiser.ads.edit', $ad->id) }}"
-                                    class="btn btn-sm btn-warning">Edit</a>
-                                <form action="{{ route('advertiser.ads.delete', $ad->id) }}" method="POST"
-                                    class="d-inline"
-                                    onsubmit="return confirm('Are you sure you want to delete this ad?');">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                                </form>
-                            </td>
-                        </tr>
-                        @empty
-                        <tr>
-                            <td colspan="7" class="text-center">No ads placed yet.</td>
-                        </tr>
-                        @endforelse
-                    </tbody>
-                </table>
-
-                {{-- Optional: Pagination Links --}}
-                {{--
-                @if($ads->hasPages())
-                <div class="d-flex justify-content-center">
-                    {{ $ads->links() }}
-                </div>
-                @endif
-                --}}
-            </div>
-
-            <div class="container mt-4 text-center">
-                <!-- Link Button -->
-                <a href="" class="btn btn-primary btn-lg px-4 py-2">
-                    Click to Place Ads
-                </a>
-            </div>
-
-        </div>
-        <!-- end row -->
-
-    </div>
-    <!-- container -->
-
-</div>
-<!-- content -->
-
-<style>
-    .small-card {
-        padding: 20px;
-        /* Add some padding for a clean look */
-        height: 150px;
-        /* Control the height of the card */
-        max-width: 100%;
-        /* Ensures the card fills the column */
-    }
-</style>
-
-@include('advertiser.footer')
-
-{{-- Optional: Auto-Dismiss Alerts --}}
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Automatically dismiss alerts after 5 seconds
-        setTimeout(function () {
-            var alert = document.querySelector('.alert');
-            if (alert) {
-                var bsAlert = new bootstrap.Alert(alert);
-                bsAlert.close();
-            }
-        }, 5000); // 5000 milliseconds = 5 seconds
-    });
-</script>
+                .table-responsive {
+                            width: 100%;
+                            overflow-x: auto;
+                        }
+                        
+                        .form-select {
+                            width: 100%;
+                            padding: 5px;
+                            font-size: 14px;
+                            border: 1px solid #ccc;
+                            border-radius: 4px;
+                            background-color: #f8f9fa;
+                            color: #495057;
+                        }
+                        
+                        @media (max-width: 768px) {
+                            .form-select {
+                                font-size: 12px;
+                            }
+                        }
+                        
+                                        .small-card {
+                        padding: 20px;     /* Add some padding for a clean look */
+                        height: 150px;     /* Control the height of the card */
+                        max-width: 100%;   /* Ensures the card fills the column */
+                        }
+                        
+                
+                                        .card {
+                                            min-height: 250px; /* Ensuring all cards have a minimum height */
+                                        }
+                                    
+                                        .card-body img {
+                                            max-width: 80px; /* Consistent image size */
+                                            margin-bottom: 15px;
+                                        }
+                                    
+                                        .card-body h5, .card-body p {
+                                            margin-bottom: 10px; /* Consistent spacing */
+                                        }
+                                    </style>
+                                    
+            @include('media_org.footer')
+          
+           
