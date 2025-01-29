@@ -12,6 +12,7 @@ use App\Models\MediaOrganization;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\Models\AdvertiserPaymentHistory;
 
 class AdvertiserController extends Controller
 {
@@ -433,5 +434,25 @@ class AdvertiserController extends Controller
         }
 
         return redirect()->back()->with('error', 'Failed to update profile. Please try again.');
+    }
+
+
+    public function AdvertiserPaymentHistoy()
+    {
+        // Fetch the transaction history for the logged-in advertiser
+        $transactions = AdvertiserPaymentHistory::where('advertiser_id', Auth::id())
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        // Calculate total transactions
+        $totalTransactions = $transactions->count();
+
+        // Pass the transactions to the view
+        return view('advertiser.transaction_history', [
+            'transactions' => $transactions,
+            'totalTransactions' => $totalTransactions, // Updated variable
+            'totalComplianceReceived' => 0,  // Replace with actual data
+            'compliances' => [],             // Replace with actual data
+        ]);
     }
 }

@@ -408,6 +408,12 @@
                             <span> Manage Refund</span>
                         </a>
                     </li>
+                    <li class="side-nav-item">
+                        <a href="{{ route('advertiser.transactions') }}" class="side-nav-link">
+                            <i class="uil-credit-card"></i><!-- Transactions icon -->
+                            <span> Transaction History</span>
+                        </a>
+                    </li>
 
                     <li class="side-nav-item">
                         <a href="{{route('advertiser.profile')}}" class="side-nav-link">
