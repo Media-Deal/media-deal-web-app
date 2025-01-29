@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Compliance;
 use App\Models\Adplacement;
 use Illuminate\Http\Request;
 use App\Models\MediaOrganization;
@@ -10,6 +11,8 @@ use Illuminate\Support\Facades\Storage;
 
 class MediaOrganizationController extends Controller
 {
+
+    //manage dashboard
     public function index(Request $request)
     {
 
@@ -33,10 +36,40 @@ class MediaOrganizationController extends Controller
         return view('media_org.profile');
     }
 
+
+
+
+      //manage compliance
     public function manageCompliance()
     {
-        return view('media_org.manage-compliance');
+
+        // Retrieve the authenticated user
+        $user = Auth::user();
+
+        // Fetch the media organization based on the user's relationship
+        $mediaOrganization = MediaOrganization::where('user_id', $user->id)->first(); // Adjust based on your schema
+
+        if (!$mediaOrganization) {
+        abort(404, 'Media organization not found');
+        }
+
+        // Retrieve all ad placements where media_id matches the media organization id
+        $adscompliances = Compliance::where('media_id', $mediaOrganization->id)
+         ->with(['advertiser', 'user']) // Eager load related models
+         ->orderBy('created_at', 'desc')
+         ->get();
+    
+        // Calculate Total Compliance Requested and Compliance Sent
+        $totalCompliancerequested = $adscompliances->count();
+        $totalCompliancesent = $adscompliances->filter(function ($adscompliances) {
+            return $adscompliances->status === '1'; // Count only active ads
+        })->count();
+    
+        // Pass the data to the view
+        return view('media_org.manage-compliance', compact('adscompliances', 'totalCompliancerequested', 'totalCompliancesent'));
     }
+    
+    
 
     public function managePayment()
     {
@@ -54,6 +87,8 @@ class MediaOrganizationController extends Controller
         return view('media_org.manage-support');
     }
 
+
+    // manage account
     public function manageAccount()
     {
         // Fetch the MediaOrganization record for the authenticated user
@@ -64,42 +99,21 @@ class MediaOrganizationController extends Controller
     }
 
 
-//     // Manage ads
-// public function manageAds()
-// {
-//     // Fetch the authenticated user's ad placements with the related media organization
-   
-
-//      // Retrieve the authenticated user
-//      $user = Auth::user();
-
-
-//      // Retrieve all ad placements for the user, including the associated media
-//      $adPlacements = AdPlacement::where('media_id', $user->id)
-//          ->with('advertiser') // Eager load the media relationship
-//          ->orderBy('created_at', 'desc')
-//          ->get();
-
-//      // Calculate Total Ads and Active Ads
-//      $totalAds = $adPlacements->count();
-//      $currentAds = $adPlacements->filter(function ($adPlacements) {
-//          return $adPlacements->status === '1'; // Count only active ads
-//      })->count();
-
-//      // Pass data to the view
-//      return view('media_org.manage-ads', compact('adPlacements', 'totalAds', 'currentAds'));
-
-
-// }
-
 public function manageAds()
 {
     // Retrieve the authenticated user
     $user = Auth::user();
 
-    // Retrieve all ad placements for the user, including advertiser and user details
-    $adPlacements = AdPlacement::where('media_id', $user->id)
-        ->with(['advertiser', 'user']) // Eager load both advertiser and user relationships
+    // Fetch the media organization based on the user's relationship
+    $mediaOrganization = MediaOrganization::where('user_id', $user->id)->first(); // Adjust based on your schema
+
+    if (!$mediaOrganization) {
+        abort(404, 'Media organization not found');
+    }
+
+    // Retrieve all ad placements where media_id matches the media organization id
+    $adPlacements = AdPlacement::where('media_id', $mediaOrganization->id)
+        ->with(['advertiser', 'user']) // Eager load related models
         ->orderBy('created_at', 'desc')
         ->get();
 
@@ -114,12 +128,78 @@ public function manageAds()
 }
 
 
-    
 
-    
-    
 
-    
+// update advertiser compliance status
+public function updateCompliancefile(Request $request, $id)
+{
+    // Validate the uploaded file
+    $request->validate([
+        'compliance_file' => 'required|mimes:pdf,doc,docx|max:10000', // Restrict file types and size
+    ]);
+
+    // Retrieve the model instance for the given ID
+    $adsCompliance = Compliance::findOrFail($id);
+
+    // Handle the file upload
+    if ($request->hasFile('compliance_file')) {
+        // Delete the old file if it exists
+        if ($adsCompliance->compliance_file) {
+            Storage::disk('public')->delete($adsCompliance->compliance_file);
+        }
+
+        // Store the new file in the 'compliance_files' folder inside 'storage/app/public'
+        $filePath = $request->file('compliance_file')->store('compliance_files', 'public');
+
+        // Update the database record with the new file path
+        $adsCompliance->compliance_file = $filePath;
+        $adsCompliance->save();
+    }
+
+    // Redirect back with success message
+    return redirect()->back()->with('status', 'Compliance file updated successfully!');
+}
+
+
+
+
+// update advertiser ads status
+public function updateAdStatus(Request $request, $id)
+{
+    // Validate input
+    $request->validate([
+        'status' => 'required|integer|min:0|max:3',
+    ]);
+
+    // Find the ad placement by ID
+    $adPlacement = AdPlacement::findOrFail($id);
+
+    // Update the status
+    $adPlacement->status = $this->mapStatus($request->status); // Map numeric status to string
+    $adPlacement->save();
+
+    return redirect()->back()->with('success', 'Ad status updated successfully.');
+}
+
+// Helper function to map numeric status to string values
+protected function mapStatus($status)
+{
+    switch ($status) {
+        case 0:
+            return 'processing';
+        case 1:
+            return 'ongoing';
+        case 2:
+            return 'completed';
+        case 3:
+            return 'aborted';
+        default:
+            return 'processing';
+    }
+}
+
+
+
 // update mediaorganization details
 public function updateDetails(Request $request)
 {
@@ -154,7 +234,7 @@ public function updatetvDetails(Request $request)
     try {
         // Validate the request, including file uploads
         $request->validate([
-            'tv_logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validate tv_logo file
+            'tv_logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:7000', // Validate tv_logo file
             'advert_rate' => 'nullable|file|mimes:pdf,docx,txt|max:5120', // Validate advert_rate file
         ]);
 

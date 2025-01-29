@@ -42,8 +42,14 @@ class AdPlacement extends Model
      */
     public function media()
     {
-        return $this->belongsTo(MediaOrganization::class); // Corrected relationship
+        return $this->belongsTo(MediaOrganization::class, 'media_id', 'id'); // Corrected relationship
     }
+
+
+//     public function mediaOrganization()
+// {
+//     return $this->belongsTo(MediaOrganization::class, 'media_id', 'id');
+// }
 
     public function advertiser()
     {

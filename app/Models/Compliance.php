@@ -29,6 +29,14 @@ class Compliance extends Model
         return $this->belongsTo(MediaOrganization::class, 'media_id');
     }
 
+
+
+    public function advertiser()
+    {
+        return $this->belongsTo(Advertiser::class); // Corrected relationship
+    }
+
+    
     /**
      * Get the user who submitted the compliance.
      */

@@ -135,6 +135,8 @@ Route::middleware('auth')->group(function () {
 
     // Media Organization Routes
     Route::prefix('media-org')->group(function () {
+        Route::put('/adscompliance/{id}/update', [MediaOrganizationController::class, 'updateCompliancefile'])->name('updateCompliancefile');
+        Route::put('/ad-status/{id}', [MediaOrganizationController::class, 'updateAdStatus'])->name('updateAdStatus');
         Route::get('dashboard', [App\Http\Controllers\MediaOrganizationController::class, 'index'])->name('media_org.dashboard');
         Route::get('profile', [App\Http\Controllers\MediaOrganizationController::class, 'profile'])->name('media_org.profile');
         Route::get('manage-account', [App\Http\Controllers\MediaOrganizationController::class, 'manageAccount'])->name('media_org.manage-account');

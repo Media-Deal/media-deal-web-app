@@ -26,7 +26,7 @@
                                 <div class="card-body text-center d-flex flex-column justify-content-center align-items-center">
                                     <!-- Number on Top -->
                                     <div class="mb-2">
-                                        <h2 class="fw-bold mb-0">100</h2> <!-- Example number -->
+                                        <h2 class="fw-bold mb-0">{{$totalCompliancerequested}}</h2> <!-- Example number -->
                                     </div>
                                     <!-- Label -->
                                     <h5 class="fw-normal mt-0" title="Total Ads">Total Compliance Requested</h5>
@@ -40,7 +40,7 @@
                                 <div class="card-body text-center d-flex flex-column justify-content-center align-items-center">
                                     <!-- Number on Top -->
                                     <div class="mb-2">
-                                        <h2 class="fw-bold mb-0">25</h2> <!-- Example number -->
+                                        <h2 class="fw-bold mb-0">{{$totalCompliancesent}}</h2> <!-- Example number -->
                                     </div>
                                     <!-- Label -->
                                     <h5 class="fw-normal mt-0" title="Current Ads">Total Compliance Sent</h5>
@@ -48,6 +48,7 @@
                             </div>
                         </div>
                     </div>
+                    @forelse($adscompliances as $adscompliance)
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped">
                             <thead class="thead-dark">
@@ -61,18 +62,39 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>john doe</td>
-                                    <td>Entertainment</td>
-                                    <td>Off Air Dub</td>
+                                    <td>{{ $adscompliance->user->name }}</td>
+                                    <td>{{ $adscompliance->user->name }}</td>
+                                    <td>{{ $adscompliance->compliance_type }}</td>
                                    
                                     <td>
-                                        <input type="file">
+                                        <!-- Status message -->
+                                         @if (session('status'))
+                                         <div class="alert alert-info">
+                                             {{ session('status') }}
+                                         </div>
+                                         @endif
+                                        <form method="POST" action="{{ route('updateCompliancefile', $adscompliance->id) }}" enctype="multipart/form-data">
+                                            @csrf
+                                            @method('PUT') <!-- For updating data -->
+                                            <input type="file" name="compliance_file">
+                                            @if ($errors->has('compliance_file'))
+                                                <span class="text-danger">{{ $errors->first('compliance_file') }}</span>
+                                            @endif
+                                            <button type="submit" class="btn btn-primary mt-2">Upload File</button>
+                                           
+                                        </form>
+                                        
                                     </td>
 
-                                    <td>johndoe@gmail.com
-                                        594984848484</td>
+                                    <td>{{ $adscompliance->user->email }} <br>
+                                        {{ $adscompliance->user->phone }}</td>
                                     
                                 </tr>
+                                @empty
+                                <tr>
+                                    <td colspan="9" class="text-center">No Compliance yet</td>
+                                </tr>
+                            @endforelse
                             </tbody>
                         </table>
                     </div>
@@ -80,6 +102,11 @@
                     </div>
                     
                     <style>
+                          .small-card {
+padding: 20px;     /* Add some padding for a clean look */
+height: 150px;     /* Control the height of the card */
+max-width: 100%;   /* Ensures the card fills the column */
+}
                         .card {
                             min-height: 250px; /* Ensuring all cards have a minimum height */
                         }
@@ -113,13 +140,6 @@
             <!-- content -->
 
           
-            <style>
-                .small-card {
-padding: 20px;     /* Add some padding for a clean look */
-height: 150px;     /* Control the height of the card */
-max-width: 100%;   /* Ensures the card fills the column */
-}
-
-             </style>
+        
 
 @include('media_org.footer')
