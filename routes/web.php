@@ -143,15 +143,26 @@ Route::middleware('auth')->group(function () {
 
     // Media Organization Routes
     Route::prefix('media-org')->group(function () {
+        Route::put('/adscompliance/{id}/update', [MediaOrganizationController::class, 'updateCompliancefile'])->name('updateCompliancefile');
+        Route::put('/ad-status/{id}', [MediaOrganizationController::class, 'updateAdStatus'])->name('updateAdStatus');
         Route::get('dashboard', [App\Http\Controllers\MediaOrganizationController::class, 'index'])->name('media_org.dashboard');
         Route::get('profile', [App\Http\Controllers\MediaOrganizationController::class, 'profile'])->name('media_org.profile');
         Route::get('manage-account', [App\Http\Controllers\MediaOrganizationController::class, 'manageAccount'])->name('media_org.manage-account');
+        Route::get('manage-ads', [App\Http\Controllers\MediaOrganizationController::class, 'manageAds'])->name('media_org.manage.ads');
+        Route::get('manage-compliance', [App\Http\Controllers\MediaOrganizationController::class, 'manageCompliance'])->name('media_org.manage.compliance');
+        Route::get('manage-payment', [App\Http\Controllers\MediaOrganizationController::class, 'managePayment'])->name('media_org.manage.payment');
+        Route::get('manage-refund', [App\Http\Controllers\MediaOrganizationController::class, 'manageRefund'])->name('media_org.manage.refund');
+        Route::get('manage-support', [App\Http\Controllers\MediaOrganizationController::class, 'manageSupport'])->name('media_org.manage.support');
         Route::post('store', [App\Http\Controllers\MediaOrganizationController::class, 'store'])->name('store');
         Route::post('/media_organizations/{id}/update', [App\Http\Controllers\MediaOrganizationController::class, 'updateDetails'])->name('media_organizations.update');
         Route::post('/update-details', [App\Http\Controllers\MediaOrganizationController::class, 'updateDetails'])->name('media_organizations.update');
         Route::post('/update-tvdetails', [App\Http\Controllers\MediaOrganizationController::class, 'updatetvDetails'])->name('media_organizationstv.update');
         Route::post('/update-radiodetails', [App\Http\Controllers\MediaOrganizationController::class, 'updateradioDetails'])->name('media_organizationsradio.update');
         Route::post('/update-internetdetails', [App\Http\Controllers\MediaOrganizationController::class, 'updateinternetDetails'])->name('media_organizationsinternet.update');
+        Route::get('/advertiser/messages', [MessageController::class, 'index'])->name('advertiser.messages.index');
+        Route::get('/advertiser/messages/{id}', [MessageController::class, 'show'])->name('advertiser.messages.show');
+        Route::post('/advertiser/messages/{id}/reply', [MessageController::class, 'reply'])->name('advertiser.messages.reply');
+      
         // Add more routes for Media Organization
     });
 
