@@ -99,6 +99,7 @@ class MediaOrganizationController extends Controller
     }
 
 
+    // manage ads
 public function manageAds()
 {
     // Retrieve the authenticated user
