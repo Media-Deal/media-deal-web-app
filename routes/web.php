@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\MarketerController;
 use App\Http\Controllers\AdvertiserController;
 use App\Http\Controllers\Auth\CustomAuthController;
@@ -125,6 +126,8 @@ Route::middleware('auth')->group(function () {
         // Edit Ad
         Route::get('/ads/{ad}/edit', [AdvertiserController::class, 'editAdForm'])->name('advertiser.ads.edit');
         Route::put('/ads/{ad}', [AdvertiserController::class, 'updateAd'])->name('advertiser.ads.update');
+        Route::get('/transactions', [AdvertiserController::class, 'AdvertiserPaymentHistoy'])->name('advertiser.transactions');
+
 
         // Delete Ad
         Route::delete('/delete-ads/{ad}', [App\Http\Controllers\AdvertiserController::class, 'deleteAd'])->name('advertiser.ads.delete');
@@ -135,6 +138,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/notifications/{id}', [MessageController::class, 'showNotification'])->name('notifications.show');
         Route::get('/notifications/clear', [MessageController::class, 'clearNotification'])->name('notifications.clear');
         Route::post('/messages/send', [MessageController::class, 'sendMessage'])->name('messages.send');
+
+
+        Route::post('/initiate', [PaymentController::class, 'initiatePayment'])->name('advertiser.payment.initiate'); // Initiate payment
+        Route::get('/callback', [PaymentController::class, 'paymentCallback'])->name('advertiser.payment.callback'); // Handle payment callback
     });
 
     // Media Organization Routes

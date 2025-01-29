@@ -304,18 +304,20 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form action="{{ route('advertiser.payments.submit', $media->id) }}" method="POST">
+              <form action="{{ route('advertiser.payment.initiate') }}" method="POST">
                 @csrf
                 <div class="mb-3">
-                  <label for="paymentMethod" class="form-label">Select Payment Method</label>
-                  <select class="form-select" id="paymentMethod" name="payment_method" required>
-                    <option value="">Select Method</option>
-                    <option value="paystack">Paystack</option>
-                    <option value="flutterwave">Flutterwave</option>
-                  </select>
+                  <label for="amount" class="form-label">Enter Amount</label>
+                  <input type="number" class="form-control" id="amount" name="amount" placeholder="Enter amount"
+                    required>
                 </div>
+                <input type="hidden" id="name" name="media_id" value="{{$media->id}}">
+                <input type="hidden" id="name" name="name" value="{{Auth::user()->email}}">
+                <input type="hidden" id="email" name="email" value="{{Auth::user()->email}}">
+                <input type="hidden" id="currency" name="currency" value="NGN">
                 <button type="submit" class="btn btn-primary">Proceed to Pay</button>
               </form>
+
             </div>
           </div>
         </div>
