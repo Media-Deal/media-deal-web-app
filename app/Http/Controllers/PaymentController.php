@@ -119,7 +119,7 @@ class PaymentController extends Controller
             if ($payment) {
                 $payment->update([
                     'transaction_id' => $verificationResponse['data']['id'],
-                    'status' => 'successful',
+                    'status' => 'completed',
                     'payment_method' => $verificationResponse['data']['payment_type'],
                 ]);
             }
