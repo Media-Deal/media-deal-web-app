@@ -145,7 +145,7 @@ Route::middleware('auth')->group(function () {
 
 
         Route::post('/initiate', [PaymentController::class, 'initiatePayment'])->name('advertiser.payment.initiate'); // Initiate payment
-        Route::get('/callback', [PaymentController::class, 'paymentCallback'])->name('advertiser.payment.callback'); // Handle payment callback
+        Route::get('/callback', [PaymentController::class, 'handleCallback'])->name('advertiser.payment.callback'); // Handle payment callback
     });
 
     // Media Organization Routes
