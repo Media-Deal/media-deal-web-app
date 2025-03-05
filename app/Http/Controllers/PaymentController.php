@@ -41,7 +41,7 @@ class PaymentController extends Controller
             'transaction_id' => $transactionRef, // Will be filled after payment
             'amount' => $request->amount,
             'currency' => 'NGN',
-            'status' => 'completed',
+            'status' => 'pending',
             'payment_method' => null, // Will be updated after payment
             'meta' => json_encode([
                 'consumer_id' => Auth::id() ?? 'guest', // Use authenticated user ID or guest
