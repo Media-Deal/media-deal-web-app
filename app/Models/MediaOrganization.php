@@ -3,14 +3,13 @@
 namespace App\Models;
 
 use App\Models\User;
-use App\Models\MediaOrganization;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class MediaOrganization extends Model
 {
     use HasFactory;
- 
+
     protected $fillable = [
         'user_id',
         'fullname',
@@ -123,8 +122,8 @@ class MediaOrganization extends Model
         return $this->hasMany(Compliance::class, 'media_id');
     }
 
-    public function user()
+    public function mediaOrganizations()
     {
-       return $this->belongsTo(User::class, 'user_id','id');
+        return $this->hasMany(MediaOrganization::class, 'user_id');
     }
 }

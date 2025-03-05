@@ -35,11 +35,11 @@ class CustomAuthController extends Controller
         if ($user) {
             // Set default data to pass to views
             $data['mediaOrganizations'] = MediaOrganization::all();
-
+ 
             // Redirect based on user role
             switch ($user->role) {
                 case 'advertiser':
-                    return view('advertiser.homepage', $data);
+                    return route('advertiser.dashboard');
                 case 'media_org':
                     return view('media_org.homepage', $data);
                 case 'marketer':
@@ -69,7 +69,7 @@ class CustomAuthController extends Controller
 
 
 
-
+ 
 
     public function verifyCode(Request $request)
     {

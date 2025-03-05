@@ -60,9 +60,6 @@ Route::get('/manage-compliance', function () {
 });
 
 
-Route::get('/manage-refund', function () {
-    return view('advertiser.manage-refund');
-});
 
 Route::get('/station-details', function () {
     return view('advertiser.station-details');
@@ -86,10 +83,11 @@ Route::post('/verify-code', [CustomAuthController::class, 'verifyCode'])->name('
 Route::get('/resend-verification-code', [CustomAuthController::class, 'resendVerificationCode'])->name('resend.verification.code');
 Route::get('/logout', [CustomAuthController::class, 'UserLogout'])->name('user.logout');
 
+Route::get('/home', [CustomAuthController::class, 'index'])->name('home');
 // Authenticated Routes
 Route::middleware('auth')->group(function () {
     // General User Routes
-    Route::get('/home', [CustomAuthController::class, 'index'])->name('home');
+
 
     // Advertiser Routes
     Route::prefix('advertiser')->middleware(['user_auth:advertiser'])->group(function () {
@@ -121,6 +119,8 @@ Route::middleware('auth')->group(function () {
         // Refund Request Form Submission
         Route::post('/media/{media}/refunds', [AdvertiserController::class, 'submitRefunds'])->name('advertiser.refunds.submit');
 
+        Route::get('/manage-refund', [AdvertiserController::class, 'showRefunds'])->name('advertiser.manage.refunds.page');
+
         // Feedback Form Submission
         Route::post('/media/{media}/feedback', [AdvertiserController::class, 'submitFeedback'])->name('advertiser.feedback.submit');
 
@@ -136,12 +136,12 @@ Route::middleware('auth')->group(function () {
         // Delete Ad
         Route::delete('/delete-ads/{ad}', [App\Http\Controllers\AdvertiserController::class, 'deleteAd'])->name('advertiser.ads.delete');
 
-        Route::get('/messages', [MessageController::class, 'index'])->name('advertiser.messages.index');
-        Route::get('/messages/{id}', [MessageController::class, 'show'])->name('advertiser.messages.show');
-        Route::post('/messages/{id}/reply', [MessageController::class, 'reply'])->name('advertiser.messages.reply');
-        Route::get('/notifications/{id}', [MessageController::class, 'showNotification'])->name('notifications.show');
-        Route::get('/notifications/clear', [MessageController::class, 'clearNotification'])->name('notifications.clear');
-        Route::post('/messages/send', [MessageController::class, 'sendMessage'])->name('messages.send');
+        Route::get('/messages', [MessageController::class, 'advertiserIndex'])->name('advertiser.messages.index');
+        Route::get('/messages/{id}', [MessageController::class, 'advertiserShow'])->name('advertiser.messages.show');
+        Route::post('/messages/{id}/reply', [MessageController::class, 'advertiserReply'])->name('advertiser.messages.reply');
+        Route::get('/notifications/{id}', [MessageController::class, 'advertiserShowNotification'])->name('notifications.show');
+        Route::get('/notifications/clear', [MessageController::class, 'advertiserClearNotification'])->name('notifications.clear');
+        Route::post('/messages/send', [MessageController::class, 'advertiserSendMessage'])->name('messages.send');
 
 
         Route::post('/initiate', [PaymentController::class, 'initiatePayment'])->name('advertiser.payment.initiate'); // Initiate payment
@@ -166,10 +166,13 @@ Route::middleware('auth')->group(function () {
         Route::post('/update-tvdetails', [App\Http\Controllers\MediaOrganizationController::class, 'updatetvDetails'])->name('media_organizationstv.update');
         Route::post('/update-radiodetails', [App\Http\Controllers\MediaOrganizationController::class, 'updateradioDetails'])->name('media_organizationsradio.update');
         Route::post('/update-internetdetails', [App\Http\Controllers\MediaOrganizationController::class, 'updateinternetDetails'])->name('media_organizationsinternet.update');
-        Route::get('/advertiser/messages', [MessageController::class, 'index'])->name('advertiser.messages.index');
-        Route::get('/advertiser/messages/{id}', [MessageController::class, 'show'])->name('advertiser.messages.show');
-        Route::post('/advertiser/messages/{id}/reply', [MessageController::class, 'reply'])->name('advertiser.messages.reply');
-      
+        Route::get('/messages', [MessageController::class, 'mediaIndex'])->name('media.messages.index');
+        Route::get('/messages/{id}', [MessageController::class, 'mediaShow'])->name('media.messages.show');
+        Route::post('/messages/{id}/reply', [MessageController::class, 'mediaReply'])->name('media.messages.reply');
+        Route::get('/notifications/{id}', [MessageController::class, 'mediaShowNotification'])->name('media.notifications.show');
+        Route::get('/notifications/clear', [MessageController::class, 'mediaClearNotification'])->name('media.notifications.clear');
+        Route::post('/messages/send', [MessageController::class, 'mediaSendMessage'])->name('media.messages.send');
+
         // Add more routes for Media Organization
     });
 

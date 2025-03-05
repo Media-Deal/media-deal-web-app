@@ -73,8 +73,7 @@ if ($currentHour >= 12 && $currentHour < 16) { $greeting='Good afternoon' ; } el
                                         <img src="{{ asset('storage/' . $media->radio_logo) }}"
                                             alt="{{ $media->radio_name }} Logo" class="img-fluid"
                                             style="max-width: 100px;">
-                                        @elseif(strtolower($media->media_type) === 'internet' &&
-                                        $media->internet_logo)
+                                        @elseif(strtolower($media->media_type) === 'internet' && $media->internet_logo)
                                         <img src="{{ asset('storage/' . $media->internet_logo) }}"
                                             alt="{{ $media->internet_name }} Logo" class="img-fluid"
                                             style="max-width: 100px;">

@@ -26,24 +26,103 @@
       <!-- Media Cards -->
       <div class="media-card-container">
         <div class="media-card">
-          @if($media->media_type === 'TV' && $media->tv_logo)
+          <!-- Media Logo -->
+          @if(strtolower($media->media_type) === 'tv' && $media->tv_logo)
           <img src="{{ asset('storage/' . $media->tv_logo) }}" alt="{{ $media->tv_name }} Logo"
             class="img-fluid media-logo">
-          @elseif($media->media_type === 'Radio' && $media->radio_logo)
+          @elseif(strtolower($media->media_type) === 'radio' && $media->radio_logo)
           <img src="{{ asset('storage/' . $media->radio_logo) }}" alt="{{ $media->radio_name }} Logo"
             class="img-fluid media-logo">
-          @elseif($media->media_type === 'Internet' && $media->internet_logo)
+          @elseif(strtolower($media->media_type) === 'internet' && $media->internet_logo)
           <img src="{{ asset('storage/' . $media->internet_logo) }}" alt="{{ $media->internet_name }} Logo"
             class="img-fluid media-logo">
           @else
           <img src="{{ asset('img/default-logo.png') }}" alt="Default Logo" class="img-fluid media-logo">
           @endif
-          <h4 class="mt-2">{{ $media->name }}</h4>
-          <p class="text-muted">{{ $media->description }}</p>
+
+          <!-- Media Name -->
+          <h4 class="mt-2">
+            @if(strtolower($media->media_type) === 'tv')
+            {{ $media->tv_name }}
+            @elseif(strtolower($media->media_type) === 'radio')
+            {{ $media->radio_name }}
+            @elseif(strtolower($media->media_type) === 'internet')
+            {{ $media->internet_name }}
+            @endif
+          </h4>
+
+          <!-- Media Description -->
+          <p class="text-muted">
+            @if(strtolower($media->media_type) === 'tv')
+            {{ $media->tv_content_focus ?? 'No description available.' }}
+            @elseif(strtolower($media->media_type) === 'radio')
+            {{ $media->radio_content_focus ?? 'No description available.' }}
+            @elseif(strtolower($media->media_type) === 'internet')
+            {{ $media->internet_content_focus ?? 'No description available.' }}
+            @endif
+          </p>
+
+          <!-- Location -->
+          <p class="text-muted">
+            @if(strtolower($media->media_type) === 'tv')
+            <strong>Main Studio Location:</strong> {{ $media->tv_main_studio_location ?? 'N/A' }}
+            @elseif(strtolower($media->media_type) === 'radio')
+            <strong>Station Location:</strong> {{ $media->radio_station_location ?? 'N/A' }}
+            @elseif(strtolower($media->media_type) === 'internet')
+            <strong>Channel Location:</strong> {{ $media->internet_channel_location ?? 'N/A' }}
+            @endif
+          </p>
+
+          <!-- Advert Rate -->
           <a href="{{ $media->rateCard }}">
             <p class="fw-bold">Advert Rate</p>
           </a>
-          <button type="button" class="btn btn-primary btn-custom" data-bs-toggle="modal"
+
+          <!-- Social Media Links -->
+          <div class="social-media-links mt-3">
+            <h6>Social Media Links:</h6>
+            @if(strtolower($media->media_type) === 'tv')
+            @if($media->tv_facebook)
+            <a href="{{ $media->tv_facebook }}" target="_blank" class="btn btn-sm btn-outline-primary me-2">Facebook</a>
+            @endif
+            @if($media->tv_twitter)
+            <a href="{{ $media->tv_twitter }}" target="_blank" class="btn btn-sm btn-outline-primary me-2">Twitter</a>
+            @endif
+            @if($media->tv_instagram)
+            <a href="{{ $media->tv_instagram }}" target="_blank"
+              class="btn btn-sm btn-outline-primary me-2">Instagram</a>
+            @endif
+            @elseif(strtolower($media->media_type) === 'radio')
+            @if($media->radio_facebook)
+            <a href="{{ $media->radio_facebook }}" target="_blank"
+              class="btn btn-sm btn-outline-primary me-2">Facebook</a>
+            @endif
+            @if($media->radio_twitter)
+            <a href="{{ $media->radio_twitter }}" target="_blank"
+              class="btn btn-sm btn-outline-primary me-2">Twitter</a>
+            @endif
+            @if($media->radio_instagram)
+            <a href="{{ $media->radio_instagram }}" target="_blank"
+              class="btn btn-sm btn-outline-primary me-2">Instagram</a>
+            @endif
+            @elseif(strtolower($media->media_type) === 'internet')
+            @if($media->internet_facebook)
+            <a href="{{ $media->internet_facebook }}" target="_blank"
+              class="btn btn-sm btn-outline-primary me-2">Facebook</a>
+            @endif
+            @if($media->internet_twitter)
+            <a href="{{ $media->internet_twitter }}" target="_blank"
+              class="btn btn-sm btn-outline-primary me-2">Twitter</a>
+            @endif
+            @if($media->internet_instagram)
+            <a href="{{ $media->internet_instagram }}" target="_blank"
+              class="btn btn-sm btn-outline-primary me-2">Instagram</a>
+            @endif
+            @endif
+          </div>
+
+          <!-- Ads Placement Button -->
+          <button type="button" class="btn btn-primary btn-custom mt-3" data-bs-toggle="modal"
             data-bs-target="#adPlacementModal">
             Ads Placement
           </button>
@@ -336,7 +415,7 @@
               <form action="{{ route('messages.send') }}" method="POST">
                 @csrf
                 <input type="hidden" name="sender_type" value="advertiser">
-                <input type="hidden" name="recipient_id" value="{{$media->id}}">
+                <input type="hidden" name="recipient_id" value="{{$media->user_id}}">
                 <div class="mb-3">
                   <label for="messageContent" class="form-label">Message</label>
                   <textarea class="form-control" id="messageContent" name="message" rows="3" required></textarea>
@@ -380,7 +459,7 @@
       <div class="modal fade" id="requestRefundModal" tabindex="-1" aria-labelledby="requestRefundModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
-          <div class="modal-content">
+          <div class="modal-content"> 
             <div class="modal-header">
               <h5 class="modal-title" id="requestRefundModalLabel">Request Refund</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -423,7 +502,7 @@
             </div>
             <div class="modal-body">
               <form action="{{ route('advertiser.feedback.submit', $media->id) }}" method="POST">
-                @csrf
+                @csrf 
                 <div class="mb-3">
                   <label for="feedbackContent" class="form-label">Your Feedback</label>
                   <textarea class="form-control" id="feedbackContent" name="feedback_content" rows="4"

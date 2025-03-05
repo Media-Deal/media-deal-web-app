@@ -72,7 +72,7 @@
 
                             <form method="POST" action="{{ route('verify.code') }}">
                                 @csrf
-
+ 
                                 <div class="mb-3">
                                     <label for="verification_code" class="form-label">Verification Code</label>
                                     <input class="form-control" type="text" id="verification_code"

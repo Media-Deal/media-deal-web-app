@@ -11,8 +11,8 @@
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                                <li class="breadcrumb-item"><a
-                                        href="{{ route('advertiser.messages.index') }}">Messages</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('media.messages.index') }}">Messages</a>
+                                </li>
                                 <li class="breadcrumb-item active">Reply</li>
                             </ol>
                         </div>
@@ -47,7 +47,7 @@
                             <p><strong>Message:</strong> {{ $message->message }}</p>
                             <p><strong>Received At:</strong> {{ $message->created_at->format('d M Y, h:i A') }}</p>
 
-                            <form action="{{ route('advertiser.messages.reply', $message->id) }}" method="POST">
+                            <form action="{{ route('media.messages.reply', $message->id) }}" method="POST">
                                 @csrf
                                 <div class="mb-3">
                                     <label for="reply" class="form-label">Your Reply</label>

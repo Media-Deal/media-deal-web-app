@@ -115,31 +115,7 @@
                                 <h6 class="text-overflow mb-2 text-uppercase">Users</h6>
                             </div>
 
-                            <div class="notification-list">
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <div class="d-flex">
-                                        <img class="d-flex me-2 rounded-circle" src="assets/images/users/avatar-2.jpg"
-                                            alt="Generic placeholder image" height="32">
-                                        <div class="w-100">
-                                            <h5 class="m-0 font-14">Erwin Brown</h5>
-                                            <span class="font-12 mb-0">UI Designer</span>
-                                        </div>
-                                    </div>
-                                </a>
 
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <div class="d-flex">
-                                        <img class="d-flex me-2 rounded-circle" src="assets/images/users/avatar-5.jpg"
-                                            alt="Generic placeholder image" height="32">
-                                        <div class="w-100">
-                                            <h5 class="m-0 font-14">Jacob Deo</h5>
-                                            <span class="font-12 mb-0">Developer</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -206,7 +182,7 @@
                                             </div>
                                             <div class="flex-grow-1 text-truncate ms-2">
                                                 <h5 class="noti-item-title fw-semibold font-14">
-                                                    {{ $notification->isAdvertiserSender() ?
+                                                    {{ $notification->isMediaOrganizationSender() ?
                                                     $notification->advertiser->name :
                                                     $notification->mediaOrganization->name }}
                                                     <small class="fw-normal text-muted ms-1">
@@ -403,7 +379,7 @@
                     </li>
 
                     <li class="side-nav-item">
-                        <a href="{{url('manage-refund')}}" class="side-nav-link">
+                        <a href="{{route('advertiser.manage.refunds.page')}}" class="side-nav-link">
                             <i class="uil-money-withdraw"></i> <!-- Refunds icon -->
                             <span> Manage Refund</span>
                         </a>

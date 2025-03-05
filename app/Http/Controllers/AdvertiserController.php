@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Refund;
 use App\Models\Message;
+use App\Models\Feedback;
 use App\Models\Advertiser;
 use App\Models\Compliance;
 use App\Models\AdPlacement;
@@ -75,10 +77,11 @@ class AdvertiserController extends Controller
 
     public function showMedia($id)
     {
-        $media = MediaOrganization::where('id', $id)->firstOrFail();
+        $media = MediaOrganization::findOrFail($id);
 
         return view('advertiser.show_media', compact('media'));
     }
+
 
 
     public function placeAds(Request $request, MediaOrganization $media)
@@ -454,5 +457,67 @@ class AdvertiserController extends Controller
             'totalComplianceReceived' => 0,  // Replace with actual data
             'compliances' => [],             // Replace with actual data
         ]);
+    }
+
+    public function showRefunds()
+    {
+        // Fetch refunds only for the authenticated user
+        $refunds = Refund::where('user_id', Auth::id())->get();
+
+        // Calculate totals for the authenticated user
+        $totalRequests = Refund::where('user_id', Auth::id())->count();
+        $totalApproved = Refund::where('user_id', Auth::id())->where('status', 'approved')->count();
+        $totalDenied = Refund::where('user_id', Auth::id())->where('status', 'denied')->count();
+
+        // Pass data to the view
+        return view('advertiser.manage-refund', [
+            'refunds' => $refunds,
+            'totalRequests' => $totalRequests,
+            'totalApproved' => $totalApproved,
+            'totalDenied' => $totalDenied,
+        ]);
+    }
+
+
+
+    public function submitFeedback(Request $request, $mediaId)
+    {
+        // Validate the form data
+        $request->validate([
+            'feedback_content' => 'required|string',
+        ]);
+
+        // Create a new feedback record
+        Feedback::create([
+            'user_id' => Auth::id(), // Authenticated user's ID
+            'media_id' => $mediaId, // Media ID from the route
+            'content' => $request->input('feedback_content'), // Feedback content
+        ]);
+
+        // Redirect back with a success message
+        return redirect()->back()->with('success', 'Your feedback has been submitted successfully.');
+    }
+
+
+    public function submitRefunds(Request $request, $mediaId)
+    {
+        // Validate the form data
+        $request->validate([
+            'refund_reason_type' => 'required|string',
+            'refund_feedback' => 'required|string',
+        ]);
+
+        // Create a new refund record
+        Refund::create([
+            'user_id' => Auth::id(), // Assuming the user is authenticated
+            'media' => $mediaId,
+            'category' => $request->input('refund_reason_type'),
+            'status' => 'pending', // Default status
+            'refunded' => false, // Default refund status
+            'feedback' => $request->input('refund_feedback'), // Assuming you add this to the fillable array
+        ]);
+
+        // Redirect back with a success message
+        return redirect()->back()->with('success', 'Your refund request has been submitted successfully.');
     }
 }

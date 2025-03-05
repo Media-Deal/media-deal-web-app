@@ -58,8 +58,8 @@ class User extends Authenticatable
         return $this->hasMany(Advertiser::class, 'user_id');
     }
 
-    public function mediaOrganization()
+    public function mediaOrganizations()
     {
-        return $this->belongsTo(MediaOrganization::class, 'user_id', 'id');
+        return $this->hasMany(MediaOrganization::class, 'user_id');
     }
 }

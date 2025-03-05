@@ -66,7 +66,7 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <a href="{{ route('advertiser.messages.show', $message->id) }}"
+                                                <a href="{{ route('media.messages.show', $message->id) }}"
                                                     class="btn btn-primary btn-sm">
                                                     View & Reply
                                                 </a>

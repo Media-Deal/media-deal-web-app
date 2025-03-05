@@ -15,7 +15,7 @@ class MessageController extends Controller
     /**
      * Display a listing of the messages.
      */
-    public function index()
+    public function advertiserIndex()
     {
         // Retrieve messages for the authenticated advertiser
         $advertiserId = auth()->id();
@@ -25,6 +25,18 @@ class MessageController extends Controller
 
 
         return view('advertiser.message', compact('messages'));
+    }
+
+    public function mediaIndex()
+    {
+        // Retrieve messages for the authenticated advertiser
+        $mediaId = auth()->id();
+
+        //$messages = Message::where('advertiser_id', Auth::id())->latest()->get();
+        $messages = Message::with('advertiser')->where('media_organization_id', $mediaId)->orderBy('created_at', 'desc')->get();
+
+
+        return view('media_org.message', compact('messages'));
     }
 
 
@@ -43,7 +55,15 @@ class MessageController extends Controller
     /**
      * Show the form for replying to a message.
      */
-    public function show($id)
+    public function mediaShow($id)
+    {
+        // Find the message by ID or fail
+        $message = Message::with('advertiser')->where('media_organization_id', Auth::id())->findOrFail($id);
+
+        return view('media_org.reply', compact('message'));
+    }
+
+    public function advertiserShow($id)
     {
         // Find the message by ID or fail
         $message = Message::with('mediaOrganization')->where('advertiser_id', Auth::id())->findOrFail($id);
@@ -54,7 +74,7 @@ class MessageController extends Controller
     /**
      * Reply to a message.
      */
-    public function reply(Request $request, $id)
+    public function advertiserReply(Request $request, $id)
     {
         $validated = $request->validate([
             'reply' => 'required|string|max:5000',
@@ -85,6 +105,39 @@ class MessageController extends Controller
     }
 
 
+
+    public function mediaReply(Request $request, $id)
+    {
+        $validated = $request->validate([
+            'reply' => 'required|string|max:5000',
+        ]);
+
+        // Find the message
+        $message = Message::where('media_organization_id', Auth::id())->findOrFail($id);
+
+        // Add the reply to the message
+        $message->update([
+            'sender_type' => 'media_organization',
+            'reply' => $validated['reply'],
+            'replied_at' => now(),
+        ]);
+
+        // Fetch email of the recipient media organization
+        $advertiser = User::findOrFail($message->advertiser_id);
+        $mediaEmail = $advertiser->email;
+
+        // Send email to media organization
+        Mail::to($mediaEmail)->send(new OrderNotification('You have received a reply to your order!'));
+
+        // Send email to admin with message details
+        $adminEmail = 'support@mediadeal.ng'; // Replace with actual admin email
+        Mail::to($adminEmail)->send(new OrderNotification("Reply Details:\n\n" . $validated['reply']));
+
+        return redirect()->route('media.messages.index')->with('success', 'Reply sent successfully!');
+    }
+
+
+
     public function showNotification($id)
     {
         $message = Message::findOrFail($id);
@@ -97,7 +150,7 @@ class MessageController extends Controller
         return redirect()->back()->with('success', 'All notifications cleared.');
     }
 
-    public function sendMessage(Request $request)
+    public function advertiserSendMessage(Request $request)
     {
         $validated = $request->validate([
             'sender_type' => 'required|in:advertiser',
