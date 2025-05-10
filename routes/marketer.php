@@ -1,13 +1,10 @@
 <?php
-// routes/marketer.php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MarketerController;
+use Illuminate\Support\Facades\Route;
 
-// Dashboard
-Route::get('dashboard', [MarketerController::class, 'index'])->name('marketer.dashboard');
-
-// Profile and Other Routes
-Route::get('profile', [MarketerController::class, 'profile'])->name('marketer.profile');
-
-// Add more routes for Marketer
+Route::prefix('marketer')->middleware(['user_auth', 'role:marketer'])->group(function () {
+    Route::get('dashboard', [MarketerController::class, 'index'])->name('marketer.dashboard');
+    Route::get('profile', [MarketerController::class, 'profile'])->name('marketer.profile');
+    // Additional Marketer Routes can be added here
+});

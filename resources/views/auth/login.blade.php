@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Mediadeal - User Login Page." name="description" />
     <meta content="Coderthemes" name="author" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
 
     <!-- Theme Config Js -->
@@ -17,6 +18,9 @@
 
     <!-- Icons css -->
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+
+    <!-- Toastr CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
 </head>
 
 <body class="authentication-bg position-relative">
@@ -51,7 +55,7 @@
                                     dashboard.</p>
                             </div>
 
-                            <form method="POST" action="{{ route('login') }}">
+                            <form id="loginForm" method="POST">
                                 @csrf
 
                                 <div class="mb-3">
@@ -59,11 +63,7 @@
                                     <input type="email" id="emailaddress" name="email"
                                         class="form-control @error('email') is-invalid @enderror"
                                         value="{{ old('email') }}" placeholder="Enter your email" required>
-                                    @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
+                                    <div class="invalid-feedback email-error"></div>
                                 </div>
 
                                 <div class="mb-3">
@@ -76,11 +76,7 @@
                                             <span class="password-eye"></span>
                                         </div>
                                     </div>
-                                    @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
+                                    <div class="invalid-feedback password-error"></div>
                                     @if (Route::has('password.request'))
                                     <a href="{{ route('password.request') }}" class="text-muted float-end">
                                         <small>Forgot your password?</small>
@@ -97,7 +93,14 @@
                                 </div>
 
                                 <div class="mb-3 text-center">
-                                    <button class="btn btn-primary" type="submit">Log In</button>
+                                    <button id="submitButton" class="btn btn-primary" type="submit">
+                                        <span id="buttonText">Log In</span>
+                                        <span id="loadingSpinner" style="display: none;">
+                                            <span class="spinner-border spinner-border-sm" role="status"
+                                                aria-hidden="true"></span>
+                                            Loading...
+                                        </span>
+                                    </button>
                                 </div>
                             </form>
                         </div> <!-- end card-body -->
@@ -127,6 +130,93 @@
 
     <!-- App js -->
     <script src="{{ asset('assets/js/app.min.js') }}"></script>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Toastr JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Toggle password visibility
+            $("[data-password]").on('click', function() {
+                var input = $(this).siblings('input');
+                var icon = $(this).find('.password-eye');
+                
+                if (input.attr('type') === 'password') {
+                    input.attr('type', 'text');
+                    icon.addClass('show-password');
+                } else {
+                    input.attr('type', 'password');
+                    icon.removeClass('show-password');
+                }
+            });
+            
+            // Handle form submission
+            $('#loginForm').on('submit', function (e) {
+                e.preventDefault();
+                
+                // Show loading spinner and disable button
+                $('#buttonText').hide();
+                $('#loadingSpinner').show();
+                $('#submitButton').prop('disabled', true);
+                
+                // Clear previous error messages
+                $('.invalid-feedback').text('');
+                $('.is-invalid').removeClass('is-invalid');
+                
+                // Send AJAX request
+                $.ajax({
+                    url: '{{ route("login") }}',
+                    method: 'POST',
+                    data: $(this).serialize(),
+                    dataType: 'json',
+                    success: function (response) {
+                        // Hide loading spinner and enable button
+                        $('#buttonText').show();
+                        $('#loadingSpinner').hide();
+                        $('#submitButton').prop('disabled', false);
+                        
+                        if (response.success) {
+                            // Show success message
+                            toastr.success(response.message);
+                            
+                            // Redirect after delay
+                            setTimeout(function() {
+                                window.location.href = response.redirect;
+                            }, 1500);
+                        } else {
+                            // Show error message
+                            toastr.error(response.message);
+                        }
+                    },
+                    error: function (xhr) {
+                        // Hide loading spinner and enable button
+                        $('#buttonText').show();
+                        $('#loadingSpinner').hide();
+                        $('#submitButton').prop('disabled', false);
+                        
+                        if (xhr.status === 422) {
+                            // Validation errors
+                            var errors = xhr.responseJSON.errors;
+                            $.each(errors, function(key, value) {
+                                $('.' + key + '-error').text(value[0]);
+                                $('[name="' + key + '"]').addClass('is-invalid');
+                            });
+                            toastr.error('Please fix the errors in the form.');
+                        } else if (xhr.status === 401) {
+                            // Authentication failed
+                            toastr.error(xhr.responseJSON.message || 'Invalid credentials. Please try again.');
+                        } else {
+                            // Other errors
+                            toastr.error(xhr.responseJSON.message || 'An error occurred. Please try again.');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
