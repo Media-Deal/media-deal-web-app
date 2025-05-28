@@ -60,7 +60,7 @@ class LoginController extends Controller
                 case 'advertiser':
                     return route('advertiser.dashboard');
                 case 'media_org':
-                    return route('media.dashboard');
+                    return route('media_org.dashboard');
                 case 'marketer':
                     return route('marketer.dashboard');
                 default:

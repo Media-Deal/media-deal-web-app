@@ -25,6 +25,7 @@
 
     <!-- Icons css -->
     <link href="{{asset('assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="https://unicons.iconscout.com/release/v4.0.8/css/line.css" rel="stylesheet">
 </head>
 
 <body>
@@ -292,12 +293,13 @@
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>
-                            
-                            <a href="#" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+
+                            <a href="#" class="dropdown-item"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 <i class="mdi mdi-logout me-1"></i>
                                 <span>Logout</span>
                             </a>
-                            
+
                         </div>
                     </li>
                 </ul>

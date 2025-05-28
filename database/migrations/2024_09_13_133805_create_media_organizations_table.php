@@ -14,13 +14,15 @@ return new class extends Migration
         Schema::create('media_organizations', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string('fullname');
-            $table->string('phone');
-            $table->string('email');
-            $table->string('nin_details');
-            $table->string('staff_id'); // Staff ID file path
-            $table->string('position');
-            $table->enum('media_type', ['tv', 'radio', 'internet']);
+
+            $table->string('fullname')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('email')->nullable();
+            $table->string('nin_details')->nullable();
+            $table->string('staff_id')->nullable();
+            $table->string('position')->nullable();
+
+            $table->enum('media_type', ['tv', 'radio', 'internet'])->nullable();
 
             // TV fields
             $table->string('tv_type')->nullable();
@@ -33,6 +35,7 @@ return new class extends Migration
             $table->string('tv_peak_viewing_times')->nullable();
             $table->string('tv_youtube')->nullable();
             $table->string('tv_website')->nullable();
+            $table->string('tv_target_audience')->nullable();
             $table->string('tv_streaming_url')->nullable();
             $table->string('tv_advert_rate')->nullable();
             $table->string('tv_facebook')->nullable();
@@ -45,7 +48,6 @@ return new class extends Migration
             $table->string('tv_phone')->nullable();
             $table->string('tv_contact_person')->nullable();
 
-
             // Radio fields
             $table->string('radio_type')->nullable();
             $table->string('radio_name')->nullable();
@@ -53,16 +55,15 @@ return new class extends Migration
             $table->string('radio_frequency')->nullable();
             $table->string('radio_station_location')->nullable();
             $table->json('radio_content_focus')->nullable();
+            $table->string('radio_content_focus_other')->nullable();
             $table->string('radio_youtube')->nullable();
             $table->string('radio_facebook')->nullable();
             $table->string('radio_instagram')->nullable();
             $table->string('radio_twitter')->nullable();
-            $table->string('radio_linkedin')->nullable();
-            $table->string('radio_tiktok')->nullable();
+            $table->string('radio_advert_rate', 500)->nullable();
             $table->string('radio_other')->nullable();
-            $table->string('radio_email')->nullable();
-            $table->string('radio_phone')->nullable();
-            $table->string('radio_contact_person')->nullable();
+            $table->string('radio_streaming_url')->nullable();
+            $table->string('radio_target_audience')->nullable();
 
             // Internet fields
             $table->string('internet_type')->nullable();
@@ -72,7 +73,6 @@ return new class extends Migration
             $table->string('internet_content_focus')->nullable();
             $table->string('internet_target_audience')->nullable();
             $table->string('internet_broadcast_duration')->nullable();
-            $table->string('internet_often_post')->nullable();
             $table->string('internet_youtube')->nullable();
             $table->string('internet_website')->nullable();
             $table->string('internet_streaming_url')->nullable();
@@ -86,6 +86,9 @@ return new class extends Migration
             $table->string('internet_email')->nullable();
             $table->string('internet_phone')->nullable();
             $table->string('internet_contact_person')->nullable();
+            $table->string('internet_often_post')->nullable();
+            $table->string('all_internet_youtube')->nullable();
+            $table->string('internet_twitch')->nullable();
 
             $table->timestamps();
         });
