@@ -28,13 +28,11 @@
         <div class="media-card">
           <!-- Media Logo -->
           @if(strtolower($media->media_type) === 'tv' && $media->tv_logo)
-          <img src="{{ asset('storage/' . $media->tv_logo) }}" alt="{{ $media->tv_name }} Logo"
-            class="img-fluid media-logo">
+          <img src="{{ asset($media->tv_logo) }}" alt="{{ $media->tv_name }} Logo" class="img-fluid media-logo">
           @elseif(strtolower($media->media_type) === 'radio' && $media->radio_logo)
-          <img src="{{ asset('storage/' . $media->radio_logo) }}" alt="{{ $media->radio_name }} Logo"
-            class="img-fluid media-logo">
+          <img src="{{ asset($media->radio_logo) }}" alt="{{ $media->radio_name }} Logo" class="img-fluid media-logo">
           @elseif(strtolower($media->media_type) === 'internet' && $media->internet_logo)
-          <img src="{{ asset('storage/' . $media->internet_logo) }}" alt="{{ $media->internet_name }} Logo"
+          <img src="{{ asset($media->internet_logo) }}" alt="{{ $media->internet_name }} Logo"
             class="img-fluid media-logo">
           @else
           <img src="{{ asset('img/default-logo.png') }}" alt="Default Logo" class="img-fluid media-logo">
@@ -459,7 +457,7 @@
       <div class="modal fade" id="requestRefundModal" tabindex="-1" aria-labelledby="requestRefundModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
-          <div class="modal-content"> 
+          <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="requestRefundModalLabel">Request Refund</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -502,7 +500,7 @@
             </div>
             <div class="modal-body">
               <form action="{{ route('advertiser.feedback.submit', $media->id) }}" method="POST">
-                @csrf 
+                @csrf
                 <div class="mb-3">
                   <label for="feedbackContent" class="form-label">Your Feedback</label>
                   <textarea class="form-control" id="feedbackContent" name="feedback_content" rows="4"

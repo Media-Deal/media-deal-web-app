@@ -346,7 +346,7 @@
                 <div class="leftbar-user">
                     <div class="profile-picture-wrapper rounded-circle avatar-lg img-thumbnail d-flex align-items-center justify-content-center"
                         style="width: 80px; height: 80px; background-color: #007bff; color: #fff; font-size: 24px; font-weight: bold;">
-                        <a href="pages-profile.html">
+                        <a href="{{route('advertiser.dashboard')}}">
 
                             @if (Auth::user()->profile_picture)
                             <img src="{{ asset(Auth::user()->profile_picture) }}" alt="user-image" height="42"

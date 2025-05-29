@@ -66,15 +66,13 @@ if ($currentHour >= 12 && $currentHour < 16) { $greeting='Good afternoon' ; } el
                                     <!-- Media Logo -->
                                     <div class="mb-3">
                                         @if(strtolower($media->media_type) === 'tv' && $media->tv_logo)
-                                        <img src="{{ asset('storage/' . $media->tv_logo) }}"
-                                            alt="{{ $media->tv_name }} Logo" class="img-fluid"
-                                            style="max-width: 100px;">
+                                        <img src="{{ asset($media->tv_logo) }}" alt="{{ $media->tv_name }} Logo"
+                                            class="img-fluid" style="max-width: 100px;">
                                         @elseif(strtolower($media->media_type) === 'radio' && $media->radio_logo)
-                                        <img src="{{ asset('storage/' . $media->radio_logo) }}"
-                                            alt="{{ $media->radio_name }} Logo" class="img-fluid"
-                                            style="max-width: 100px;">
+                                        <img src="{{ asset($media->radio_logo) }}" alt="{{ $media->radio_name }} Logo"
+                                            class="img-fluid" style="max-width: 100px;">
                                         @elseif(strtolower($media->media_type) === 'internet' && $media->internet_logo)
-                                        <img src="{{ asset('storage/' . $media->internet_logo) }}"
+                                        <img src="{{ asset($media->internet_logo) }}"
                                             alt="{{ $media->internet_name }} Logo" class="img-fluid"
                                             style="max-width: 100px;">
                                         @else

@@ -320,11 +320,19 @@
             <div class="h-100" id="leftside-menu-container" data-simplebar>
                 <!-- Leftbar User -->
                 <div class="leftbar-user">
-                    <a href="{{route('media_org.dashboard')}}">
-                        <img src="assets/images/users/avatar-1.jpg" alt="user-image" height="42"
-                            class="rounded-circle shadow-sm">
-                        <span class="leftbar-user-name mt-2">{{Auth::user()->name}}</span>
-                    </a>
+                    <div class="profile-picture-wrapper rounded-circle avatar-lg img-thumbnail d-flex align-items-center justify-content-center"
+                        style="width: 80px; height: 80px; background-color: #007bff; color: #fff; font-size: 24px; font-weight: bold;">
+                        <a href="{{route('media_org.dashboard')}}">
+
+                            @if (Auth::user()->profile_picture)
+                            <img src="{{ asset(Auth::user()->profile_picture) }}" alt="user-image" height="42"
+                                class="rounded-circle shadow-sm">
+                            @else
+                            {{ strtoupper(substr(Auth::user()->name, 0, 2)) }}
+                            @endif
+
+                        </a>
+                    </div>
                 </div>
 
                 <!--- Sidemenu -->

@@ -57,7 +57,7 @@ class ManageAccountController extends Controller
                         ],
                     ]
                 );
-
+                $data['profile_picture'] = $uploadResult['secure_url'] ?? null;
                 $data['profile_picture_url'] = $uploadResult['secure_url'] ?? null;
                 $data['profile_picture_public_id'] = $uploadResult['public_id'] ?? null;
             }
@@ -134,7 +134,7 @@ class ManageAccountController extends Controller
                         ],
                     ]
                 );
-
+                $data['tv_logo'] = $uploadResult['secure_url'] ?? null;
                 $data['tv_logo_url'] = $uploadResult['secure_url'] ?? null;
                 $data['tv_logo_public_id'] = $uploadResult['public_id'] ?? null;
             }
@@ -149,6 +149,7 @@ class ManageAccountController extends Controller
                     ]
                 );
 
+                $data['tv_logo'] = $uploadResult['secure_url'] ?? null;
                 $data['tv_advert_rate_url'] = $uploadResult['secure_url'] ?? null;
                 $data['tv_advert_rate_public_id'] = $uploadResult['public_id'] ?? null;
             }
@@ -227,7 +228,7 @@ class ManageAccountController extends Controller
                         ],
                     ]
                 );
-
+                $data['radio_logo'] = $uploadResult['secure_url'] ?? null;
                 $data['radio_logo_url'] = $uploadResult['secure_url'] ?? null;
                 $data['radio_logo_public_id'] = $uploadResult['public_id'] ?? null;
             }
@@ -241,7 +242,7 @@ class ManageAccountController extends Controller
                         'resource_type' => 'raw',
                     ]
                 );
-
+                $data['radio_advert_rate'] = $uploadResult['secure_url'] ?? null;
                 $data['radio_advert_rate_url'] = $uploadResult['secure_url'] ?? null;
                 $data['radio_advert_rate_public_id'] = $uploadResult['public_id'] ?? null;
             }
@@ -317,7 +318,7 @@ class ManageAccountController extends Controller
                         ],
                     ]
                 );
-
+                $data['internet_logo'] = $uploadResult['secure_url'] ?? null;
                 $data['internet_logo_url'] = $uploadResult['secure_url'] ?? null;
                 $data['internet_logo_public_id'] = $uploadResult['public_id'] ?? null;
             }
@@ -332,6 +333,7 @@ class ManageAccountController extends Controller
                     ]
                 );
 
+                $data['internet_advert_rate'] = $uploadResult['secure_url'] ?? null;
                 $data['internet_advert_rate_url'] = $uploadResult['secure_url'] ?? null;
                 $data['internet_advert_rate_public_id'] = $uploadResult['public_id'] ?? null;
             }

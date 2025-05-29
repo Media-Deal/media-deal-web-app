@@ -112,7 +112,7 @@
                                     <label for="upload_file" class="form-label">Upload File</label>
                                     @if($ad->upload_file)
                                     <div class="mb-2">
-                                        <a href="{{ asset('storage/' . $ad->upload_file) }}" target="_blank"
+                                        <a href="{{ asset($ad->upload_file) }}" target="_blank"
                                             class="btn btn-sm btn-outline-primary">
                                             View Current File
                                         </a>
