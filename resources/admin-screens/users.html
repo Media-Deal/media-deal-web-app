@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Media Deal - Users</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="wrapper">
+    <!-- Sidebar -->
+    <nav id="sidebar" class="sidebar">
+      <div class="sidebar-header">
+        <h3>MEDIA DEAL</h3>
+      </div>
+      <ul class="list-unstyled components">
+        <li>
+          <a href="index.html">Dashboard</a>
+        </li>
+        <li class="active">
+          <a href="users.html">Users</a>
+        </li>
+        <li>
+          <a href="campaigns.html">Campaigns</a>
+        </li>
+        <li>
+          <a href="refund-requests.html">Refund Requests</a>
+        </li>
+        <li>
+          <a href="messages.html">Messages</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Page Content -->
+    <div id="content" class="content">
+      <!-- Top Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container-fluid">
+          <button type="button" id="sidebarCollapse" class="btn btn-link text-dark">
+            <i class="bi bi-list fs-4"></i>
+          </button>
+          <span class="navbar-brand d-lg-none ms-2">MEDIA DEAL</span>
+          <div class="d-flex ms-auto">
+            <div class="dropdown">
+              <button class="btn btn-link text-dark dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-person-circle fs-4"></i>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><a class="dropdown-item" href="#">Settings</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Logout</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Users Content -->
+      <div class="container-fluid p-4">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4">
+          <h1 class="mb-3 mb-md-0">Users</h1>
+          <div class="search-container">
+            <div class="input-group">
+              <span class="input-group-text bg-white border-end-0">
+                <i class="bi bi-search"></i>
+              </span>
+              <input type="text" class="form-control border-start-0" placeholder="Search" aria-label="Search" id="searchInput">
+            </div>
+          </div>
+        </div>
+        
+        <!-- User Tabs -->
+        <ul class="nav nav-tabs user-tabs mb-4" id="userTabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="advertisers-tab" data-bs-toggle="tab" data-bs-target="#advertisers" type="button" role="tab" aria-controls="advertisers" aria-selected="false">Advertisers</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="media-tab" data-bs-toggle="tab" data-bs-target="#media" type="button" role="tab" aria-controls="media" aria-selected="true">Media</button>
+          </li>
+        </ul>
+        
+        <!-- Tab Content -->
+        <div class="tab-content" id="userTabsContent">
+          <!-- Advertisers Tab -->
+          <div class="tab-pane fade" id="advertisers" role="tabpanel" aria-labelledby="advertisers-tab">
+            <div class="card border-0 shadow-sm">
+              <div class="table-responsive">
+                <table class="table table-hover mb-0">
+                  <thead>
+                    <tr>
+                      <th scope="col" class="fw-semibold fs-5">Name</th>
+                      <th scope="col" class="fw-semibold fs-5">Email</th>
+                      <th scope="col" class="fw-semibold fs-5">Status</th>
+                      <th scope="col" class="fw-semibold fs-5">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Advertiser 1 -->
+                    <tr class="user-row">
+                      <td class="align-middle py-3">Elizabeth King</td>
+                      <td class="align-middle py-3">biziabethking.com</td>
+                      <td class="align-middle py-3">
+                        <span class="badge rounded-pill badge-verified px-3 py-2">Active</span>
+                      </td>
+                      <td class="align-middle py-3">
+                        <div class="d-flex flex-wrap gap-2">
+                          <button class="btn btn-primary btn-sm">View</button>
+                          <button class="btn btn-outline-secondary btn-sm">Deactivate</button>
+                        </div>
+                      </td>
+                    </tr>
+                    <!-- Advertiser 2 -->
+                    <tr class="user-row">
+                      <td class="align-middle py-3">Laura Adams</td>
+                      <td class="align-middle py-3">laura@amabac.com</td>
+                      <td class="align-middle py-3">
+                        <span class="badge rounded-pill badge-activate px-3 py-2">Inactive</span>
+                      </td>
+                      <td class="align-middle py-3">
+                        <div class="d-flex flex-wrap gap-2">
+                          <button class="btn btn-primary btn-sm">View</button>
+                          <button class="btn btn-outline-secondary btn-sm">Deactivate</button>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Media Tab -->
+          <div class="tab-pane fade show active" id="media" role="tabpanel" aria-labelledby="media-tab">
+            <div class="card border-0 shadow-sm">
+              <div class="table-responsive">
+                <table class="table table-hover mb-0">
+                  <thead>
+                    <tr>
+                      <th scope="col" class="fw-semibold fs-5">Name</th>
+                      <th scope="col" class="fw-semibold fs-5">Email</th>
+                      <th scope="col" class="fw-semibold fs-5">Status</th>
+                      <th scope="col" class="fw-semibold fs-5">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    Media 1
+                    <tr class="user-row">
+                      <td class="align-middle py-3">Richard Harris</td>
+                      <td class="align-middle py-3">rking@mariloc.com</td>
+                      <td class="align-middle py-3">
+                        <span class="badge rounded-pill badge-radio px-3 py-2">Radio Station</span>
+                      </td>
+                      <td class="align-middle py-3">
+                        <div class="d-flex flex-wrap gap-2">
+                          <button class="btn btn-primary btn-sm">View</button>
+                          <button class="btn btn-outline-secondary btn-sm">Deactivate</button>
+                        </div>
+                      </td>
+                    </tr>
+                    <!-- Media 2 -->
+                    <tr class="user-row">
+                      <td class="align-middle py-3">Thomas Wright</td>
+                      <td class="align-middle py-3">thomas@acvoio.com</td>
+                      <td class="align-middle py-3">
+                        <span class="badge rounded-pill badge-newspaper px-3 py-2">TV Station</span>
+                      </td>
+                      <td class="align-middle py-3">
+                        <div class="d-flex flex-wrap gap-2">
+                          <button class="btn btn-primary btn-sm">View</button>
+                          <button class="btn btn-outline-secondary btn-sm">Deactivate</button>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
+  <script src="js/script.js"></script>
+  <script src="js/users-static.js"></script>
+</body>
+</html>

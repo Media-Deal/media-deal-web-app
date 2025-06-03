@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Media Deal - Dashboard</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="wrapper">
+    <!-- Sidebar -->
+    <nav id="sidebar" class="sidebar">
+      <div class="sidebar-header">
+        <h3>MEDIA DEAL</h3>
+      </div>
+      <ul class="list-unstyled components">
+        <li class="active">
+          <a href="index.html">Dashboard</a>
+        </li>
+        <li>
+          <a href="users.html">Users</a>
+        </li>
+        <li>
+          <a href="campaigns.html">Campaigns</a>
+        </li>
+        <li>
+          <a href="refund-requests.html">Refund Requests</a>
+        </li>
+        <li>
+          <a href="messages.html">Messages</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Page Content -->
+    <div id="content" class="content">
+      <!-- Top Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container-fluid">
+          <button type="button" id="sidebarCollapse" class="btn btn-link text-dark">
+            <i class="bi bi-list fs-4"></i>
+          </button>
+          <span class="navbar-brand d-lg-none ms-2">MEDIA DEAL</span>
+          <div class="d-flex ms-auto">
+            <div class="dropdown">
+              <button class="btn btn-link text-dark dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-person-circle fs-4"></i>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><a class="dropdown-item" href="#">Settings</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Logout</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Dashboard Content -->
+      <div class="container-fluid p-4">
+        <h1 class="mb-4">Dashboard</h1>
+        
+        <!-- Stats Cards -->
+        <div class="row g-4 mb-4">
+          <div class="col-12 col-md-6">
+            <!-- <div class="col-12 col-md-6 col-lg-4"> -->
+            <div class="card border-0 shadow-sm h-100">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <h6 class="card-subtitle text-muted">Registered Advertisers</h6>
+                  <i class="bi bi-bar-chart text-primary"></i>
+                </div>
+                <h2 class="card-title mb-0">1,248</h2>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6">
+            <div class="card border-0 shadow-sm h-100">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <h6 class="card-subtitle text-muted">Media Organizations</h6>
+                  <i class="bi bi-bar-chart text-primary"></i>
+                </div>
+                <h2 class="card-title mb-0">1,248</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-4 mb-4">
+          <div class="col-12 col-md-6">
+            <!-- <div class="col-12 col-md-6 col-lg-4"> -->
+            <div class="card border-0 shadow-sm h-100">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <h6 class="card-subtitle text-muted">Submitted Campaigns</h6>
+                  <i class="bi bi-bar-chart text-primary"></i>
+                </div>
+                <h2 class="card-title mb-0">1,248</h2>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6">
+            <div class="card border-0 shadow-sm h-100">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <h6 class="card-subtitle text-muted">Refund Requests</h6>
+                  <i class="bi bi-bar-chart text-primary"></i>
+                </div>
+                <h2 class="card-title mb-0">1,248</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
+  <script src="js/script.js"></script>
+</body>
+</html>
