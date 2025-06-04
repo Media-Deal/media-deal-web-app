@@ -71,13 +71,13 @@
                             <a href="#" class="nav-link dropdown-toggle" active data-bs-toggle="dropdown">Media</a>
                             <div class="dropdown-menu rounded-0 m-0">
                                 <div class="row">
-                                    <a href="#" class="text-decoration-none">
+                                    <a href="{{ url('/radio-stations') }}" class="text-decoration-none">
                                         <h6 class="dropdown-item">Radio</h6>
                                     </a>
-                                    <a href="#" class="text-decoration-none">
+                                    <a href="{{ url('/tv-stations') }}" class="text-decoration-none">
                                         <h6 class="dropdown-item">TV</h6>
                                     </a>
-                                    <a href="#" class="text-decoration-none">
+                                    <a href="{{ url('/online-influencers') }}" class="text-decoration-none">
                                         <h6 class="dropdown-item">Online</h6>
                                     </a>
                                 </div>
