@@ -6,6 +6,9 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\CustomAuthController;
 
+
+
+
 // Public Routes
 Route::get('/', function () {
     return view('home.homepage');
@@ -86,8 +89,14 @@ Route::middleware('auth')->group(function () {
     require __DIR__ . '/advertiser.php';
     require __DIR__ . '/media.php';
     require __DIR__ . '/marketer.php';
-    // require __DIR__.'/routes/admin.php'; // Uncomment when you have admin routes
 });
+
+
+
+    require __DIR__ . '/admin.php';
+
+ 
+
 
 // Fallback Route
 Route::fallback(function () {
