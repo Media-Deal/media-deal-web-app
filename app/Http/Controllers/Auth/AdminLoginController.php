@@ -17,24 +17,28 @@ class AdminLoginController extends Controller
     }
 
     public function login(Request $request)
-    {
-        // Validate the request inputs
-        $this->validate($request, [
-            'email' => 'required|email',
-            'password' => 'required|min:4',
-        ]);
+{
+    // Validate the request inputs
+    $request->validate([
+        'email' => 'required|email',
+        'password' => 'required|min:4',
+    ]);
 
-        // Attempt to authenticate the admin
-        if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
-            // If successful, redirect to the admin dashboard
-            return redirect()->intended(route('admin.home'));
-        }
-
-        // If authentication fails, redirect back with an error message
-        return redirect()->back()->withInput($request->only('email'))->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ]);
+    // Attempt to authenticate the admin using the 'admin' guard
+    if (Auth::guard('admin')->attempt([
+        'email' => $request->email,
+        'password' => $request->password
+    ])) {
+        // Login successful, redirect to admin dashboard
+        return redirect()->intended(route('admin.home'));
     }
+
+    // Login failed, redirect back with input and error
+    return redirect()->back()->withInput($request->only('email'))->withErrors([
+        'email' => 'The provided credentials do not match our records.',
+    ]);
+}
+
 
     public function logout()
     {

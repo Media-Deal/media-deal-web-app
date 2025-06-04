@@ -2,31 +2,35 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Loan;
-use App\Models\User;
-use App\Models\Trade;
-use App\Models\Profit;
-use App\Models\Deposit;
+use App\Http\Controllers\Controller;
+use App\Mail\CreditEmail;
 use App\Mail\DebitEmail;
+use App\Mail\sendUserEmail;
+use App\Models\AccountBalance;
 use App\Models\Activity;
+use App\Models\AdPlacement;
+use App\Models\Advertiser;
+use App\Models\CheckingBalance;
+use App\Models\ChequeDeposit;
+use App\Models\Deposit;
 use App\Models\Document;
 use App\Models\Earnings;
-use App\Models\Referral;
-use App\Mail\CreditEmail;
-use App\Models\Withdrawal;
-use App\Mail\sendUserEmail;
-use App\Models\Transaction;
-use Illuminate\Http\Request;
-use App\Models\ChequeDeposit;
-use App\Models\AccountBalance;
 use App\Models\InvestmentPlan;
+use App\Models\Loan;
+use App\Models\MediaOrganization;
+use App\Models\Profit;
+use App\Models\Referral;
+use App\Models\Refund;
 use App\Models\SavingsBalance;
-use Illuminate\Support\Carbon;
-use App\Models\CheckingBalance;
+use App\Models\Trade;
+use App\Models\Transaction;
 use App\Models\TransferHistory;
-use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
+use App\Models\User;
+use App\Models\Withdrawal;
+use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
@@ -42,10 +46,17 @@ class AdminController extends Controller
      */
 
     public function index()
-    {
-        $data['users'] = User::get();
-        return view('admin.home', $data);
-    }
+{
+    $data = [
+        'users' => User::get(),
+        'registeredAdvertisersCount' => Advertiser::count(),
+        'registeredMediaCount' => MediaOrganization::count(), // Changed from Advertiser::count()
+        'refundCount' => Refund::count(),
+        'submittedCampaigns' => AdPlacement::count()
+    ];
+    
+    return view('admin.home', $data);
+}
 
     public function manageUsersPage(Request $request)
     {
