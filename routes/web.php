@@ -48,6 +48,18 @@ Route::get('/advertiser', function () {
     return view('advertiser.homepage');
 });
 
+Route::get('/radio-stations', function () {
+    return view('home.radio');
+});
+
+Route::get('/tv-stations', function () {
+    return view('home.tv');
+});
+
+Route::get('/online-influencers', function () {
+    return view('home.online');
+});
+
 // Media Public Routes
 Route::get('/media', function () {
     return view('media.homepage');

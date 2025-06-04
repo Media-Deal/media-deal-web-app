@@ -6,12 +6,11 @@
     --dark: #0E2E50;
 }
 
-/* :root {
-    --primary: #513252;
-    --secondary: #7A4069;
-    --light: #CA4E79;
-    --dark: #FFC18E;
-} */
+body{
+    font-family: "Poppins", serif;
+    font-weight: 400;
+    font-style: normal;
+}
 
 .back-to-top {
     position: fixed;
@@ -520,5 +519,192 @@
 
     }
   }
-  
 
+  /* radio styles */
+  .bg-dark-zinc {
+    background-color: #212529;
+  }
+  .bg-medium-zinc {
+    background-color: #343a40;
+  }
+  .bg-light-zinc {
+    background-color: #495057;
+  }
+  .radio-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  .btn-indigo {
+    background-color: #6366f1;
+    border-color: #6366f1;
+    color: white;
+  }
+  .btn-indigo:hover {
+    background-color: #4f46e5;
+    border-color: #4f46e5;
+    color: white;
+  }
+  .how-it-works-block {
+    background-color: #495057;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+    height: 100%;
+    transition: transform 0.3s ease;
+  }
+  .how-it-works-block:hover {
+    transform: scale(1.02);
+  }
+  .step-number {
+    font-weight: bold;
+    margin-right: 0.25rem;
+  }
+  .newsletter-section {
+    color: white;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    margin: 2rem 0;
+  }
+  .testimonial-section {
+    background-color: #1f2937;
+    color: white;
+    padding: 2rem;
+    margin: 2rem 0;
+  }
+  .advertiser-image {
+    width: 100%;
+    max-width: 200px;
+    height: 200px;
+    background-color: #fff;
+    margin: 0 auto 1rem;
+  }
+  .budget-section {
+    padding: 2rem 0;
+    text-align: center;
+    margin-top: 2rem;
+  }
+  .btn-gray {
+    background-color: #e5e7eb;
+    border-color: #e5e7eb;
+    color: #374151;
+    border-radius: 2rem;
+    padding: 0.5rem 2rem;
+    transition: all 0.3s ease;
+  }
+  .btn-gray:hover {
+    background-color: #d1d5db;
+    border-color: #d1d5db;
+    transform: translateY(-2px);
+  }
+  .email-input {
+    border-radius: 2rem;
+    border: none;
+    padding: 0.5rem 1.5rem;
+  }
+  .btn-subscribe {
+    border-radius: 2rem;
+    padding: 0.5rem 1.5rem;
+    background-color: #e5e7eb;
+    border: none;
+    color: #374151;
+    transition: all 0.3s ease;
+  }
+  .btn-subscribe:hover {
+    background-color:#0b5ed7;
+    transform: translateY(-2px);
+  }
+  .load-more-container {
+    text-align: center;
+    margin: 1.5rem 0;
+  }
+  .load-more-btn {
+    font-style: italic;
+    color: white;
+    padding: 0.5rem 2rem;
+    transition: all 0.3s ease;
+  }
+  .load-more-btn:hover {
+    background-color: #343a40;
+    transform: translateY(-2px);
+  }
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+  }
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  .animate-pulse {
+    animation: pulse 2s infinite;
+  }
+  
+/* search btn */
+.search-container {
+    max-width: 800px;
+    margin: 2rem auto;
+  }
+  
+  .form-control:focus {
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15);
+    border-color: #86b7fe;
+  }
+  
+  .search-input {
+    height: 50px;
+    border-radius: 8px 0 0 8px;
+    padding-left: 45px;
+    font-size: 1rem;
+    border: 2px solid #dee2e6;
+    border-right: none;
+  }
+
+  .search-input::placeholder {
+    height: 50px;
+    text-align: center;
+
+  }
+  
+  .search-icon-position {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    color: #6c757d;
+  }
+  
+  .search-button {
+    height: 50px;
+    border-radius: 0 8px 8px 0;
+    padding: 0 25px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+  
+  .search-button:hover {
+    background-color: #0b5ed7;
+  }
+
+  .radio-card{
+    border: none;
+    border-style: none;
+    background-color: #e9ecef;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
