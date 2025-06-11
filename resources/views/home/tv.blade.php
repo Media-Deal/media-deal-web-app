@@ -76,7 +76,7 @@
               <span class="search-icon-position">
                 <i class="bi bi-search"></i>
               </span>
-              <input type="search" class="form-control search-input" aria-label="Search" placeholder="Search radio stations..">
+              <input type="search" class="form-control search-input" aria-label="Search" placeholder="Search TV stations..">
             </div>
             <button class="btn btn-primary search-button" type="submit">
               Search
@@ -93,7 +93,7 @@
   <div class="row">
     <div class="col-md-4 mb-4">
       <div class="card radio-card p-3" style="width: 21rem;">
-        <img src="{{ asset('assets/images/radio-station.jpg') }}" class="card-img-top rounded" alt="...">
+        <img src="{{ asset('assets/images/tv-image.jpg') }}" class="card-img-top rounded" alt="...">
         <div class="card-body">
           <h5>NDTV</h5>
           <p class="card-text">You can aire your Ad easily with NDTV. We are always here for you.</p>
@@ -103,7 +103,7 @@
 
     <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="50">
       <div class="card radio-card p-3" style="width: 21rem;">
-        <img src="{{ asset('assets/images/radio-station.jpg') }}" class="card-img-top rounded" alt="...">
+        <img src="{{ asset('assets/images/tv-image.jpg') }}" class="card-img-top rounded" alt="...">
         <div class="card-body">
           <h5>Ray TV</h5>
           <p class="card-text">You can aire your Ad easily with Ray TV. We are always here for you.</p>
@@ -113,7 +113,7 @@
 
     <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="100">
       <div class="card radio-card p-3" style="width: 21rem;">
-        <img src="{{ asset('assets/images/radio-station.jpg') }}" class="card-img-top rounded" alt="...">
+        <img src="{{ asset('assets/images/tv-image.jpg') }}" class="card-img-top rounded" alt="...">
         <div class="card-body">
           <h5>Emerald TV</h5>
           <p class="card-text">You can aire your Ad easily with Emerald TV. We are always here for you.</p>
@@ -125,7 +125,7 @@
   <div class="row">
     <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="150">
       <div class="card radio-card p-3" style="width: 21rem;">
-        <img src="{{ asset('assets/images/radio-station.jpg') }}" class="card-img-top rounded" alt="...">
+        <img src="{{ asset('assets/images/tv-image.jpg') }}" class="card-img-top rounded" alt="...">
         <div class="card-body">
           <h5>AIT</h5>
           <p class="card-text">You can aire your Ad easily with AIT. We are always here for you.</p>
@@ -135,7 +135,7 @@
 
     <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="200">
       <div class="card radio-card p-3" style="width: 21rem;">
-        <img src="{{ asset('assets/images/radio-station.jpg') }}" class="card-img-top rounded" alt="...">
+        <img src="{{ asset('assets/images/tv-image.jpg') }}" class="card-img-top rounded" alt="...">
         <div class="card-body">
           <h5>Makanaki TV</h5>
           <p class="card-text">You can aire your Ad easily with Makanaki TV. We are always here for you.</p>
@@ -145,7 +145,7 @@
 
     <div class="col-md-4" data-aos="zoom-in" data-aos-delay="250">
       <div class="card radio-card p-3" style="width: 21rem;">
-        <img src="{{ asset('assets/images/radio-station.jpg') }}" class="card-img-top rounded" alt="...">
+        <img src="{{ asset('assets/images/tv-image.jpg') }}" class="card-img-top rounded" alt="...">
         <div class="card-body">
           <h5>Channels TV</h5>
           <p class="card-text">Channels TV</p>
