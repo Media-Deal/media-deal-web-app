@@ -45,24 +45,31 @@
 
             <div class="row">
                 @foreach($compliances as $compliance)
-                <div class="col-4 mb-3">
+                <div class="col-md-4 col-lg-4 mb-3">
                     <div class="card widget-flat h-100">
                         <div class="card-body text-center d-flex flex-column justify-content-center align-items-center">
                             <!-- Media Organization Name -->
-                            <h5 class="fw-normal mt-0" title="Media Organization Name">{{ $compliance->media->fullname
-                                }}
+                            <h5 class="fw-normal mt-0" title="Media Organization Name">
+                                {{ optional($compliance->media)->fullname ?? 'Media Not Found' }}
                             </h5>
 
-                            <!-- Compliance Download Link (if file exists) -->
-                            @if($compliance->compliance_file)
-                            <a href="{{ asset($compliance->compliance_file) }}" download
-                                class="text-decoration-none">Download File</a>
-                            @else
-                            <p class="text-muted">File Not Available</p>
-                            @endif
+                            <!-- Compliance Status -->
+                            <div class="mb-1">
+                                <span
+                                    class="badge bg-{{ $compliance->compliance_status === 'received' ? 'success' : 'warning' }}">
+                                    {{ ucfirst($compliance->compliance_status) }}
+                                </span>
+                            </div>
 
-                            <!-- Location (if available in media organization) -->
-                            <p class="text-muted">{{ $compliance->media->email ?? 'No Location Info' }}</p>
+                            <!-- Compliance Type -->
+                            <p class="text-muted mb-1">
+                                Type: {{ $compliance->compliance_type ?? 'N/A' }}
+                            </p>
+
+                            <!-- Media Contact -->
+                            <p class="text-muted">
+                                {{ optional($compliance->media)->email ?? 'No Contact Info' }}
+                            </p>
                         </div>
                     </div>
                 </div>
