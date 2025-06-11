@@ -68,7 +68,7 @@
               <span class="search-icon-position">
                 <i class="bi bi-search"></i>
               </span>
-              <input type="search" class="form-control search-input" aria-label="Search" placeholder="Search radio stations..">
+              <input type="search" class="form-control search-input" aria-label="Search" placeholder="Search online creator..">
             </div>
             <button class="btn btn-primary search-button" type="submit">
               Search
@@ -85,7 +85,7 @@
   <div class="row">
     <div class="col-md-4 mb-4">
       <div class="card radio-card p-3" style="width: 21rem;">
-        <img src="{{ asset('assets/images/radio-station.jpg') }}" class="card-img-top rounded" alt="...">
+        <img src="{{ asset('assets/images/online-image.jpg') }}" class="card-img-top rounded" alt="...">
         <div class="card-body">
           <h5>Andy</h5>
           <p class="card-text">You can place your Ad easily with Andy. We are always here for you.</p>
@@ -95,7 +95,7 @@
 
     <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="50">
       <div class="card radio-card p-3" style="width: 21rem;">
-        <img src="{{ asset('assets/images/radio-station.jpg') }}" class="card-img-top rounded" alt="...">
+        <img src="{{ asset('assets/images/online-image.jpg') }}" class="card-img-top rounded" alt="...">
         <div class="card-body">
           <h5>Ray</h5>
           <p class="card-text">You can place your Ad easily with Ray . We are always here for you.</p>
@@ -105,7 +105,7 @@
 
     <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="100">
       <div class="card radio-card p-3" style="width: 21rem;">
-        <img src="{{ asset('assets/images/radio-station.jpg') }}" class="card-img-top rounded" alt="...">
+        <img src="{{ asset('assets/images/online-image.jpg') }}" class="card-img-top rounded" alt="...">
         <div class="card-body">
           <h5>Emerald </h5>
           <p class="card-text">You can place your Ad easily with Emerald . We are always here for you.</p>
@@ -117,7 +117,7 @@
   <div class="row">
     <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="150">
       <div class="card radio-card p-3" style="width: 21rem;">
-        <img src="{{ asset('assets/images/radio-station.jpg') }}" class="card-img-top rounded" alt="...">
+        <img src="{{ asset('assets/images/online-image.jpg') }}" class="card-img-top rounded" alt="...">
         <div class="card-body">
           <h5>Nathi</h5>
           <p class="card-text">You can place your Ad easily with Nathi. We are always here for you.</p>
@@ -127,7 +127,7 @@
 
     <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="200">
       <div class="card radio-card p-3" style="width: 21rem;">
-        <img src="{{ asset('assets/images/radio-station.jpg') }}" class="card-img-top rounded" alt="...">
+        <img src="{{ asset('assets/images/online-image.jpg') }}" class="card-img-top rounded" alt="...">
         <div class="card-body">
           <h5>D'Eleven</h5>
           <p class="card-text">You can place your Ad easily with D'Eleven. We are always here for you.</p>
@@ -137,7 +137,7 @@
 
     <div class="col-md-4" data-aos="zoom-in" data-aos-delay="250">
       <div class="card radio-card p-3" style="width: 21rem;">
-        <img src="{{ asset('assets/images/radio-station.jpg') }}" class="card-img-top rounded" alt="...">
+        <img src="{{ asset('assets/images/online-image.jpg') }}" class="card-img-top rounded" alt="...">
         <div class="card-body">
           <h5>Dayo</h5>
           <p class="card-text">You can place your Ad easily with Dayo. We are always here for you.</p>
