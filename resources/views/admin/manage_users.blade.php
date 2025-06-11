@@ -1,4 +1,4 @@
-@include('admin.header');
+@include('admin.header')
 
       <!-- Users Content -->
       <div class="container-fluid p-4">
@@ -42,19 +42,15 @@
                     <tbody>
                         @foreach($advertisers as $advertiser)
                         <tr class="user-row">
-                            <td class="align-middle py-3">{{ $advertiser->name }}</td>
-                            <td class="align-middle py-3">{{ $advertiser->email }}</td>
+                            <td class="align-middle py-3">{{ $advertiser->user_name }}</td>
+                            <td class="align-middle py-3">{{ $advertiser->user_email }}</td>
                             <td class="align-middle py-3">
-                                <span class="badge rounded-pill {{ $advertiser->is_active ? 'badge-verified' : 'badge-activate' }} px-3 py-2">
-                                    {{ $advertiser->is_active ? 'Active' : 'Inactive' }}
-                                </span>
+                                {{-- Status badge would go here --}}
                             </td>
                             <td class="align-middle py-3">
                                 <div class="d-flex flex-wrap gap-2">
                                     <button class="btn btn-primary btn-sm">View</button>
-                                    <button class="btn btn-outline-secondary btn-sm">
-                                        {{ $advertiser->is_active ? 'Deactivate' : 'Activate' }}
-                                    </button>
+                                    <button class="btn btn-outline-secondary btn-sm">Deactivate</button>
                                 </div>
                             </td>
                         </tr>
@@ -84,19 +80,15 @@
                     <tbody>
                         @foreach($media as $mediaOrg)
                         <tr class="user-row">
-                            <td class="align-middle py-3">{{ $mediaOrg->name }}</td>
-                            <td class="align-middle py-3">{{ $mediaOrg->email }}</td>
+                            <td class="align-middle py-3">{{ $mediaOrg->user_name }}</td>
+                            <td class="align-middle py-3">{{ $mediaOrg->user_email }}</td>
                             <td class="align-middle py-3">
-                                <span class="badge rounded-pill {{ $mediaOrg->type === 'radio' ? 'badge-radio' : 'badge-newspaper' }} px-3 py-2">
-                                    {{ ucfirst($mediaOrg->type) }} {{ $mediaOrg->type === 'radio' ? 'Station' : 'TV Station' }}
-                                </span>
+                                {{ $mediaOrg->media_type ? ucfirst($mediaOrg->media_type) : 'No type yet' }}
                             </td>
                             <td class="align-middle py-3">
                                 <div class="d-flex flex-wrap gap-2">
                                     <button class="btn btn-primary btn-sm">View</button>
-                                    <button class="btn btn-outline-secondary btn-sm">
-                                        {{ $mediaOrg->is_active ? 'Deactivate' : 'Activate' }}
-                                    </button>
+                                    <button class="btn btn-outline-secondary btn-sm">Deactivate</button>
                                 </div>
                             </td>
                         </tr>
@@ -110,9 +102,57 @@
         </div>
     </div>
 </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <!-- Add this script right before your closing </body> tag -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('searchInput');
+    
+    // Function to perform search
+    function performSearch() {
+        const searchTerm = searchInput.value.toLowerCase();
+        const activeTab = document.querySelector('.tab-pane.active');
+        
+        if (activeTab) {
+            const rows = activeTab.querySelectorAll('tbody tr.user-row');
+            let hasVisibleRows = false;
+            
+            rows.forEach(row => {
+                const name = row.querySelector('td:first-child').textContent.toLowerCase();
+                const email = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+                const isMatch = name.includes(searchTerm) || email.includes(searchTerm);
+                
+                row.style.display = isMatch ? '' : 'none';
+                if (isMatch) hasVisibleRows = true;
+            });
+            
+            // Show "no results" message if needed
+            const noResults = activeTab.querySelector('.no-results');
+            if (!hasVisibleRows) {
+                if (!noResults) {
+                    const noResultsRow = document.createElement('tr');
+                    noResultsRow.className = 'no-results';
+                    noResultsRow.innerHTML = `<td colspan="4" class="text-center py-4">No matching users found</td>`;
+                    activeTab.querySelector('tbody').appendChild(noResultsRow);
+                }
+            } else if (noResults) {
+                noResults.remove();
+            }
+        }
+    }
+    
+    // Search input event listener
+    searchInput.addEventListener('input', function() {
+        performSearch();
+    });
+    
+    // Reset search when switching tabs
+    const tabButtons = document.querySelectorAll('[data-bs-toggle="tab"]');
+    tabButtons.forEach(button => {
+        button.addEventListener('shown.bs.tab', function() {
+            searchInput.value = '';
+            performSearch();
+        });
+    });
+});
+</script>
 @include('admin.footer')
