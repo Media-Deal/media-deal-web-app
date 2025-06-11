@@ -26,10 +26,10 @@
           <a href="{{ route('admin.users.index') }}">Users</a>
         </li>
         <li>
-          <a href="campaigns.html">Campaigns</a>
+          <a href="{{ route('admin.campaign.index') }}">Campaigns</a>
         </li>
         <li>
-          <a href="refund-requests.html">Refund Requests</a>
+          <a href="{{ route('admin.refund.index') }}">Refund Requests</a>
         </li>
         <li>
           <a href="messages.html">Messages</a>

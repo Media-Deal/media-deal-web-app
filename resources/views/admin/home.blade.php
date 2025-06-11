@@ -1,4 +1,4 @@
-@include('admin.header');
+@include('admin.header')
 
       <!-- Dashboard Content -->
 <div class="container-fluid p-4">

@@ -33,7 +33,12 @@ Route::prefix('admin')->middleware(['admin'])->group(function () {
 
 });
 
- Route::get('/', [App\Http\Controllers\Admin\ManageCampaignsController::class, 'index'])->name('admin.campaign.index');
+//admin manage campaigns
+ Route::get('/campaign', [App\Http\Controllers\Admin\ManageCampaignsController::class, 'index'])->name('admin.campaign.index');
+
+ //admin manage refunds
+ Route::get('/refund', [App\Http\Controllers\Admin\ManageRefundController::class, 'index'])->name('admin.refund.index');
+
 
 
 

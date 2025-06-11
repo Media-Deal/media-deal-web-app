@@ -14,6 +14,6 @@ class ManageCampaignsController extends Controller
    {
     $adplacement = AdPlacement::latest()->paginate(10);
 
-    return view('admin.manage_users', compact('adplacement'));
+    return view('admin.manage_campaign', compact('adplacement'));
 }
 }
