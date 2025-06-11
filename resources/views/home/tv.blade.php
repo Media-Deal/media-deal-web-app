@@ -95,8 +95,8 @@
       <div class="card radio-card p-3" style="width: 21rem;">
         <img src="{{ asset('assets/images/tv-image.jpg') }}" class="card-img-top rounded" alt="...">
         <div class="card-body">
-          <h5>NDTV</h5>
-          <p class="card-text">You can aire your Ad easily with NDTV. We are always here for you.</p>
+          <h5>Pluto TV</h5>
+          <p class="card-text">You can aire your Ad easily with Pluto TV. We are always here for you.</p>
         </div>
       </div>
     </div>
@@ -105,8 +105,8 @@
       <div class="card radio-card p-3" style="width: 21rem;">
         <img src="{{ asset('assets/images/tv-image.jpg') }}" class="card-img-top rounded" alt="...">
         <div class="card-body">
-          <h5>Ray TV</h5>
-          <p class="card-text">You can aire your Ad easily with Ray TV. We are always here for you.</p>
+          <h5>Pluto TV</h5>
+          <p class="card-text">You can aire your Ad easily with Pluto TV. We are always here for you.</p>
         </div>
       </div>
     </div>
@@ -115,8 +115,8 @@
       <div class="card radio-card p-3" style="width: 21rem;">
         <img src="{{ asset('assets/images/tv-image.jpg') }}" class="card-img-top rounded" alt="...">
         <div class="card-body">
-          <h5>Emerald TV</h5>
-          <p class="card-text">You can aire your Ad easily with Emerald TV. We are always here for you.</p>
+          <h5>Pluto TV</h5>
+          <p class="card-text">You can aire your Ad easily with Pluto TV. We are always here for you.</p>
         </div>
       </div>
     </div>
@@ -127,8 +127,8 @@
       <div class="card radio-card p-3" style="width: 21rem;">
         <img src="{{ asset('assets/images/tv-image.jpg') }}" class="card-img-top rounded" alt="...">
         <div class="card-body">
-          <h5>AIT</h5>
-          <p class="card-text">You can aire your Ad easily with AIT. We are always here for you.</p>
+          <h5>Pluto TV</h5>
+          <p class="card-text">You can aire your Ad easily with Pluto TV. We are always here for you.</p>
         </div>
       </div>
     </div>
@@ -137,8 +137,8 @@
       <div class="card radio-card p-3" style="width: 21rem;">
         <img src="{{ asset('assets/images/tv-image.jpg') }}" class="card-img-top rounded" alt="...">
         <div class="card-body">
-          <h5>Makanaki TV</h5>
-          <p class="card-text">You can aire your Ad easily with Makanaki TV. We are always here for you.</p>
+          <h5>Pluto TV</h5>
+          <p class="card-text">You can aire your Ad easily with Pluto TV. We are always here for you.</p>
         </div>
       </div>
     </div>
@@ -147,8 +147,8 @@
       <div class="card radio-card p-3" style="width: 21rem;">
         <img src="{{ asset('assets/images/tv-image.jpg') }}" class="card-img-top rounded" alt="...">
         <div class="card-body">
-          <h5>Channels TV</h5>
-          <p class="card-text">Channels TV</p>
+          <h5>Pluto TV</h5>
+          <p class="card-text">Pluto TV</p>
         </div>
       </div>
     </div>
