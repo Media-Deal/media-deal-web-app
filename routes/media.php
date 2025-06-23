@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\MediaOrganizationController;
+use App\Http\Controllers\MediaOrganisation\RefundController;
 use App\Http\Controllers\MediaOrganisation\ManageAccountController;
 
 Route::prefix('media-org')->middleware(['user_auth', 'role:media_org'])->group(function () {
@@ -14,7 +15,6 @@ Route::prefix('media-org')->middleware(['user_auth', 'role:media_org'])->group(f
     Route::get('manage-ads', [MediaOrganizationController::class, 'manageAds'])->name('media_org.manage.ads');
     Route::get('manage-compliance', [MediaOrganizationController::class, 'manageCompliance'])->name('media_org.manage.compliance');
     Route::get('manage-payment', [MediaOrganizationController::class, 'managePayment'])->name('media_org.manage.payment');
-    Route::get('manage-refund', [MediaOrganizationController::class, 'manageRefund'])->name('media_org.manage.refund');
     Route::get('manage-support', [MediaOrganizationController::class, 'manageSupport'])->name('media_org.manage.support');
     Route::post('store', [MediaOrganizationController::class, 'store'])->name('store');
     Route::post('/media_organizations/{id}/update', [ManageAccountController::class, 'updateDetails'])->name('media_organizations.update');
@@ -29,4 +29,9 @@ Route::prefix('media-org')->middleware(['user_auth', 'role:media_org'])->group(f
     Route::get('/notifications/{id}', [MessageController::class, 'mediaShowNotification'])->name('media.notifications.show');
     Route::get('/notifications/clear', [MessageController::class, 'mediaClearNotification'])->name('media.notifications.clear');
     Route::post('/messages/send', [MessageController::class, 'mediaSendMessage'])->name('media.messages.send');
+
+    // manage-refund
+    Route::get('manage-refund', [RefundController::class, 'manageRefund'])->name('media_org.manage.refund');
+    Route::get('/refunds', [RefundController::class, 'index'])->name('refunds.index');
+    Route::put('/refunds/{id}', [RefundController::class, 'update'])->name('refund.update');
 });

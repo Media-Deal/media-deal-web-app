@@ -45,12 +45,47 @@
 
             <div class="row">
                 @foreach($compliances as $compliance)
+                @php
+                $media = optional($compliance->media);
+                $logo = '';
+                $altText = 'Media Logo';
+
+                if($media) {
+                switch($media->media_type) {
+                case 'tv':
+                $logo = $media->tv_logo ?? $media->tv_logo_url ?? '';
+                $altText = $media->tv_name . ' Logo';
+                break;
+                case 'radio':
+                $logo = $media->radio_logo ?? $media->radio_logo_url ?? '';
+                $altText = $media->radio_name . ' Logo';
+                break;
+                case 'internet':
+                $logo = $media->internet_logo ?? $media->internet_logo_url ?? '';
+                $altText = $media->internet_name . ' Logo';
+                break;
+                }
+                }
+                @endphp
                 <div class="col-md-4 col-lg-4 mb-3">
                     <div class="card widget-flat h-100">
                         <div class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+                            <!-- Media Logo -->
+                            @if($logo)
+                            <div class="mb-2">
+                                <img src="{{ $logo }}" alt="{{ $altText }}" class="img-fluid rounded"
+                                    style="max-height: 80px;">
+                            </div>
+                            @else
+                            <div class="mb-2 bg-light rounded-circle d-flex align-items-center justify-content-center"
+                                style="width: 80px; height: 80px;">
+                                <i class="mdi mdi-account-circle mdi-36px text-muted"></i>
+                            </div>
+                            @endif
+
                             <!-- Media Organization Name -->
                             <h5 class="fw-normal mt-0" title="Media Organization Name">
-                                {{ optional($compliance->media)->fullname ?? 'Media Not Found' }}
+                                {{ $media->fullname ?? 'Media Not Found' }}
                             </h5>
 
                             <!-- Compliance Status -->
@@ -68,7 +103,7 @@
 
                             <!-- Media Contact -->
                             <p class="text-muted">
-                                {{ optional($compliance->media)->email ?? 'No Contact Info' }}
+                                {{ $media->email ?? 'No Contact Info' }}
                             </p>
                         </div>
                     </div>

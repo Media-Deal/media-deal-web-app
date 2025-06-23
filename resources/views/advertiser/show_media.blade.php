@@ -139,10 +139,8 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form action="{{ route('advertiser.media.ad.placement', $media->id) }}" method="POST"
-                enctype="multipart/form-data">
+              <form action="{{ route('place-ads.store', $media->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <!-- Hidden Media ID -->
                 <input type="hidden" name="media_id" value="{{ $media->id }}">
 
                 <!-- Title -->
@@ -150,9 +148,7 @@
                   <label for="title" class="form-label">Title<span class="text-danger">*</span></label>
                   <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title"
                     placeholder="E.g., Advert for my Business" value="{{ old('title') }}" required>
-                  @error('title')
-                  <div class="invalid-feedback">{{ $message }}</div>
-                  @enderror
+                  @error('title')<div class="invalid-feedback">{{ $message }}</div>@enderror
                 </div>
 
                 <!-- Category -->
@@ -169,9 +165,7 @@
                     </option>
                     <option value="Religious" {{ old('category')=='Religious' ? 'selected' : '' }}>Religious</option>
                   </select>
-                  @error('category')
-                  <div class="invalid-feedback">{{ $message }}</div>
-                  @enderror
+                  @error('category')<div class="invalid-feedback">{{ $message }}</div>@enderror
                 </div>
 
                 <!-- Type -->
@@ -191,9 +185,7 @@
                     <option value="Sponsored Message" {{ old('type')=='Sponsored Message' ? 'selected' : '' }}>Sponsored
                       Message</option>
                   </select>
-                  @error('type')
-                  <div class="invalid-feedback">{{ $message }}</div>
-                  @enderror
+                  @error('type')<div class="invalid-feedback">{{ $message }}</div>@enderror
                 </div>
 
                 <!-- Content Type -->
@@ -207,27 +199,23 @@
                     <option value="Not Required" {{ old('content_type')=='Not Required' ? 'selected' : '' }}>Not
                       Required</option>
                   </select>
-                  @error('content_type')
-                  <div class="invalid-feedback">{{ $message }}</div>
-                  @enderror
+                  @error('content_type')<div class="invalid-feedback">{{ $message }}</div>@enderror
                 </div>
 
-                <!-- Upload File -->
+                <!-- Upload File (Conditional) -->
                 <div class="mb-3" id="uploadFileSection" style="display: none;">
-                  <label for="uploadFile" class="form-label">Upload File</label>
+                  <label for="uploadFile" class="form-label">Upload File<span class="text-danger">*</span></label>
                   <input type="file" class="form-control @error('upload_file') is-invalid @enderror" id="uploadFile"
                     name="upload_file" accept=".jpg,.jpeg,.png,.pdf,.mp4,.mp3">
-                  <small class="form-text text-muted">Supported formats: jpg, jpeg, png, pdf, mp4, mp3.</small>
-                  @error('upload_file')
-                  <div class="invalid-feedback">{{ $message }}</div>
-                  @enderror
+                  <small class="form-text text-muted">Supported formats: jpg, jpeg, png, pdf, mp4, mp3 (Max
+                    50MB)</small>
+                  @error('upload_file')<div class="invalid-feedback">{{ $message }}</div>@enderror
                 </div>
 
-                <!-- Support Link -->
-                <div class="mb-3" id="supportLinkSection" style="display: none;">
+                <!-- Support Link (Conditional) -->
+                <div class="mb-3 alert alert-info" id="supportLinkSection" style="display: none;">
                   <label class="form-label">Need Assistance?</label>
-                  <p>If you don't have content, click <a href="">here</a> for
-                    assistance.</p>
+                  <p>Click <a href="">here</a> for content creation support.</p>
                 </div>
 
                 <!-- Target Audience -->
@@ -248,9 +236,7 @@
                     <option value="Senior (55+)" {{ old('target_audience')=='Senior (55+)' ? 'selected' : '' }}>Senior
                       (55+)</option>
                   </select>
-                  @error('target_audience')
-                  <div class="invalid-feedback">{{ $message }}</div>
-                  @enderror
+                  @error('target_audience')<div class="invalid-feedback">{{ $message }}</div>@enderror
                 </div>
 
                 <!-- Target Location -->
@@ -260,16 +246,13 @@
                   <select class="form-select @error('target_location') is-invalid @enderror" id="targetLocation"
                     name="target_location" required>
                     <option value="">Select Location</option>
-                    <option value="State" {{ old('target_location')=='State' ? 'selected' : '' }}>State (Select from a
-                      list of states)</option>
+                    <option value="State" {{ old('target_location')=='State' ? 'selected' : '' }}>State</option>
                     <option value="National" {{ old('target_location')=='National' ? 'selected' : '' }}>National
                     </option>
                     <option value="International" {{ old('target_location')=='International' ? 'selected' : '' }}>
                       International</option>
                   </select>
-                  @error('target_location')
-                  <div class="invalid-feedback">{{ $message }}</div>
-                  @enderror
+                  @error('target_location')<div class="invalid-feedback">{{ $message }}</div>@enderror
                 </div>
 
                 <!-- Duration -->
@@ -284,20 +267,21 @@
                     <option value="Quarterly" {{ old('duration')=='Quarterly' ? 'selected' : '' }}>Quarterly</option>
                     <option value="Yearly" {{ old('duration')=='Yearly' ? 'selected' : '' }}>Yearly</option>
                   </select>
-                  @error('duration')
-                  <div class="invalid-feedback">{{ $message }}</div>
-                  @enderror
+                  @error('duration')<div class="invalid-feedback">{{ $message }}</div>@enderror
                 </div>
 
-                <!-- Specify Dates -->
+                <!-- Date Range -->
                 <div class="mb-3">
-                  <label for="specify_dates" class="form-label">Specify Start and End Dates</label>
-                  <input type="text" class="form-control @error('specify_dates') is-invalid @enderror"
-                    id="specify_dates" name="specify_dates" placeholder="E.g., 10th March - 14th March"
-                    value="{{ old('specify_dates') }}">
-                  @error('specify_dates')
-                  <div class="invalid-feedback">{{ $message }}</div>
-                  @enderror
+                  <label for="dateRange" class="form-label">Campaign Dates<span class="text-danger">*</span></label>
+                  <div class="input-group">
+                    <input type="date" class="form-control @error('start_date') is-invalid @enderror" name="start_date"
+                      value="{{ old('start_date') }}" required>
+                    <span class="input-group-text">to</span>
+                    <input type="date" class="form-control @error('end_date') is-invalid @enderror" name="end_date"
+                      value="{{ old('end_date') }}" required>
+                  </div>
+                  @error('start_date')<div class="invalid-feedback d-block">{{ $message }}</div>@enderror
+                  @error('end_date')<div class="invalid-feedback d-block">{{ $message }}</div>@enderror
                 </div>
 
                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -306,6 +290,41 @@
           </div>
         </div>
       </div>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+  const contentType = document.getElementById('contentType');
+  const uploadSection = document.getElementById('uploadFileSection');
+  const supportSection = document.getElementById('supportLinkSection');
+  
+  contentType.addEventListener('change', function() {
+    if(this.value === 'Yes') {
+      uploadSection.style.display = 'block';
+      supportSection.style.display = 'none';
+      uploadFile.setAttribute('required', 'required');
+    } 
+    else if(this.value === 'No') {
+      uploadSection.style.display = 'none';
+      supportSection.style.display = 'block';
+      uploadFile.removeAttribute('required');
+    }
+    else {
+      uploadSection.style.display = 'none';
+      supportSection.style.display = 'none';
+      uploadFile.removeAttribute('required');
+    }
+  });
+  
+  // Initialize on load
+  if(contentType.value === 'Yes') {
+    uploadSection.style.display = 'block';
+    uploadFile.setAttribute('required', 'required');
+  }
+  else if(contentType.value === 'No') {
+    supportSection.style.display = 'block';
+  }
+});
+      </script>
 
       <!-- Optional JavaScript for Dynamic Form Sections -->
       @push('scripts')

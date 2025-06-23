@@ -3,9 +3,9 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Log In | Mediadeal - User Login Page</title>
+    <title>Set New Password | Mediadeal</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="Mediadeal - User Login Page." name="description" />
+    <meta content="Mediadeal - Password Reset" name="description" />
     <meta content="Coderthemes" name="author" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
@@ -21,9 +21,28 @@
 
     <!-- Toastr CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+    <style>
+        .alert-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+            width: 350px;
+        }
+        .system-alert {
+            display: none;
+        }
+    </style>
 </head>
 
 <body class="authentication-bg position-relative">
+    <!-- System Alert Container -->
+    <div class="alert-container">
+        <div id="systemAlert" class="alert alert-danger system-alert">
+            <strong>System Error!</strong> <span id="alertMessage"></span>
+        </div>
+    </div>
+
     <div class="position-absolute start-0 end-0 start-0 bottom-0 w-100 h-100">
         <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 800 800">
             <g fill-opacity="0.22">
@@ -50,53 +69,61 @@
 
                         <div class="card-body p-4">
                             <div class="text-center w-75 m-auto">
-                                <h4 class="text-dark-50 text-center pb-0 fw-bold">Sign In</h4>
-                                <p class="text-muted mb-4">Enter your email address and password to access the
-                                    dashboard.</p>
+                                <h4 class="text-dark-50 text-center pb-0 fw-bold">Set New Password</h4>
+                                <p class="text-muted mb-4">Create a new password for your account.</p>
+                                
+                                <!-- Success Message -->
+                                <div id="successMessage" class="alert alert-success" style="display: none;"></div>
+                                
+                                <!-- Error Message -->
+                                <div id="errorMessage" class="alert alert-danger" style="display: none;"></div>
                             </div>
 
-                            <form id="loginForm" method="POST">
+                            <form id="resetPasswordForm" method="POST">
                                 @csrf
+                                <input type="hidden" name="token" value="{{ $token }}">
 
                                 <div class="mb-3">
-                                    <label for="emailaddress" class="form-label">Email address</label>
-                                    <input type="email" id="emailaddress" name="email"
+                                    <label for="email" class="form-label">Email address</label>
+                                    <input type="email" id="email" name="email"
                                         class="form-control @error('email') is-invalid @enderror"
-                                        value="{{ old('email') }}" placeholder="Enter your email" required>
+                                        value="{{ $email ?? old('email') }}" 
+                                        placeholder="Enter your email" readonly>
                                     <div class="invalid-feedback email-error"></div>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="password" class="form-label">Password</label>
+                                    <label for="password" class="form-label">New Password</label>
                                     <div class="input-group input-group-merge">
                                         <input type="password" id="password" name="password"
                                             class="form-control @error('password') is-invalid @enderror"
-                                            placeholder="Enter your password" required>
+                                            placeholder="Enter new password" required>
                                         <div class="input-group-text" data-password="false">
                                             <span class="password-eye"></span>
                                         </div>
                                     </div>
                                     <div class="invalid-feedback password-error"></div>
-                                    <a href="{{ route('password.request') }}" class="text-muted float-end">
-                                        <small>Forgot your password?</small>
-                                    </a>
                                 </div>
 
                                 <div class="mb-3">
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="checkbox-signin"
-                                            name="remember" {{ old('remember') ? 'checked' : '' }}>
-                                        <label class="form-check-label" for="checkbox-signin">Remember me</label>
+                                    <label for="password-confirm" class="form-label">Confirm Password</label>
+                                    <div class="input-group input-group-merge">
+                                        <input type="password" id="password-confirm" name="password_confirmation"
+                                            class="form-control" placeholder="Confirm new password" required>
+                                        <div class="input-group-text" data-password="false">
+                                            <span class="password-eye"></span>
+                                        </div>
                                     </div>
+                                    <div class="invalid-feedback password-confirm-error"></div>
                                 </div>
 
                                 <div class="mb-3 text-center">
                                     <button id="submitButton" class="btn btn-primary" type="submit">
-                                        <span id="buttonText">Log In</span>
+                                        <span id="buttonText">Reset Password</span>
                                         <span id="loadingSpinner" style="display: none;">
                                             <span class="spinner-border spinner-border-sm" role="status"
                                                 aria-hidden="true"></span>
-                                            Loading...
+                                            Updating...
                                         </span>
                                     </button>
                                 </div>
@@ -106,8 +133,8 @@
 
                     <div class="row mt-3">
                         <div class="col-12 text-center">
-                            <p class="text-muted">Don't have an account?
-                                <a href="{{ route('register') }}" class="text-muted ms-1"><b>Sign Up</b></a>
+                            <p class="text-muted">Back to login?
+                                <a href="{{ route('login') }}" class="text-muted ms-1"><b>Sign In</b></a>
                             </p>
                         </div>
                     </div>
@@ -152,21 +179,23 @@
             });
             
             // Handle form submission
-            $('#loginForm').on('submit', function (e) {
+            $('#resetPasswordForm').on('submit', function (e) {
                 e.preventDefault();
+                
+                // Reset messages
+                $('#successMessage, #errorMessage').hide().empty();
+                $('.invalid-feedback').text('');
+                $('.is-invalid').removeClass('is-invalid');
+                $('#systemAlert').hide();
                 
                 // Show loading spinner and disable button
                 $('#buttonText').hide();
                 $('#loadingSpinner').show();
                 $('#submitButton').prop('disabled', true);
                 
-                // Clear previous error messages
-                $('.invalid-feedback').text('');
-                $('.is-invalid').removeClass('is-invalid');
-                
                 // Send AJAX request
                 $.ajax({
-                    url: '{{ route("login") }}',
+                    url: '{{ route("password.update") }}',
                     method: 'POST',
                     data: $(this).serialize(),
                     dataType: 'json',
@@ -177,16 +206,22 @@
                         $('#submitButton').prop('disabled', false);
                         
                         if (response.success) {
-                            // Show success message
-                            toastr.success(response.message);
+                            $('#successMessage').text(response.message).show();
                             
-                            // Redirect after delay
+                            // Redirect to login after delay
                             setTimeout(function() {
-                                window.location.href = response.redirect;
-                            }, 1500);
+                                window.location.href = "{{ route('login') }}";
+                            }, 3000);
                         } else {
-                            // Show error message
-                            toastr.error(response.message);
+                            if (response.errors) {
+                                // Handle validation errors
+                                $.each(response.errors, function(key, errors) {
+                                    $('.' + key + '-error').text(errors[0]);
+                                    $('[name="' + key + '"]').addClass('is-invalid');
+                                });
+                            } else {
+                                $('#errorMessage').text(response.message).show();
+                            }
                         }
                     },
                     error: function (xhr) {
@@ -198,17 +233,17 @@
                         if (xhr.status === 422) {
                             // Validation errors
                             var errors = xhr.responseJSON.errors;
-                            $.each(errors, function(key, value) {
-                                $('.' + key + '-error').text(value[0]);
+                            $.each(errors, function(key, errorArray) {
+                                $('.' + key + '-error').text(errorArray[0]);
                                 $('[name="' + key + '"]').addClass('is-invalid');
                             });
-                            toastr.error('Please fix the errors in the form.');
-                        } else if (xhr.status === 401) {
-                            // Authentication failed
-                            toastr.error(xhr.responseJSON.message || 'Invalid credentials. Please try again.');
+                        } else if (xhr.status === 500) {
+                            // System error
+                            $('#alertMessage').text('A system error occurred. Please try again later.');
+                            $('#systemAlert').show();
                         } else {
                             // Other errors
-                            toastr.error(xhr.responseJSON.message || 'An error occurred. Please try again.');
+                            $('#errorMessage').text(xhr.responseJSON.message || 'An unexpected error occurred. Please try again.').show();
                         }
                     }
                 });
@@ -216,5 +251,4 @@
         });
     </script>
 </body>
-
 </html>

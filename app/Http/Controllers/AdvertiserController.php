@@ -462,7 +462,7 @@ class AdvertiserController extends Controller
     public function showRefunds()
     {
         // Fetch refunds only for the authenticated user
-        $refunds = Refund::where('user_id', Auth::id())->get();
+        $refunds = Refund::where('user_id', Auth::id())->paginate(10);
 
         // Calculate totals for the authenticated user
         $totalRequests = Refund::where('user_id', Auth::id())->count();
@@ -477,6 +477,7 @@ class AdvertiserController extends Controller
             'totalDenied' => $totalDenied,
         ]);
     }
+
 
 
 

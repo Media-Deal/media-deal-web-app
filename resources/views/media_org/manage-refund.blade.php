@@ -1,209 +1,197 @@
 @include('media_org.header')
-        
-  <!-- ============================================================== -->
-        <!-- Start Page Content here -->
-        <!-- ============================================================== -->
 
-        <div class="content-page">
-            <div class="content">
+<!-- ============================================================== -->
+<!-- Start Page Content here -->
+<!-- ============================================================== -->
 
-                <!-- Start Content-->
-                <div class="container-fluid">
-
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="page-title-box">
-                                
-                                <h4 class="page-title">Refund Details</h4>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <!-- Total Requests -->
-                        <div class="col-4 mb-3">
-                            <div class="card widget-flat h-100">
-                                <div class="card-body text-center d-flex flex-column justify-content-center align-items-center">
-                                    <!-- Total Requests Figure -->
-                                    <div class="mb-3">
-                                        <h2 class="fw-bold mb-0">100</h2>
-                                    </div>
-                                    <!-- Label -->
-                                    <h5 class="fw-normal mt-0" title="Total Requests">Total Requests</h5>
-                                    <!-- Description -->
-                                 
-                                </div>
-                            </div>
-                        </div>
-                    
-                        <!-- Total Approved -->
-                        <div class="col-4 mb-3">
-                            <div class="card widget-flat h-100">
-                                <div class="card-body text-center d-flex flex-column justify-content-center align-items-center">
-                                    <!-- Total Approved Figure -->
-                                    <div class="mb-3">
-                                        <h2 class="fw-bold mb-0">80</h2>
-                                    </div>
-                                    <!-- Label -->
-                                    <h5 class="fw-normal mt-0" title="Total Approved">Total Approved</h5>
-                                    <!-- Description -->
-                                  
-                                </div>
-                            </div>
-                        </div>
-                    
-                        <!-- Total Denied -->
-                        <div class="col-4 mb-3">
-                            <div class="card widget-flat h-100">
-                                <div class="card-body text-center d-flex flex-column justify-content-center align-items-center">
-                                    <!-- Total Denied Figure -->
-                                    <div class="mb-3">
-                                        <h2 class="fw-bold mb-0">20</h2>
-                                    </div>
-                                    <!-- Label -->
-                                    <h5 class="fw-normal mt-0" title="Total Denied">Total Denied</h5>
-                                    <!-- Description -->
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                  
-                    
-                    
-                    
-                    <div class="container mt-4">
-                        <h5 class="mb-3">Refund Table</h5>
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-striped">
-                                <thead class="thead-dark">
-                                    <tr>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Ad Type</th>
-                                        <th scope="col">Reason for Refund</th>
-                                        <th scope="col">Amount of Refund</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Refunded</th>
-                                        <th scope="col">Contact</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>John Doe</td>
-                                        <td>Entertainment</td>
-                                        <td>I no do again i no de do the advert again</td>
-                                        <td><input type="number" class="form-control" placeholder="Enter Amount"></td>
-                                        <td>
-                                            <select class="form-select">
-                                                <option selected>Select action</option>
-                                                <option value="Approved">Approved</option>
-                                                <option value="Denied">Denied</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <select class="form-select">
-                                                <option selected>Select action</option>
-                                                <option value="Yes">Yes</option>
-                                                <option value="No">No</option>
-                                            </select>
-                                        </td>
-                                        <td>johndoe@gmail.com<br>839393939393</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    
-                    <style>
-                        .container {
-                            margin-top: 20px;
-                        }
-                    
-                        .table-responsive {
-                            overflow-x: auto;
-                            -webkit-overflow-scrolling: touch;
-                        }
-                    
-                        table {
-                            width: 100%;
-                            table-layout: auto;
-                        }
-                    
-                        input[type="number"], select {
-                            width: 100%;
-                            padding: 8px;
-                            font-size: 1rem;
-                        }
-                    
-                        th, td {
-                            text-align: center;
-                            padding: 12px;
-                            vertical-align: middle;
-                        }
-                    
-                        /* Make everything more readable on small devices */
-                        @media (max-width: 576px) {
-                            th, td {
-                                font-size: 0.9rem;
-                                padding: 8px;
-                            }
-                    
-                            input[type="number"], select {
-                                font-size: 0.9rem;
-                            }
-                    
-                            .table thead th {
-                                white-space: nowrap;
-                            }
-                    
-                            .table-responsive {
-                                margin-bottom: 1rem;
-                            }
-                        }
-                    </style>
-                    
-
-                    
-                    
-                       
-
-
-                                      
-                                        
-                               
-                        
-                    </div>
-                    <!-- end row -->
-
-                </div>
-                <!-- container -->
-
+<div class="content-page">
+    <div class="content">
+        <!-- Start Content-->
+        <div class="container-fluid">
+            <!-- Flash Messages -->
+            @if(session('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
-            <!-- content -->
+            @endif
 
-          
-            <style>
-                .small-card {
-padding: 20px;     /* Add some padding for a clean look */
-height: 150px;     /* Control the height of the card */
-max-width: 100%;   /* Ensures the card fills the column */
-}
+            @if(session('error'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ session('error') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            @endif
 
-             </style>
-               
-               <style>
-                .card {
-                    min-height: 250px; /* Ensuring all cards have a minimum height */
-                }
-            
-                .card-body h2 {
-                    font-size: 36px;
-                    margin-bottom: 15px;
-                }
-            
-                .card-body h5, .card-body p {
-                    margin-bottom: 10px; /* Consistent spacing */
-                }
-            </style>
-             
-             @include('media_org.footer')
+            @if($errors->any())
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <ul class="mb-0">
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            @endif
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box">
+                        <h4 class="page-title">Refund Details</h4>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statistics Cards -->
+            <div class="row">
+                <div class="col-4 mb-3">
+                    <div class="card widget-flat h-100">
+                        <div class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+                            <div class="mb-3">
+                                <h2 class="fw-bold mb-0">{{ $totalRequests }}</h2>
+                            </div>
+                            <h5 class="fw-normal mt-0">Total Requests</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-4 mb-3">
+                    <div class="card widget-flat h-100">
+                        <div class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+                            <div class="mb-3">
+                                <h2 class="fw-bold mb-0">{{ $totalApproved }}</h2>
+                            </div>
+                            <h5 class="fw-normal mt-0">Total Approved</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-4 mb-3">
+                    <div class="card widget-flat h-100">
+                        <div class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+                            <div class="mb-3">
+                                <h2 class="fw-bold mb-0">{{ $totalDenied }}</h2>
+                            </div>
+                            <h5 class="fw-normal mt-0">Total Denied</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Refund Table -->
+            <div class="container mt-4">
+                <h5 class="mb-3">Refund Table</h5>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Name</th>
+                                <th>Media</th>
+                                <th>Category</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Refunded</th>
+                                <th>Contact</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($refunds as $refund)
+                            <tr>
+                                <td>{{ $refund->user->name ?? 'N/A' }}</td>
+                                <td>{{ $refund->media }}</td>
+                                <td>{{ $refund->category }}</td>
+                                <td>
+                                    <input type="number" name="amount"
+                                        class="form-control @error('amount.'.$refund->id) is-invalid @enderror"
+                                        value="{{ old('amount.'.$refund->id, $refund->amount ?? 0) }}"
+                                        form="updateForm{{ $refund->id }}">
+                                    @error('amount.'.$refund->id)
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </td>
+                                <td>
+                                    <select class="form-select @error('status.'.$refund->id) is-invalid @enderror"
+                                        name="status" form="updateForm{{ $refund->id }}">
+                                        <option value="pending" {{ old('status.'.$refund->id, $refund->status) ==
+                                            'pending' ? 'selected' : '' }}>Pending</option>
+                                        <option value="approved" {{ old('status.'.$refund->id, $refund->status) ==
+                                            'approved' ? 'selected' : '' }}>Approved</option>
+                                        <option value="denied" {{ old('status.'.$refund->id, $refund->status) ==
+                                            'denied' ? 'selected' : '' }}>Denied</option>
+                                    </select>
+                                    @error('status.'.$refund->id)
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </td>
+                                <td>
+                                    <select class="form-select @error('refunded.'.$refund->id) is-invalid @enderror"
+                                        name="refunded" form="updateForm{{ $refund->id }}">
+                                        <option value="1" {{ old('refunded.'.$refund->id, $refund->refunded) ?
+                                            'selected' : '' }}>Yes</option>
+                                        <option value="0" {{ !old('refunded.'.$refund->id, $refund->refunded) ?
+                                            'selected' : '' }}>No</option>
+                                    </select>
+                                    @error('refunded.'.$refund->id)
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </td>
+                                <td>
+                                    {{ $refund->user->email ?? 'N/A' }}<br>
+                                    {{ $refund->user->phone ?? 'N/A' }}
+                                </td>
+                                <td>
+                                    <form id="updateForm{{ $refund->id }}" method="POST"
+                                        action="{{ route('refund.update', $refund->id) }}">
+                                        @csrf
+                                        @method('PUT')
+                                        <button type="submit" class="btn btn-sm btn-primary">
+                                            <i class="mdi mdi-update"></i> Update
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pagination -->
+                <div class="d-flex justify-content-center mt-3">
+                    {{ $refunds->links() }}
+                </div>
+            </div>
+        </div>
+        <!-- end container -->
+    </div>
+    <!-- content -->
+</div>
+
+<style>
+    /* Add custom styles for error states */
+    .is-invalid {
+        border-color: #dc3545;
+    }
+
+    .invalid-feedback {
+        display: block;
+        width: 100%;
+        margin-top: 0.25rem;
+        font-size: 0.875em;
+        color: #dc3545;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .table-responsive {
+            font-size: 0.9rem;
+        }
+
+        .btn-sm {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.75rem;
+        }
+    }
+</style>
+
+@include('media_org.footer')

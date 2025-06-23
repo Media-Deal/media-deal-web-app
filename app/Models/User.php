@@ -62,4 +62,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(MediaOrganization::class, 'user_id');
     }
+    // In User model
+    public function refunds()
+    {
+        return $this->hasMany(Refund::class);
+    }
 }
