@@ -282,6 +282,15 @@ class ManageAccountController extends Controller
                 'internet_channel_location' => 'required|string|max:255',
                 'internet_content_focus' => 'required|string|max:255',
                 'internet_target_audience' => 'required|string|max:255',
+                'internet_broadcast_duration' => 'required|string|max:255',
+                'internet_often_post' => 'required|string|max:255',
+                'internet_youtube' => 'required|string|max:255',
+                'internet_streaming_url' => 'required|string|max:255',
+                'internet_facebook' => 'required|string|max:255',
+                'internet_twitter' => 'required|string|max:255',
+                'internet_instagram' => 'required|string|max:255',
+                'internet_tiktok' => 'required|string|max:255',
+                'internet_other' => 'nullable|string|max:255',
                 'internet_advert_rate' => 'nullable|file|mimes:pdf,docx,txt|max:5120',
             ]);
 

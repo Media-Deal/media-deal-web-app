@@ -157,8 +157,8 @@
                                             Advertiser</option>
                                         <option value="media_org" {{ old('role')=='media_org' ? 'selected' : '' }}>Media
                                             Organization</option>
-                                        <option value="marketer" {{ old('role')=='marketer' ? 'selected' : '' }}>
-                                            Marketer</option>
+                                        {{-- <option value="marketer" {{ old('role')=='marketer' ? 'selected' : '' }}>
+                                            Marketer</option> --}}
                                     </select>
                                     <div class="invalid-feedback role-error"></div>
                                 </div>
