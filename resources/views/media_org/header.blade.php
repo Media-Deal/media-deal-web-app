@@ -200,7 +200,7 @@
                             </div>
 
                             <!-- View All -->
-                            <a href="{{ route('media.messages.index') }}"
+                            <a href="{{route('media.messages.index') }}"
                                 class="dropdown-item text-center text-primary notify-item border-top border-light py-2">
                                 View All
                             </a>
@@ -247,7 +247,7 @@
                                 <h6 class="text-overflow m-0">Welcome !</h6>
                             </div>
 
-                            <!-- item-->
+                            {{-- <!-- item-->
                             <a href="javascript:void(0);" class="dropdown-item">
                                 <i class="mdi mdi-account-circle me-1"></i>
                                 <span>My Account</span>
@@ -269,7 +269,7 @@
                             <a href="javascript:void(0);" class="dropdown-item">
                                 <i class="mdi mdi-lock-outline me-1"></i>
                                 <span>Lock Screen</span>
-                            </a>
+                            </a> --}}
 
                             <!-- item-->
                             <a href="javascript:void(0);" class="dropdown-item">
@@ -383,7 +383,7 @@
                     </li>
 
                     <li class="side-nav-item">
-                        <a href="{{route('advertiser.messages.index')}}" class="side-nav-link">
+                        <a href="{{route('media.messages.index')}}" class="side-nav-link">
                             <i class="uil-bell"></i> <!-- Notification icon -->
                             <span> Notification</span>
                         </a>
@@ -398,7 +398,7 @@
 
                     <li class="side-nav-item">
                         <a href="{{route('user.logout')}}" class="side-nav-link">
-                            <i class="uil-signout"></i>
+                            <i class="mdi mdi-logout me-1"></i>
                             <span> Logout </span>
                         </a>
                     </li>
