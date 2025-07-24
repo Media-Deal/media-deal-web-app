@@ -77,10 +77,7 @@ class MediaOrganizationController extends Controller
     }
 
 
-    public function manageRefund()
-    {
-        return view('media_org.manage-refund');
-    }
+  
 
     public function manageSupport()
     {

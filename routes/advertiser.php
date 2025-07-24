@@ -59,4 +59,22 @@ Route::prefix('advertiser')->middleware(['user_auth', 'role:advertiser'])->group
 
     Route::post('/initiate', [PaymentController::class, 'initiatePayment'])->name('advertiser.payment.initiate');
     Route::get('/callback', [PaymentController::class, 'handleCallback'])->name('advertiser.payment.callback');
+
+
+
+
+
+
+
+
+    // Ad Placement Routes
+    Route::prefix('place-ads')->name('place-ads.')->group(function () {
+        // Show ad placement form
+        Route::get('/{media}/create', [\App\Http\Controllers\Advertiser\PlaceAdsController::class, 'create'])
+            ->name('create');
+
+        // Submit ad placement
+        Route::post('/{media}', [\App\Http\Controllers\Advertiser\PlaceAdsController::class, 'store'])
+            ->name('store');
+    });
 });

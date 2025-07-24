@@ -16,4 +16,17 @@ class Refund extends Model
         'status',
         'refunded',
     ];
+
+    // Cast 'refunded' to boolean
+    protected $casts = [
+        'refunded' => 'boolean',
+    ];
+
+    /**
+     * Get the user that owns the refund.
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
