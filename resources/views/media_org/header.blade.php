@@ -385,7 +385,7 @@
                     <li class="side-nav-item">
                         <a href="{{route('media.messages.index')}}" class="side-nav-link">
                             <i class="uil-bell"></i> <!-- Notification icon -->
-                            <span> Notification</span>
+                            <span>Messages</span>
                         </a>
                     </li>
 
@@ -393,6 +393,13 @@
                         <a href="{{route('media_org.manage.support')}}" class="side-nav-link">
                             <i class="uil-user"></i>
                             <span>Support</span>
+                        </a>
+                    </li>
+
+                     <li class="side-nav-item">
+                        <a href="{{route('media_org.manage.feedbacks')}}" class="side-nav-link">
+                            <i class="uil-bell"></i> <!-- Notification icon -->
+                            <span> Feedbacks</span>
                         </a>
                     </li>
 

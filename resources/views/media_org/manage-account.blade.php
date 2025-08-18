@@ -46,19 +46,20 @@
                             <div class="text-start mt-4 border-top pt-3" style="border-color: #e3e3e3;">
                                 <p class="mb-2">
                                     <strong class="text-primary">Full Name:</strong>
-                                    <span class="ms-2 text-dark">{{ $mediaOrganization->fullname }}</span>
+                                    <span class="ms-2 text-dark">{{ $mediaOrganization->fullname ?? Auth::user()->name }}
+</span>
                                 </p>
                                 <p class="mb-2">
                                     <strong class="text-primary">Phone Number:</strong>
-                                    <span class="ms-2 text-dark">{{ $mediaOrganization->phone }}</span>
+                                    <span class="ms-2 text-dark">{{ !empty($mediaOrganization->phone) ? $mediaOrganization->phone : 'Not Updated Yet' }}</span>
                                 </p>
                                 <p class="mb-2">
                                     <strong class="text-primary">Email:</strong>
-                                    <span class="ms-2 text-dark">{{ $mediaOrganization->email }}</span>
+                                    <span class="ms-2 text-dark">{{ $mediaOrganization->email ?? Auth::user()->email }}</span>
                                 </p>
                                 <p class="mb-0">
                                     <strong class="text-primary">Position:</strong>
-                                    <span class="ms-2 text-dark">{{ $mediaOrganization->position }}</span>
+                                    <span class="ms-2 text-dark">{{ !empty($mediaOrganization->position) ? $mediaOrganization->position : 'Not Updated Yet' }}</span>
                                 </p>
                             </div>
                             @else
@@ -94,16 +95,16 @@
                                 <h5 class="mb-3 text-uppercase border-bottom pb-2"><i class="mdi mdi-account-circle me-1"></i> Media Manager Details</h5>
 
                                 <div class="row">
-                                    <div class="col-md-12 mb-3">
+                                    {{-- <div class="col-md-12 mb-3">
                                         <label for="profile_picture" class="form-label">Profile Picture</label>
                                         <input type="file" class="form-control" id="profile_picture" name="profile_picture">
                                         <div class="invalid-feedback profile_picture-error"></div>
-                                    </div>
+                                    </div> --}}
 
                                     <div class="col-md-6 mb-3">
                                         <label for="fullname" class="form-label">Full Name</label>
                                         <input type="text" class="form-control" id="fullname" name="fullname"
-                                            value="{{ $mediaOrganization->fullname ?? '' }}">
+                                            value="{{ $mediaOrganization->fullname ?? Auth::user()->name }}">
                                         <div class="invalid-feedback fullname-error"></div>
                                     </div>
                                     
@@ -389,10 +390,43 @@
                                         <label for="radio_station_location" class="form-label">Radio Station Location</label>
                                         <select class="form-control" id="radio_station_location" name="radio_station_location" required>
                                             <option value="">Select State</option>
-                                            <option value="abia" @selected(isset($mediaOrganization) && $mediaOrganization->radio_station_location == 'abia')>Abia</option>
-                                            <option value="adamawa" @selected(isset($mediaOrganization) && $mediaOrganization->radio_station_location == 'adamawa')>Adamawa</option>
-                                            <option value="akwa-ibom" @selected(isset($mediaOrganization) && $mediaOrganization->radio_station_location == 'akwa-ibom')>Akwa Ibom</option>
-                                            <option value="fct" @selected(isset($mediaOrganization) && $mediaOrganization->radio_station_location == 'fct')>Federal Capital Territory (Abuja)</option>
+                                            <option value="abia" @if(isset($mediaOrganization) && $mediaOrganization->tv_main_studio_location == 'abia') selected @endif>Abia</option>
+                                            <option value="adamawa" @if(isset($mediaOrganization) && $mediaOrganization->tv_main_studio_location == 'adamawa') selected @endif>Adamawa</option>
+                                            <option value="akwa-ibom" @if(isset($mediaOrganization) && $mediaOrganization->tv_main_studio_location == 'akwa-ibom') selected @endif>Akwa Ibom</option>
+                                            <option value="anambra" @if(isset($mediaOrganization) && $mediaOrganization->tv_main_studio_location == 'anambra') selected @endif>Anambra</option>
+                                            <option value="bauchi" @if(isset($mediaOrganization) && $mediaOrganization->tv_main_studio_location == 'bauchi') selected @endif>Bauchi</option>
+                                            <option value="bayelsa" @if(isset($mediaOrganization) && $mediaOrganization->tv_main_studio_location == 'bayelsa') selected @endif>Bayelsa</option>
+                                            <option value="benue" @if(isset($mediaOrganization) && $mediaOrganization->tv_main_studio_location == 'benue') selected @endif>Benue</option>
+                                            <option value="borno" @if(isset($mediaOrganization) && $mediaOrganization->tv_main_studio_location == 'borno') selected @endif>Borno</option>
+                                            <option value="cross-river" @if(isset($mediaOrganization) && $mediaOrganization->tv_main_studio_location == 'cross-river') selected @endif>Cross River</option>
+                                            <option value="delta" @if(isset($mediaOrganization) && $mediaOrganization->tv_main_studio_location == 'delta') selected @endif>Delta</option>
+                                            <option value="ebonyi" @if(isset($mediaOrganization) && $mediaOrganization->tv_main_studio_location == 'ebonyi') selected @endif>Ebonyi</option>
+                                            <option value="edo" @if(isset($mediaOrganization) && $mediaOrganization->tv_main_studio_location == 'edo') selected @endif>Edo</option>
+                                            <option value="ekiti" @if(isset($mediaOrganization) && $mediaOrganization->tv_main_studio_location == 'ekiti') selected @endif>Ekiti</option>
+                                            <option value="enugu" @if(isset($mediaOrganization) && $mediaOrganization->tv_main_studio_location == 'enugu') selected @endif>Enugu</option>
+                                            <option value="gombe" @if(isset($mediaOrganization) && $mediaOrganization->tv_main_studio_location == 'gombe') selected @endif>Gombe</option>
+                                            <option value="imo" @if(isset($mediaOrganization) && $mediaOrganization->tv_main_studio_location == 'imo') selected @endif>Imo</option>
+                                            <option value="jigawa" @if(isset($mediaOrganization) && $mediaOrganization->tv_main_studio_location == 'jigawa') selected @endif>Jigawa</option>
+                                            <option value="kaduna" @if(isset($mediaOrganization) && $mediaOrganization->tv_main_studio_location == 'kaduna') selected @endif>Kaduna</option>
+                                            <option value="kano" @if(isset($mediaOrganization) && $mediaOrganization->tv_main_studio_location == 'kano') selected @endif>Kano</option>
+                                            <option value="katsina" @if(isset($mediaOrganization) && $mediaOrganization->tv_main_studio_location == 'katsina') selected @endif>Katsina</option>
+                                            <option value="kebbi" @if(isset($mediaOrganization) && $mediaOrganization->tv_main_studio_location == 'kebbi') selected @endif>Kebbi</option>
+                                            <option value="kogi" @if(isset($mediaOrganization) && $mediaOrganization->tv_main_studio_location == 'kogi') selected @endif>Kogi</option>
+                                            <option value="kwara" @if(isset($mediaOrganization) && $mediaOrganization->tv_main_studio_location == 'kwara') selected @endif>Kwara</option>
+                                            <option value="lagos" @if(isset($mediaOrganization) && $mediaOrganization->tv_main_studio_location == 'lagos') selected @endif>Lagos</option>
+                                            <option value="nasarawa" @if(isset($mediaOrganization) && $mediaOrganization->tv_main_studio_location == 'nasarawa') selected @endif>Nasarawa</option>
+                                            <option value="niger" @if(isset($mediaOrganization) && $mediaOrganization->tv_main_studio_location == 'niger') selected @endif>Niger</option>
+                                            <option value="ogun" @if(isset($mediaOrganization) && $mediaOrganization->tv_main_studio_location == 'ogun') selected @endif>Ogun</option>
+                                            <option value="ondo" @if(isset($mediaOrganization) && $mediaOrganization->tv_main_studio_location == 'ondo') selected @endif>Ondo</option>
+                                            <option value="osun" @if(isset($mediaOrganization) && $mediaOrganization->tv_main_studio_location == 'osun') selected @endif>Osun</option>
+                                            <option value="oyo" @if(isset($mediaOrganization) && $mediaOrganization->tv_main_studio_location == 'oyo') selected @endif>Oyo</option>
+                                            <option value="plateau" @if(isset($mediaOrganization) && $mediaOrganization->tv_main_studio_location == 'plateau') selected @endif>Plateau</option>
+                                            <option value="rivers" @if(isset($mediaOrganization) && $mediaOrganization->tv_main_studio_location == 'rivers') selected @endif>Rivers</option>
+                                            <option value="sokoto" @if(isset($mediaOrganization) && $mediaOrganization->tv_main_studio_location == 'sokoto') selected @endif>Sokoto</option>
+                                            <option value="taraba" @if(isset($mediaOrganization) && $mediaOrganization->tv_main_studio_location == 'taraba') selected @endif>Taraba</option>
+                                            <option value="yobe" @if(isset($mediaOrganization) && $mediaOrganization->tv_main_studio_location == 'yobe') selected @endif>Yobe</option>
+                                            <option value="zamfara" @if(isset($mediaOrganization) && $mediaOrganization->tv_main_studio_location == 'zamfara') selected @endif>Zamfara</option>
+                                            <option value="fct" @if(isset($mediaOrganization) && $mediaOrganization->tv_main_studio_location == 'fct') selected @endif>Federal Capital Territory (Abuja)</option>
                                         </select>
                                         <div class="invalid-feedback radio_station_location-error"></div>
                                     </div>

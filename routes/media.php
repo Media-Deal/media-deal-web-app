@@ -1,10 +1,12 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\MessageController;
-use App\Http\Controllers\MediaOrganizationController;
-use App\Http\Controllers\MediaOrganisation\RefundController;
+use App\Http\Controllers\MediaOrganisation\FeedbackController;
 use App\Http\Controllers\MediaOrganisation\ManageAccountController;
+use App\Http\Controllers\MediaOrganisation\RefundController;
+use App\Http\Controllers\MediaOrganizationController;
+use App\Http\Controllers\MessageController;
+use Illuminate\Support\Facades\Route;
+
 
 Route::prefix('media-org')->middleware(['user_auth', 'role:media_org'])->group(function () {
     Route::put('/adscompliance/{id}/update', [MediaOrganizationController::class, 'updateCompliancefile'])->name('updateCompliancefile');
@@ -34,4 +36,7 @@ Route::prefix('media-org')->middleware(['user_auth', 'role:media_org'])->group(f
     Route::get('manage-refund', [RefundController::class, 'manageRefund'])->name('media_org.manage.refund');
     Route::get('/refunds', [RefundController::class, 'index'])->name('refunds.index');
     Route::put('/refunds/{id}', [RefundController::class, 'update'])->name('refund.update');
+
+
+        Route::get('manage-feedbacks', [FeedbackController::class, 'ManageFeedbacks'])->name('media_org.manage.feedbacks');
 });

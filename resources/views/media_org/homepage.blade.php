@@ -69,19 +69,19 @@ if ($currentHour >= 12 && $currentHour < 16) { $greeting='Good afternoon' ; } el
                                                 <tbody>
                                                     <tr>
                                                         <th class="text-primary">Full Name</th>
-                                                        <td>{{ $mediaOrganization->fullname }}</td>
+                                                        <td>{{ $mediaOrganization->fullname ?? Auth::user()->name}}</td>
                                                     </tr>
                                                     <tr>
                                                         <th class="text-primary">Phone Number</th>
-                                                        <td>{{ $mediaOrganization->phone }}</td>
+                                                        <td>{{ !empty($mediaOrganization->phone) ? $mediaOrganization->phone : 'Not Updated Yet' }}</td>
                                                     </tr>
                                                     <tr>
                                                         <th class="text-primary">Email</th>
-                                                        <td>{{ $mediaOrganization->email }}</td>
+                                                        <td>{{ !empty($mediaOrganization->email) ? $mediaOrganization->email : 'Not Updated Yet' }}</td>
                                                     </tr>
                                                     <tr>
                                                         <th class="text-primary">Position</th>
-                                                        <td>{{ $mediaOrganization->position }}</td>
+                                                        <td>{{ !empty($mediaOrganization->position) ? $mediaOrganization->position : 'Not Updated Yet' }}</td>
                                                     </tr>
                                                 </tbody>
                                             </table>
