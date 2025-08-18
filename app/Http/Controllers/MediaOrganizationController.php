@@ -132,9 +132,9 @@ class MediaOrganizationController extends Controller
     public function updateCompliancefile(Request $request, $id)
     {
         // Validate the uploaded file
-        $request->validate([
-            'compliance_file' => 'required|mimes:pdf,doc,docx|max:10000', // Restrict file types and size
-        ]);
+       $request->validate([
+    'compliance_file' => 'required|mimes:pdf,doc,docx,mp3,txt,xls,xlsx,ppt,pptx|max:10000',
+]);
 
         // Retrieve the model instance for the given ID
         $adsCompliance = Compliance::findOrFail($id);

@@ -29,4 +29,11 @@ class Refund extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    // In App\Models\Refund.php
+public function advertiser()
+{
+    return $this->belongsTo(Advertiser::class, 'advertiser_id');
+}
+
 }

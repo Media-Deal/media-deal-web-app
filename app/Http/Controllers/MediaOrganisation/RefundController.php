@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\MediaOrganisation;
 
+use App\Http\Controllers\Controller;
+use App\Models\MediaOrganization;
 use App\Models\Refund;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
-use App\Http\Controllers\Controller;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class RefundController extends Controller
 {
@@ -17,8 +20,26 @@ class RefundController extends Controller
         $totalApproved = Refund::where('status', 'approved')->count();
         $totalDenied = Refund::where('status', 'denied')->count();
 
-        // Get refunds with user information
-        $refunds = Refund::with('user')->paginate(10);
+        // // Get refunds with user information
+        // $refunds = Refund::with('user')->paginate(10);
+
+
+        // Retrieve the authenticated user
+        $user = Auth::user();
+
+        // Fetch the media organization based on the user's relationship
+        $mediaOrganization = MediaOrganization::where('user_id', $user->id)->first();
+
+        if ($mediaOrganization) {
+        $refunds = Refund::where('media', $mediaOrganization->id)
+        ->with(['advertiser', 'user'])
+        ->orderBy('created_at', 'desc')
+        ->paginate(10);
+         } else {
+         $refunds = new LengthAwarePaginator([], 0, 10);
+         }
+
+
 
         // Chart data (example data - replace with actual data from your application)
         $chartData = [

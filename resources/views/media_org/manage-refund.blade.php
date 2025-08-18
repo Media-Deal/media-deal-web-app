@@ -79,82 +79,124 @@
             </div>
 
             <!-- Refund Table -->
-            <div class="container mt-4">
-                <h5 class="mb-3">Refund Table</h5>
-                <div class="table-responsive">
-                    <table class="table table-bordered table-striped">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th>Name</th>
-                                <th>Media</th>
-                                <th>Category</th>
-                                <th>Amount</th>
-                                <th>Status</th>
-                                <th>Refunded</th>
-                                <th>Contact</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($refunds as $refund)
-                            <tr>
-                                <td>{{ $refund->user->name ?? 'N/A' }}</td>
-                                <td>{{ $refund->media }}</td>
-                                <td>{{ $refund->category }}</td>
-                                <td>
-                                    <input type="number" name="amount"
-                                        class="form-control @error('amount.'.$refund->id) is-invalid @enderror"
-                                        value="{{ old('amount.'.$refund->id, $refund->amount ?? 0) }}"
-                                        form="updateForm{{ $refund->id }}">
-                                    @error('amount.'.$refund->id)
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </td>
-                                <td>
-                                    <select class="form-select @error('status.'.$refund->id) is-invalid @enderror"
-                                        name="status" form="updateForm{{ $refund->id }}">
-                                        <option value="pending" {{ old('status.'.$refund->id, $refund->status) ==
-                                            'pending' ? 'selected' : '' }}>Pending</option>
-                                        <option value="approved" {{ old('status.'.$refund->id, $refund->status) ==
-                                            'approved' ? 'selected' : '' }}>Approved</option>
-                                        <option value="denied" {{ old('status.'.$refund->id, $refund->status) ==
-                                            'denied' ? 'selected' : '' }}>Denied</option>
-                                    </select>
-                                    @error('status.'.$refund->id)
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </td>
-                                <td>
-                                    <select class="form-select @error('refunded.'.$refund->id) is-invalid @enderror"
-                                        name="refunded" form="updateForm{{ $refund->id }}">
-                                        <option value="1" {{ old('refunded.'.$refund->id, $refund->refunded) ?
-                                            'selected' : '' }}>Yes</option>
-                                        <option value="0" {{ !old('refunded.'.$refund->id, $refund->refunded) ?
-                                            'selected' : '' }}>No</option>
-                                    </select>
-                                    @error('refunded.'.$refund->id)
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </td>
-                                <td>
-                                    {{ $refund->user->email ?? 'N/A' }}<br>
-                                    {{ $refund->user->phone ?? 'N/A' }}
-                                </td>
-                                <td>
-                                    <form id="updateForm{{ $refund->id }}" method="POST"
-                                        action="{{ route('refund.update', $refund->id) }}">
-                                        @csrf
-                                        @method('PUT')
-                                        <button type="submit" class="btn btn-sm btn-primary">
-                                            <i class="mdi mdi-update"></i> Update
-                                        </button>
-                                    </form>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
+           <div class="container mt-4">
+    <h5 class="mb-3">Refund Table</h5>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Media</th>
+                    <th>Category</th>
+                    <th>Reason</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Refunded</th>
+                    <th>Contact</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse($refunds as $refund)
+                <tr>
+                    <td>{{ $refund->user->name ?? 'N/A' }}</td>
+                    <td>{{ $refund->media }}</td>
+                    <td>{{ $refund->category }}</td>
+                    <td>{{ $refund->reason }}</td>
+
+                    <!-- Amount -->
+                    <td>
+                        <label class="form-label fw-semibold small text-muted">Amount</label>
+                        <input type="number" name="amount"
+                               class="form-control form-control-lg @error('amount.'.$refund->id) is-invalid @enderror"
+                               value="{{ old('amount.'.$refund->id, $refund->amount ?? 0) }}"
+                               form="updateForm{{ $refund->id }}">
+                        @error('amount.'.$refund->id)
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </td>
+
+                    <!-- Status -->
+                    <td>
+                        <label class="form-label fw-semibold small text-muted">Status</label>
+                        <select class="form-select form-select-lg @error('status.'.$refund->id) is-invalid @enderror"
+                                name="status" form="updateForm{{ $refund->id }}">
+                            <option value="pending" {{ old('status.'.$refund->id, $refund->status) == 'pending' ? 'selected' : '' }}>
+                                Pending
+                            </option>
+                            <option value="approved" {{ old('status.'.$refund->id, $refund->status) == 'approved' ? 'selected' : '' }}>
+                                Approved
+                            </option>
+                            <option value="denied" {{ old('status.'.$refund->id, $refund->status) == 'denied' ? 'selected' : '' }}>
+                                Denied
+                            </option>
+                        </select>
+                        @error('status.'.$refund->id)
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </td>
+
+                    <!-- Refunded -->
+                    <td>
+                        <label class="form-label fw-semibold small text-muted">Refunded</label>
+                        <select class="form-select form-select-lg @error('refunded.'.$refund->id) is-invalid @enderror"
+                                name="refunded" form="updateForm{{ $refund->id }}">
+                            <option value="1" {{ old('refunded.'.$refund->id, $refund->refunded) ? 'selected' : '' }}>
+                                Yes
+                            </option>
+                            <option value="0" {{ !old('refunded.'.$refund->id, $refund->refunded) ? 'selected' : '' }}>
+                                No
+                            </option>
+                        </select>
+                        @error('refunded.'.$refund->id)
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </td>
+
+                    <!-- Contact -->
+                    <td>
+                        <span class="d-block">{{ $refund->user->email ?? 'N/A' }}</span>
+                        <span class="d-block">{{ $refund->user->phone ?? 'N/A' }}</span>
+                    </td>
+
+                    <!-- Actions -->
+                    <td>
+                        <form id="updateForm{{ $refund->id }}" method="POST"
+                              action="{{ route('refund.update', $refund->id) }}">
+                            @csrf
+                            @method('PUT')
+                            <button type="submit" class="btn btn-primary btn-sm w-100">
+                                <i class="mdi mdi-update"></i> Update
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                @empty
+                <tr>
+                    <td colspan="9" class="text-center text-muted py-4">
+                        <strong>No refund yet.</strong>
+                    </td>
+                </tr>
+                @endforelse
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<style>
+    .form-select-lg, .form-control-lg {
+        font-size: 1rem;
+        padding: 10px 14px;
+        border-radius: 8px;
+        min-width: 140px;
+    }
+    td label.form-label {
+        margin-bottom: 4px;
+        font-size: 0.85rem;
+        color: #6c757d;
+    }
+</style>
+
 
                 <!-- Pagination -->
                 <div class="d-flex justify-content-center mt-3">
@@ -168,6 +210,24 @@
 </div>
 
 <style>
+
+
+
+
+
+
+.form-select-lg {
+    font-size: 1rem;
+    padding: 10px 14px;
+    border-radius: 8px;
+    min-width: 150px;
+}
+
+td .form-label {
+    margin-bottom: 4px;
+    display: block;
+}
+
     /* Add custom styles for error states */
     .is-invalid {
         border-color: #dc3545;
