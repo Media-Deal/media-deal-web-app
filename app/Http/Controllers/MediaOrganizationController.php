@@ -6,6 +6,7 @@ use App\Models\Compliance;
 use App\Models\Adplacement;
 use Illuminate\Http\Request;
 use App\Models\MediaOrganization;
+use App\Models\AdvertiserPaymentHistory;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -72,9 +73,44 @@ class MediaOrganizationController extends Controller
 
 
     public function managePayment()
-    {
-        return view('media_org.manage-payment');
+{
+    // Retrieve the authenticated user
+    $user = Auth::user();
+
+    if (!$user) {
+        abort(403, 'Unauthorized access.');
     }
+
+    // Fetch the media organization based on the user's relationship
+    $mediaOrganization = MediaOrganization::where('user_id', $user->id)->first();
+
+    if (!$mediaOrganization) {
+        abort(404, 'Media organization not found');
+    }
+
+    // Retrieve all advertiser payments where media_id matches the media organization id
+    $payments = AdvertiserPaymentHistory::where('media_id', $mediaOrganization->id)
+        ->with(['advertiser', 'user']) // load related models if relationships exist
+        ->orderBy('created_at', 'desc')
+        ->get();
+
+    // Calculate metrics
+    $totalPayments   = $payments->count();
+    $successfulAds   = $payments->where('status', '1')->count(); // successful
+    $failedAds       = $payments->where('status', '0')->count(); // failed/pending
+    $totalEarnings   = $payments->where('status', '1')->sum('amount'); // only successful
+    $pendingPayments = $payments->where('status', '0')->sum('amount'); // pending
+
+    return view('media_org.manage-payment', [
+        'mediaOrganization' => $mediaOrganization,
+        'payments'          => $payments,
+        'totalPayments'     => $totalPayments,
+        'successfulAds'     => $successfulAds,
+        'failedAds'         => $failedAds,
+        'totalEarnings'     => $totalEarnings,
+        'pendingPayments'   => $pendingPayments,
+    ]);
+}
 
 
   
