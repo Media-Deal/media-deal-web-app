@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\MediaContactController;
 use App\Http\Controllers\MediaOrganisation\FeedbackController;
 use App\Http\Controllers\MediaOrganisation\ManageAccountController;
 use App\Http\Controllers\MediaOrganisation\RefundController;
 use App\Http\Controllers\MediaOrganizationController;
 use App\Http\Controllers\MessageController;
 use Illuminate\Support\Facades\Route;
+
 
 
 Route::prefix('media-org')->middleware(['user_auth', 'role:media_org'])->group(function () {
@@ -37,6 +39,11 @@ Route::prefix('media-org')->middleware(['user_auth', 'role:media_org'])->group(f
     Route::get('/refunds', [RefundController::class, 'index'])->name('refunds.index');
     Route::put('/refunds/{id}', [RefundController::class, 'update'])->name('refund.update');
 
+    //manage feedbacks
+    Route::get('manage-feedbacks', [FeedbackController::class, 'ManageFeedbacks'])->name('media_org.manage.feedbacks');
+     Route::post('/messages/send', [MessageController::class, 'mediaSendMessage'])->name('media.messages.send');
 
-        Route::get('manage-feedbacks', [FeedbackController::class, 'ManageFeedbacks'])->name('media_org.manage.feedbacks');
+    //manage support
+    Route::post('/contactUs-email', [MediaContactController::class, 'send'])->name('contact.send');
+
 });
