@@ -12,7 +12,7 @@ use App\Http\Controllers\Controller;
 use Cloudinary\Api\Upload\UploadApi;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\AdPlacementNotification;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
 
 class PlaceAdsController extends Controller
@@ -30,108 +30,161 @@ class PlaceAdsController extends Controller
      */
     public function store(Request $request, MediaOrganization $media)
     {
-        // Validation rules
-        $rules = [
-            'title' => 'required|string|max:255',
-            'category' => 'required|string|in:Political,Commercial,Public Service,Infomercial,Religious',
-            'type' => 'required|string|in:Campaign,Event Sponsorship,Hype,Interview,Jingle,Promotion,Sponsored Program,Sponsored Message',
-            'content_type' => 'required|string|in:Yes,No,Not Required',
-            'target_audience' => 'required|string|in:Children (0-12),Teens (13-17),Youths (18-34),Older (35-54),Senior (55+)',
-            'target_location' => 'required|string|in:State,National,International',
-            'duration' => 'required|string|in:Daily,Weekly,Monthly,Quarterly,Yearly',
-            'start_date' => 'required|date|after_or_equal:today',
-            'end_date' => 'required|date|after:start_date',
-        ];
+        try {
+            Log::info('Ad placement submission started', [
+                'user_id' => Auth::id(),
+                'media_id' => $media->id,
+                'request_data' => $request->except(['upload_file']) // Exclude file from log
+            ]);
 
-        // Conditionally require file if content_type is 'Yes'
-        if ($request->content_type === 'Yes') {
-            $rules['upload_file'] = 'required|file|mimes:jpg,jpeg,png,pdf,mp4,mp3|max:51200'; // 50MB
-        }
+            // Validation rules
+            $rules = [
+                'title' => 'required|string|max:255',
+                'category' => 'required|string|in:Political,Commercial,Public Service,Infomercial,Religious',
+                'type' => 'required|string|in:Campaign,Event Sponsorship,Hype,Interview,Jingle,Promotion,Sponsored Program,Sponsored Message',
+                'content_type' => 'required|string|in:Yes,No,Not Required',
+                'target_audience' => 'required|string|in:Children (0-12),Teens (13-17),Youths (18-34),Older (35-54),Senior (55+)',
+                'target_location' => 'required|string|in:State,National,International',
+                'duration' => 'required|string|in:Daily,Weekly,Monthly,Quarterly,Yearly',
+                'start_date' => 'required|date|after_or_equal:today',
+                'end_date' => 'required|date|after:start_date',
+            ];
 
-        $validator = Validator::make($request->all(), $rules);
+            // Conditionally require file if content_type is 'Yes'
+            if ($request->content_type === 'Yes') {
+                $rules['upload_file'] = 'required|file|mimes:jpg,jpeg,png,pdf,mp4,mp3|max:51200'; // 50MB
+            }
 
-        if ($validator->fails()) {
-            Log::error('Ad placement validation failed', [
-                'errors' => $validator->errors(),
-                'user' => Auth::id(),
-                'media' => $media->id
+            $validator = Validator::make($request->all(), $rules);
+
+            if ($validator->fails()) {
+                Log::error('Ad placement validation failed', [
+                    'errors' => $validator->errors()->toArray(),
+                    'user_id' => Auth::id(),
+                    'media_id' => $media->id
+                ]);
+
+                return redirect()->back()
+                    ->withErrors($validator)
+                    ->withInput()
+                    ->with('error', 'Please fix the validation errors below.');
+            }
+
+            // Handle file upload
+            $fileUrl = null;
+            $publicId = null;
+
+            if ($request->hasFile('upload_file') && $request->file('upload_file')->isValid()) {
+                try {
+                    $uploadApi = new UploadApi();
+
+                    $response = $uploadApi->upload($request->file('upload_file')->getRealPath(), [
+                        'folder' => 'mediadeal/ad_placements/' . $media->id,
+                        'resource_type' => 'auto',
+                        'public_id' => 'ad_' . time() . '_' . uniqid(),
+                    ]);
+
+                    $fileUrl = $response['secure_url'];
+                    $publicId = $response['public_id'];
+
+                    Log::info('File uploaded successfully to Cloudinary', [
+                        'file_url' => $fileUrl,
+                        'public_id' => $publicId
+                    ]);
+                } catch (\Exception $e) {
+                    Log::error('Cloudinary upload failed: ' . $e->getMessage());
+                    return back()
+                        ->with('error', 'File upload failed. Please try again.')
+                        ->withInput();
+                }
+            }
+
+            // Prepare data for ad placement
+            $adData = [
+                'user_id' => Auth::id(),
+                'media_id' => $media->id,
+                'title' => $request->title,
+                'category' => $request->category,
+                'type' => $request->type,
+                'content_type' => $request->content_type,
+                'target_audience' => $request->target_audience,
+                'target_location' => $request->target_location,
+                'duration' => $request->duration,
+                'status' => 'pending_review',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ];
+
+            // Add file information if uploaded
+            if ($fileUrl) {
+                $adData['upload_file'] = $fileUrl;
+            }
+
+            // Handle dates based on your database schema
+            // If you have separate start_date and end_date columns:
+            if (Schema::hasColumn('ad_placements', 'start_date') && Schema::hasColumn('ad_placements', 'end_date')) {
+                $adData['start_date'] = $request->start_date;
+                $adData['end_date'] = $request->end_date;
+            }
+            // If you only have specify_dates column (original schema):
+            else if (Schema::hasColumn('ad_placements', 'specify_dates')) {
+                $adData['specify_dates'] = $request->start_date . ' to ' . $request->end_date;
+            }
+
+            // Add public_id if column exists
+            if (Schema::hasColumn('ad_placements', 'upload_file_public_id')) {
+                $adData['upload_file_public_id'] = $publicId;
+            }
+
+            // Create ad placement
+            $adPlacement = AdPlacement::create($adData);
+
+            Log::info('Ad placement created successfully', [
+                'ad_placement_id' => $adPlacement->id,
+                'user_id' => Auth::id(),
+                'media_id' => $media->id
+            ]);
+
+            // Send notification to media organization
+            try {
+                $media->load('user');
+
+                if ($media->user && $media->user->email) {
+                    Mail::to($media->user->email)->send(
+                        new Adsplacement($adPlacement, Auth::user(), $media)
+                    );
+
+                    Log::info('Ad placement notification sent', [
+                        'media_id' => $media->id,
+                        'email' => $media->user->email,
+                        'ad_placement_id' => $adPlacement->id
+                    ]);
+                } else {
+                    Log::warning('Media organization has no associated user or email', [
+                        'media_id' => $media->id,
+                        'ad_placement_id' => $adPlacement->id
+                    ]);
+                }
+            } catch (\Exception $e) {
+                Log::error('Ad placement email failed: ' . $e->getMessage(), [
+                    'media_id' => $media->id,
+                    'ad_placement_id' => $adPlacement->id,
+                    'error' => $e->getMessage()
+                ]);
+            }
+
+            return redirect()->back()
+                ->with('success', 'Ad placement submitted successfully! The media organization has been notified.');
+        } catch (\Exception $e) {
+            Log::error('Ad placement creation failed: ' . $e->getMessage(), [
+                'trace' => $e->getTraceAsString(),
+                'user_id' => Auth::id(),
+                'media_id' => $media->id ?? 'unknown'
             ]);
 
             return redirect()->back()
-                ->withErrors($validator)
+                ->with('error', 'An unexpected error occurred. Please try again. Error: ' . $e->getMessage())
                 ->withInput();
         }
-
-        // Handle file upload
-        $fileUrl = null;
-        $publicId = null;
-
-        if ($request->hasFile('upload_file') && $request->file('upload_file')->isValid()) {
-            try {
-                $cloudinary = new Cloudinary();
-                $uploadApi = new UploadApi();
-
-                $response = $uploadApi->upload($request->file('upload_file')->getRealPath(), [
-                    'folder' => 'mediadeal/ad_placements/' . $media->id,
-                    'resource_type' => 'auto',
-                    'public_id' => 'ad_' . time() . '_' . uniqid(),
-                    'overwrite' => false,
-                ]);
-
-                $fileUrl = $response['secure_url'];
-                $publicId = $response['public_id'];
-            } catch (\Exception $e) {
-                Log::error('Cloudinary upload failed: ' . $e->getMessage());
-                return back()->with('error', 'File upload failed. Please try again.');
-            }
-        }
-
-        // Create ad placement
-        $adPlacement = AdPlacement::create([
-            'user_id' => Auth::id(),
-            'media_id' => $media->id,
-            'title' => $request->title,
-            'category' => $request->category,
-            'type' => $request->type,
-            'content_type' => $request->content_type,
-            'upload_file' => $fileUrl,
-            'upload_file_public_id' => $publicId,
-            'target_audience' => $request->target_audience,
-            'target_location' => $request->target_location,
-            'duration' => $request->duration,
-            'start_date' => $request->start_date,
-            'end_date' => $request->end_date,
-            'status' => 'pending_review'
-        ]);
-
-        // Send notification to media organization
-        try {
-            $media->load('user');
-
-            if ($media->user && $media->user->email) {
-                Mail::to($media->user->email)->send(
-                    new Adsplacement($adPlacement, Auth::user(), $media)
-                );
-
-                Log::info('Ad placement notification sent', [
-                    'media_id' => $media->id,
-                    'email' => $media->user->email,
-                    'ad_placement_id' => $adPlacement->id
-                ]);
-            } else {
-                Log::warning('Media organization has no associated user or email', [
-                    'media_id' => $media->id,
-                    'ad_placement_id' => $adPlacement->id
-                ]);
-            }
-        } catch (\Exception $e) {
-            Log::error('Ad placement email failed: ' . $e->getMessage(), [
-                'media_id' => $media->id,
-                'ad_placement' => $adPlacement->id
-            ]);
-        }
-
-        return redirect()->route('advertiser.dashboard')
-            ->with('success', 'Ad placement submitted successfully! The media organization has been notified.');
     }
 }
