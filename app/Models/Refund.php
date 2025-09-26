@@ -14,6 +14,7 @@ class Refund extends Model
         'media',
         'category',
         'status',
+        'feedback',
         'refunded',
     ];
 

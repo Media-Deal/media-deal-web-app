@@ -102,7 +102,7 @@
                     <td>{{ $refund->user->name ?? 'N/A' }}</td>
                     <td>{{ $refund->media }}</td>
                     <td>{{ $refund->category }}</td>
-                    <td>{{ $refund->reason }}</td>
+                    <td>{{ $refund->feedback }}</td>
 
                     <!-- Amount -->
                     <td>

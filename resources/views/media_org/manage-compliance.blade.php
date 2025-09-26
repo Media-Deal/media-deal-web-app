@@ -19,6 +19,32 @@
                         </div>
                     </div>
 
+                       {{-- Success and Error Messages --}}
+            @if(session('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            @endif
+
+            @if(session('error'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ session('error') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            @endif
+
+            {{-- Validation Errors --}}
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul class="mb-0">
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
+
                     <div class="row">
                         <!-- Total Ads Box -->
                         <div class="col-6 col-sm-6 col-md-6 col-lg-6 mb-3">
@@ -73,16 +99,39 @@
                                              {{ session('status') }}
                                          </div>
                                          @endif
-                                        <form method="POST" action="{{ route('updateCompliancefile', $adscompliance->id) }}" enctype="multipart/form-data">
-                                            @csrf
-                                            @method('PUT') <!-- For updating data -->
-                                            <input type="file" name="compliance_file">
-                                            @if ($errors->has('compliance_file'))
-                                                <span class="text-danger">{{ $errors->first('compliance_file') }}</span>
-                                            @endif
-                                            <button type="submit" class="btn btn-primary mt-2">Upload File</button>
-                                           
-                                        </form>
+                                       <form method="POST" action="{{ route('updateCompliancefile', $adscompliance->id) }}" enctype="multipart/form-data">
+    @csrf
+    @method('PUT')
+
+    {{-- Show existing file if available --}}
+    @if (!empty($adscompliance->compliance_file))
+        <div class="mb-3">
+            <label class="form-label fw-semibold">Current Compliance File</label><br>
+            <a href="{{ $adscompliance->compliance_file }}" target="_blank" class="btn btn-outline-secondary btn-sm">
+                <i class="bi bi-file-earmark-arrow-down"></i> View / Download
+            </a>
+        </div>
+    @endif
+
+    <div class="mb-3">
+        <label for="compliance_file" class="form-label fw-semibold">Upload New Compliance File</label>
+        <input type="file" 
+               name="compliance_file" 
+               id="compliance_file" 
+               class="form-control @error('compliance_file') is-invalid @enderror" 
+               required>
+        @error('compliance_file')
+            <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
+    </div>
+
+    <input type="hidden" name="compliance_status" value="1">
+
+    <button type="submit" class="btn btn-primary">
+        <i class="bi bi-upload"></i> Upload File
+    </button>
+</form>
+
                                         
                                     </td>
 

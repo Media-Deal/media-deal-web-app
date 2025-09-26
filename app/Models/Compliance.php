@@ -19,6 +19,8 @@ class Compliance extends Model
         'user_id', // Added user_id to fillable
         'compliance_status',
         'compliance_type',
+        'compliance_file',
+        'compliance_file_public_id',
     ];
 
     /**
