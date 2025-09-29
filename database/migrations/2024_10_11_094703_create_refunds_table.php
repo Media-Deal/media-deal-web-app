@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('media');
             $table->string('category');
+            $table->longText('reason');
             $table->enum('status', ['Pending', 'Approved', 'Denied']);
             $table->boolean('refunded')->default(false); // Yes or No
             $table->timestamps(); // created_at, updated_at

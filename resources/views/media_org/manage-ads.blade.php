@@ -22,6 +22,32 @@
                         </div>
                     </div>
 
+
+                     {{-- Success and Error Messages --}}
+            @if(session('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            @endif
+
+            @if(session('error'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ session('error') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            @endif
+
+            {{-- Validation Errors --}}
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul class="mb-0">
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
                    
                     <div class="row">
                         <!-- First Radio Station -->
@@ -122,8 +148,16 @@
                                     <tr>
                                         <td>{{ $adPlacement->title }}</td>
                                         <td>{{ $adPlacement->category }}</td>
-                                        <td>{{ ucfirst($adPlacement->ad_type) }}</td>
-                                        <td>{{ $adPlacement->content }}</td>
+                                        <td>{{ ucfirst($adPlacement->type) }}</td>
+                                       <td>
+                                     @if($adPlacement->upload_file)
+                                      <a href="{{ $adPlacement->upload_file }}" download class="text-blue-600 underline flex items-center gap-1">
+                                      Download
+                                        </a>
+                                        @else
+                                        No File
+                                        @endif
+                                      </td>
                                         <td>{{ $adPlacement->target_audience }}</td>
                                         <td>{{ $adPlacement->target_location }}</td>
                                         <td>{{ $adPlacement->duration }}</td>

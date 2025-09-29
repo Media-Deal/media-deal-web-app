@@ -33,7 +33,7 @@
                                   
                                     
                                         <div class="mb-3">
-                                            <p class="text-muted">300</p>
+                                            <p class="text-muted">{{ $totalPayments }}</p>
                                         </div>
                                     
                                     <h5 class="fw-normal mt-0" title="Radio Station Name">Total Transaction</h5>
@@ -50,7 +50,7 @@
                                 <div class="card-body text-center d-flex flex-column justify-content-center align-items-center">
                                     <!-- Radio Station Logo -->
                                     <div class="mb-3">
-                                        <p class="text-muted">300</p>
+                                        <p class="text-muted">{{ $successfulAds }}</p>
                                     </div>
                                     <!-- Radio Station Name -->
                                     <h5 class="fw-normal mt-0" title="Radio Station Name">Total Received</h5>
@@ -66,7 +66,7 @@
                                 <div class="card-body text-center d-flex flex-column justify-content-center align-items-center">
                                   
                                     <div class="mb-3">
-                                        <p class="text-muted">300</p>
+                                        <p class="text-muted">{{ $pendingPayments }}</p>
                                     </div>
                                   
                                     <h5 class="fw-normal mt-0" title="Radio Station Name">Total Pending</h5>
@@ -94,36 +94,48 @@
                     
 
                     <div class="table-responsive">
-                        <table class="table table-bordered table-striped">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Ad Type</th>
-                                    <th scope="col">Amount Paid</th>
-                                    <th scope="col"> Payment Request</th>
-                                    <th scope="col">Contact</th> 
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>john doe</td>
-                                    <td>Entertainment</td>
-                                    <td>Off Air Dub</td>
-                                   
-                                    <td>
-                                        <button type="button" class="btn btn-primary btn-custom" data-bs-toggle="modal" data-bs-target="#requestPaymentModal">
-                                            Payment Request
-                                        </button>
-                                    </td>
+    <table class="table table-bordered table-striped align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Ad Type</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Payment Request</th>
+                <th scope="col">Contact</th> 
+            </tr>
+        </thead>
+        <tbody>
+            @forelse($payments as $payment)
+                <tr>
+                    <td>{{ $payment->advertiser->name ?? 'Unknown Advertiser' }}</td>
+                    <td>{{ $payment->meta['ad_type'] ?? 'N/A' }}</td>
+                    <td>{{ number_format($payment->amount, 2) }} {{ $payment->currency }}</td>
+                    <td>
+                        @if ($payment->status == 0)
+                            <button type="button" class="btn btn-primary btn-sm" 
+                                    data-bs-toggle="modal" 
+                                    data-bs-target="#requestPaymentModal"
+                                    data-id="{{ $payment->id }}">
+                                Request Payment
+                            </button>
+                        @else
+                            <span class="badge bg-success">Paid</span>
+                        @endif
+                    </td>
+                    <td>
+                        {{ $payment->advertiser->email ?? 'N/A' }} <br>
+                        {{ $payment->advertiser->phone ?? 'No Phone' }}
+                    </td>
+                </tr>
+            @empty
+                <tr>
+                    <td colspan="5" class="text-center text-muted">No payments found.</td>
+                </tr>
+            @endforelse
+        </tbody>
+    </table>
+</div>
 
-                                    <td>johndoe@gmail.com
-                                        594984848484</td>
-                                    
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                        
                         
 
                     

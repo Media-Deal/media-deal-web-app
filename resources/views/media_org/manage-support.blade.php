@@ -46,8 +46,16 @@
                         </div>
                     </div>
                     <div class="col-md-6">
+
+                        @if(session('success'))
+   <div class="alert alert-success">
+       {{ session('success') }}
+   </div>
+@endif
+
+
                         <div class="wow fadeInUp" data-wow-delay="0.5s">
-                        <form method="post" action="{{url('/contactUs-email')}}">
+                        <form method="post" action="{{route('contact.send')}}">
                                           @csrf
                                 <div class="row g-3">
                                     <div class="col-md-6">
