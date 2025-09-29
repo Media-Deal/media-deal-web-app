@@ -95,8 +95,8 @@ Route::get('/verify/{id}', [CustomAuthController::class, 'verify'])->name('verif
 Route::post('/verify-code', [CustomAuthController::class, 'verifyCode'])->name('verify.code');
 Route::get('/resend-verification-code', [CustomAuthController::class, 'resendVerificationCode'])->name('resend.verification.code');
 Route::get('/logout', [CustomAuthController::class, 'UserLogout'])->name('user.logout');
-Route::get('/homeee', [CustomAuthController::class, 'index'])->name('home');
-  
+Route::get('/home', [CustomAuthController::class, 'index'])->name('home');
+
 
 // Password Reset Routes
 // Password Reset Routes
