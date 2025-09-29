@@ -64,11 +64,11 @@ class LoginController extends Controller
                 case 'marketer':
                     return route('marketer.dashboard');
                 default:
-                    return route('home');
+                    return route('logout');
             }
         }
 
-        return route('home');
+        return route('logout');
     }
 
     /**
