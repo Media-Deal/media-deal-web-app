@@ -55,9 +55,77 @@
         </div>
     </div>
 </div>
+
+<div class="position-fixed top-0 end-0 p-3 mt-5" style="z-index:1055;">
+  <div id="toastMessage" class="toast align-items-center text-bg-success border-0" role="alert">
+    <div class="d-flex">
+      <div class="toast-body"></div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+    </div>
+  </div>
+</div>
+
 <!-- Footer End -->
 
 <!-- JavaScript Libraries -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("subscribeForm");
+  const btn = form.querySelector("button");
+  const spinner = btn.querySelector(".spinner-border");
+  const btnText = btn.querySelector(".btn-text");
+  const toastEl = document.getElementById("toastMessage");
+  const toastBody = toastEl.querySelector(".toast-body");
+  const toast = new bootstrap.Toast(toastEl);
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    // show spinner
+    spinner.classList.remove("d-none");
+    btnText.textContent = "Subscribing...";
+    btn.disabled = true;
+
+    const formData = new FormData(form);
+
+    try {
+      const res = await fetch(form.action, {
+        method: "POST",
+        headers: {
+          "X-CSRF-TOKEN": form.querySelector("[name=_token]").value
+        },
+        body: formData
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        toastEl.classList.remove("text-bg-danger");
+        toastEl.classList.add("text-bg-success");
+        toastBody.textContent = data.message;
+        form.reset();
+      } else {
+        toastEl.classList.remove("text-bg-success");
+        toastEl.classList.add("text-bg-danger");
+        toastBody.textContent = data.message || "Something went wrong.";
+      }
+      toast.show();
+
+    } catch (err) {
+      toastEl.classList.remove("text-bg-success");
+      toastEl.classList.add("text-bg-danger");
+      toastBody.textContent = "Network error. Please try again.";
+      toast.show();
+    } finally {
+      // reset button
+      spinner.classList.add("d-none");
+      btnText.textContent = "Subscribe";
+      btn.disabled = false;
+    }
+  });
+});
+</script>
+
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
 <script src="landing/lib/wow/wow.min.js"></script>

@@ -15,7 +15,7 @@
                     </nav>
                 </div>
                 <div class="col-md-6 animated fadeIn">
-                    <img class="img-fluid" src="img/equipment.jpg" alt="">
+                    <img class="img-fluid" src="img/seller.jpg" alt="seller">
                 </div>
             </div>
         </div>
@@ -87,16 +87,7 @@
                         </p>
                         <p class="mb-4">
                             <i class="fa fa-check text-primary me-3"></i><b>Revenue Growth:</b> Leverage our platform to generate more revenue and expand your advertising clientele.
-                        </p>
-                        
-                        <b><p class="mb-4">For Marketers:</p></b>
-                        <p class="mb-4">
-                            <i class="fa fa-check text-primary me-3"></i><b>Earn Commissions:</b> Earn competitive commissions for successfully completing media deals and driving ad placements.
-                        </p>
-                        <p class="mb-4">
-                            <i class="fa fa-check text-primary me-3"></i><b>Campaign Management:</b> Create and manage advertising campaigns efficiently, with access to a dedicated dashboard.
-                        </p>
-                        
+                        </p>                       
                 </div>
                 </div>
             </div>
@@ -114,19 +105,19 @@
                     </div>
                     <div class="col-lg-6  wow fadeIn" data-wow-delay="0.5s">
                         <h1 class="mb-4 text-primary me-3">Our Core Values</h1>
-                        <p class="mb-4">Transparency: We believe in clear and open communication between advertisers and media organizations. Our platform ensures that all parties have access to the information they need to make informed decisions.</p>
-                        <p class="mb-4">Efficiency: By automating and streamlining the ad placement process, we save our users time and effort, allowing them to focus on what they do best.</p>
-                        <p class="mb-4">Innovation: We continuously strive to enhance our platform with cutting-edge features and integrations, keeping pace with the evolving media landscape.</p>
-                        <p class="mb-4">Customer-Centric: Our users are at the heart of everything we do. We are committed to providing exceptional support and continuously improving our platform based on user feedback.</p>
+                        <p class="mb-4"><b>Transparency</b>: We believe in clear and open communication between advertisers and media organizations. Our platform ensures that all parties have access to the information they need to make informed decisions.</p>
+                        <p class="mb-4"><b>Efficiency</b>: By automating and streamlining the ad placement process, we save our users time and effort, allowing them to focus on what they do best.</p>
+                        <p class="mb-4"><b>Innovation</b>: We continuously strive to enhance our platform with cutting-edge features and integrations, keeping pace with the evolving media landscape.</p>
+                        <p class="mb-4"><b>Customer-Centric</b>: Our users are at the heart of everything we do. We are committed to providing exceptional support and continuously improving our platform based on user feedback.</p>
                     </div>
 
                     <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
                         <h1 class="mb-4 text-primary me-3">Looking Ahead</h1>
-                        <p class="mb-4">While our current focus is on radio and TV advertisements, we have exciting plans to expand our platform to include social media, streaming platforms, podcasts, vodcasts, and more. We also aim to create a vibrant marketplace for creatives, including scriptwriters, animators, and voice-over artists, to connect with advertisers.</p>
+                        <p class="mb-4">While our current focus is on radio, TV, and online advertisements, we have exciting plans to empower freelance marketers to earn commission from helping advertisers place Ads. We also aim to create a vibrant marketplace for creatives, including scriptwriters, animators, voice-over artists, etc., who want to render their services to the media and/or advertisers.</p>
                         <h1 class="mb-4 text-primary me-3">Get Started with Media Deal Today!</h1>
-                        <p class="mb-4">Whether you're an advertiser looking to maximize your reach, a media organization aiming to optimize your ad space sales, or a marketer seeking new opportunities, Media Deal is here to help you succeed. Visit our website to Sign Up. Follow us on social media to stay updated on the latest news and features.</p>
+                        <p class="mb-4">Whether you're an advertiser looking to maximize your reach, an influencer looking to maximize your platform, or a media organization aiming to optimize your ad space sales, Media Deal is here to help you succeed. Visit our website to Sign Up. Follow us on social media to stay updated on the latest news and features.</p>
                         
-                        <p class="mb-4">For more information, visit our FAQ or Contact Us. We look forward to helping you reach your advertising goals!.</p>
+                        <p class="mb-4">For more information, visit our FAQ or Contact Us. We look forward to helping you redefine media deals for maximum impact.</p>
                     </div>
                 </div>
             </div>
