@@ -48,7 +48,7 @@
                 @php
                 $media = optional($compliance->media);
                 $logo = '';
-                $altText = 'Media Logo';
+                $altText = 'Media Logoo';
 
                 if($media) {
                 switch($media->media_type) {
