@@ -9,7 +9,7 @@
     <meta content="Coderthemes" name="author" />
 
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{asset('assets/images/favicon.ico')}}">
+    <link rel="shortcut icon" href="{{asset('img/favicon.png')}}">
 
     <!-- Daterangepicker css -->
     <link href="{{asset('assets/vendor/daterangepicker/daterangepicker.css')}}" rel="stylesheet" type="text/css">
@@ -137,7 +137,7 @@
 
 
 
-                    <li class="dropdown notification-list">
+                    {{-- <li class="dropdown notification-list">
                         <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button"
                             aria-haspopup="false" aria-expanded="false">
                             <i class="ri-notification-3-line font-22"></i>
@@ -208,7 +208,7 @@
                                 View All
                             </a>
                         </div>
-                    </li>
+                    </li> --}}
 
 
 

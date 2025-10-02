@@ -128,12 +128,12 @@
                                 </td>
                                 <td>{{ $refund->category }}</td>
                                 <td>
-                                    <span class="badge 
+                                    
                                         {{ $refund->status == 'approved' ? 'bg-success' : '' }}
                                         {{ $refund->status == 'denied' ? 'bg-danger' : '' }}
-                                        {{ $refund->status == 'pending' ? 'bg-warning' : '' }}">
+                                        {{ $refund->status == 'pending' ? 'bg-warning' : '' }}
                                         {{ ucfirst($refund->status) }}
-                                    </span>
+                                    
                                 </td>
                                 <td>{{ $refund->refunded ? 'Yes' : 'No' }}</td>
                             </tr>
@@ -165,6 +165,7 @@
 <!-- content -->
 
 <style>
+  
     .small-card {
         padding: 20px;
         height: 150px;
