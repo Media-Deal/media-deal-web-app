@@ -6,27 +6,38 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
-            color: #333;
+            background-color: #f4f6f8;
             margin: 0;
             padding: 0;
+            color: #333;
         }
-        .email-container {
-            max-width: 600px;
+        .email-wrapper {
+            max-width: 650px;
             margin: 30px auto;
             background: #ffffff;
-            border-radius: 10px;
+            border-radius: 12px;
             padding: 30px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
         }
         h2 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        .highlight {
+            font-weight: bold;
             color: #2c3e50;
         }
         .status-badge {
             display: inline-block;
-            padding: 8px 16px;
-            border-radius: 20px;
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-size: 14px;
             font-weight: bold;
+            text-transform: capitalize;
             color: #fff;
         }
         .processing { background-color: #6c757d; }
@@ -34,38 +45,32 @@
         .completed { background-color: #28a745; }
         .aborted { background-color: #dc3545; }
         .footer {
-            margin-top: 20px;
-            font-size: 14px;
-            color: #777;
+            margin-top: 25px;
+            font-size: 13px;
+            text-align: center;
+            color: #888;
         }
     </style>
 </head>
 <body>
-    <div class="email-container">
+    <div class="email-wrapper">
         <h2>Hello {{ $adPlacement->user->name }},</h2>
 
-        <p>We wanted to let you know that the status of your advertisement has been updated.</p>
-
-        <p><strong>Ad Title:</strong> {{ $adPlacement->title }}</p>
+        <p>Your advertisement titled <span class="highlight">"{{ $adPlacement->title }}"</span> has been updated.</p>
 
         <p><strong>New Status:</strong>
-            @switch($adPlacement->status)
-                @case(0)
-                    <span class="status-badge processing">Processing</span>
-                    @break
-                @case(1)
-                    <span class="status-badge ongoing">Ongoing</span>
-                    @break
-                @case(2)
-                    <span class="status-badge completed">Completed</span>
-                    @break
-                @case(3)
-                    <span class="status-badge aborted">Aborted</span>
-                    @break
-            @endswitch
+            @if($adPlacement->status === 'processing')
+                <span class="status-badge processing">Processing</span>
+            @elseif($adPlacement->status === 'ongoing')
+                <span class="status-badge ongoing">Ongoing</span>
+            @elseif($adPlacement->status === 'completed')
+                <span class="status-badge completed">Completed</span>
+            @elseif($adPlacement->status === 'aborted')
+                <span class="status-badge aborted">Aborted</span>
+            @endif
         </p>
 
-        <p>Thank you for trusting us with your advertising needs. We’ll keep you updated on any further changes.</p>
+        <p>We appreciate your trust in our platform. You will be notified of any further updates regarding your ad.</p>
 
         <div class="footer">
             &copy; {{ date('Y') }} Your Company. All rights reserved.
