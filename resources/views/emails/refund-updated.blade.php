@@ -30,7 +30,7 @@
                             <div style="margin: 20px 0; padding: 15px; background: #f9f9f9; border-left: 4px solid #004aad;">
                                 <p style="margin: 0; font-size: 14px; line-height: 1.5;">
                                     <strong>Status:</strong> {{ ucfirst($refund->status) }}<br>
-                                    <strong>Refunded Amount:</strong> ${{ number_format($refund->refunded, 2) }}<br>
+                                    <strong>Refunded Amount:</strong> #{{ number_format($refund->refunded, 2) }}<br>
                                     @if(!empty($refund->feedback))
                                         <strong>Feedback:</strong> {{ $refund->feedback }}
                                     @endif
