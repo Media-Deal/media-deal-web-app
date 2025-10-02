@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Compliance;
-use App\Models\Adplacement;
+use App\Models\AdPlacement;
 use Illuminate\Http\Request;
 use App\Models\MediaOrganization;
 use App\Models\AdvertiserPaymentHistory;
