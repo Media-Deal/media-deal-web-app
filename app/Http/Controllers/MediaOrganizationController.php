@@ -97,11 +97,17 @@ class MediaOrganizationController extends Controller
         abort(404, 'Media organization not found');
     }
 
-    // Retrieve all advertiser payments where media_id matches the media organization id
+    // // Retrieve all advertiser payments where media_id matches the media organization id
+    // $payments = AdvertiserPaymentHistory::where('media_id', $mediaOrganization->id)
+    //     ->with(['advertiser', 'user']) // load related models if relationships exist
+    //     ->orderBy('created_at', 'desc')
+    //     ->get();
+
     $payments = AdvertiserPaymentHistory::where('media_id', $mediaOrganization->id)
-        ->with(['advertiser']) // load related models if relationships exist
-        ->orderBy('created_at', 'desc')
-        ->get();
+    ->with(['advertiser.user']) // advertiser → user
+    ->orderBy('created_at', 'desc')
+    ->get();
+
 
     // Calculate metrics
     $totalPayments   = $payments->count();
