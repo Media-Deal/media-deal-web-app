@@ -24,4 +24,11 @@ class AdvertiserPaymentHistory extends Model
     protected $casts = [
         'meta' => 'array', // Automatically cast 'meta' to and from an array
     ];
+
+
+    // Relationship
+    public function advertiser()
+    {
+        return $this->belongsTo(Advertiser::class, 'advertiser_id', 'id');
+    }
 }
