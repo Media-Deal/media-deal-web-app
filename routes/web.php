@@ -7,9 +7,8 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\CustomAuthController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
-
-
-
+use App\Http\Controllers\SubscriberController;
+use App\Http\Controllers\SupportController;
 
 // Public Routes
 Route::get('/', function () {
@@ -70,6 +69,8 @@ Route::get('/media', function () {
     return view('media.homepage');
 });
 
+Route::post('/news-letter/subscribe', [SubscriberController::class, 'subscribeTONews'])->name('subscribe.store');
+Route::post('/support-request', [SupportController::class, 'sendSupport']);
 
 // Authentication Routes
 // Authentication Routes
