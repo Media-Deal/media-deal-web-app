@@ -12,6 +12,7 @@ class Refund extends Model
     protected $fillable = [
         'user_id',
         'media',
+        'amount',
         'category',
         'status',
         'feedback',
