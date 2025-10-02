@@ -99,7 +99,7 @@ class MediaOrganizationController extends Controller
 
     // Retrieve all advertiser payments where media_id matches the media organization id
     $payments = AdvertiserPaymentHistory::where('media_id', $mediaOrganization->id)
-        ->with(['advertiser', 'user']) // load related models if relationships exist
+        ->with(['advertiser']) // load related models if relationships exist
         ->orderBy('created_at', 'desc')
         ->get();
 
