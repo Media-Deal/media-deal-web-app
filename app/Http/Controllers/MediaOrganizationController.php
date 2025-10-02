@@ -317,27 +317,24 @@ public function updateCompliancefile(Request $request, $id)
 
 
 
-
 public function updateAdStatus(Request $request, $id)
 {
-    // Validate input
     $request->validate([
         'status' => 'required|integer|min:0|max:3',
     ]);
 
-    // Find the ad placement by ID
     $adPlacement = AdPlacement::findOrFail($id);
 
-    // Map numeric status to string
-    $statusText = $this->mapStatus($request->status);
-    $adPlacement->status = $statusText;
+    // Save numeric status directly
+    $adPlacement->status = $request->status;
     $adPlacement->save();
 
-    // Send email notification to advertiser
+    // Send email
     Mail::to($adPlacement->user->email)->send(new AdStatusUpdatedMail($adPlacement));
 
     return redirect()->back()->with('success', 'Ad status updated and email sent successfully.');
 }
+
 
 
 
