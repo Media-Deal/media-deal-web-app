@@ -34,10 +34,10 @@ class PlaceAdsController extends Controller
             Log::info('Ad placement submission started', [
                 'user_id' => Auth::id(),
                 'media_id' => $media->id,
-                'request_data' => $request->except(['upload_file']) // Exclude file from log
+                'request_data' => $request->except(['upload_file'])
             ]);
 
-            // Validation rules
+            // Validation rules (your existing validation code)
             $rules = [
                 'title' => 'required|string|max:255',
                 'category' => 'required|string|in:Political,Commercial,Public Service,Infomercial,Religious',
@@ -50,9 +50,8 @@ class PlaceAdsController extends Controller
                 'end_date' => 'required|date|after:start_date',
             ];
 
-            // Conditionally require file if content_type is 'Yes'
             if ($request->content_type === 'Yes') {
-                $rules['upload_file'] = 'required|file|mimes:jpg,jpeg,png,pdf,mp4,mp3|max:51200'; // 50MB
+                $rules['upload_file'] = 'required|file|mimes:jpg,jpeg,png,pdf,mp4,mp3|max:51200';
             }
 
             $validator = Validator::make($request->all(), $rules);
@@ -70,14 +69,13 @@ class PlaceAdsController extends Controller
                     ->with('error', 'Please fix the validation errors below.');
             }
 
-            // Handle file upload
+            // Handle file upload (your existing file upload code)
             $fileUrl = null;
             $publicId = null;
 
             if ($request->hasFile('upload_file') && $request->file('upload_file')->isValid()) {
                 try {
                     $uploadApi = new UploadApi();
-
                     $response = $uploadApi->upload($request->file('upload_file')->getRealPath(), [
                         'folder' => 'mediadeal/ad_placements/' . $media->id,
                         'resource_type' => 'auto',
@@ -121,13 +119,10 @@ class PlaceAdsController extends Controller
             }
 
             // Handle dates based on your database schema
-            // If you have separate start_date and end_date columns:
             if (Schema::hasColumn('ad_placements', 'start_date') && Schema::hasColumn('ad_placements', 'end_date')) {
                 $adData['start_date'] = $request->start_date;
                 $adData['end_date'] = $request->end_date;
-            }
-            // If you only have specify_dates column (original schema):
-            else if (Schema::hasColumn('ad_placements', 'specify_dates')) {
+            } else if (Schema::hasColumn('ad_placements', 'specify_dates')) {
                 $adData['specify_dates'] = $request->start_date . ' to ' . $request->end_date;
             }
 
@@ -145,16 +140,17 @@ class PlaceAdsController extends Controller
                 'media_id' => $media->id
             ]);
 
-            // Send notification to media organization
+            // Send notifications to both media organization and mediadeal.ng
             try {
                 $media->load('user');
-
+                $adminEmail = 'support@mediadeal.ng';
+                // Send to media organization
                 if ($media->user && $media->user->email) {
                     Mail::to($media->user->email)->send(
-                        new Adsplacement($adPlacement, Auth::user(), $media)
+                        new Adsplacement($adPlacement, Auth::user(), $media, false)
                     );
 
-                    Log::info('Ad placement notification sent', [
+                    Log::info('Ad placement notification sent to media', [
                         'media_id' => $media->id,
                         'email' => $media->user->email,
                         'ad_placement_id' => $adPlacement->id
@@ -162,6 +158,18 @@ class PlaceAdsController extends Controller
                 } else {
                     Log::warning('Media organization has no associated user or email', [
                         'media_id' => $media->id,
+                        'ad_placement_id' => $adPlacement->id
+                    ]);
+                }
+
+                // Send copy to mediadeal.ng admin
+                if ($adminEmail) {
+                    Mail::to($adminEmail)->send(
+                        new Adsplacement($adPlacement, Auth::user(), $media, true)
+                    );
+
+                    Log::info('Ad placement notification sent to admin', [
+                        'admin_email' => $adminEmail,
                         'ad_placement_id' => $adPlacement->id
                     ]);
                 }
@@ -174,7 +182,7 @@ class PlaceAdsController extends Controller
             }
 
             return redirect()->back()
-                ->with('success', 'Ad placement submitted successfully! The media organization has been notified.');
+                ->with('success', 'Ad placement submitted successfully! Notifications have been sent to the media organization and Mediadeal.ng.');
         } catch (\Exception $e) {
             Log::error('Ad placement creation failed: ' . $e->getMessage(), [
                 'trace' => $e->getTraceAsString(),

@@ -29,30 +29,22 @@ class CustomAuthController extends Controller
      */
     public function index()
     {
-        // Check if the user is authenticated
-        $user = Auth::user();
-
-        if ($user) {
-            // Set default data to pass to views
-            $data['mediaOrganizations'] = MediaOrganization::all();
- 
-            // Redirect based on user role
-            switch ($user->role) {
+        if (Auth::check()) {
+            switch (Auth::user()->role) {
                 case 'advertiser':
-                    return route('advertiser.dashboard');
+                    return redirect()->route('advertiser.dashboard');
                 case 'media_org':
-                    return view('media_org.homepage', $data);
+                    return redirect()->route('media_org.dashboard');
                 case 'marketer':
-                    return view('marketer.homepage', $data);
+                    return redirect()->route('marketer.dashboard');
                 default:
-                    // Optional: handle undefined roles
-                    abort(403, 'Unauthorized action.');
+                    return redirect()->route('logout');
             }
         }
 
-        // Redirect to login if no user is authenticated
-        return redirect()->route('login');
+        return redirect()->route('logout');
     }
+
 
 
 
@@ -69,7 +61,7 @@ class CustomAuthController extends Controller
 
 
 
- 
+
 
     public function verifyCode(Request $request)
     {
