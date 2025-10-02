@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Cloudinary\Api\Upload\UploadApi;
 use Illuminate\Support\Facades\Log;
+use App\Mail\AdStatusUpdatedMail;
+use Illuminate\Support\Facades\Mail;
+
+
 use Illuminate\Support\Facades\Storage;
 
 class MediaOrganizationController extends Controller
@@ -309,23 +313,52 @@ public function updateCompliancefile(Request $request, $id)
 
 
 
-    // update advertiser ads status
-    public function updateAdStatus(Request $request, $id)
-    {
-        // Validate input
-        $request->validate([
-            'status' => 'required|integer|min:0|max:3',
-        ]);
 
-        // Find the ad placement by ID
-        $adPlacement = AdPlacement::findOrFail($id);
 
-        // Update the status
-        $adPlacement->status = $this->mapStatus($request->status); // Map numeric status to string
-        $adPlacement->save();
 
-        return redirect()->back()->with('success', 'Ad status updated successfully.');
-    }
+
+
+public function updateAdStatus(Request $request, $id)
+{
+    // Validate input
+    $request->validate([
+        'status' => 'required|integer|min:0|max:3',
+    ]);
+
+    // Find the ad placement by ID
+    $adPlacement = AdPlacement::findOrFail($id);
+
+    // Map numeric status to string
+    $statusText = $this->mapStatus($request->status);
+    $adPlacement->status = $statusText;
+    $adPlacement->save();
+
+    // Send email notification to advertiser
+    Mail::to($adPlacement->user->email)->send(new AdStatusUpdatedMail($adPlacement));
+
+    return redirect()->back()->with('success', 'Ad status updated and email sent successfully.');
+}
+
+
+
+
+    // // update advertiser ads status
+    // public function updateAdStatus(Request $request, $id)
+    // {
+    //     // Validate input
+    //     $request->validate([
+    //         'status' => 'required|integer|min:0|max:3',
+    //     ]);
+
+    //     // Find the ad placement by ID
+    //     $adPlacement = AdPlacement::findOrFail($id);
+
+    //     // Update the status
+    //     $adPlacement->status = $this->mapStatus($request->status); // Map numeric status to string
+    //     $adPlacement->save();
+
+    //     return redirect()->back()->with('success', 'Ad status updated successfully.');
+    // }
 
     // Helper function to map numeric status to string values
     protected function mapStatus($status)

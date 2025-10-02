@@ -126,4 +126,9 @@ class MediaOrganization extends Model
     {
         return $this->hasMany(MediaOrganization::class, 'user_id');
     }
+
+    public function Feedbacks()
+    {
+        return $this->hasMany(Feedback::class, 'user_id');
+    }
 }
