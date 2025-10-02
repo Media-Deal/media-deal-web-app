@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Pagination\LengthAwarePaginator;
+use App\Mail\RefundUpdatedMail;
+use Illuminate\Support\Facades\Mail;
+
+
+
 
 class RefundController extends Controller
 {
@@ -85,37 +90,85 @@ class RefundController extends Controller
         ]);
     }
 
-    public function update(Request $request, $id)
-    {
-        try {
-            $request->validate([
-                'amount' => 'required|numeric|min:0',
-                'status' => 'required|in:pending,approved,denied',
-                'refunded' => 'required|boolean'
-            ]);
+    // public function update(Request $request, $id)
+    // {
+    //     try {
+    //         $request->validate([
+    //             'amount' => 'required|numeric|min:0',
+    //             'status' => 'required|in:pending,approved,denied',
+    //             'refunded' => 'required|boolean'
+    //         ]);
 
-            $refund = Refund::findOrFail($id);
+    //         $refund = Refund::findOrFail($id);
 
-            $refund->update([
-                'amount' => $request->amount,
-                'status' => $request->status,
-                'refunded' => $request->refunded
-            ]);
+    //         $refund->update([
+    //             'amount' => $request->amount,
+    //             'status' => $request->status,
+    //             'refunded' => $request->refunded
+    //         ]);
 
-            Log::info("Refund ID {$id} updated successfully", [
-                'amount' => $request->amount,
-                'status' => $request->status,
-                'refunded' => $request->refunded,
-                'updated_by' => auth()->id()
-            ]);
+    //         Log::info("Refund ID {$id} updated successfully", [
+    //             'amount' => $request->amount,
+    //             'status' => $request->status,
+    //             'refunded' => $request->refunded,
+    //             'updated_by' => auth()->id()
+    //         ]);
 
-            return redirect()->back()->with('success', 'Refund updated successfully!');
-        } catch (ValidationException $e) {
-            Log::warning('Refund validation failed: ' . $e->getMessage());
-            return redirect()->back()->withErrors($e->errors())->withInput();
-        } catch (\Exception $e) {
-            Log::error('Refund update failed: ' . $e->getMessage());
-            return redirect()->back()->with('error', 'Failed to update refund. Please try again.');
+    //         return redirect()->back()->with('success', 'Refund updated successfully!');
+    //     } catch (ValidationException $e) {
+    //         Log::warning('Refund validation failed: ' . $e->getMessage());
+    //         return redirect()->back()->withErrors($e->errors())->withInput();
+    //     } catch (\Exception $e) {
+    //         Log::error('Refund update failed: ' . $e->getMessage());
+    //         return redirect()->back()->with('error', 'Failed to update refund. Please try again.');
+    //     }
+    // }
+
+
+
+
+
+
+
+public function update(Request $request, $id)
+{
+    try {
+        $request->validate([
+            'amount'   => 'required|numeric|min:0',
+            'status'   => 'required|in:pending,approved,denied',
+            'refunded' => 'required|boolean'
+        ]);
+
+        $refund = Refund::findOrFail($id);
+
+        $refund->update([
+            'amount'   => $request->amount,
+            'status'   => $request->status,
+            'refunded' => $request->refunded
+        ]);
+
+        // Log activity
+        Log::info("Refund ID {$id} updated successfully", [
+            'amount'     => $request->amount,
+            'status'     => $request->status,
+            'refunded'   => $request->refunded,
+            'updated_by' => auth()->id()
+        ]);
+
+        // ✅ Send email to user if email exists
+        if ($refund->user && $refund->user->email) {
+            Mail::to($refund->user->email)->send(new RefundUpdatedMail($refund));
         }
+
+        return redirect()->back()->with('success', 'Refund updated successfully and user notified!');
+    } catch (ValidationException $e) {
+        Log::warning('Refund validation failed: ' . $e->getMessage());
+        return redirect()->back()->withErrors($e->errors())->withInput();
+    } catch (\Exception $e) {
+        Log::error('Refund update failed: ' . $e->getMessage());
+        return redirect()->back()->with('error', 'Failed to update refund. Please try again.');
     }
+}
+
+
 }
