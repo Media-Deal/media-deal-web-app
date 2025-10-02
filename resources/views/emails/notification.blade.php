@@ -213,7 +213,7 @@
                                     <td align='left'
                                         style='color: #aaaaaa; font-size: 14px; font-family: "Work Sans", Calibri, sans-serif; line-height: 24px;'>
                                         <div style='line-height: 24px;'>
-                                            <span style='color: #333333;'>Copyright 2024 - All Rights Reserved</span>
+                                            <span style='color: #333333;'>Copyright 2025 - All Rights Reserved</span>
                                         </div>
                                     </td>
                                 </tr>
