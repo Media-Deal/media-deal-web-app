@@ -30,7 +30,17 @@ class CustomAuthController extends Controller
     public function index()
     {
         if (Auth::check()) {
-            switch (Auth::user()->role) {
+            $user = Auth::user();
+
+            // Check if user is approved
+            if (!$user->is_approved) {
+                Auth::logout();
+                return redirect()->route('login')->withErrors([
+                    'email' => 'Your account is pending approval. Please wait for admin approval.'
+                ]);
+            }
+
+            switch ($user->role) {
                 case 'advertiser':
                     return redirect()->route('advertiser.dashboard');
                 case 'media_org':
@@ -38,11 +48,11 @@ class CustomAuthController extends Controller
                 case 'marketer':
                     return redirect()->route('marketer.dashboard');
                 default:
-                    return redirect()->route('logout');
+                    return redirect()->route('login');
             }
         }
 
-        return redirect()->route('logout');
+        return redirect()->route('login');
     }
 
 

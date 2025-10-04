@@ -187,6 +187,14 @@
                         } else {
                             // Show error message
                             toastr.error(response.message);
+                            
+                            // Display validation errors if any
+                            if (response.errors) {
+                                $.each(response.errors, function(key, value) {
+                                    $('.' + key + '-error').text(value);
+                                    $('[name="' + key + '"]').addClass('is-invalid');
+                                });
+                            }
                         }
                     },
                     error: function (xhr) {
@@ -210,8 +218,18 @@
                             // Other errors
                             toastr.error(xhr.responseJSON.message || 'An error occurred. Please try again.');
                         }
+                        
+                        // Clear password field for security
+                        $('#password').val('');
                     }
                 });
+            });
+            
+            // Clear validation errors when user starts typing
+            $('input').on('input', function() {
+                var fieldName = $(this).attr('name');
+                $(this).removeClass('is-invalid');
+                $('.' + fieldName + '-error').text('');
             });
         });
     </script>

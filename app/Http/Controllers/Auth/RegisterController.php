@@ -74,7 +74,7 @@ class RegisterController extends Controller
                 'ip' => $request->ip(),
                 'email' => $request->email
             ]);
-            
+
             return response()->json([
                 'success' => false,
                 'message' => 'Please correct the errors in the form',
@@ -88,6 +88,7 @@ class RegisterController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'role' => $request->role,
+                'is_approved' => false,
                 'password' => Hash::make($request->password),
             ]);
 
@@ -95,7 +96,7 @@ class RegisterController extends Controller
             $this->createRoleSpecificRecord($user, $request->all());
 
             // Send welcome email
-           // Mail::to($user->email)->send(new WelcomeEmail($user));
+            // Mail::to($user->email)->send(new WelcomeEmail($user));
 
             event(new Registered($user));
 
@@ -113,7 +114,6 @@ class RegisterController extends Controller
                 'message' => 'Registration successful! Redirecting...',
                 'redirect' => $this->redirectPath($user)
             ]);
-
         } catch (\Exception $e) {
             Log::error('User registration failed', [
                 'error' => $e->getMessage(),

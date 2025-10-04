@@ -71,6 +71,11 @@ Route::get('/media', function () {
 });
 
 
+
+// Pending approval routes
+Route::get('/pending-approval', [LoginController::class, 'pendingApproval'])->name('pending.approval');
+Route::get('/check-approval-status', [LoginController::class, 'checkApprovalStatus'])->name('check.approval.status');
+
 // Authentication Routes
 // Authentication Routes
 Route::middleware('guest')->group(function () {

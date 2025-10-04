@@ -26,6 +26,8 @@ class UserAuthMiddleware
             return redirect()->route('login'); // Redirect to login if not authenticated
         }
 
+
+
         $user = Auth::user();
 
 
@@ -33,7 +35,10 @@ class UserAuthMiddleware
             // Redirect to login if the user is not authenticated
             return redirect()->route('login');
         }
-
+        // Check if user is approved
+        if (!$user->is_approved) {
+            return redirect()->route('pending.approval');
+        }
 
 
 
