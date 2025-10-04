@@ -27,7 +27,7 @@
                 <div class="col-xl-4 col-lg-5 mb-4">
                     <div class="card text-center shadow-sm border-0 h-100">
                         <div class="card-body p-4">
-                            <div class="profile-image-wrapper mb-3">
+                            {{-- <div class="profile-image-wrapper mb-3">
                                 @if($mediaOrganization && $mediaOrganization->profile_picture_url)
                                 <img src="{{ $mediaOrganization->profile_picture_url }}"
                                     class="rounded-circle avatar-lg img-thumbnail border border-2 border-primary shadow-sm"
@@ -37,7 +37,7 @@
                                     class="rounded-circle avatar-lg img-thumbnail border border-2 border-primary shadow-sm"
                                     alt="profile-image">
                                 @endif
-                            </div>
+                            </div> --}}
 
                             @if($mediaOrganization)
                             <h4 class="mb-1 font-weight-bold text-primary">{{ $mediaOrganization->fullname }}</h4>

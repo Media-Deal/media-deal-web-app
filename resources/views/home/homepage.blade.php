@@ -5,7 +5,7 @@
   <div class="row g-0 align-items-center flex-column-reverse flex-md-row">
     <div class="col-md-6 p-5 mt-lg-5 px-3 text-center">
 
-      <h1 class="display-5 animated fadeIn mb-3 fw-bold mt-4"> <span class="fs-1">...Where Media Gets Paid,<br></span><span class="text-primary fs-1">and Advertisers Get Results...
+      <h1 class="display-5 animated fadeIn mb-3 fw-bold mt-4"> <span class="fs-1">...Where Media Get Paid,<br></span><span class="text-primary fs-1">and Advertisers Get Results...
         </span></h1>
       {{-- <h4 class="animated fadeIn mb-4 pb-2"></h4> --}}
       <div class="d-flex justify-content-center">
@@ -16,7 +16,7 @@
     <div class="col-md-6 animated fadeIn">
       <div class="owl-carousel header-carousel">
         <div class="owl-carousel-item">
-          <img class="img-fluid" src="img/carousel-1.jpg" alt="media photo1" style="width: 100%; height: 36rem">
+          <img class="img-fluid" src="img/market-woman.jpg" alt="media photo1" style="width: 100%; height: 36rem">
         </div>
         <div class="owl-carousel-item">
           <img class="img-fluid" src="img/chosen.jpg" alt="media photo 2" style="width: 100%; height: 36rem">
@@ -44,7 +44,7 @@
           <div class="card-body bg-dark px-3">
             <img src="img/md1.png" class="img-fluid w-50 h-50">
             <h4 class="fs-4 text-primary py-2">No Middle-Man Here!</h4>
-            <p class="fs-6 mb-0 fw-500 fs-6 text-light">Choose your preferred media (radio, TV, or online), view Ad rates, chat directly with your chosen media to negotiate discounts, and place your Ad</p>
+            <p class="fs-6 mb-0 fw-500 fs-6 text-light">With just a few clicks, and you are diving into advert rates, getting discounts, and plastering your Ads all over your favorite media. It's like shopping online but way cooler!</p>
           </div>
         </div>
       </div>
@@ -65,8 +65,8 @@
         <div class="card border-0 shadow bg-dark px-3">
           <div class="card-body">
             <img src="img/md3.png" class="img-fluid w-50 h-50">
-            <h3 class="fs-4 text-primary py-2">Customer Support</h3>
-            <p class="fs-6 mb-0 fw-500 text-light">Unsure which media to choose? Use our Resources to request Deal Support and get the assistance you need to maximize your investment.</p>
+            <h3 class="fs-4 text-primary py-2">Deal Support</h3>
+            <p class="fs-6 mb-0 fw-500 text-light">Watch out for budget-hungry sharks! Don't swim solo - dive in with experts to help avoid ending up with a fishy net full of holes.</p>
           </div>
         </div>
       </div>
@@ -81,12 +81,12 @@
             <div class="row g-5 align-items-center">
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
                     <div class="about-img position-relative overflow-hidden p-5 pe-0">
-                        <img class="img-fluid w-100" src="img/marketer.jpg">
+                        <img class="img-fluid w-100" src="img/tailor.jpg">
                     </div>
                 </div>
                 <div class="col-lg-6 wow fadeIn" data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine"> 
                     <div class="px-5">
-                        <p class="mb-4 text-dark fs-5"><span class="text-primary fw-bolder fs-3"><i></i></span><i>"As a fashion designer in Lagos, Media Deal made it easy for me to connect with the right radio station. Everything went smoothly, and my business started getting plenty of calls and messages. Media Deal na real lifesaver!”</i> </p>
+                        <p class="mb-4 text-dark fs-5"><span class="text-primary fw-bolder fs-3"><i></i></span><i>"Although I listen to the radio while working as a fashion designer, I never imagined it would be so easy to place my ad on my favorite station. If you see the way I shout the first time my ad played—that day, Asake’s song just finished playing, and then my brand name was announced! Ah! Media Deal, joy is no longer coming o, it is here!”</i> </p>
                             <div class="d-flex justify-content-center">
                                 <a href="{{route('register')}}" class="btn btn-dark py-2 px-5 me-3 my-3 text-primary animated fadeIn fw-bold">Try Us!</a>
                             </div>
@@ -112,7 +112,7 @@
                         <div class="card-body bg-dark px-3">
                             <img src="img/md11.png" class="img-fluid w-50 h-50">
                             <h4 class="fs-4 text-primary py-2">Conclude Deals Faster</h4>
-                            <p class="fs-6 mb-0 fw-500 fs-6 text-light">We've simplified your media selling process—sign up, create your profile for free, and receive email notifications from advertisers interested in buying your Ad.</p>
+                            <p class="fs-6 mb-0 fw-500 fs-6 text-light">We've automated your media selling process - just show up, and watch the magic happen as you sell out faster than a concert with free pizza!</p>
                         </div>
                     </div>
                 </div>
@@ -123,7 +123,7 @@
                         <div class="card-body">
                         <img src="img/md122.png" class="img-fluid w-50 h-50">
                             <h3 class="fs-4 text-primary py-2">Guaranteed Payment</h3>
-                            <p class="fs-6 mb-0 fw-500 text-light">You'll be promptly notified of advertiser payments before airing the Ad, and the payment will be transferred to your account after airing Ad.</p>
+                            <p class="fs-6 mb-0 fw-500 text-light">Get paid, not played! Get an email when advertisers pay and a bank alert after the ad hits the airwaves.</p>
                         </div>
                     </div>
                 </div>
@@ -133,8 +133,8 @@
                     <div class="card border-0 shadow bg-dark  px-3">
                         <div class="card-body">
                         <img src="img/md13.png" class="img-fluid w-50 h-50">
-                            <h3 class="fs-4 text-primary py-2">Enjoy Free Marketing</h3>
-                            <p class="fs-6 mb-0 fw-500 text-light">We will promote your media offerings, including Ad sales, discounts, giveaways, and more to help you attract advertisers.</p>
+                            <h3 class="fs-4 text-primary py-2">Free Marketing</h3>
+                            <p class="fs-6 mb-0 fw-500 text-light">Shout it from the rooftops—without spending a dime! Get free promos for your media deals, from sales and discounts to giveaways, and watch the advertisers roll</p>
                         </div>
                     </div>
                 </div>

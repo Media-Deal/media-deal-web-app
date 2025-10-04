@@ -21,7 +21,7 @@
                     <!-- Body -->
                     <tr>
                         <td style="padding: 30px; color: #333333;">
-                            <h2 style="margin-top: 0;">Hello,</h2>
+                            <h2 style="margin-top: 0;">Hello {{ $userName }},</h2>
                             <p style="font-size: 15px; line-height: 1.6;">
                                 Your compliance file for ad placement <strong>"{{ $complianceType }}"</strong> has been successfully updated.
                             </p>

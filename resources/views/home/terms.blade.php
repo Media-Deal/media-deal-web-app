@@ -37,8 +37,8 @@
         <p>To use Media Deal, you must be:
           <ul>
             <li>At least 18 years old.</li>
-            <li>A duly registered media organization with CAC and licensed by NBC (for TV and Radio)</li>
-            <li>A marketer with a valid APCON certificate or employed by a media organization.</li>
+            <li>Media organizations must be registered with CAC, and licensed by NBC (for TV and Radio)</li>
+            <li>An influencer with at least 5000 followers on social media</li>
             <li>An individual or entity interested in buying or placing advertisements.</li>
           </ul>
           </p>
@@ -53,8 +53,6 @@
         <p>Access to media organization listings, ad placement, payment processing, and compliance monitoring.</p> 
         <h6>3.2 Media Organization Features:</h6>
         <p>	Listing of available ad slots, viewing incoming requests, compliance monitoring, and handling refund requests.</p>
-        <h6>3.3 Marketer Features:</h6>
-        <p>Managing ad placements and earning commissions for successful deals.</p>
       </section>
 
       <section>
@@ -80,7 +78,7 @@
         </ul>
         <p>Advertiser Review:</p>
         <ul>
-          <li>The advertiser has a set period (e.g., 7 days) to review the proof provided by the media organization.</li>
+          <li>The advertiser has a set period of 3 days to review the proof provided by the media organization.</li>
           <li>If the advertiser is satisfied, they do nothing, and the process moves forward. If there are issues, the advertiser can </li>
           <li>raise a concern or request a refund.</li>
         </ul>
@@ -93,35 +91,23 @@
         <ul>
           <li>Media Deal releases the payment to the media organization, minus any applicable fees (e.g., Media Deal's 5% platform fee).</li>
         </ul>
-        <p>Commission to Marketer:</p>
-        <ul>
-          <li>At the same time, the marketer who facilitated the deal receives their commission, as approved and indicated by the Media Organization.</li>
-        </ul>
         <h6>4.5 Refund Handling (If Applicable):</h6>
           <p>Refund Requests:</p>
           <ul>
-            <li>If the advertiser requests a refund due to non-compliance, incorrect airing, or other valid reasons, Media Deal will review the request.</li>
+            <li>If the advertiser requests a refund due to non-compliance, incorrect airing, or other valid reasons, the concerned media or influencer will review the request.</li>
             <li>If the refund is approved, Media Deal deducts the refund amount from the funds held in escrow.</li>
           </ul>
           <p>Adjustment to Payments:</p>
           <ul>
-            <li>The media organization and marketer will receive payments minus the refunded amount, if applicable.</li>
+            <li>Media and influencers will receive payments minus the refunded amount, if applicable, 5% platform fee, and VAT.
+            </li>
            <p>Read more about our <a href="{{ url("/refund-policy") }}">refund policies</a></p> 
           </ul>
       </section>
 
       <section>
         <h5>5. Compliance and Monitoring</h5>
-        <p>Media organizations are required to provide proof of ad airing and comply with all applicable laws and regulations. Advertisers may request compliance documentation, and Media Deal may intervene if necessary.</p>
-      </section>
-
-      <section>
-        <h5>6. Commissions</h5>
-        <p>Media organizations are required to provide proof of ad airing and comply with all applicable laws and regulations. Advertisers may request compliance documentation, and Media Deal may intervene if necessary.</p>
-        <h6> 6.1 Earning Commissions:</h6>
-        <p>	Marketers registered on Media Deal can earn a commission of 10-15%, depending on the ad volume, for successfully completed media deals.</p>
-        <h6>6.2 Payment of Commissions:</h6>
-        <p>Commissions are paid after the 7-day confirmation period and after verifying successful ad airing and resolving any refund requests.</p>
+        <p>Media and influencers are required to provide proof of ad airing and comply with all applicable laws and regulations. Advertisers may request compliance documentation, and Media Deal may intervene if necessary.</p>
       </section>
 
       <section>
@@ -141,14 +127,14 @@
       <section>
         <h5>9. Intellectual Property</h5>
         <ul>
-          <li>All content, trademarks, and other intellectual property on Media Deal are owned by Media Deal or its licensors. Users may not use any intellectual property without prior written consent.</li>
+          <li>All content, trademarks, and other intellectual property on Media Deal are owned by Media Deal Digital or its licensors. Users may not use any intellectual property without prior written consent. Check our <a href="{{ url('/rights') }}">proprietary rights</a></li>
         </ul>
       </section>
 
       <section>
         <h5>10. Limitation of Liability</h5>
         <ul>
-          <li>Media Deal is not liable for any indirect, incidental, or consequential damages arising from the use of the platform. Our total liability is limited to the amount you have paid to Media Deal in the past 12 months.</li>
+          <li>Media Deal is not liable for any indirect, incidental, or consequential damages arising from the use of the platform. Our total liability is limited to the amount you paid to Media Deal or the successful Ad you aired.</li>
         </ul>
       </section>
 
@@ -170,11 +156,11 @@
         <h5> 13. Contact Us</h5>
         <ul>
           <li>For any questions or concerns about these Terms and Conditions, please contact us at support@mediadeal.ng.
-            By using Media Deal, you acknowledge that you have read, understood, and agree to these Terms and Conditions. Thank you for using Media Deal.</li>
+            </li>
         </ul>
       </section>
       <section>
-        <p>By using Media Deal, you acknowledge that you have read, understood, and agree to these Terms and Conditions. Thank you for using Media Deal. Check our <a href="{{ url("/proprietary-rights") }}">proprietary rights</a> 
+        <p>By using Media Deal, you acknowledge that you have read, understood, and agree to these Terms and Conditions. Thank you for using Media Deal. 
         </p>
       </section>
       

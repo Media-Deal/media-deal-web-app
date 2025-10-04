@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Compliance File Update - MediaDeal</title>
+    <title>Refund Request Update - MediaDeal</title>
 </head>
 <body style="font-family: Arial, sans-serif; background-color: #f4f6f9; margin: 0; padding: 0;">
     <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f4f6f9; padding: 30px 0;">
@@ -14,36 +14,36 @@
                     <!-- Header -->
                     <tr>
                         <td align="center" style="background: #004aad; padding: 20px;">
-                            <h1 style="color: #ffffff; margin: 0; font-size: 22px;">MediaDeal Compliance</h1>
+                            <h1 style="color: #ffffff; margin: 0; font-size: 22px;">MediaDeal Refunds</h1>
                         </td>
                     </tr>
 
                     <!-- Body -->
                     <tr>
                         <td style="padding: 30px; color: #333333;">
-                            <h2 style="margin-top: 0;">Hello,</h2>
+                            <h2 style="margin-top: 0;">Hello {{ $refund->user->name }},</h2>
                             <p style="font-size: 15px; line-height: 1.6;">
-                                Your compliance file for ad placement <strong>"{{ $complianceType }}"</strong> has been successfully updated.
+                                Your refund request for <strong>"{{ $refund->category }}"</strong> has been updated.
                             </p>
 
-                            <!-- File Details -->
+                            <!-- Refund Details -->
                             <div style="margin: 20px 0; padding: 15px; background: #f9f9f9; border-left: 4px solid #004aad;">
                                 <p style="margin: 0; font-size: 14px; line-height: 1.5;">
-                                    <strong>Compliance Status:</strong> {{ $complianceStatus }}<br>
-                                    @if($complianceFile)
-                                        <strong>New File:</strong> 
-                                        <a href="{{ $complianceFile }}" target="_blank" style="color:#004aad;">View / Download</a>
+                                    <strong>Status:</strong> {{ ucfirst($refund->status) }}<br>
+                                    <strong>Refunded Amount:</strong> #{{ number_format($refund->amount, 2) }}<br>
+                                    @if(!empty($refund->feedback))
+                                        <strong>Feedback:</strong> {{ $refund->feedback }}
                                     @endif
                                 </p>
                             </div>
 
                             <p style="font-size: 14px; line-height: 1.6; margin-top: 30px;">
-                                Thank you for staying compliant with <strong>MediaDeal Standards</strong>.
+                                Thank you for your patience and for working with <strong>MediaDeal</strong>.
                             </p>
 
                             <p style="font-size: 14px; line-height: 1.6;">
                                 Best regards,<br>
-                                <strong>MediaDeal Compliance Team</strong>
+                                <strong>MediaDeal Support Team</strong>
                             </p>
                         </td>
                     </tr>

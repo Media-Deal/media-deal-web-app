@@ -153,12 +153,12 @@
       </div>
     </div>
   </div>
-  <div class="row">
+  {{-- <div class="row">
     <div class="col-12">
       <div class="load-more-container text-end me-5">
         <button class="btn load-more-btn btn-white text-primary">Load more..</button>
       </div>
-    </div>
+    </div> --}}
   </div>
  </div>
 </section>
@@ -172,10 +172,16 @@
           more TV stations, announce promo offers, and giveaways.</p>
       </div>
       <div class="col-md-5 px-5">
-        <div class="d-flex gap-2">
-          <input type="email" class="form-control email-input" placeholder="Enter your email address">
-          <button class="btn btn-subscribe animate-pulse bg-primary text-white">Subscribe</button>
-        </div>
+        <form id="subscribeForm" method="POST" action="{{ route('subscribe.store') }}">
+          @csrf
+          <div class="d-flex gap-2">
+            <input type="email" name="email" class="form-control email-input" placeholder="Enter your email address" required>
+            <button type="submit" class="btn btn-subscribe bg-primary text-white d-flex align-items-center justify-content-center">
+              <span class="spinner-border spinner-border-sm me-2 d-none" role="status" aria-hidden="true"></span>
+              <span class="btn-text">Subscribe</span>
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
@@ -208,7 +214,9 @@
   <div class="budget-section px-2" data-aos="fade-up" data-aos-delay="200">
     <h3 class="h5 mb-3">Don’t gamble with your Ad budget!</h3>
     <p class="mb-4">If you need us to assist you with jingle production, content creation, campaign planning, or APCON approval, click ‘Deal Support’</p>
-    <button class="btn btn-dark px-4 py-2 animate-pulse text-primary fw-bold">Deal Support</button>
+    <a href="{{ url('/deal-support') }}" class="text-decoration-none">
+      <button class="btn btn-dark px-4 py-2 animate-pulse text-primary fw-bold">Deal Support</button>
+    </a>
   </div>
 </section>
 @include("home.footer");

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Compliance;
-use App\Models\Adplacement;
+use App\Models\AdPlacement;
 use Illuminate\Http\Request;
 use App\Models\MediaOrganization;
 use App\Models\AdvertiserPaymentHistory;
@@ -11,6 +11,13 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Cloudinary\Api\Upload\UploadApi;
 use Illuminate\Support\Facades\Log;
+use App\Mail\AdStatusUpdatedMail;
+use App\Mail\ComplianceUpdatedMail;
+use Illuminate\Support\Facades\Mail;
+
+
+
+
 use Illuminate\Support\Facades\Storage;
 
 class MediaOrganizationController extends Controller
@@ -90,11 +97,17 @@ class MediaOrganizationController extends Controller
         abort(404, 'Media organization not found');
     }
 
-    // Retrieve all advertiser payments where media_id matches the media organization id
+    // // Retrieve all advertiser payments where media_id matches the media organization id
+    // $payments = AdvertiserPaymentHistory::where('media_id', $mediaOrganization->id)
+    //     ->with(['advertiser', 'user']) // load related models if relationships exist
+    //     ->orderBy('created_at', 'desc')
+    //     ->get();
+
     $payments = AdvertiserPaymentHistory::where('media_id', $mediaOrganization->id)
-        ->with(['advertiser', 'user']) // load related models if relationships exist
-        ->orderBy('created_at', 'desc')
-        ->get();
+    ->with(['advertiser.user']) // advertiser → user
+    ->orderBy('created_at', 'desc')
+    ->get();
+
 
     // Calculate metrics
     $totalPayments   = $payments->count();
@@ -203,7 +216,6 @@ class MediaOrganizationController extends Controller
 
 
 
-
 public function updateCompliancefile(Request $request, $id)
 {
     // Validate the uploaded file
@@ -253,9 +265,77 @@ public function updateCompliancefile(Request $request, $id)
     // Save compliance record (file + status)
     $adsCompliance->save();
 
+    // ✅ Send email notification
+    try {
+        Mail::to($adsCompliance->user->email)->send(new ComplianceUpdatedMail($adsCompliance));
+    } catch (\Exception $e) {
+        Log::error("Compliance email failed: " . $e->getMessage());
+    }
+
     // Redirect back with success message
-    return redirect()->back()->with('status', 'Compliance file and status updated successfully!');
+    return redirect()->back()->with('status', 'Compliance file and status updated successfully! Email notification sent.');
 }
+
+
+
+
+
+
+
+
+
+// public function updateCompliancefile(Request $request, $id)
+// {
+//     // Validate the uploaded file
+//     $request->validate([
+//         'compliance_file' => 'required|mimes:pdf,doc,docx,mp3,txt,xls,xlsx,ppt,pptx|max:10000',
+//     ]);
+
+//     // Retrieve the model instance for the given ID
+//     $adsCompliance = Compliance::findOrFail($id);
+
+//     // Update compliance status (from hidden input or fallback to existing value)
+//     $adsCompliance->compliance_status = $request->input('compliance_status', $adsCompliance->compliance_status);
+
+//     // Handle the file upload
+//     if ($request->hasFile('compliance_file') && $request->file('compliance_file')->isValid()) {
+//         try {
+//             // If there’s an old file, delete it from Cloudinary
+//             if ($adsCompliance->compliance_file_public_id) {
+//                 try {
+//                     (new UploadApi())->destroy($adsCompliance->compliance_file_public_id);
+//                 } catch (\Exception $e) {
+//                     Log::warning("Failed to delete old compliance file from Cloudinary: " . $e->getMessage());
+//                 }
+//             }
+
+//             // Upload the new file to Cloudinary
+//             $uploadApi = new UploadApi();
+//             $response = $uploadApi->upload(
+//                 $request->file('compliance_file')->getRealPath(),
+//                 [
+//                     'folder' => 'mediadeal/compliance_files/' . $adsCompliance->id,
+//                     'resource_type' => 'auto',
+//                     'public_id' => 'compliance_' . time() . '_' . uniqid(),
+//                 ]
+//             );
+
+//             // Update the database record with the new file info
+//             $adsCompliance->compliance_file = $response['secure_url'];
+//             $adsCompliance->compliance_file_public_id = $response['public_id'];
+
+//         } catch (\Exception $e) {
+//             Log::error('Cloudinary upload failed: ' . $e->getMessage());
+//             return redirect()->back()->with('error', 'Compliance file upload failed. Please try again.');
+//         }
+//     }
+
+//     // Save compliance record (file + status)
+//     $adsCompliance->save();
+
+//     // Redirect back with success message
+//     return redirect()->back()->with('status', 'Compliance file and status updated successfully!');
+// }
 
 
 // public function updateCompliancefile(Request $request, $id)
@@ -309,23 +389,52 @@ public function updateCompliancefile(Request $request, $id)
 
 
 
-    // update advertiser ads status
-    public function updateAdStatus(Request $request, $id)
-    {
-        // Validate input
-        $request->validate([
-            'status' => 'required|integer|min:0|max:3',
-        ]);
 
-        // Find the ad placement by ID
-        $adPlacement = AdPlacement::findOrFail($id);
 
-        // Update the status
-        $adPlacement->status = $this->mapStatus($request->status); // Map numeric status to string
-        $adPlacement->save();
 
-        return redirect()->back()->with('success', 'Ad status updated successfully.');
-    }
+
+
+public function updateAdStatus(Request $request, $id)
+{
+    // Validate input
+    $request->validate([
+        'status' => 'required|integer|min:0|max:3',
+    ]);
+
+    // Find the ad placement by ID
+    $adPlacement = AdPlacement::findOrFail($id);
+
+    // Map numeric status to string
+    $statusText = $this->mapStatus($request->status);
+    $adPlacement->status = $statusText;
+    $adPlacement->save();
+
+    // Send email notification to advertiser
+    Mail::to($adPlacement->user->email)->send(new AdStatusUpdatedMail($adPlacement));
+
+    return redirect()->back()->with('success', 'Ad status updated and email sent successfully.');
+}
+
+
+
+
+    // // update advertiser ads status
+    // public function updateAdStatus(Request $request, $id)
+    // {
+    //     // Validate input
+    //     $request->validate([
+    //         'status' => 'required|integer|min:0|max:3',
+    //     ]);
+
+    //     // Find the ad placement by ID
+    //     $adPlacement = AdPlacement::findOrFail($id);
+
+    //     // Update the status
+    //     $adPlacement->status = $this->mapStatus($request->status); // Map numeric status to string
+    //     $adPlacement->save();
+
+    //     return redirect()->back()->with('success', 'Ad status updated successfully.');
+    // }
 
     // Helper function to map numeric status to string values
     protected function mapStatus($status)
